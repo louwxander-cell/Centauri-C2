@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Safe Zone Alpha",
+        "zone_type": "safe",
+        "priority": 1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-122.4194, 37.7749],
+            [-122.4094, 37.7749],
+            [-122.4094, 37.7849],
+            [-122.4194, 37.7849],
+            [-122.4194, 37.7749]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Restricted Zone Bravo",
+        "zone_type": "restricted",
+        "priority": 2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-122.4294, 37.7649],
+            [-122.4194, 37.7649],
+            [-122.4194, 37.7749],
+            [-122.4294, 37.7749],
+            [-122.4294, 37.7649]
+          ]
+        ]
+      }
+    }
+  ]
+}

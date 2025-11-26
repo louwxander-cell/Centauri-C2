@@ -1,0 +1,31 @@
+{
+  "network": {
+    "radar": {
+      "protocol": "TCP",
+      "host": "127.0.0.1",
+      "port": 23000
+    },
+    "rws": {
+      "protocol": "UDP",
+      "host": "127.0.0.1",
+      "port": 5000
+    },
+    "rf": {
+      "protocol": "REST",
+      "base_url": "http://127.0.0.1:8080/api"
+    }
+  },
+  "gps": {
+    "port": "/dev/ttyUSB0",
+    "baudrate": 9600
+  },
+  "system": {
+    "update_rate_hz": 10,
+    "track_timeout_sec": 5.0,
+    "fusion_distance_threshold_m": 50.0
+  },
+  "ui": {
+    "theme": "tactical_dark",
+    "refresh_rate_ms": 100
+  }
+}

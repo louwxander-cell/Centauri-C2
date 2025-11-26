@@ -1,0 +1,40 @@
+
+╔═══════════════════════════════════════════════════════════════════════╗
+║                                                                       ║
+║   ████████╗██████╗ ██╗ █████╗ ██████╗      ██████╗██████╗           ║
+║   ╚══██╔══╝██╔══██╗██║██╔══██╗██╔══██╗    ██╔════╝╚════██╗          ║
+║      ██║   ██████╔╝██║███████║██║  ██║    ██║      █████╔╝          ║
+║      ██║   ██╔══██╗██║██╔══██║██║  ██║    ██║     ██╔═══╝           ║
+║      ██║   ██║  ██║██║██║  ██║██████╔╝    ╚██████╗███████╗          ║
+║      ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝      ╚═════╝╚══════╝          ║
+║                                                                       ║
+║              Counter-UAS Command & Control System                    ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+    🎯 Mission-Critical Defense System
+    🛡️  Multi-Sensor Fusion
+    📡 Real-Time Tracking
+    🔫 Weapon Control Integration
+
+═══════════════════════════════════════════════════════════════════════
+
+  SENSORS:
+    ├─ 📡 Echodyne Radar      [TCP 23000]
+    ├─ 📻 BlueHalo RF Sensor  [REST API]
+    ├─ 🛰️  GPS/Compass         [Serial NMEA]
+    └─ 🎯 Remote Weapon Stn   [UDP 5000]
+
+  CAPABILITIES:
+    ├─ Track Fusion Engine
+    ├─ Polar Radar Display
+    ├─ Tactical Dark UI
+    └─ Slew-to-Cue Control
+
+═══════════════════════════════════════════════════════════════════════
+
+  STATUS: OPERATIONAL ✅
+  MODE:   SIMULATION 🔧
+  READY:  FOR MISSION 🚀
+
+═══════════════════════════════════════════════════════════════════════
