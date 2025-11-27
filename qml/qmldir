@@ -1,0 +1,19 @@
+singleton Theme 1.0 Theme.qml
+MainView 1.0 MainView.qml
+Header 1.0 Header.qml
+SensorIndicator 1.0 SensorIndicator.qml
+LeftPanel 1.0 LeftPanel.qml
+RightPanel 1.0 RightPanel.qml
+RadarView 1.0 RadarView.qml
+TrackMarker 1.0 TrackMarker.qml
+LegendItem 1.0 LegendItem.qml
+ZoomButton 1.0 ZoomButton.qml
+TableHeaderCell 1.0 TableHeaderCell.qml
+TrackRow 1.0 TrackRow.qml
+TrackDetailsCard 1.0 TrackDetailsCard.qml
+DetailLabel 1.0 DetailLabel.qml
+DetailValue 1.0 DetailValue.qml
+StatusCard 1.0 StatusCard.qml
+ModeToggle 1.0 ModeToggle.qml
+EngageButton 1.0 EngageButton.qml
+CommandChain 1.0 CommandChain.qml

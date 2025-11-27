@@ -1,0 +1,135 @@
+syntax = "proto3";
+package triad.gunner;
+
+// Protocol for streaming track data to Gunner Stations
+
+message TrackUpdate {
+  // Track identity
+  int32 track_id = 1;
+  
+  // Position (vehicle-relative)
+  double azimuth_deg = 2;      // 0-360° (0° = vehicle forward)
+  double elevation_deg = 3;    // -90 to 90°
+  double range_m = 4;
+  
+  // Velocity (for lead calculation)
+  double velocity_x_mps = 5;   // Forward/back
+  double velocity_y_mps = 6;   // Left/right
+  double velocity_z_mps = 7;   // Up/down
+  double speed_mps = 8;        // Total speed
+  double heading_deg = 9;      // Target heading
+  
+  // Classification
+  string type = 10;            // UAV, BIRD, UNKNOWN
+  double confidence = 11;      // 0.0-1.0
+  string source = 12;          // RADAR, RF, FUSED
+  
+  // Track quality
+  double track_age_sec = 13;   // How long we've been tracking
+  int32 num_updates = 14;      // Number of sensor updates
+  
+  // Threat assessment
+  string priority = 15;        // CRITICAL, HIGH, MEDIUM, LOW
+  
+  // Effector recommendation (based on range)
+  string recommended_effector = 20;  // "CRx-30", "CRx-40", or "OUT_OF_RANGE"
+  string recommendation_reason = 21; // "RANGE_900M_USE_30MM", "RANGE_150M_USE_40MM"
+  
+  // Additional intel (from RF sensor)
+  string aircraft_model = 16;  // "DJI Mavic 3", etc.
+  double pilot_latitude = 17;  // Pilot position (if known)
+  double pilot_longitude = 18;
+  
+  // Timestamp
+  int64 timestamp_ns = 19;
+}
+
+message TracksSnapshot {
+  // All active tracks (sent at 10 Hz)
+  repeated TrackUpdate tracks = 1;
+  
+  // System status
+  bool radar_online = 2;
+  bool rf_online = 3;
+  int32 total_tracks = 4;
+  
+  // Ownship (for coordinate context)
+  double ownship_lat = 5;
+  double ownship_lon = 6;
+  double ownship_heading = 7;
+}
+
+// Gunner Station → C2 feedback
+message GunnerStatus {
+  string station_id = 1;           // "GUNNER_1", "GUNNER_2"
+  
+  // Current engagement
+  int32 cued_track_id = 2;         // Which track is cued (-1 = none)
+  bool visual_lock = 3;            // Has visual lock on target
+  bool ready_to_fire = 4;          // Weapon armed and ready
+  
+  // RWS position
+  double rws_azimuth_deg = 5;
+  double rws_elevation_deg = 6;
+  
+  // Weapon status
+  string selected_weapon = 7;      // "CRx-30", "CRx-40"
+  int32 rounds_remaining = 8;
+  bool weapon_armed = 9;
+  
+  // Operator
+  string operator_id = 10;
+  
+  int64 timestamp_ns = 11;
+}
+
+// Commands from Gunner Station to C2
+message GunnerCommand {
+  string station_id = 1;
+  
+  oneof command {
+    CueTrackCommand cue_track = 2;
+    ReleaseTrackCommand release_track = 3;
+    RequestTrackListCommand request_tracks = 4;
+  }
+}
+
+message CueTrackCommand {
+  int32 track_id = 1;              // Which track to cue
+  string reason = 2;               // "HIGHEST_PRIORITY", "MANUAL_SELECTION"
+}
+
+message ReleaseTrackCommand {
+  int32 track_id = 1;
+  string reason = 2;               // "VISUAL_LOST", "ENGAGEMENT_COMPLETE"
+}
+
+message RequestTrackListCommand {
+  bool include_low_priority = 1;
+}
+
+// Kill confirmation (from C2 analysis)
+message KillAssessment {
+  int32 track_id = 1;
+  bool track_lost = 2;             // Track disappeared
+  double time_since_engage_sec = 3;
+  string assessment = 4;           // "KILL_CONFIRMED", "KILL_PROBABLE", "MISS"
+}
+
+service GunnerInterface {
+  // C2 → Gunner: Stream all active tracks
+  rpc StreamTracks(stream TracksSnapshot) returns (stream GunnerStatus);
+  
+  // Gunner → C2: Issue commands
+  rpc SendCommand(GunnerCommand) returns (CommandResponse);
+  
+  // C2 → Gunner: Kill assessment notifications
+  rpc StreamKillAssessments(Empty) returns (stream KillAssessment);
+}
+
+message CommandResponse {
+  bool accepted = 1;
+  string message = 2;
+}
+
+message Empty {}

@@ -1,0 +1,229 @@
+syntax = "proto3";
+package triad;
+
+// TriAD C2 Protocol - Updated with Real Sensor ICDs
+// Based on: Echodyne Echoguard, BlueHalo SkyView DIVR MkII
+
+message Header {
+  int64 timestamp_ns = 1;
+  string source = 2;
+}
+
+// ============= TRACK DATA STRUCTURES =============
+
+message Track {
+  int32 id = 1;
+  
+  // Spatial (vehicle-relative for radar, converted to vehicle-relative for RF)
+  double azimuth_deg = 2;       // 0-360° (0° = vehicle forward)
+  double elevation_deg = 3;     // -90 to 90°
+  double range_m = 4;
+  
+  // Velocity (Cartesian, vehicle frame)
+  double velocity_x_mps = 5;    // Forward/back
+  double velocity_y_mps = 6;    // Left/right
+  double velocity_z_mps = 7;    // Up/down
+  
+  // Classification
+  string type = 8;              // UAV, BIRD, AIRCRAFT, UNKNOWN, CLUTTER
+  double confidence = 9;        // 0.0-1.0
+  string source = 10;           // RADAR, RF, FUSED
+  
+  // Radar-specific (Echodyne Echoguard)
+  double rcs_m2 = 11;           // Radar cross-section
+  double probability_uav = 12;  // 0.0-1.0 UAV classification probability
+  double probability_other = 13;
+  int32 num_associated_meas = 14; // Number of radar measurements
+  double est_confidence = 15;    // Radar tracking confidence
+  double lifetime_sec = 16;      // Track age
+  
+  // RF-specific (BlueHalo SkyView DIVR MkII)
+  double pilot_latitude = 17;   // Pilot position (precision mode)
+  double pilot_longitude = 18;
+  string aircraft_model = 19;   // e.g., "Mavic Pro", "Phantom 4"
+  string serial_number = 20;    // Drone serial number
+  int32 rf_frequency_hz = 21;   // RF frequency
+  double rf_power_dbm = 22;     // Signal power
+  string detection_mode = 23;   // "PRECISION" or "SECTOR"
+  int32 sector_id = 24;         // Sector number (for SECTOR mode, 1-8)
+  
+  // Timestamps
+  int64 first_detection_ns = 25;
+  int64 last_update_ns = 26;
+}
+
+message TracksSnapshot {
+  Header header = 1;
+  repeated Track tracks = 2;
+  double max_range_m = 3;
+  int32 fused_count = 4;        // Number of fused tracks
+  int32 radar_only_count = 5;
+  int32 rf_only_count = 6;
+}
+
+// ============= OWNSHIP STATE =============
+
+message Ownship {
+  Header header = 1;
+  double lat = 2;
+  double lon = 3;
+  double heading_deg = 4;        // True heading (0-360°)
+  double altitude_m = 5;         // MSL
+  double ground_speed_mps = 6;
+  int32 gps_satellites = 7;
+  double gps_hdop = 8;
+}
+
+// ============= RWS STATE =============
+
+message RWSState {
+  Header header = 1;
+  
+  // Radar pointing (for search)
+  double radar_azimuth_deg = 2;
+  double radar_elevation_deg = 3;
+  
+  // Optics pointing (for tracking)
+  double optics_azimuth_deg = 4;
+  double optics_elevation_deg = 5;  // Note: 20° offset from radar
+  
+  bool is_armed = 6;
+  bool optical_lock = 7;
+  int32 locked_track_id = 8;
+  
+  // Slew status
+  bool is_slewing = 9;
+  double slew_progress = 10;      // 0.0-1.0
+}
+
+// ============= SYSTEM MODE =============
+
+message SystemMode {
+  bool auto_track = 1;            // Automatic target tracking
+  bool rf_silent = 2;             // Assume RF-silent UAVs
+  bool optical_lock = 3;          // Maintain optical lock
+  bool fusion_enabled = 4;        // Enable sensor fusion
+  double track_timeout_sec = 5;   // Track timeout (default 5.0)
+}
+
+message SystemModeRequest {
+  Header header = 1;
+  SystemMode mode = 2;
+}
+
+message SystemModeResponse {
+  Header header = 1;
+  bool accepted = 2;
+  string message = 3;
+}
+
+// ============= ENGAGE WORKFLOW =============
+
+message EngageRequest {
+  Header header = 1;
+  int32 track_id = 2;
+  string operator_id = 3;
+  string reason = 4;
+  
+  // Safety checks override (requires elevated permissions)
+  bool force_engage = 5;
+}
+
+message EngageResponse {
+  Header header = 1;
+  bool accepted = 2;
+  string message = 3;
+  
+  // Safety check results
+  repeated string failed_checks = 4;  // List of failed safety checks
+  double track_confidence = 5;
+  double track_range_m = 6;
+  string track_type = 7;
+}
+
+// ============= SENSOR HEALTH =============
+
+message SensorHealth {
+  string sensor_name = 1;         // "RADAR", "RF", "GPS", "RWS"
+  bool online = 2;
+  int64 last_message_ns = 3;
+  string error_message = 4;
+  double update_rate_hz = 5;
+}
+
+message SystemHealth {
+  Header header = 1;
+  repeated SensorHealth sensors = 2;
+  int32 active_tracks = 3;
+  double fusion_latency_ms = 4;
+  double command_latency_ms = 5;
+}
+
+// ============= COMMAND CHAIN STATUS =============
+
+message CommandChainStatus {
+  Header header = 1;
+  
+  // Command chain steps
+  bool rf_detect_active = 2;
+  bool radar_slew_active = 3;
+  bool radar_track_active = 4;
+  bool optics_slew_active = 5;
+  bool optical_lock_active = 6;
+  
+  // Current target
+  int32 tracking_target_id = 7;
+  string chain_status = 8;  // "IDLE", "RF_SEARCH", "RADAR_TRACK", "OPTICAL_LOCK"
+}
+
+// ============= REPLAY CONTROL =============
+
+message ReplayRequest {
+  string replay_file = 1;
+  double speed_multiplier = 2;  // 1.0 = real-time, 2.0 = 2x speed
+  int64 start_timestamp_ns = 3;
+  bool loop = 4;
+}
+
+message ReplayResponse {
+  bool accepted = 1;
+  string message = 2;
+}
+
+// ============= SERVICE DEFINITION =============
+
+message Empty {}
+
+service TriadEngine {
+  // ===== Real-time Telemetry Streams =====
+  
+  // Fused tracks (10-50 Hz stream)
+  rpc StreamTracks(Empty) returns (stream TracksSnapshot);
+  
+  // Ownship position (1-10 Hz from GPS)
+  rpc StreamOwnship(Empty) returns (stream Ownship);
+  
+  // RWS state (10 Hz)
+  rpc StreamRWS(Empty) returns (stream RWSState);
+  
+  // Command chain status (10 Hz)
+  rpc StreamCommandChain(Empty) returns (stream CommandChainStatus);
+  
+  // System health (1 Hz)
+  rpc StreamHealth(Empty) returns (stream SystemHealth);
+  
+  // ===== Commands (Unary RPC) =====
+  
+  // Request engagement (safety-critical)
+  rpc RequestEngage(EngageRequest) returns (EngageResponse);
+  
+  // Change system mode
+  rpc SetSystemMode(SystemModeRequest) returns (SystemModeResponse);
+  
+  // Manual RWS slew
+  rpc SlewRWS(RWSState) returns (SystemModeResponse);
+  
+  // Replay control
+  rpc StartReplay(ReplayRequest) returns (ReplayResponse);
+  rpc StopReplay(Empty) returns (ReplayResponse);
+}

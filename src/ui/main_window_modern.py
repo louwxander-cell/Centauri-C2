@@ -14,11 +14,13 @@ from PyQt6.QtWidgets import QStyle
 from ..core.bus import SignalBus
 from ..core.datamodels import Track, GeoPosition
 from .styles_modern import (
-    get_main_stylesheet, COLORS, FONTS, FONT_SIZES,
+    get_main_stylesheet, load_triad_theme, COLORS, FONTS, FONT_SIZES, LAYOUT, SPACING,
     get_status_color, get_track_color, get_sensor_color
 )
 from .radar_scope_enhanced import RadarScopeEnhanced
 from .map_widget import OfflineMapWidget
+from .confidence_delegate import ConfidenceDelegate
+from .engage_button import EngageButton
 from ..core.threat_assessment import ThreatAssessment
 import time
 
@@ -34,10 +36,26 @@ class ColorPreservingDelegate(QStyledItemDelegate):
             # Item is selected - preserve the original color
             painter.save()
             
-            # Draw selection border (white outline)
+            # Get table widget and determine if this is first or last column
+            table = index.model().parent()
+            column = index.column()
+            column_count = index.model().columnCount()
+            
+            # Draw selection border only on outer edges of row
             pen = QPen(QColor("#ffffff"), 2)
             painter.setPen(pen)
-            painter.drawRect(option.rect.adjusted(1, 1, -1, -1))
+            
+            # Draw top and bottom borders for all cells
+            painter.drawLine(option.rect.topLeft(), option.rect.topRight())
+            painter.drawLine(option.rect.bottomLeft(), option.rect.bottomRight())
+            
+            # Draw left border only for first column
+            if column == 0:
+                painter.drawLine(option.rect.topLeft(), option.rect.bottomLeft())
+            
+            # Draw right border only for last column
+            if column == column_count - 1:
+                painter.drawLine(option.rect.topRight(), option.rect.bottomRight())
             
             # Draw text with original color
             painter.setPen(original_color)
@@ -104,19 +122,24 @@ class ModernMainWindow(QMainWindow):
     def _init_ui(self):
         """Initialize the user interface"""
         self.setWindowTitle("TriAD C2 - Counter-UAS Command & Control")
-        self.setGeometry(100, 100, 1920, 1080)
         
-        # Apply modern stylesheet
-        self.setStyleSheet(get_main_stylesheet())
+        # Window sizing for 15" MacBook M2 (1710×1107 scaled resolution)
+        # Wide panoramic desktop layout: 1800×960 (16.5:9 aspect ratio)
+        # Preserves wide tactical viewport, center panel stays square-ish
+        self.resize(LAYOUT['window_width'], LAYOUT['window_height'])  # 1800×960
+        self.setMinimumSize(LAYOUT['min_width'], LAYOUT['min_height'])  # 1440×850
+        
+        # Apply Triad Theme stylesheet (loads from triad_theme.qss)
+        self.setStyleSheet(load_triad_theme())
         
         # Central widget
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         
-        # Main layout
+        # Main layout with precise 24px outer margin
         main_layout = QVBoxLayout(central_widget)
-        main_layout.setContentsMargins(10, 10, 10, 10)
-        main_layout.setSpacing(10)
+        main_layout.setContentsMargins(24, 24, 24, 24)
+        main_layout.setSpacing(0)  # We'll control spacing manually
         
         # Top bar - System status
         main_layout.addWidget(self._create_top_bar())
@@ -133,8 +156,8 @@ class ModernMainWindow(QMainWindow):
         # Right panel - System info and controls
         content_splitter.addWidget(self._create_right_panel())
         
-        # Set splitter sizes (25% - 50% - 25%)
-        content_splitter.setSizes([480, 960, 480])
+        # Set splitter sizes - optimized panel widths
+        content_splitter.setSizes([450, 1050, 360])
         
         main_layout.addWidget(content_splitter)
         
@@ -142,18 +165,18 @@ class ModernMainWindow(QMainWindow):
         main_layout.addWidget(self._create_bottom_bar())
     
     def _create_top_bar(self) -> QWidget:
-        """Create top status bar"""
+        """Create top status bar - FIXED HEIGHT 80px"""
         bar = QWidget()
         bar.setObjectName("panel")
-        bar.setFixedHeight(80)
+        bar.setFixedHeight(LAYOUT['header_height'])  # 80px fixed height
         
         layout = QHBoxLayout(bar)
         layout.setContentsMargins(20, 10, 20, 10)
         
-        # System title
-        title = QLabel("TRIAD C2 SYSTEM")
+        # System title - Ultra-modern minimalist
+        title = QLabel("TRIAD C2 — Counter-UAS Command & Control")
         title.setObjectName("heading")
-        title_font = QFont(FONTS['caps'], FONT_SIZES['title'], QFont.Weight.Bold)
+        title_font = QFont(FONTS['heading'], FONT_SIZES['heading'], QFont.Weight.DemiBold)
         title.setFont(title_font)
         layout.addWidget(title)
         
@@ -182,27 +205,28 @@ class ModernMainWindow(QMainWindow):
         # Status dot
         dot = QLabel("●")
         dot.setObjectName("status_offline" if not online else "status_online")
-        dot_font = QFont(FONTS['normal'], 16)
+        dot_font = QFont(FONTS['primary'], 16)
         dot.setFont(dot_font)
         widget_layout.addWidget(dot)
         
         # Label
         text = QLabel(label)
         text.setObjectName("subheading")
-        text_font = QFont(FONTS['caps'], FONT_SIZES['small'], QFont.Weight.Bold)
+        text_font = QFont(FONTS['heading'], FONT_SIZES['small'], QFont.Weight.DemiBold)
         text.setFont(text_font)
         widget_layout.addWidget(text)
         
-        # Store references for updates
-        widget.dot = dot
+        # Store references
+        widget.icon = dot
         widget.label = text
         
         return widget
     
     def _create_left_panel(self) -> QWidget:
-        """Create left panel with track list and details"""
+        """Create left panel with track list and details - FIXED WIDTH"""
         panel = QWidget()
-        panel.setObjectName("panel")
+        panel.setObjectName("leftPanel")  # Set for QSS styling
+        panel.setFixedWidth(LAYOUT['left_panel_width'])  # 460px fixed width
         
         layout = QVBoxLayout(panel)
         layout.setContentsMargins(15, 15, 15, 15)
@@ -215,27 +239,33 @@ class ModernMainWindow(QMainWindow):
         
         # Track table
         self.track_table = QTableWidget()
+        self.track_table.setObjectName("trackTable")  # Set for QSS styling
         self.track_table.setColumnCount(6)
         self.track_table.setHorizontalHeaderLabels(["ID", "Type", "Source", "Range", "Az", "Conf"])
         self.track_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.track_table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
-        self.track_table.setAlternatingRowColors(False)  # Disable alternating colors
+        self.track_table.setAlternatingRowColors(True)  # Enable subtle alternating rows
         self.track_table.itemSelectionChanged.connect(self._on_track_selected)
         self.track_table.verticalHeader().setVisible(False)
+        self.track_table.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         
         # Apply custom delegate to preserve text colors when selected
         self.color_delegate = ColorPreservingDelegate()
         self.track_table.setItemDelegate(self.color_delegate)
         
-        # Set column widths for better visibility
-        self.track_table.setColumnWidth(0, 30)   # ID
+        # Apply confidence bar delegate to confidence column (index 5)
+        self.confidence_delegate = ConfidenceDelegate()
+        self.track_table.setItemDelegateForColumn(5, self.confidence_delegate)
+        
+        # Set column widths to fit panel width - all text fully visible
+        self.track_table.setColumnWidth(0, 48)   # ID
         self.track_table.setColumnWidth(1, 70)   # Type
         self.track_table.setColumnWidth(2, 70)   # Source
         self.track_table.setColumnWidth(3, 75)   # Range
         self.track_table.setColumnWidth(4, 70)   # Azimuth
-        self.track_table.setColumnWidth(5, 60)   # Confidence
+        self.track_table.setColumnWidth(5, 70)   # Confidence
         
-        layout.addWidget(self.track_table, stretch=2)
+        layout.addWidget(self.track_table, stretch=3)
         
         # Track details heading
         details_heading = QLabel("TRACK DETAILS")
@@ -244,7 +274,7 @@ class ModernMainWindow(QMainWindow):
         
         # Track details panel
         self.details_panel = self._create_track_details_panel()
-        layout.addWidget(self.details_panel, stretch=1)
+        layout.addWidget(self.details_panel, stretch=2)
         
         return panel
     
@@ -254,8 +284,8 @@ class ModernMainWindow(QMainWindow):
         panel.setObjectName("panel_accent")
         
         layout = QGridLayout(panel)
-        layout.setContentsMargins(15, 15, 15, 15)
-        layout.setSpacing(10)
+        layout.setContentsMargins(15, 10, 15, 10)
+        layout.setSpacing(5)
         
         # Create detail fields
         row = 0
@@ -303,9 +333,9 @@ class ModernMainWindow(QMainWindow):
         lbl = QLabel(label)
         if label.isupper():
             lbl.setObjectName("subheading")
-            lbl_font = QFont(FONTS['caps'], FONT_SIZES['small'], QFont.Weight.Bold)
+            lbl_font = QFont(FONTS['heading'], FONT_SIZES['small'], QFont.Weight.DemiBold)
         else:
-            lbl_font = QFont(FONTS['normal'], FONT_SIZES['small'])
+            lbl_font = QFont(FONTS['primary'], FONT_SIZES['small'])
             lbl.setStyleSheet(f"color: {COLORS['text_secondary']};")
         lbl.setFont(lbl_font)
         layout.addWidget(lbl, row, 0, Qt.AlignmentFlag.AlignLeft)
@@ -375,9 +405,10 @@ class ModernMainWindow(QMainWindow):
         return panel
     
     def _create_right_panel(self) -> QWidget:
-        """Create right panel with system info and controls"""
+        """Create right panel with system info and controls - FIXED WIDTH"""
         panel = QWidget()
-        panel.setObjectName("panel")
+        panel.setObjectName("rightPanel")  # Set for QSS styling
+        panel.setFixedWidth(LAYOUT['right_panel_width'])  # 360px fixed width
         
         layout = QVBoxLayout(panel)
         layout.setContentsMargins(15, 15, 15, 15)
@@ -396,17 +427,15 @@ class ModernMainWindow(QMainWindow):
         
         # Reset to highest threat button
         self.reset_btn = QPushButton("RESET TO HIGHEST THREAT")
-        self.reset_btn.setObjectName("button_secondary")
+        self.reset_btn.setObjectName("resetButton")  # Set for QSS styling
         self.reset_btn.setFixedHeight(40)
         self.reset_btn.clicked.connect(self._on_reset_to_highest_threat)
         layout.addWidget(self.reset_btn)
         
-        # Engage button
-        self.engage_btn = QPushButton("ENGAGE TARGET")
-        self.engage_btn.setObjectName("engage")
-        self.engage_btn.setEnabled(False)
+        # Engage button (enhanced with safety features)
+        self.engage_btn = EngageButton()
         self.engage_btn.setFixedHeight(60)
-        self.engage_btn.clicked.connect(self._on_engage_clicked)
+        self.engage_btn.engaged.connect(self._on_engage_confirmed)
         layout.addWidget(self.engage_btn)
         
         # Threat info label
@@ -475,7 +504,7 @@ class ModernMainWindow(QMainWindow):
         
         # Icon
         icon = QLabel("●")
-        icon_font = QFont(FONTS['normal'], 14)
+        icon_font = QFont(FONTS['primary'], 14)
         icon.setFont(icon_font)
         icon.setStyleSheet(f"color: {COLORS['status_offline']};")
         widget_layout.addWidget(icon)
@@ -483,7 +512,7 @@ class ModernMainWindow(QMainWindow):
         # Label
         text = QLabel(label)
         text.setObjectName("subheading")
-        text_font = QFont(FONTS['caps'], FONT_SIZES['small'], QFont.Weight.Bold)
+        text_font = QFont(FONTS['heading'], FONT_SIZES['small'], QFont.Weight.DemiBold)
         text.setFont(text_font)
         widget_layout.addWidget(text)
         
@@ -530,14 +559,14 @@ class ModernMainWindow(QMainWindow):
         return group
     
     def _create_bottom_bar(self) -> QWidget:
-        """Create bottom command chain status bar"""
+        """Create bottom command chain status bar - FIXED HEIGHT 40px"""
         bar = QWidget()
         bar.setObjectName("panel")
-        bar.setFixedHeight(60)
+        bar.setFixedHeight(LAYOUT['footer_height'])  # 40px fixed height
         
         layout = QHBoxLayout(bar)
-        layout.setContentsMargins(20, 10, 20, 10)
-        layout.setSpacing(20)
+        layout.setContentsMargins(20, 5, 20, 5)  # Reduced padding for 40px height
+        layout.setSpacing(15)  # Slightly tighter spacing
         
         # Command chain status
         title = QLabel("COMMAND CHAIN:")
@@ -574,11 +603,11 @@ class ModernMainWindow(QMainWindow):
         """Create a command chain step indicator"""
         lbl = QLabel(label)
         lbl.setObjectName("subheading")
-        lbl_font = QFont(FONTS['caps'], FONT_SIZES['tiny'], QFont.Weight.Bold)
+        lbl_font = QFont(FONTS['heading'], FONT_SIZES['tiny'], QFont.Weight.DemiBold)
         lbl.setFont(lbl_font)
         lbl.setStyleSheet(f"""
             background-color: {COLORS['bg_tertiary']};
-            color: {COLORS['text_disabled']};
+            color: {COLORS['text_low_emphasis']};
             border: 2px solid {COLORS['border_dim']};
             border-radius: 4px;
             padding: 6px 12px;
@@ -634,21 +663,17 @@ class ModernMainWindow(QMainWindow):
             track_id = int(self.track_table.item(row, 0).text())
             self.selected_track = self.tracks.get(track_id)
             self._update_track_details()
-            self.engage_btn.setEnabled(True)
+            self.engage_btn.set_target(track_id)  # Use new set_target method
             
             # Update radar scope selection
             self.radar_scope.set_selected_track(track_id)
             
-            # Mark as manual selection and start timer
+            # Manual selection mode
             self.manual_selection_active = True
             self.manual_selection_timer.start(self.manual_selection_timeout)
-            
-            # Update engage button text
-            self.engage_btn.setText(f"ENGAGE ID:{track_id}")
         else:
             self.selected_track = None
-            self.engage_btn.setEnabled(False)
-            self.engage_btn.setText("ENGAGE TARGET")
+            self.engage_btn.set_target(None)  # Use new set_target method
             self.radar_scope.set_selected_track(None)
 
     def _on_radar_track_selected(self, track_id: int):
@@ -656,8 +681,7 @@ class ModernMainWindow(QMainWindow):
         if track_id in self.tracks:
             self.selected_track = self.tracks[track_id]
             self._update_track_details()
-            self.engage_btn.setEnabled(True)
-            self.engage_btn.setText(f"ENGAGE ID:{track_id}")
+            self.engage_btn.set_target(track_id)  # Use new set_target method
             
             # Update table selection
             for row in range(self.track_table.rowCount()):
@@ -725,14 +749,22 @@ class ModernMainWindow(QMainWindow):
             self.view_toggle_btn.setText("SWITCH TO MAP VIEW")
             self.current_view = "radar"
     
-    def _on_engage_clicked(self):
-        """Handle engage button click"""
-        if self.selected_track:
-            print(f"[UI] ENGAGE command for track {self.selected_track.id}")
+    def _on_engage_confirmed(self, track_id: int):
+        """Handle confirmed engagement (after safety checks)"""
+        print(f"[UI] ENGAGE command confirmed for track {track_id}")
+        
+        # Get track object
+        if track_id in self.tracks:
+            track = self.tracks[track_id]
+            
+            # Send slew command to RWS
             self.signal_bus.sig_slew_command.emit(
-                self.selected_track.azimuth,
-                self.selected_track.elevation
+                track.azimuth,
+                track.elevation
             )
+            
+            # TODO: Send actual engage/fire command after RWS confirms lock
+            # self.signal_bus.sig_engage_command.emit(track_id)
     
     def _update_ui(self):
         """Update UI elements"""
@@ -743,12 +775,20 @@ class ModernMainWindow(QMainWindow):
         self._remove_stale_tracks()
     
     def _update_track_table(self):
-        """Update track table"""
+        """Update track table - sorted by highest to lowest threat"""
         # Temporarily block signals to prevent selection changes during update
         self.track_table.blockSignals(True)
         self.track_table.setRowCount(len(self.tracks))
         
-        for row, (track_id, track) in enumerate(sorted(self.tracks.items())):
+        # Sort tracks by threat score (highest to lowest)
+        tracks_list = list(self.tracks.values())
+        sorted_tracks = sorted(
+            tracks_list,
+            key=lambda t: ThreatAssessment.calculate_threat_score(t),
+            reverse=True  # Highest threat first
+        )
+        
+        for row, track in enumerate(sorted_tracks):
             # ID - use same color as Type column
             id_item = QTableWidgetItem(str(track.id))
             id_color = QColor(get_track_color(track.type))
@@ -863,8 +903,7 @@ class ModernMainWindow(QMainWindow):
         if not self.tracks:
             self.threat_info_label.setText("No threats detected")
             self.radar_scope.set_highest_threat(None)
-            self.engage_btn.setEnabled(False)
-            self.engage_btn.setText("ENGAGE TARGET")
+            self.engage_btn.set_target(None)  # Use new set_target method
             return
         
         # Get highest threat
@@ -890,8 +929,7 @@ class ModernMainWindow(QMainWindow):
                 # Auto mode - always track highest threat
                 self.selected_track = highest_threat
                 self.radar_scope.set_selected_track(highest_threat.id)
-                self.engage_btn.setEnabled(True)
-                self.engage_btn.setText(f"ENGAGE ID:{highest_threat.id}")
+                self.engage_btn.set_target(highest_threat.id)  # Use new set_target method
                 self._update_track_details()
                 
                 # Select in table (block signals to prevent recursion)
@@ -905,13 +943,13 @@ class ModernMainWindow(QMainWindow):
                 # Manual selection mode - keep manual selection
                 if self.selected_track and self.selected_track.id in self.tracks:
                     # Selected track still exists
-                    self.engage_btn.setEnabled(True)
-                    self.engage_btn.setText(f"ENGAGE ID:{self.selected_track.id}")
+                    self.engage_btn.set_target(self.selected_track.id)  # Use new set_target method
                 else:
                     # Selected track no longer exists - exit manual mode
                     self.manual_selection_active = False
                     self.manual_selection_timer.stop()
                     self.selected_track = None
+                    self.engage_btn.set_target(None)  # Use new set_target method
                     self.track_table.clearSelection()
     
     def _update_sensor_status(self):

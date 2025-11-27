@@ -100,9 +100,9 @@ class RadarScopeEnhanced(pg.PlotWidget):
             if r <= self.max_range:
                 circle = pg.QtWidgets.QGraphicsEllipseItem(-r, -r, 2*r, 2*r)
                 circle.setPen(pg.mkPen(
-                    color=COLORS['border_primary'],  # More visible color
-                    width=2,  # Thicker lines
-                    style=Qt.PenStyle.DashLine
+                    color=COLORS.get('border_card_hex', '#252A2E'),  # Subtle range rings (hex for PyQtGraph)
+                    width=1,  # Thin lines
+                    style=Qt.PenStyle.SolidLine  # Solid lines (cleaner than dashed)
                 ))
                 plot_item.addItem(circle)
                 
@@ -125,7 +125,7 @@ class RadarScopeEnhanced(pg.PlotWidget):
             line = pg.PlotDataItem(
                 [0, x], [0, y],
                 pen=pg.mkPen(
-                    color=COLORS['border_dim'], 
+                    color=COLORS.get('border_dim_hex', '#1A1D20'),  # Hex version for PyQtGraph
                     width=1, 
                     style=Qt.PenStyle.DotLine
                 )
@@ -141,10 +141,10 @@ class RadarScopeEnhanced(pg.PlotWidget):
                 direction = ['N', 'E', 'S', 'W'][angle // 90]
                 label = pg.TextItem(
                     text=direction,
-                    color=COLORS['accent_cyan'],
+                    color=COLORS['accent_cyan'],  # Use accent cyan (toned down now)
                     anchor=(0.5, 0.5)
                 )
-                label.setFont(QFont(FONTS['caps'], 12, QFont.Weight.Bold))
+                label.setFont(QFont(FONTS['heading'], 10, QFont.Weight.Normal))  # Smaller and lighter
                 label.setPos(label_x, label_y)
                 plot_item.addItem(label)
         
@@ -225,10 +225,10 @@ class RadarScopeEnhanced(pg.PlotWidget):
             
             label = pg.TextItem(
                 text=f"{angle:.0f}°",
-                color=COLORS['accent_cyan'],
+                color=COLORS['accent_cyan'],  # Use accent cyan (toned down now)
                 anchor=(0.5, 0.5)
             )
-            label.setFont(QFont(FONTS['mono'], 8))
+            label.setFont(QFont(FONTS['mono'], 7))  # Small monospace
             label.setPos(label_x, label_y)
             plot_item.addItem(label)
     
@@ -238,9 +238,9 @@ class RadarScopeEnhanced(pg.PlotWidget):
         self.legend_widget = QWidget(self)
         self.legend_widget.setStyleSheet(f"""
             QWidget {{
-                background-color: rgba(17, 24, 39, 0.9);
-                border: 1px solid {COLORS['border_primary']};
-                border-radius: 4px;
+                background-color: {COLORS['bg_tertiary']};
+                border: 1px solid {COLORS['border_card']};
+                border-radius: 8px;
             }}
             QLabel {{
                 color: {COLORS['text_primary']};
@@ -254,7 +254,7 @@ class RadarScopeEnhanced(pg.PlotWidget):
         
         # Title
         title = QLabel("TYPES")
-        title.setFont(QFont(FONTS['caps'], 9, QFont.Weight.Bold))
+        title.setFont(QFont(FONTS['heading'], 9, QFont.Weight.DemiBold))
         title.setStyleSheet(f"color: {COLORS['accent_cyan']};")
         layout.addWidget(title)
         
@@ -282,7 +282,7 @@ class RadarScopeEnhanced(pg.PlotWidget):
             
             # Label
             text_label = QLabel(label)
-            text_label.setFont(QFont(FONTS['normal'], 8))
+            text_label.setFont(QFont(FONTS['primary'], 8))
             text_label.setStyleSheet(f"color: {COLORS['text_primary']}; background: transparent;")
             item_layout.addWidget(text_label)
             item_layout.addStretch()
@@ -301,23 +301,24 @@ class RadarScopeEnhanced(pg.PlotWidget):
         self.zoom_widget = QWidget(self)
         self.zoom_widget.setStyleSheet(f"""
             QWidget {{
-                background-color: rgba(17, 24, 39, 0.9);
-                border: 1px solid {COLORS['border_primary']};
-                border-radius: 4px;
+                background-color: {COLORS['bg_tertiary']};
+                border: 1px solid {COLORS['border_card']};
+                border-radius: 8px;
             }}
             QPushButton {{
                 background-color: {COLORS['bg_panel']};
-                border: 1px solid {COLORS['border_primary']};
-                color: {COLORS['text_primary']};
+                border: 1px solid {COLORS['border_card']};
+                color: {COLORS['text_high_emphasis']};
                 font-size: 18px;
-                font-weight: bold;
+                font-weight: 500;
                 padding: 0px;
             }}
             QPushButton:hover {{
-                background-color: {COLORS['border_primary']};
+                background-color: {COLORS['bg_hover']};
+                border: 2px solid {COLORS['border_focus']};
             }}
             QPushButton:pressed {{
-                background-color: {COLORS['border_dim']};
+                background-color: {COLORS['bg_selected']};
             }}
         """)
         
@@ -562,7 +563,7 @@ class RadarScopeEnhanced(pg.PlotWidget):
                     color=threat_color,
                     anchor=(0, 0.5)
                 )
-                label.setFont(QFont(FONTS['caps'], 9, QFont.Weight.Bold))
+                label.setFont(QFont(FONTS['heading'], 9, QFont.Weight.DemiBold))
                 label.setPos(x + 80, y + 40)
                 self.getPlotItem().addItem(label)
                 self.threat_labels[track.id] = label

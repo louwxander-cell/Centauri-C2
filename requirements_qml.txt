@@ -1,0 +1,8 @@
+# TriAD C2 Qt Quick (QML) Requirements
+# Python 3.11+ required
+
+# Qt Framework with QML support
+PySide6>=6.7.0
+
+# Optional: For building standalone executables
+# pyinstaller>=6.0.0

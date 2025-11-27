@@ -1,0 +1,83 @@
+syntax = "proto3";
+package triad;
+
+message Header {
+  int64 timestamp_ns = 1;
+  string source = 2;
+}
+
+message Track {
+  int32 id = 1;
+  string type = 2;           // UAV, BIRD, UNKNOWN
+  string source = 3;         // RADAR, RF, OPTICAL
+  double range_m = 4;
+  double az_deg = 5;
+  double el_deg = 6;
+  double speed_mps = 7;
+  double heading_deg = 8;
+  double confidence = 9;     // 0..1
+  string status = 10;        // CRITICAL, HIGH, MED, LOW, FRIENDLY
+}
+
+message TracksSnapshot {
+  Header header = 1;
+  repeated Track tracks = 2;
+  double max_range_m = 3;
+}
+
+message Ownship {
+  Header header = 1;
+  double lat = 2;
+  double lon = 3;
+  double heading_deg = 4;
+}
+
+message RWSState {
+  Header header = 1;
+  double azimuth_deg = 2;
+  double elevation_deg = 3;
+  bool is_armed = 4;
+}
+
+message SystemModeRequest {
+  Header header = 1;
+  bool auto_track = 2;
+  bool rf_silent = 3;
+  bool optical_lock = 4;
+}
+
+message SystemModeResponse {
+  Header header = 1;
+  bool accepted = 2;
+  string message = 3;
+}
+
+message EngageRequest {
+  Header header = 1;
+  int32 track_id = 2;
+  string operator_id = 3;
+  string reason = 4;
+}
+
+message EngageResponse {
+  Header header = 1;
+  bool accepted = 2;
+  string message = 3;
+}
+
+message Empty {}
+
+service TriadEngine {
+  // Engine publishes a stream of fused tracks (server -> client streaming)
+  rpc StreamTracks(Empty) returns (stream TracksSnapshot);
+
+  // Engine publishes ownship & rws states
+  rpc StreamOwnship(Empty) returns (stream Ownship);
+  rpc StreamRWS(Empty) returns (stream RWSState);
+
+  // UI requests: ask to engage a track (server validates safety)
+  rpc RequestEngage(EngageRequest) returns (EngageResponse);
+
+  // For commands that change engine state
+  rpc SetSystemMode(SystemModeRequest) returns (SystemModeResponse);
+}
