@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import QtQml.Models 2.15
 import Qt5Compat.GraphicalEffects
 import ".."  // Import parent module to get Theme singleton
 
@@ -18,8 +19,10 @@ Item {
     // Signals
     signal trackSelected(int trackId)
     
-    // Sorted track indices (by threat priority)
-    property var sortedIndices: []
+    // ListModel for proper move animations
+    ListModel {
+        id: sortedTracksModel
+    }
     
     Component.onCompleted: {
         // Delay to allow property binding to complete
@@ -28,11 +31,25 @@ Item {
         })
     }
     
-    // Update sorted indices and content height
+    // Throttle timer to prevent excessive updates
+    Timer {
+        id: updateThrottle
+        interval: 50  // 50ms throttle - fast but prevents spam
+        repeat: false
+        onTriggered: performSort()
+    }
+    
+    // Request sort update (throttled)
     function updateSort() {
+        if (!updateThrottle.running) {
+            updateThrottle.start()
+        }
+    }
+    
+    // Perform actual sort with proper move operations for animations
+    function performSort() {
         if (!model || model.count === 0) {
-            sortedIndices = []
-            contentItem.height = 0
+            sortedTracksModel.clear()
             return
         }
         
@@ -43,7 +60,7 @@ Item {
             if (track) {
                 let priority = track.threat_priority !== undefined ? track.threat_priority : 0.0
                 trackData.push({
-                    index: i,
+                    modelIndex: i,
                     priority: priority,
                     id: track.id,
                     range: track.range
@@ -54,11 +71,52 @@ Item {
         // Sort by priority (highest first)
         trackData.sort((a, b) => b.priority - a.priority)
         
-        // Extract sorted indices
-        sortedIndices = trackData.map(t => t.index)
+        // Sync with ListModel using move operations
+        // First pass: ensure all tracks exist
+        for (let i = 0; i < trackData.length; i++) {
+            let found = false
+            for (let j = 0; j < sortedTracksModel.count; j++) {
+                if (sortedTracksModel.get(j).id === trackData[i].id) {
+                    found = true
+                    break
+                }
+            }
+            if (!found) {
+                sortedTracksModel.append(trackData[i])
+            }
+        }
         
-        // Update content height
-        contentItem.height = model.count * (trackCardHeight + spacing)
+        // Second pass: remove tracks that no longer exist
+        for (let i = sortedTracksModel.count - 1; i >= 0; i--) {
+            let found = false
+            for (let j = 0; j < trackData.length; j++) {
+                if (sortedTracksModel.get(i).id === trackData[j].id) {
+                    found = true
+                    break
+                }
+            }
+            if (!found) {
+                sortedTracksModel.remove(i)
+            }
+        }
+        
+        // Third pass: reorder using move operations (this triggers animations!)
+        for (let targetPos = 0; targetPos < trackData.length; targetPos++) {
+            let targetId = trackData[targetPos].id
+            
+            // Find current position of this track
+            for (let currentPos = targetPos; currentPos < sortedTracksModel.count; currentPos++) {
+                if (sortedTracksModel.get(currentPos).id === targetId) {
+                    if (currentPos !== targetPos) {
+                        // Move it to correct position - this triggers animation!
+                        sortedTracksModel.move(currentPos, targetPos, 1)
+                    }
+                    // Update the data
+                    sortedTracksModel.set(targetPos, trackData[targetPos])
+                    break
+                }
+            }
+        }
     }
     
     onModelChanged: {
@@ -70,11 +128,25 @@ Item {
         function onCountChanged() {
             updateSort()
         }
+        function onDataChanged() {
+            // Update immediately when data changes (syncs with selection)
+            updateSort()
+        }
+        function onRowsInserted() {
+            updateSort()
+        }
+        function onRowsRemoved() {
+            updateSort()
+        }
+        function onModelReset() {
+            updateSort()
+        }
     }
     
-    // Timer to refresh sorting (for dynamic priority changes)
+    // Periodic update as fallback (in case signals don't fire for property changes)
     Timer {
-        interval: 500  // Update sort every 0.5s
+        id: periodicUpdate
+        interval: 200  // 200ms = 5 Hz
         running: model !== undefined && model !== null
         repeat: true
         onTriggered: {
@@ -82,75 +154,106 @@ Item {
         }
     }
     
-    // Scrollable container
-    Flickable {
-        id: flickable
+    // ListView with conservative animations (no ListView transitions - manual only)
+    ListView {
+        id: listView
         anchors.fill: parent
-        contentHeight: contentItem.height
         clip: true
+        
+        model: sortedTracksModel
+        spacing: trackListRoot.spacing
         
         boundsBehavior: Flickable.StopAtBounds
         flickDeceleration: 1500
         maximumFlickVelocity: 2500
         
-        // Content container
-        Item {
-            id: contentItem
-            width: parent.width
-            height: 0  // Will be updated based on model count
-            
-            // Track cards
-            Repeater {
-                model: trackListRoot.sortedIndices
-                
-                delegate: Item {
-                    id: trackContainer
-                    width: flickable.width
-                    height: trackListRoot.trackCardHeight
-                    
-                    property int modelIndex: modelData  // The actual model index
-                    property var trackData: trackListRoot.model ? 
-                                           trackListRoot.model.data(trackListRoot.model.index(modelIndex, 0), 257) : null
-                    
-                    // Position based on sorted position with smooth animation
-                    y: index * (trackListRoot.trackCardHeight + trackListRoot.spacing)
-                    
-                    Behavior on y {
-                        enabled: true
-                        NumberAnimation {
-                            duration: 300
-                            easing.type: Easing.OutCubic
-                        }
+        // Smooth reordering animations with scale effect
+        move: Transition {
+            SequentialAnimation {
+                ParallelAnimation {
+                    NumberAnimation {
+                        properties: "y"
+                        duration: 250
+                        easing.type: Easing.InOutQuad
                     }
+                    NumberAnimation {
+                        property: "scale"
+                        to: 1.05
+                        duration: 125
+                        easing.type: Easing.OutQuad
+                    }
+                }
+                NumberAnimation {
+                    property: "scale"
+                    to: 1.0
+                    duration: 125
+                    easing.type: Easing.InQuad
+                }
+            }
+        }
+        
+        moveDisplaced: Transition {
+            NumberAnimation {
+                properties: "y"
+                duration: 250
+                easing.type: Easing.InOutQuad
+            }
+        }
+        
+        displaced: Transition {
+            NumberAnimation {
+                properties: "y"
+                duration: 250
+                easing.type: Easing.InOutQuad
+            }
+        }
+        
+        // No add/remove animations - instant only
+        add: null
+        remove: null
+        
+        delegate: Item {
+            id: trackContainer
+            width: listView.width
+            height: trackListRoot.trackCardHeight
+            
+            // Scale transform for smooth animation
+            transformOrigin: Item.Center
+            
+            property int modelIndex: model.modelIndex  // The actual model index from ListModel
+            property var trackData: trackListRoot.model ? 
+                                   trackListRoot.model.data(trackListRoot.model.index(modelIndex, 0), 257) : null
+            
+            // ListView handles positioning - no manual y needed
                     
-                    Rectangle {
-                        id: trackCard
-                        anchors.fill: parent
-                        radius: 4  // Smaller radius for minimal look
-                        visible: trackContainer.trackData !== null && trackContainer.trackData !== undefined
-                        
-                        // Hover effect
-                        property bool hovered: false
-                        
-                        // Colors - highlight selected track
-                        color: (trackContainer.trackData && trackListRoot.selectedTrackId === trackContainer.trackData.id) ? 
-                               Theme.base3 : 
-                               Theme.base2
-                        border.width: (trackContainer.trackData && trackListRoot.selectedTrackId === trackContainer.trackData.id) ? 1 : 0
-                        border.color: Theme.accentFocus
-                        
-                        // Smooth border animation
-                        Behavior on border.width { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
-                        
-                        transform: Scale {
-                            origin.x: width / 2
-                            origin.y: height / 2
-                            xScale: (trackCard.hovered && trackContainer.trackData && trackListRoot.selectedTrackId !== trackContainer.trackData.id) ? 1.02 : 1.0
-                            yScale: (trackCard.hovered && trackContainer.trackData && trackListRoot.selectedTrackId !== trackContainer.trackData.id) ? 1.02 : 1.0
-                            
-                            Behavior on xScale { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
-                            Behavior on yScale { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
-                        }
+            Rectangle {
+                id: trackCard
+                anchors.fill: parent
+                radius: 4  // Smaller radius for minimal look
+                visible: trackContainer.trackData !== null && trackContainer.trackData !== undefined
+                
+                // Hover effect
+                property bool hovered: false
+                
+                // Colors - highlight selected track
+                color: (trackContainer.trackData && trackListRoot.selectedTrackId === trackContainer.trackData.id) ? 
+                       Theme.base3 : 
+                       Theme.base2
+                border.width: (trackContainer.trackData && trackListRoot.selectedTrackId === trackContainer.trackData.id) ? 1 : 0
+                border.color: Theme.accentFocus
+                
+                // Smooth border animation
+                Behavior on border.width { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
+                
+                transform: Scale {
+                    origin.x: width / 2
+                    origin.y: height / 2
+                    xScale: (trackCard.hovered && trackContainer.trackData && trackListRoot.selectedTrackId !== trackContainer.trackData.id) ? 1.02 : 1.0
+                    yScale: (trackCard.hovered && trackContainer.trackData && trackListRoot.selectedTrackId !== trackContainer.trackData.id) ? 1.02 : 1.0
+                    
+                    Behavior on xScale { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
+                    Behavior on yScale { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
+                }
                     
                     // Threat level indicator (left accent)
                     Rectangle {
@@ -213,7 +316,7 @@ Item {
                                 if (!trackContainer.trackData) return Theme.textTertiary
                                 if (trackContainer.trackData.type === "UAV") return "#EF4444"  // Clean modern red (Monochrome)
                                 if (trackContainer.trackData.type === "BIRD") return "#475569"  // Darker muted slate
-                                if (trackContainer.trackData.type === "UNKNOWN") return "#FFFFFF"  // Pure white
+                                if (trackContainer.trackData.type === "UNKNOWN") return "#00E5FF"  // Cyan
                                 return Theme.textSecondary
                             }
                             Layout.preferredWidth: 70
@@ -262,7 +365,7 @@ Item {
                             color: {
                                 if (!trackContainer.trackData) return Theme.textTertiary
                                 if (trackContainer.trackData.confidence > 0.8) return "#FFFFFF"  // White - high confidence
-                                if (trackContainer.trackData.confidence > 0.5) return "#94A3B8"  // Slate gray - medium confidence
+                                if (trackContainer.trackData.confidence > 0.5) return "#00E5FF"  // Cyan - medium confidence
                                 return "#EF4444"  // Bright red - low confidence (warning)
                             }
                             Layout.fillWidth: true  // Match header layout
@@ -272,24 +375,19 @@ Item {
                         }
                     }
                     
-                    // Interaction
-                    TapHandler {
-                        onTapped: {
-                            if (!trackContainer.trackData) return
-                            trackListRoot.trackSelected(trackContainer.trackData.id)
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onEntered: trackCard.hovered = true
+                        onExited: trackCard.hovered = false
+                        onClicked: {
+                            if (trackContainer.trackData) {
+                                console.log("[TrackList] Track clicked:", trackContainer.trackData.id)
+                                trackListRoot.trackSelected(trackContainer.trackData.id)
+                            }
                         }
                     }
-                    
-                    HoverHandler {
-                        cursorShape: Qt.PointingHandCursor
-                        onHoveredChanged: {
-                            trackCard.hovered = hovered
-                        }
-                    }
-                    }  // End Rectangle (trackCard)
-                }  // End Item (trackContainer)
-            }  // End Repeater
-        }  // End Item (contentItem)
-    }  // End Flickable
-    
+            }  // End Rectangle (trackCard)
+        }  // End Item (trackContainer / delegate)
+    }  // End ListView
 }

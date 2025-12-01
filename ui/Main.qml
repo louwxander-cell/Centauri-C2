@@ -1245,7 +1245,7 @@ Window {
                                         
                                         var baseColor = trackData.type === "UAV" ? "#EF4444" :
                                                       trackData.type === "BIRD" ? "#475569" :
-                                                      trackData.type === "UNKNOWN" ? "#FFFFFF" : "#a0a0a0"
+                                                      trackData.type === "UNKNOWN" ? "#00E5FF" : "#a0a0a0"
                                         
                                         ctx.strokeStyle = Qt.rgba(
                                             parseInt(baseColor.substring(1,3), 16) / 255,
@@ -1354,7 +1354,7 @@ Window {
                                         if (!modelData) return "#a0a0a0"
                                         if (modelData.type === "UAV") return "#EF4444"  // Clean modern red - confirmed threat
                                         if (modelData.type === "BIRD") return "#475569"  // Darker muted slate - subtle non-threat
-                                        if (modelData.type === "UNKNOWN") return "#FFFFFF"  // Pure white - uncertain
+                                        if (modelData.type === "UNKNOWN") return "#00E5FF"  // Cyan - uncertain
                                         return "#a0a0a0"  // Gray fallback
                                     }
                                     
