@@ -1,0 +1,1160 @@
+--- Page 1 ---
+RELEASE REFERENCES
+RxTools v25.0.0 Release Notes
+©Copyright 2003-2025 Septentrio NV/SA, Belgium. All rights reserved.
+This document is the Release Notes of Septentrio RxTools which includes RxControl, Data
+Link, SBF Converter, SBF Analyzer, RxLogger, RxUpgrade, RxDownload, RxPlanner, RxAssis-
+tant, RxLauncher, SBF Tools, APS3G Tools, the Receiver Communication SDK for C++/Qt and
+the USB drivers.
+Release References
+Release Date: July 25, 2025
+RxTools: 25.0.0
+RxControl: 25.0.0
+Data Link: 25.0.0
+SBF Converter: 25.0.0
+SBF Analyzer: 25.0.0
+RxLogger: 25.0.0
+RxUpgrade: 25.0.0
+RxDownload: 25.0.0
+RxPlanner: 25.0.0
+RxAssistant: 25.0.0
+RxLeverArm: 25.0.0
+RxLauncher: 25.0.0
+APS3G Tools: 25.0.0
+SBF Tools:
+sbf2asc: 3.1.11
+sbf2cmd: 2.3.40
+sbf2gpx: 3.0.53
+sbf2kml: 2.9.0x
+sbf2rin: 16.2.0
+sbfblocks: 1.7.10
+sbf2ismr: 8.0.0
+sbf2cggtts: 1.5.0
+sbf2sbf: 1.2.12
+posconv: 1.0.37
+timeconv: 1.5.29
+bin2asc 1.6.10
+Receiver Communication SDK for C++/Qt: 25.0.0
+sbf2asc source code: 3.1.11
+USB Driver version: 3.0.2
+AsteRx-m GeoPod USB Driver version: 1.0
+Qt (LGPL) Version: 6.8.2-llvm-mingw_64@1706
+1
+
+--- Page 2 ---
+RECOMMENDED SYSTEM REQUIREMENTS
+Deliverables
+1. RxTools_RelNote.pdf, the Release Notes (this document)
+2. RxTools_Manual.pdf, the RxTools 25.0.0 Manual (an Adobe PDF document)
+3. RxTools_25_0_0_Installer_x64.exe, the RxTools installer for 64-bit Windows
+4. RxTools_25_0_0_Installer_x64.bin, the RxTools installer for 64-bit Linux
+Legal Notice
+Septentrio does not authorize the use of its products as critical components in devices or sys-
+tems intended for safety-of-life applications or in devices or systems, the failure of which may
+endanger life or cause injuries, without express written approval. All the software, ﬁrmware
+and documentation delivered with the Septentrio receiver is licensed, as explained in the
+License.txt,Copyright.txt, andgpl.txtﬁles which are part of the Receiver Soft-
+ware Package provided with the product delivery.
+A note about compatibility
+RxControl,RxLogger,RxUpgrade1,RxAssistantandRxDownloadsupport Altus,
+AsteRx and PolaRx product lines, with the exception of PolaRx2/2e.
+APS3G Toolssupports the Altus APS3G product family.
+SBF ConverterandSBF Analyzerare capable of processing SBF log ﬁles made by any
+Septentrio receiver.
+Data Link,RxPlannerandRxLauncherare not dependent on any speciﬁc receiver.
+The SBF Tools support SBF ﬁles from all above product lines, with the following exceptions:
+PolaRx2/2e SBF ﬁles are not supported by sbf2cmd and sbf2ismr.
+Recommended System Requirements
+The following operating systems are supported:
+•Windows 10®64-bit
+•Windows 11®64-bit
+•Fedora 37 64-bit or later for the applications (and installer) using Qt technology. The
+standalone tools (except bin2asc) run on older distributions.
+The minimal system requirements(for 1 Hz update rate2) are:
+•1 GHz processor
+•1 GB RAM
+•1024×768 or higher resolution
+1RxUpgrade does not support Altus APS3G. Please upgrade your Altus APS3G receiver using the SD card.
+2Higher data rates (e.g. 10 Hz) will require higher CPU and memory requirements.
+2
+
+--- Page 3 ---
+RXTOOLS 25.0.0
+Installation
+Before installing RxTools, please consult the section ”RxTools installer known issues and lim-
+itations” below in this document.
+To install RxTools on your PC, please executeRxTools_25_0_0_Installer_x64.exe
+on Windows orRxTools_25_0_0_Installer_x64.binon Linux. These installers
+are provided with the product delivery, or can alternatively be downloaded from
+www.septentrio.com: please navigate to the Support page. The installers can be found un-
+der the Software/RxTools section. Upon their startup, the RxTools applications check for the
+presence of a newer RxTools release. If present, the user can choose to download and install
+it.
+TheRxTools 25.0.0package providesRxControl,SBF Analyzer,RxLogger,Rx-
+Upgrade,Data Link,SBF Converter,RxDownload,RxPlanner,RxAssistant,Rx-
+LauncherandAPS3G Tools, as well as the SBF Tools. By default, the installer installs all
+components, including these applications and the Windows USB drivers. Users may choose
+a Custom installation and decide which applications to install. Follow the instructions in the
+installer for running a Custom setup.
+RxTools 25.0.0
+RxTools installer v25.0.0
+RxTools installer differences to previous versions
+RxTools installer differences introduced in RxTools v25.0.0
+No differences
+RxTools installer differences introduced in RxTools v24.0.0
+No differences
+RxTools installer differences introduced in RxTools v23.0.0
+No differences
+RxTools installer differences introduced in RxTools v22.1.0
+No differences
+RxTools installer differences introduced in RxTools v22.0.0
+No differences
+RxTools installer differences introduced in RxTools v21.0.0
+Issues resolved in RxTools installer:
+1. Updated the installer framework.
+RxTools installer differences introduced in RxTools v20.0.0
+3
+
+--- Page 4 ---
+RXTOOLS 25.0.0
+New features in RxTools installer:
+1. The sbf2sbf conversion tool has been added to RxTools. The sbf2sbf executable is avail-
+able in the installation directory.
+RxTools installer differences introduced in RxTools v19.0.0
+Issues resolved in RxTools installer:
+1. The Linux 64-bit installer now includes a plugin that was missing.
+RxTools installer known issues and limitations
+1. During the installation of RxTools on Linux some warnings may appear on the console
+output. This is normal and can typically be ignored.
+2. When downgrading RxTools from an installed version 16.0.0 or higher to a version be-
+fore 16.0.0, the existing installation must ﬁrst be uninstalled by explicitly executing the
+uninstaller.
+3. The Windows RxTools drivers and installer are signed with a SHA256 certiﬁcate. When
+the "Microsoft Security Advisory 3033929: Availability of SHA-2 Code Signing Sup-
+port for Windows 7 and Windows Server 2008 R2" (https://technet.microsoft.com/en-
+us/library/security/3033929) is not installed on your system it might be that the drivers
+are not working. Installing the Microsoft update ﬁxes the problem.
+4. The RxTools installer on Linux requests root permissions via sudo. If sudo never has
+been used, an error dialog might be shown during the installation but the installation
+will continue and succeed.
+5. When installing RxTools on a Linux machine, it is possible that the uninstallation step
+fails. The user then receives a message that the installation directory is not empty and
+is asked to select another directory. If this happens, please make sure to uninstall Rx-
+Tools (by running the uninstaller executable in the installation directory, and restart the
+installer.
+RxTools general v25.0.0
+RxTools general differences to previous versions
+RxTools general differences introduced in RxTools v25.0.0
+Issues resolved in RxTools general:
+1. Updated RxTools to work with RED (Radio Equipment Directive 2014/53/EU) updated
+receivers, most notably secure (TLS) IP ports.
+2. Added a Dark theme (experimental)
+3. Dropped support for 32-bit RxTools.
+RxTools general differences introduced in RxTools v24.0.0
+No differences
+RxTools general differences introduced in RxTools v23.0.0
+No differences
+4
+
+--- Page 5 ---
+RXTOOLS 25.0.0
+RxTools general differences introduced in RxTools v22.1.0
+Issues resolved in RxTools general:
+1. Added the ﬁelds PPPSource and PPPAmbiguities to the FOCTURNStatusSBF block.
+RxTools general differences introduced in RxTools v22.0.0
+No differences
+RxTools general differences introduced in RxTools v21.0.0
+No differences
+RxTools general differences introduced in RxTools v20.0.0
+New features in RxTools general:
+1. Support is added for extra BeiDou PRNs above C37.
+2. On Linux, RxTools applications are by default launched in the background: when in-
+voking the runXYZ scripts (e.g. runRxUpgrade), the terminal is not blocked. The --wait
+option has been added in RxTools for Linux to change this behavior. This can be useful
+in scripts to block script continuation until the application ﬁnishes.
+3. Support is added for the BeiDou B2b signal.
+Issues resolved in RxTools general:
+1. IRNSS has been renamed to NavIC.
+RxTools general differences introduced in RxTools v19.0.0
+Issues resolved in RxTools general:
+1. Support for playing/analyzing PolaRx2 ﬁles has been removed from the graphical Rx-
+Tools.
+RxTools general known issues and limitations
+1. When using large display fonts, some parts of the user interface may not be displayed
+appropriately, discarding information or showing scroll bars or overlapping text. If this
+poses a problem, consider conﬁguring your display using a text scaling of 100% (or 96
+DPI).
+2. When data is sent over the serial port at a high rate to an RxTools graphical application,
+CRC errors may occur. This is a limitation of the serial port of the PC equipment being
+used rather than of the RxTools graphical application itself.
+3. Due to high amounts of data provided by the SBF messages, when logging at high data
+rates of above 5 Hz it is strongly advised to log the minimum amount of blocks needed.
+Logging of all possible data blocks may result in data gaps. When logging at data rates
+above 1 Hz please use the USB connection.
+4. When opening the "Help Topics" from an RxTools application, some web browsers fail
+to navigate to the relevant help page. The page can be reached by clicking the cor-
+responding link in the table of contents. In some browsers the index tab is also not
+working properly.
+5. RxTools requires GLIBCXX version 3.4.15 or higher on Linux platforms.
+5
+
+--- Page 6 ---
+RXTOOLS 25.0.0
+6. The RxTools applications need a secure link for some operations (e.g. to check if a
+newer version is available). Unfortunately new Linux distributions are shipped with a
+new OpenSSL library which is not backwards compatible with the one used to com-
+pile RxTools. In order to solve this problem, please install the OpenSSL compatibility
+libraries (e.g. on Fedora this is the package compat-openssl10).
+RxControl v25.0.0
+RxControl is a graphical user interface application which facilitates control and monitoring of
+Septentrio receivers in real time. Among different features it allows conﬁguration of Septen-
+trio receivers in a user friendly way, offers multiple views for monitoring data and offers a
+simple logger allowing you to record SBF ﬁles of the raw data you are receiving. To connect
+your receiver to RxControl, follow the instructions provided in the manual.
+RxControl differences to previous versions
+RxControl differences introduced in RxTools v25.0.0
+Issues resolved in RxControl:
+1. C/N0 TimePlot shows now the LBand C/N0.
+2. Spectrum plot shows now the frequency bands.
+RxControl differences introduced in RxTools v24.0.0
+Issues resolved in RxControl:
+1. RxTools now supports visualization of NavIC L1 signal.
+2. Fixed issue with incorrectly reported CRC Errors/Viterbi Count in Channel Table view
+for NavIC.
+3. DiffCorr Info view now shows Base Station ID of incoming RTCMv3 message types 1303,
+1304, 1334 and 1335.
+4. The timeplot time series "SVs in Track" and "SVs in PVT" are renamed to "Tracked SVs"
+and "Used SVs". The numbers shown are now also split per antenna and are no longer
+a combined value.
+5. Improved readability of the AGC Table view.
+6. The NTRIP forwarding capability has been added to RxControl. For this a menu entry
+"RxControl NTRIP Forwarder" has been added to the Communication menu.
+RxControl differences introduced in RxTools v23.0.0
+New features in RxControl:
+1. RxControl now features Fugro NMA status visualization.
+Issues resolved in RxControl:
+1. RINEX v4.01 is now supported.
+2. The timeplots can now have an indication of the spectrum/spooﬁng status by enabling
+the "Spectrum" parameter in the plot options.
+3. A "Spectrum" LED has been added to RxControl’s main view indicating the current spec-
+trum/spooﬁng status.
+6
+
+--- Page 7 ---
+RXTOOLS 25.0.0
+RxControl differences introduced in RxTools v22.1.0
+Issues resolved in RxControl:
+1. The (Galileo) OSNMA authentication status is now visible in the RxControl satellite visu-
+alisation.
+RxControl differences introduced in RxTools v22.0.0
+Issues resolved in RxControl:
+1. Changing the constellation order via the preferences no longer causes RxControl to
+become unresponsive and close.
+RxControl differences introduced in RxTools v21.0.0
+New features in RxControl:
+1. The DiffCorr LED in the status bar has been replaced by an icon that indicates whether
+differential corrections are being received and/or sent.
+2. The IMU Widget can now also show the data from a Velocity sensor if such a sensor is
+available.
+Issues resolved in RxControl:
+1. An issue has been ﬁxed that caused the re-connection to the receiver after upgrading
+over USB to fail.
+RxControl differences introduced in RxTools v20.0.0
+New features in RxControl:
+1. The entry of time schedules for log sessions has been improved. (This feature is only
+available on certain receivers.)
+RxControl differences introduced in RxTools v19.0.0
+New features in RxControl:
+1. The connection dialog has been improved. For existing connection items, information
+is shown about the receiver that is related to the item. Items also reﬂect whether the
+receiver (or ﬁle) is still available or not. (The polling of receivers can be disabled in the
+preferences.) It is now also possible to connect using the same TCP/IP connection in
+multiple instances of RxControl (or RxDownload/RxLogger) at the same time.
+2. The Message Inspector offers a search box to ﬁlter messages and submessages. It is
+now for example possible to show measurement info for a given satellite.
+3. The Signals time plot readability has improved by rendering thicker lines if only a few
+satellites are shown in the plot.
+Issues resolved in RxControl:
+1. An issue has been ﬁxed in the receiver settings windows, such that the command-
+speciﬁc help links work correctly again.
+2. The External Sensor Measurements timeplot now shows the measurements at full rate,
+where in the past this time plot showed subsampled data.
+7
+
+--- Page 8 ---
+RXTOOLS 25.0.0
+3. An issue has been resolved in the preferences, where the reference position height was
+not correctly updated when dragging the reference position in the map.
+RxControl known issues and limitations
+1. SBF communication from the receiver to RxControl depends on the conﬁgured update
+rate and on the data needed for the current open views. If many views are open at a
+high data rate (e.g. 10 Hz), this may lead to a high CPU load of the receiver. Also, make
+sure that the connection to the receiver provides the necessary bandwidth: e.g. using
+a serial connection at typical baud rates will not support 10 Hz updates.
+2. In certain conﬁgurations, RxControl may have diﬃculties to connect to a receiver after
+it has been reset. This can happen if the receiver’s boot conﬁg has the "ASCII Display"
+output turned on for the port used by RxControl to communicate with the receiver.
+3. In the planimetric plot, the distance between gridlines that are rendered when the
+Geodetic Grid is enabled does not correspond to the length of the scale bar. Please
+use the scale bar to interpret distances in the plot.
+4. If a height plot already contains data, and then PVT is lost, during the time that there is
+no PVT, the height time plot is blank. If PVT is available again, the height data appears
+again (including the data from before the PVT loss).
+5. When opening the height time plot or the ENU time plot, the historic data for the In-
+tegration Mode and GNSS Attitude Mode may not be ﬁlled in correctly. The new data
+that is appended after the plot is opened is correct.
+6. The default number of digits used for the representation of certain ﬁelds in bin2asc or
+the message inspector may be insuﬃcient. When more precision is needed, bin2asc
+allows to specify the required precision.
+7. In speciﬁc conﬁgurations, such as on Linux with a serial to Ethernet converter, it may
+take a long time to detect which serial ports are available. When launching the applica-
+tion or when opening a new connection, this may cause the application to temporarily
+stop responding for some time (up to tens of seconds).
+8. Filtering PVT modes through the Time Plot Options dialog does not work as expected.
+9. When converting between Cartesian, geodetic coordinates and ENU coordinates, it is
+assumed that the reported coordinates are in a datum that uses the WGS84/GRS80
+ellipsoid. This assumption does not always hold when the receiver is conﬁgured to use
+another geodetic datum. In this case, the reported coordinates can be wrong.
+10. If the planimetric plot contains positions in multiple datums, no datum transformation
+is applied. Each position is plotted at the coordinates that correspond to its own da-
+tum.
+11. The conversion between Cartesian and geodetic standard deviation values is wrong.
+When plotting the Position Standard Deviation Cartesian Time Plot or the Position
+Standard Deviation Geodetic Time Plot, make sure the SBF ﬁle has the corresponding
+PosCovCartesian or PosCovGeodetic block or in RxControl the corresponding Coordi-
+nate System is conﬁgured in the preferences.
+12. As of RxTools 16.4.0, RxControl reports the value measured by the temperature sensor
+in the Status tab. For selected receivers without temperature sensor (PolaRx4 Product
+Group and AsteRx2eH), this will show a value of 0 degrees Celsius.
+13. After a network glitch, it might happen that a popup is shown to request the NTRIP
+format when using the NTRIP forward feature.
+8
+
+--- Page 9 ---
+RXTOOLS 25.0.0
+Data Link v25.0.0
+Data Link is a graphical communication terminal with multiple ports which allows users to
+establish and forward connections between a receiver and other devices connected in se-
+rial, UDP/TCP/IP ports and/or NTRIP. Data Link is handy to use when transmitting Differential
+corrections (RTCM, CMR, etc.) to different ports, when setting up a Dial-up modem connec-
+tion, when making an NTRIP client connection or when using command line scripts to set up
+communication devices.
+Data Link differences to previous versions
+Data Link differences introduced in RxTools v25.0.0
+No differences
+Data Link differences introduced in RxTools v24.0.0
+No differences
+Data Link differences introduced in RxTools v23.0.0
+No differences
+Data Link differences introduced in RxTools v22.1.0
+No differences
+Data Link differences introduced in RxTools v22.0.0
+No differences
+Data Link differences introduced in RxTools v21.0.0
+No differences
+Data Link differences introduced in RxTools v20.0.0
+Issues resolved in Data Link:
+1. An issue is ﬁxed which caused copying received data from the connection data window
+to the clipboard to fail in certain cases.
+Data Link differences introduced in RxTools v19.0.0
+No differences
+Data Link known issues and limitations
+1. Data Link may on rare occasions hang, taking 100% of the capacity of the PC’s CPU. In
+this situation go to the Task Manager and end the Data Link process manually. Then
+restart Data Link.
+2. During a congested connection Data Link may crash. The time it takes before the crash
+occurs depends on your PC’s memory availability and the amount of congestion. To
+remedy the problem, restart Data Link and reduce the connection load.
+9
+
+--- Page 10 ---
+RXTOOLS 25.0.0
+3. When using the "Log File" feature, note that the log ﬁle is kept open as long as the
+option is enabled or the program is running (regardless of the connection state).
+4. After a network outage, a TCP/IP client (or host) connection in Data Link might show
+it is still connected, while the host (or client) has already closed the connection. When
+this happens, disconnect and reconnect the client (or host) connection.
+SBF Converter v25.0.0
+SBF Converter is an application that allows to convert SBF log ﬁles to various formats, in-
+cluding ASCII, RINEX, KML (Google Earth). It is an intuitive GUI shell around the underlying
+command-line conversion tools. SBF Converter also allows conversion of multiple ﬁles at
+once.
+SBF Converter differences to previous versions
+SBF Converter differences introduced in RxTools v25.0.0
+Issues resolved in SBF Converter:
+1. A new option has been added to sbf2kml to output a track based on the interference
+power.
+SBF Converter differences introduced in RxTools v24.0.0
+No differences
+SBF Converter differences introduced in RxTools v23.0.0
+No differences
+SBF Converter differences introduced in RxTools v22.1.0
+New features in SBF Converter:
+1. Rinex version 4.00 has been added as a possible option for the RINEX conversion.
+SBF Converter differences introduced in RxTools v22.0.0
+No differences
+SBF Converter differences introduced in RxTools v21.0.0
+No differences
+SBF Converter differences introduced in RxTools v20.0.0
+No differences
+SBF Converter differences introduced in RxTools v19.0.0
+New features in SBF Converter:
+1. It is now possible to close SBF Converter without ﬁrst having to close the conversion
+result window.
+10
+
+--- Page 11 ---
+RXTOOLS 25.0.0
+2. Session support has been added to make it possible to switch fast between several
+conﬁgurations.
+SBF Converter known issues and limitations
+1. When a conversion is cancelled, temporary ﬁles may not be deleted.
+2. For the RINEX conversion, when the "Add sequence number in IGS output ﬁle name"
+check box is checked and multiple ﬁles are being converted, neither SBF Converter nor
+sbf2rin will be comparing the time inside the input ﬁles and ﬁguring out the right ﬁle
+sequence. Therefore, please make sure that the input ﬁles in the Multiple File Selection
+dialog appear in the correct sequential order from top to bottom.
+3. Conversion to KML assumes the SBF ﬁle contains positions in WGS84. If the SBF ﬁle
+contains positions in another datum, the KML ﬁle will show position errors introduced
+by the datum difference.
+4. Conversion to GPX assumes the SBF ﬁle contains positions in WGS84. If the SBF ﬁle
+contains positions in another datum, the GPX ﬁle will show position errors introduced
+by the datum difference.
+SBF Analyzer v25.0.0
+SBF Analyzer is a GUI application designed to analyze data from SBF log ﬁles. Similar to Rx-
+Control, SBF Analyzer allows visualization of multiple time plots as well as visualization of his-
+toric information in the SBF log ﬁle. It is a powerful tool when deep analysis of data recorded
+by Septentrio receivers is needed. As its output, SBF Analyzer can either open application
+windows allowing to interact with the plots much in the same way as in RxControl, but also
+offers the possibility to generate PDF documents following fully customizable templates.
+SBF Analyzer differences to previous versions
+SBF Analyzer differences introduced in RxTools v25.0.0
+Issues resolved in SBF Analyzer:
+1. C/N0 TimePlot shows now the LBand C/N0.
+2. Spectrum plot shows now the frequency bands.
+SBF Analyzer differences introduced in RxTools v24.0.0
+Issues resolved in SBF Analyzer:
+1. The timeplot time series "SVs in Track" and "SVs in PVT" are renamed to "Tracked SVs"
+and "Used SVs". The numbers shown are now also split per antenna and are no longer
+a combined value.
+SBF Analyzer differences introduced in RxTools v23.0.0
+Issues resolved in SBF Analyzer:
+1. The timeplots can now have an indication of the spectrum/spooﬁng status by enabling
+the "Spectrum" parameter in the plot options.
+11
+
+--- Page 12 ---
+RXTOOLS 25.0.0
+SBF Analyzer differences introduced in RxTools v22.1.0
+No differences
+SBF Analyzer differences introduced in RxTools v22.0.0
+No differences
+SBF Analyzer differences introduced in RxTools v21.0.0
+New features in SBF Analyzer:
+1. The Velocity input is now supported in the External Sensor Measurements Plot.
+SBF Analyzer differences introduced in RxTools v20.0.0
+New features in SBF Analyzer:
+1. SBF Analyzer data comparison now supports the lastest Spirent GSS9000 truth data
+format.
+Issues resolved in SBF Analyzer:
+1. An issue is ﬁxed in the Signals Used In File table in the General File Information view,
+where in certain cases some signals were wrongly reported as being used in PVT.
+SBF Analyzer differences introduced in RxTools v19.0.0
+New features in SBF Analyzer:
+1. SBF Analyzer can now compare the analyzed SBF ﬁle with secondary data from another
+SBF ﬁle or from Spirent scenario truth data. The following comparisons can be plotted:
+Position Error, Velocity Error, Satellite Position Error, Satellite Velocity Error, Pseudor-
+ange Error, Doppler Error, Iono Delay Difference, Tropo Delay Difference, C/N0 Differ-
+ence.
+2. SBF Analyzer time interval ﬁltering now allows to specify a number of minutes to be
+processed at the beginning or at the end of the ﬁle.
+3. Session support has been added to make it possible to switch fast between several
+conﬁgurations.
+4. The Signals time plot readability has improved by rendering thicker lines if only a few
+satellites are shown in the plot.
+Issues resolved in SBF Analyzer:
+1. The External Sensor Measurements timeplot now shows the measurements at full rate,
+where in the past this time plot showed subsampled data.
+2. An issue has been resolved in the preferences, where the reference position height was
+not correctly updated when dragging the reference position in the map.
+SBF Analyzer known issues and limitations
+1. A PDF ﬁle created by the reporter may show on screen some small inconsistencies in
+the colors that are used to represent data. On print the colors are consistent.
+2. In certain circumstances, time plot legends may have too many entries to ﬁt in the
+allocated area. The entries may be displayed overlapping and become unreadable.
+12
+
+--- Page 13 ---
+RXTOOLS 25.0.0
+3. When post-processing a ﬁle with SBF Analyzer the local time that is shown is not the
+local time of were the ﬁle is recorded, but the local time with the settings as speciﬁed
+in your PC’s locale.
+4. In the planimetric plot, the distance between gridlines that are rendered when the
+Geodetic Grid is enabled does not correspond to the length of the scale bar. Please
+use the scale bar to interpret distances in the plot.
+5. If a planimetric plot is open at the time a new analysis is started, that planimetric plot
+will be closed.
+6. Filtering PVT modes through the Time Plot Options dialog does not work as expected.
+7. The Message Statistics tab in the General File Information window reports gaps in the
+occurrences of regular rate SBF messages. However, it does not detect missing mes-
+sages at the very beginning of the ﬁle, i.e. gaps between the ﬁrst and the second oc-
+currence of a given SBF message type.
+8. When converting between Cartesian, geodetic coordinates and ENU coordinates, it is
+assumed that the reported coordinates are in a datum that uses the WGS84/GRS80
+ellipsoid. This assumption does not always hold when the receiver is conﬁgured to use
+another geodetic datum. In this case, the reported coordinates can be wrong.
+9. If the planimetric plot contains positions in multiple datums, no datum transformation
+is applied. Each position is plotted at the coordinates that correspond to its own da-
+tum.
+10. The conversion between Cartesian and geodetic standard deviation values is wrong.
+When plotting the Position Standard Deviation Cartesian Time Plot or the Position
+Standard Deviation Geodetic Time Plot, make sure the SBF ﬁle has the corresponding
+PosCovCartesian or PosCovGeodetic block or in RxControl the corresponding Coordi-
+nate System is conﬁgured in the preferences.
+RxLogger v25.0.0
+RxLogger is a GUI application which provides advanced logging capability. Its main feature
+is support of logging on multiple streams, where an SBF frequency rate can be speciﬁed per
+stream. RxLogger also offers post-processing actions of SBF ﬁles such as conversion to RINEX
+format, conversion to CGGTTS format, FTP transfers, compression as well as custom actions
+ideal for reference receivers.
+RxLogger differences to previous versions
+RxLogger differences introduced in RxTools v25.0.0
+No differences
+RxLogger differences introduced in RxTools v24.0.0
+No differences
+RxLogger differences introduced in RxTools v23.0.0
+No differences
+RxLogger differences introduced in RxTools v22.1.0
+New features in RxLogger:
+13
+
+--- Page 14 ---
+RXTOOLS 25.0.0
+1. SBF2RIN convertor now supports RINEX 3.05 and RINEX 4.00 conversion.
+RxLogger differences introduced in RxTools v22.0.0
+No differences
+RxLogger differences introduced in RxTools v21.0.0
+No differences
+RxLogger differences introduced in RxTools v20.0.0
+No differences
+RxLogger differences introduced in RxTools v19.0.0
+New features in RxLogger:
+1. The connection dialog has been improved. For existing connection items, information
+is shown about the receiver that is related to the item. Items also reﬂect whether the
+receiver (or ﬁle) is still available or not. (The polling of receivers can be disabled in the
+preferences.) It is now also possible to connect using the same TCP/IP connection in
+multiple instances of RxControl (or RxDownload/RxLogger) at the same time.
+RxLogger known issues and limitations
+1. In speciﬁc conﬁgurations, such as on Linux with a serial to Ethernet converter, it may
+take a long time to detect which serial ports are available. When launching the applica-
+tion or when opening a new connection, this may cause the application to temporarily
+stop responding for some time (up to tens of seconds).
+RxUpgrade v25.0.0
+RxUpgrade is a small application which offers a handy and user friendly GUI wizard for up-
+dating Septentrio receivers. RxUpgrade can also be launched via command line allowing you
+to easily upgrade multiple receivers at a time.
+RxUpgrade differences to previous versions
+RxUpgrade differences introduced in RxTools v25.0.0
+No differences
+RxUpgrade differences introduced in RxTools v24.0.0
+No differences
+RxUpgrade differences introduced in RxTools v23.0.0
+No differences
+RxUpgrade differences introduced in RxTools v22.1.0
+14
+
+--- Page 15 ---
+RXTOOLS 25.0.0
+No differences
+RxUpgrade differences introduced in RxTools v22.0.0
+No differences
+RxUpgrade differences introduced in RxTools v21.0.0
+Issues resolved in RxUpgrade:
+1. An issue has been ﬁxed that caused the re-connection to the receiver after upgrading
+over USB to fail.
+RxUpgrade differences introduced in RxTools v20.0.0
+No differences
+RxUpgrade differences introduced in RxTools v19.0.0
+No differences
+RxUpgrade known issues and limitations
+1. Rarely it happens that RxUpgrade becomes unresponsive. This does not necessarily
+mean that the upgrade has failed. RxControl can be used to check the ﬁrmware version
+of the receiver: Help -> Receiver Identiﬁcation.
+2. When starting RxUpgrade in batch mode it can happen that RxUpgrade becomes un-
+responsive just after starting. In that case RxUpgrade needs to be restarted again.
+3. When upgrading the receiver over an Ethernet connection, no other client should be
+connected to the receiver. Otherwise, there is a risk that the upgrade procedure is not
+successful.
+4. When using the -c command line option to specify a connection ﬁle, please specify a
+connection ﬁle name without path. The connection ﬁle is then looked up in the ".septen-
+trio" folder in the users home folder.
+RxDownload v25.0.0
+RxDownload is an application which is designed to download and post-process the internal
+log ﬁles from multiple receivers.
+RxDownload differences to previous versions
+RxDownload differences introduced in RxTools v25.0.0
+No differences
+RxDownload differences introduced in RxTools v24.0.0
+No differences
+RxDownload differences introduced in RxTools v23.0.0
+15
+
+--- Page 16 ---
+RXTOOLS 25.0.0
+No differences
+RxDownload differences introduced in RxTools v22.1.0
+No differences
+RxDownload differences introduced in RxTools v22.0.0
+No differences
+RxDownload differences introduced in RxTools v21.0.0
+No differences
+RxDownload differences introduced in RxTools v20.0.0
+No differences
+RxDownload differences introduced in RxTools v19.0.0
+New features in RxDownload:
+1. The connection dialog has been improved. For existing connection items, information
+is shown about the receiver that is related to the item. Items also reﬂect whether the
+receiver (or ﬁle) is still available or not. (The polling of receivers can be disabled in the
+preferences.) It is now also possible to connect using the same TCP/IP connection in
+multiple instances of RxControl (or RxDownload/RxLogger) at the same time.
+Issues resolved in RxDownload:
+1. When using RxDownload to download ﬁles from a receiver that has logging enabled
+to multiple sessions (only supported by certain receivers), a bug has been ﬁxed that
+caused only new ﬁles from one session to be downloaded, while the other sessions
+were skipped.
+RxDownload known issues and limitations
+1. When downloading large ﬁles, the CPU on the receiver can go up to 100%. This can
+cause data gaps in the receiver’s logged data.
+2. In speciﬁc conﬁgurations, such as on Linux with a serial to Ethernet converter, it may
+take a long time to detect which serial ports are available. When launching the applica-
+tion or when opening a new connection, this may cause the application to temporarily
+stop responding for some time (up to tens of seconds).
+RxPlanner v25.0.0
+RxPlanner is an intuitive stand-alone Satellite Mission planning software tool offering the de-
+termination of the visibility of GPS, GLONASS, GALILEO and Geostationary satellites in func-
+tion of time and location, and of the resulting dilution of precision. The tool gives an estimate
+of the potential quality of a GNSS solution, and provides suggestions on appropriate times
+for surveying.
+16
+
+--- Page 17 ---
+RXTOOLS 25.0.0
+RxPlanner differences to previous versions
+RxPlanner differences introduced in RxTools v25.0.0
+No differences
+RxPlanner differences introduced in RxTools v24.0.0
+No differences
+RxPlanner differences introduced in RxTools v23.0.0
+No differences
+RxPlanner differences introduced in RxTools v22.1.0
+No differences
+RxPlanner differences introduced in RxTools v22.0.0
+No differences
+RxPlanner differences introduced in RxTools v21.0.0
+No differences
+RxPlanner differences introduced in RxTools v20.0.0
+No differences
+RxPlanner differences introduced in RxTools v19.0.0
+No differences
+RxPlanner known issues and limitations
+1. In certain situations, RxPlanner may attempt to download from the Celestrak website
+a YUMA or SEM almanac that has not yet been made available.
+2. The ’Update Almanacs’ button may become disabled (greyed out). Temporarily select-
+ing another method for any constellation or toggling the ’Use same method for all con-
+stellations’ checkbox, enables the button again.
+3. On certain Linux distributions, RxPlanner may fail to download almanac ﬁles from the
+Septentrio website. For this download SSL is used. Unfortunately new Linux distribu-
+tions are shipped with a new OpenSSL library that is not backwards compatible with
+the one used to compile RxTools. If you experience this problem, please install the
+OpenSSL compatibility libraries (e.g. on Fedora this is the package compat-openssl10).
+RxAssistant v25.0.0
+RxAssistant is an application offering simple conﬁguration of a receiver for common tasks
+and/or connectivity to other GPS applications (GIS, Surveying, etc). It among others provides
+basic status monitoring, Ntrip as well as the conﬁguration of NMEA output.
+17
+
+--- Page 18 ---
+RXTOOLS 25.0.0
+RxAssistant differences to previous versions
+RxAssistant differences introduced in RxTools v25.0.0
+No differences
+RxAssistant differences introduced in RxTools v24.0.0
+No differences
+RxAssistant differences introduced in RxTools v23.0.0
+No differences
+RxAssistant differences introduced in RxTools v22.1.0
+No differences
+RxAssistant differences introduced in RxTools v22.0.0
+No differences
+RxAssistant differences introduced in RxTools v21.0.0
+No differences
+RxAssistant differences introduced in RxTools v20.0.0
+No differences
+RxAssistant differences introduced in RxTools v19.0.0
+No differences
+RxAssistant known issues and limitations
+1. When RxAssistant is quit, or when the connection to the receiver is closed, the vari-
+ous settings, in particular the NMEA settings, persist. It is advised to keep RxAssistant
+running always when the receiver is used.
+2. If the receiver does not have a valid position (and no ﬁxed position is conﬁgured), estab-
+lising an Ntrip connection may fail if the stream requires your position. In this scenario
+however, a meaningless error message "Connection congested" will be shown in the
+Ntrip tab.
+RxLeverArm v25.0.0
+RxLeverArm is a graphical tool to optimize the leverarm of INS receivers.
+RxLeverArm differences to previous versions
+RxLeverArm differences introduced in RxTools v25.0.0
+18
+
+--- Page 19 ---
+RXTOOLS 25.0.0
+Issues resolved in RxLeverArm:
+1. Added orientation wizard to RxLeverArm.
+RxLeverArm differences introduced in RxTools v24.0.0
+No differences
+RxLeverArm differences introduced in RxTools v23.0.0
+No differences
+RxLeverArm differences introduced in RxTools v22.1.0
+No differences
+RxLeverArm differences introduced in RxTools v22.0.0
+New features in RxLeverArm:
+1. The RxLeverArm tool has been added to RxTools.
+RxLauncher v25.0.0
+RxLauncher is a small launcher application that allows the user to start any application in the
+RxTools suite in an easy way.
+RxLauncher differences to previous versions
+RxLauncher differences introduced in RxTools v25.0.0
+No differences
+RxLauncher differences introduced in RxTools v24.0.0
+No differences
+RxLauncher differences introduced in RxTools v23.0.0
+No differences
+RxLauncher differences introduced in RxTools v22.1.0
+No differences
+RxLauncher differences introduced in RxTools v22.0.0
+No differences
+RxLauncher differences introduced in RxTools v21.0.0
+No differences
+RxLauncher differences introduced in RxTools v20.0.0
+19
+
+--- Page 20 ---
+RXTOOLS 25.0.0
+No differences
+RxLauncher differences introduced in RxTools v19.0.0
+No differences
+APS3G Tools v25.0.0
+Graphical tool to facilitate the conﬁguration of a receiver from the Altus APS3G product line.
+APS3G Tools differences to previous versions
+APS3G Tools differences introduced in RxTools v25.0.0
+No differences
+APS3G Tools differences introduced in RxTools v24.0.0
+No differences
+APS3G Tools differences introduced in RxTools v23.0.0
+No differences
+APS3G Tools differences introduced in RxTools v22.1.0
+No differences
+APS3G Tools differences introduced in RxTools v22.0.0
+No differences
+APS3G Tools differences introduced in RxTools v21.0.0
+No differences
+APS3G Tools differences introduced in RxTools v20.0.0
+No differences
+APS3G Tools differences introduced in RxTools v19.0.0
+No differences
+SBF Tools
+sbf2asc v3.1.11
+Converter of SBF data to ASCII format. The source code of this application is available as
+sub-component of the RxTools Installer as an example of how to decode SBF.
+20
+
+--- Page 21 ---
+RXTOOLS 25.0.0
+sbf2asc differences to previous versions
+sbf2asc differences introduced in RxTools v25.0.0
+No differences
+sbf2asc differences introduced in RxTools v24.0.0
+No differences
+sbf2asc differences introduced in RxTools v23.0.0
+No differences
+sbf2asc differences introduced in RxTools v22.1.0
+No differences
+sbf2asc differences introduced in RxTools v22.0.0
+No differences
+sbf2asc differences introduced in RxTools v21.0.0
+No differences
+sbf2asc differences introduced in RxTools v20.0.0
+No differences
+sbf2asc differences introduced in RxTools v19.0.0
+No differences
+sbf2cmd v2.3.40
+Converter of SBF data to Commands. The tool allows users to visualize the different settings
+of a receiver over time. The commands are shown in an ASCII ﬁle created from the tool.
+For full output the tool also uses the MIB ﬁle of the receiver used while the SBF data ﬁle was
+recorded.
+sbf2cmd differences to previous versions
+sbf2cmd differences introduced in RxTools v25.0.0
+No differences
+sbf2cmd differences introduced in RxTools v24.0.0
+No differences
+sbf2cmd differences introduced in RxTools v23.0.0
+No differences
+21
+
+--- Page 22 ---
+RXTOOLS 25.0.0
+sbf2cmd differences introduced in RxTools v22.1.0
+No differences
+sbf2cmd differences introduced in RxTools v22.0.0
+No differences
+sbf2cmd differences introduced in RxTools v21.0.0
+No differences
+sbf2cmd differences introduced in RxTools v20.0.0
+No differences
+sbf2cmd differences introduced in RxTools v19.0.0
+No differences
+sbf2gpx v3.0.53
+Converter of SBF data to GPX format. The GPX format is a common standard for GPS re-
+ceivers used for storing position information in an XML-like ﬁle. This format can be loaded
+into Google Earth or can be converted using GPS Visualizer (www.gpsvisualizer.com).
+sbf2gpx differences to previous versions
+sbf2gpx differences introduced in RxTools v25.0.0
+No differences
+sbf2gpx differences introduced in RxTools v24.0.0
+No differences
+sbf2gpx differences introduced in RxTools v23.0.0
+No differences
+sbf2gpx differences introduced in RxTools v22.1.0
+No differences
+sbf2gpx differences introduced in RxTools v22.0.0
+No differences
+sbf2gpx differences introduced in RxTools v21.0.0
+No differences
+sbf2gpx differences introduced in RxTools v20.0.0
+No differences
+22
+
+--- Page 23 ---
+RXTOOLS 25.0.0
+sbf2gpx differences introduced in RxTools v19.0.0
+No differences
+sbf2gpx known issues and limitations
+1. Conversion to GPX assumes the SBF ﬁle contains positions in WGS84. If the SBF ﬁle
+contains positions in another datum, the GPX ﬁle will show position errors introduced
+by the datum difference.
+sbf2kml v2.9.0x
+Converter of SBF data to KML format. The KML format is the common standard used by
+Google Earth. This format can be directly loaded into Google Earth. KML allows for several
+visualization features based on coloring and 3D objects shown directly in Google Earth.
+sbf2kml differences to previous versions
+sbf2kml differences introduced in RxTools v25.0.0
+Issues resolved in sbf2kml:
+1. A new option has been added to sbf2kml to output a track based on the interference
+power.
+sbf2kml differences introduced in RxTools v24.0.0
+No differences
+sbf2kml differences introduced in RxTools v23.0.0
+No differences
+sbf2kml differences introduced in RxTools v22.1.0
+No differences
+sbf2kml differences introduced in RxTools v22.0.0
+No differences
+sbf2kml differences introduced in RxTools v21.0.0
+No differences
+sbf2kml differences introduced in RxTools v20.0.0
+No differences
+sbf2kml differences introduced in RxTools v19.0.0
+No differences
+23
+
+--- Page 24 ---
+RXTOOLS 25.0.0
+sbf2kml known issues and limitations
+1. If a ﬁle does not contain tracking data at the beginning (e.g. no tracking SV’s even if
+channel status is output) then the Survey track functionality of KML will not work prop-
+erly.
+2. Conversion to KML assumes the SBF ﬁle contains positions in WGS84. If the SBF ﬁle
+contains positions in another datum, the KML ﬁle will show position errors introduced
+by the datum difference.
+sbf2rin v16.2.0
+Converter of SBF data to RINEX format. RINEX is the Receiver INdependent EXchange format.
+A set of standard deﬁnition and formats for ASCII data ﬁles to promote the free exchange of
+GNSS data and facilitate the use of data from any GNSS receiver with any software package.
+sbf2rin differences to previous versions
+sbf2rin differences introduced in RxTools v25.0.0
+No differences
+sbf2rin differences introduced in RxTools v24.0.0
+No differences
+sbf2rin differences introduced in RxTools v23.0.0
+Issues resolved in sbf2rin:
+1. RINEX v4.01 is now supported.
+2. A deviation from the RINEX ﬁle naming convention in the case of observation frequen-
+cies greater than 1 Hz has been ﬁxed.
+sbf2rin differences introduced in RxTools v22.1.0
+New features in sbf2rin:
+1. SBF2RIN convertor now supports RINEX 3.05 and RINEX 4.00 conversion.
+2. A LEAP SECONDS header line is now included in RINEX observation ﬁles if the leap sec-
+ond information is available.
+sbf2rin differences introduced in RxTools v22.0.0
+No differences
+sbf2rin differences introduced in RxTools v21.0.0
+No differences
+sbf2rin differences introduced in RxTools v20.0.0
+Issues resolved in sbf2rin:
+24
+
+--- Page 25 ---
+RXTOOLS 25.0.0
+1. sbf2rin has a new option "-U" to discard any satellite duplication in observation epochs.
+With this option, a given satellite is guaranteed to only appear once per epoch in RINEX,
+even if tracked on multiple channels in the receiver.
+sbf2rin differences introduced in RxTools v19.0.0
+New features in sbf2rin:
+1. The RINEX ﬁle version is now 3.04 instead of 3.03.
+sbfblocks v1.7.10
+This tool allows users to visualize which blocks are present in an SBF ﬁle. The output is put
+into an ASCII output ﬁle and it will show the statistics of how many blocks of each type exist.
+The tool also allows detecting CRC errors in the ﬁle as well as detecting the type of DiffCorr
+messages stored in the present DiffCorr blocks.
+sbfblocks differences to previous versions
+sbfblocks differences introduced in RxTools v25.0.0
+No differences
+sbfblocks differences introduced in RxTools v24.0.0
+No differences
+sbfblocks differences introduced in RxTools v23.0.0
+No differences
+sbfblocks differences introduced in RxTools v22.1.0
+No differences
+sbfblocks differences introduced in RxTools v22.0.0
+No differences
+sbfblocks differences introduced in RxTools v21.0.0
+No differences
+sbfblocks differences introduced in RxTools v20.0.0
+No differences
+sbfblocks differences introduced in RxTools v19.0.0
+Issues resolved in sbfblocks:
+1. When using the timeline option (-t) of sbfblocks, the character for QZSS Navigation Page
+Messages is now "J" (before it was "Q").
+25
+
+--- Page 26 ---
+RXTOOLS 25.0.0
+sbf2ismr v8.0.0
+Converter of SBF data to ISMR (Ionospheric Scintillation Monitor Receiver) format.
+sbf2ismr differences to previous versions
+sbf2ismr differences introduced in RxTools v25.0.0
+No differences
+sbf2ismr differences introduced in RxTools v24.0.0
+No differences
+sbf2ismr differences introduced in RxTools v23.0.0
+Issues resolved in sbf2ismr:
+1. In sbf2ismr, it is now possible to report iono indices for the GPS L1C, QZSS L1C and
+BeiDou B1C signals. It is also now possible to choose among a selection of signal types
+used for the TEC estimation.
+sbf2ismr differences introduced in RxTools v22.1.0
+No differences
+sbf2ismr differences introduced in RxTools v22.0.0
+No differences
+sbf2ismr differences introduced in RxTools v21.0.0
+No differences
+sbf2ismr differences introduced in RxTools v20.0.0
+Issues resolved in sbf2ismr:
+1. sbf2ismr can now also generate ionosphere indices for the BeiDou B2a and Galileo E6
+and E5AltBOC signals.
+sbf2ismr differences introduced in RxTools v19.0.0
+No differences
+posconv v1.0.37
+This tool allows for converting positions into the following different coordinate formats used
+in GNSS receivers: Geodetic Coordinates in (Degrees), Geodetic Coordinates in (Radians) and
+Cartesian Coordinates.
+posconv differences to previous versions
+26
+
+--- Page 27 ---
+RXTOOLS 25.0.0
+posconv differences introduced in RxTools v25.0.0
+No differences
+posconv differences introduced in RxTools v24.0.0
+No differences
+posconv differences introduced in RxTools v23.0.0
+No differences
+posconv differences introduced in RxTools v22.1.0
+No differences
+posconv differences introduced in RxTools v22.0.0
+No differences
+posconv differences introduced in RxTools v21.0.0
+No differences
+posconv differences introduced in RxTools v20.0.0
+No differences
+posconv differences introduced in RxTools v19.0.0
+No differences
+timeconv v1.5.29
+This tool allows for converting time into the following different time formats used in GNSS
+receivers: GNSS Date/Time, UTC Date/Time, GNSS seconds, TOW/WN.
+timeconv differences to previous versions
+timeconv differences introduced in RxTools v25.0.0
+No differences
+timeconv differences introduced in RxTools v24.0.0
+No differences
+timeconv differences introduced in RxTools v23.0.0
+No differences
+timeconv differences introduced in RxTools v22.1.0
+No differences
+27
+
+--- Page 28 ---
+RXTOOLS 25.0.0
+timeconv differences introduced in RxTools v22.0.0
+No differences
+timeconv differences introduced in RxTools v21.0.0
+No differences
+timeconv differences introduced in RxTools v20.0.0
+No differences
+timeconv differences introduced in RxTools v19.0.0
+No differences
+sbf2cggtts v1.5.0
+The sbf2cggtts tool is a utility to convert an SBF ﬁle into a CGGTTS version 2E ﬁle.
+sbf2cggtts differences to previous versions
+sbf2cggtts differences introduced in RxTools v25.0.0
+No differences
+sbf2cggtts differences introduced in RxTools v24.0.0
+No differences
+sbf2cggtts differences introduced in RxTools v23.0.0
+Issues resolved in sbf2cggtts:
+1. In sbf2cggtts, cases where the UTC leap second value could not be retrieved from the
+SBF ﬁle have been ﬁxed.
+sbf2cggtts differences introduced in RxTools v22.1.0
+No differences
+sbf2cggtts differences introduced in RxTools v22.0.0
+No differences
+sbf2cggtts differences introduced in RxTools v21.0.0
+Issues resolved in sbf2cggtts:
+1. CGGTTS: the CGGTTS ﬁles now have 5 whitespaces instead of 3 in the ﬁrst header line
+after the ’CGGTTS’ tag.
+sbf2cggtts differences introduced in RxTools v20.0.0
+Issues resolved in sbf2cggtts:
+28
+
+--- Page 29 ---
+RXTOOLS 25.0.0
+1. In CGGTTS ﬁles, the different INT DLY values are now separated by a comma, instead
+of only white spaces.
+sbf2cggtts differences introduced in RxTools v19.0.0
+No differences
+sbf2sbf v1.2.12
+Converter of SBF data to the same SBF format. The idea of this tool is to allow users to
+manipulate SBF ﬁles with different functionalities such as cutting the ﬁle, removing speciﬁc
+blocks from a ﬁle, merging different SBF ﬁles into one, etc.
+sbf2sbf differences to previous versions
+sbf2sbf differences introduced in RxTools v25.0.0
+No differences
+sbf2sbf differences introduced in RxTools v24.0.0
+No differences
+sbf2sbf differences introduced in RxTools v23.0.0
+No differences
+sbf2sbf differences introduced in RxTools v22.1.0
+No differences
+sbf2sbf differences introduced in RxTools v22.0.0
+No differences
+sbf2sbf differences introduced in RxTools v21.0.0
+No differences
+sbf2sbf differences introduced in RxTools v20.0.0
+New features in sbf2sbf:
+1. The sbf2sbf conversion tool has been added to RxTools. The sbf2sbf executable is avail-
+able in the installation directory.
+bin2asc v1.6.10
+The bin2asc tool converts SBF data to ASCII ﬁles. Each message is represented as a line of
+delimiter-separated line of human-readable ﬁeld values. This tool replaces the sbf2stf tool
+since it supports much more blocks and conversion features.
+29
+
+--- Page 30 ---
+RXTOOLS 25.0.0
+bin2asc differences to previous versions
+bin2asc differences introduced in RxTools v25.0.0
+No differences
+bin2asc differences introduced in RxTools v24.0.0
+No differences
+bin2asc differences introduced in RxTools v23.0.0
+No differences
+bin2asc differences introduced in RxTools v22.1.0
+No differences
+bin2asc differences introduced in RxTools v22.0.0
+No differences
+bin2asc differences introduced in RxTools v21.0.0
+No differences
+bin2asc differences introduced in RxTools v20.0.0
+No differences
+bin2asc differences introduced in RxTools v19.0.0
+No differences
+bin2asc known issues and limitations
+1. When extracting generic measurements (using –extractGenMeas), the last measure-
+ments epoch could be dropped from the output ﬁle. If this is the case, output of this
+last measurement epoch can be ensured by including the EndOfMeas SBF block in the
+log ﬁle.
+2. The bin2asc tool may still change in the future with respect to its interface and output
+format. The message names to be used for message selection may change. The ﬁelds,
+their order, and the way they are formatted may change.
+3. The default number of digits used for the representation of certain ﬁelds in bin2asc or
+the message inspector may be insuﬃcient. When more precision is needed, bin2asc
+allows to specify the required precision.
+Receiver Communication SDK for C++/Qt v25.0.0
+The Septentrio Receiver Communication SDK for C++/Qt provides a cross-platform software
+development kit for interacting with Septentrio GNSS receivers. It facilitates building third-
+party applications by offering components to set up a connection to a receiver, and to com-
+municate with it. The SDK is written in C++ and Qt 4.x.
+30
+
+--- Page 31 ---
+RXTOOLS 25.0.0
+Receiver Communication SDK for C++/Qt differences to previous
+versions
+Receiver Communication SDK for C++/Qt differences introduced in RxTools v25.0.0
+No differences
+Receiver Communication SDK for C++/Qt differences introduced in RxTools v24.0.0
+No differences
+Receiver Communication SDK for C++/Qt differences introduced in RxTools v23.0.0
+No differences
+Receiver Communication SDK for C++/Qt differences introduced in RxTools v22.1.0
+No differences
+Receiver Communication SDK for C++/Qt differences introduced in RxTools v22.0.0
+No differences
+Receiver Communication SDK for C++/Qt differences introduced in RxTools v21.0.0
+No differences
+Receiver Communication SDK for C++/Qt differences introduced in RxTools v20.0.0
+No differences
+Receiver Communication SDK for C++/Qt differences introduced in RxTools v19.0.0
+No differences
+USB Driver v3.0.2
+The USB Windows drivers for Septentrio receivers consisting of the Thesycon CDC/ACM
+Driver (provides serial port link via USB) and the RNDIS Driver (provides a virtual Ethernet
+link via USB).
+USB Driver differences to previous versions
+USB Driver differences introduced in RxTools v25.0.0
+No differences
+USB Driver differences introduced in RxTools v24.0.0
+No differences
+USB Driver differences introduced in RxTools v23.0.0
+No differences
+31
+
+--- Page 32 ---
+CONTACT
+USB Driver differences introduced in RxTools v22.1.0
+No differences
+USB Driver differences introduced in RxTools v22.0.0
+No differences
+USB Driver differences introduced in RxTools v21.0.0
+No differences
+USB Driver differences introduced in RxTools v20.0.0
+No differences
+USB Driver differences introduced in RxTools v19.0.0
+No differences
+Trademark information
+Adobe™is a trademark of Adobe Systems Incorporated.
+Microsoft®and Windows®are registered trademarks of Microsoft Corporation.
+Qt is a registered trade mark of The Qt Company Ltd and its subsidiaries.
+Copyright©2025
+Contact
+Go to Septentrio web site www.septentrio.com to contact the Septentrio support team.
+32

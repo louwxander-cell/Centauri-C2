@@ -181,13 +181,23 @@ class Ownship(QObject):
         super().__init__(parent)
         self._lat = 0.0
         self._lon = 0.0
+        self._alt = 0.0
         self._heading = 0.0
     
     def update(self, ownship_data):
         """Update from engine"""
         self._lat = ownship_data.get('lat', 0.0)
         self._lon = ownship_data.get('lon', 0.0)
+        self._alt = ownship_data.get('alt', 0.0)
         self._heading = ownship_data.get('heading', 0.0)
+        self.dataChanged.emit()
+    
+    def set_position(self, lat, lon, alt, heading):
+        """Update ownship position from GPS"""
+        self._lat = lat
+        self._lon = lon
+        self._alt = alt
+        self._heading = heading
         self.dataChanged.emit()
     
     @Property(float, notify=dataChanged)
@@ -197,6 +207,10 @@ class Ownship(QObject):
     @Property(float, notify=dataChanged)
     def lon(self):
         return self._lon
+    
+    @Property(float, notify=dataChanged)
+    def alt(self):
+        return self._alt
     
     @Property(float, notify=dataChanged)
     def heading(self):
@@ -255,9 +269,10 @@ class OrchestrationBridge(QObject):
     - Stream tracks to gunner stations
     """
     
-    def __init__(self, engine, parent=None, enable_gunner_interface=True):
+    def __init__(self, engine, parent=None, enable_gunner_interface=True, gps_driver=None):
         super().__init__(parent)
         self.engine = engine
+        self.gps_driver = gps_driver
         
         # Create QML models
         self.tracks_model = TracksModel(self)
@@ -292,10 +307,21 @@ class OrchestrationBridge(QObject):
         # Set up update timer (simulates telemetry stream)
         self.update_timer = QTimer(self)
         self.update_timer.timeout.connect(self._update_from_engine)
-        self.update_timer.start(100)  # 10 Hz updates
+        self.update_timer.start(33)  # 30 Hz updates (~33ms interval)
     
     def _update_from_engine(self):
         """Pull updates from engine and push to QML models"""
+        # Update ownship position from GPS (if available)
+        if self.gps_driver:
+            gps_data = self.gps_driver.get_latest_position()
+            if gps_data and gps_data.get('valid', False):
+                self.ownship.set_position(
+                    gps_data.get('latitude', 0.0),
+                    gps_data.get('longitude', 0.0),
+                    gps_data.get('altitude', 0.0),
+                    gps_data.get('heading', 0.0)
+                )
+        
         # Update engine state (sensor fusion, track updates)
         self.engine.update()
         
@@ -530,13 +556,14 @@ class OrchestrationBridge(QObject):
                 
                 # Smooth range rate with exponential moving average
                 prev_rate = prev_data.get('range_rate', range_rate)
-                alpha = 0.4  # Smoothing factor
+                alpha = 0.5  # Smoothing factor - responsive to speed changes (50/50 mix)
                 range_rate = alpha * range_rate + (1 - alpha) * prev_rate
                 
                 self.track_history[track_id] = {
                     'prev_range': range_m,
                     'prev_time': current_time,
-                    'range_rate': range_rate
+                    'range_rate': range_rate,
+                    'prev_score': prev_data.get('prev_score', None)
                 }
             else:
                 range_rate = prev_data.get('range_rate', 0.0)
@@ -686,6 +713,20 @@ class OrchestrationBridge(QObject):
         # Apply multiplier and clamp to [0, 1]
         final_score = min(1.0, base_score * multiplier)
         
+        # ═══════════════════════════════════════════════════════
+        # TEMPORAL SMOOTHING: Reduce jitter in threat scores
+        # ═══════════════════════════════════════════════════════
+        if track_id in self.track_history:
+            prev_score = self.track_history[track_id].get('prev_score')
+            if prev_score is not None:
+                # Apply exponential moving average (40% new, 60% previous)
+                # This prevents rapid score changes while staying responsive
+                smoothing_alpha = 0.40
+                final_score = smoothing_alpha * final_score + (1 - smoothing_alpha) * prev_score
+            
+            # Update stored score for next iteration
+            self.track_history[track_id]['prev_score'] = final_score
+        
         return final_score
     
     def _is_immediate_threat(self, range_m: float, track_type: str, confidence: float) -> bool:
@@ -730,6 +771,10 @@ class OrchestrationBridge(QObject):
         """
         Get ID of highest priority track using hybrid algorithm.
         Filters are applied automatically (birds, low confidence, etc.)
+        
+        Uses hysteresis to prevent rapid switching between similar threats:
+        - Current highest priority track gets 10% bonus
+        - New track must be clearly better to replace current one
         """
         engine_snapshot = self.engine.get_tracks_snapshot()
         if not engine_snapshot['tracks']:
@@ -738,9 +783,19 @@ class OrchestrationBridge(QObject):
         # Calculate priority for ALL tracks (algorithm handles filtering)
         best_track = None
         best_score = 0.0
+        current_highest_id = self.highest_priority_track_id_value
+        
+        # Hysteresis factor: current highest priority gets a bonus to prevent thrashing
+        HYSTERESIS_BONUS = 0.03  # 3% bonus to current highest priority - reactive with stability
         
         for track in engine_snapshot['tracks']:
             score = self._calculate_threat_priority_score(track)
+            
+            # Apply hysteresis: give current highest priority a bonus
+            # This prevents rapid switching when scores are close
+            if track['id'] == current_highest_id and score > 0.0:
+                score *= (1.0 + HYSTERESIS_BONUS)
+            
             if score > best_score:
                 best_score = score
                 best_track = track

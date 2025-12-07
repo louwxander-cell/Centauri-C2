@@ -24,6 +24,7 @@ class MockRadarSensor:
         self.tracks = {}
         self.next_track_id = 1001
         self.update_rate_hz = 10.0
+        self.last_update_time = time.time()
         
     def generate_tracks(self) -> List[Dict]:
         """Generate radar tracks with Echoguard-specific fields"""
@@ -40,18 +41,39 @@ class MockRadarSensor:
                     'range_m': random.uniform(500, 2500)
                 }
         
-        # Update all persistent tracks
+        # Calculate delta time for physics updates
+        current_time = time.time()
+        dt = current_time - self.last_update_time
+        self.last_update_time = current_time
+        
+        # Update all persistent tracks using physics
         for track_id, track in list(self.tracks.items()):
             
-            # Update position (small movement)
-            track['azimuth_deg'] += random.uniform(-0.5, 0.5)
+            # Get velocity components (use stored values or defaults)
+            vx = track.get('velocity_x_mps', 0.0)
+            vy = track.get('velocity_y_mps', 0.0)
+            
+            # Convert current polar position to Cartesian
+            az_rad = math.radians(track['azimuth_deg'])
+            x = track['range_m'] * math.sin(az_rad)
+            y = track['range_m'] * math.cos(az_rad)
+            
+            # Update position using velocity
+            x += vx * dt
+            y += vy * dt
+            
+            # Convert back to polar coordinates
+            track['range_m'] = math.sqrt(x**2 + y**2)
+            track['azimuth_deg'] = math.degrees(math.atan2(x, y))
+            
+            # Normalize azimuth to 0-360
             if track['azimuth_deg'] < 0:
                 track['azimuth_deg'] += 360
-            if track['azimuth_deg'] >= 360:
-                track['azimuth_deg'] -= 360
             
-            track['range_m'] += random.uniform(-10, 10)
-            track['range_m'] = max(500, min(3000, track['range_m']))
+            # Keep tracks in bounds (remove if too close or too far)
+            if track['range_m'] < 100 or track['range_m'] > 3500:
+                del self.tracks[track_id]
+                continue
             
             # Echoguard-specific fields
             lifetime = (time.time_ns() - track['first_detection']) / 1e9
@@ -271,6 +293,7 @@ class MockEngine(QObject):
             'static_tracks': [],
             'track_velocity_mps': (10, 50),  # Min/max velocity for moving tracks
         }
+        self.last_test_update_time = time.time()
         
         self.ownship = {
             'lat': -25.841105,
@@ -377,139 +400,160 @@ class MockEngine(QObject):
     
     def _update_test_tracks(self):
         """Update test scenario tracks with realistic drone flight paths"""
+        # Calculate delta time for physics-based updates
+        current_time = time.time()
+        dt = current_time - self.last_test_update_time
+        self.last_test_update_time = current_time
+        
         for track in self.test_config['static_tracks']:
-            # Initialize movement parameters if not present
-            if 'velocity_mps' not in track:
-                track['velocity_mps'] = random.uniform(*self.test_config['track_velocity_mps'])
-            if 'direction' not in track:
-                track['direction'] = random.choice([-1, 1])
-            if 'azimuth_drift' not in track:
-                track['azimuth_drift'] = random.uniform(-0.1, 0.1)
-            if 'heading_deg' not in track:
-                track['heading_deg'] = track.get('azimuth_deg', 0)
-            
-            velocity_mps = track['velocity_mps']
-            track['speed_mps'] = velocity_mps
-            
-            # Calculate movement per update (0.1s at 10 Hz)
-            movement_m = velocity_mps * 0.1
-            
-            # Realistic movement pattern based on type
+            # Get velocity components
+            vx = track.get('velocity_x_mps', 0.0)
+            vy = track.get('velocity_y_mps', 0.0)
             track_type = track.get('type', 'UAV')
             
+            # Realistic flight dynamics - adjust velocity for curved paths
+            current_speed = math.sqrt(vx**2 + vy**2)
+            
             if track_type == 'UAV':
-                # UAVs: Smooth linear movement with gentle curves
-                # Consistent direction with very gradual changes
-                direction = track['direction']
-                track['range_m'] += movement_m * direction
+                # UAVs: Curved paths with visible turns
+                # Base continuous turning for curved flight
+                turn_rate = random.uniform(-5, 5) * dt  # degrees per update - gentle continuous curve
                 
-                # Very small, smooth azimuth drift (realistic drone flight)
-                azimuth_drift = track['azimuth_drift']
+                # Occasional course corrections (realistic drone maneuvering)
+                if random.random() < 0.15 * dt * 30:  # 15% chance per second
+                    turn_rate += random.uniform(-20, 20) * dt  # Moderate turns
                 
-                # Gradual drift adjustment (momentum-based)
-                if random.random() < 0.005:  # 0.5% chance - very rare course adjustment
-                    # Small adjustment to drift
-                    azimuth_drift += random.uniform(-0.05, 0.05)
-                    azimuth_drift = max(-0.3, min(0.3, azimuth_drift))  # Clamp to ±0.3°
-                    track['azimuth_drift'] = azimuth_drift
+                # Apply turn by rotating velocity vector
+                turn_rad = math.radians(turn_rate)
+                cos_turn = math.cos(turn_rad)
+                sin_turn = math.sin(turn_rad)
+                vx_new = vx * cos_turn - vy * sin_turn
+                vy_new = vx * sin_turn + vy * cos_turn
+                vx, vy = vx_new, vy_new
                 
-                # Apply smooth drift
-                track['azimuth_deg'] += azimuth_drift
-                
-                # Velocity varies slightly (wind, battery, etc.)
-                if random.random() < 0.01:  # 1% chance
-                    track['velocity_mps'] += random.uniform(-0.5, 0.5)
-                    track['velocity_mps'] = max(10, min(50, track['velocity_mps']))
-                    
+                # Occasional speed variations (wind, battery, maneuvering)
+                if random.random() < 0.10 * dt * 30:  # ~10% per second
+                    speed_change = random.uniform(-3, 3)
+                    if current_speed > 1:
+                        new_speed = max(5.0, current_speed + speed_change)  # Enforce 5 m/s minimum
+                        scale = new_speed / current_speed
+                        vx *= scale
+                        vy *= scale
+                        
             elif track_type == 'BIRD':
-                # Birds: More dynamic but still smooth, circular patterns
-                # Update range with variation
-                direction = track['direction']
-                range_variation = random.uniform(0.8, 1.2)
-                track['range_m'] += movement_m * direction * range_variation
+                # Birds: Highly dynamic, circular patterns, rapid turns
+                # Continuous turning for circular/spiraling motion
+                turn_rate = random.uniform(-15, 15) * dt  # Moderate continuous turns
                 
-                # Smooth circular motion (like birds circling)
-                azimuth_drift = track.get('azimuth_drift', 0.5)
+                # More frequent sharp direction changes (birds are erratic)
+                if random.random() < 0.25 * dt * 30:  # ~25% per second
+                    turn_rate += random.uniform(-35, 35) * dt  # Sharp turns
                 
-                # Gradual changes in circular pattern
-                if random.random() < 0.02:  # 2% chance
-                    azimuth_drift += random.uniform(-0.2, 0.2)
-                    azimuth_drift = max(-1.5, min(1.5, azimuth_drift))
-                    track['azimuth_drift'] = azimuth_drift
+                # Apply turn
+                turn_rad = math.radians(turn_rate)
+                cos_turn = math.cos(turn_rad)
+                sin_turn = math.sin(turn_rad)
+                vx_new = vx * cos_turn - vy * sin_turn
+                vy_new = vx * sin_turn + vy * cos_turn
+                vx, vy = vx_new, vy_new
                 
-                track['azimuth_deg'] += azimuth_drift
-                
-                # Speed variations for birds
-                if random.random() < 0.05:  # 5% chance
-                    track['velocity_mps'] += random.uniform(-2, 2)
-                    track['velocity_mps'] = max(8, min(30, track['velocity_mps']))
-                
+                # Birds have more speed variation
+                if random.random() < 0.15 * dt * 30:  # ~15% per second
+                    speed_change = random.uniform(-5, 5)
+                    if current_speed > 1:
+                        new_speed = max(5.0, current_speed + speed_change)  # Enforce 5 m/s minimum
+                        scale = new_speed / current_speed
+                        vx *= scale
+                        vy *= scale
+                        
             elif track_type == 'UNKNOWN':
-                # Unknown: Moderate movement, somewhat predictable
-                direction = track['direction']
-                range_variation = random.uniform(0.9, 1.1)
-                track['range_m'] += movement_m * direction * range_variation
+                # Unknown: Erratic, unpredictable behavior
+                # Continuous moderate turns
+                turn_rate = random.uniform(-8, 8) * dt
                 
-                # Moderate drift
-                azimuth_drift = track.get('azimuth_drift', 0)
+                # Occasional unpredictable course changes
+                if random.random() < 0.20 * dt * 30:  # ~20% per second - somewhat erratic
+                    turn_rate += random.uniform(-25, 25) * dt  # Moderate random turns
                 
-                if random.random() < 0.01:  # 1% chance
-                    azimuth_drift += random.uniform(-0.1, 0.1)
-                    azimuth_drift = max(-0.5, min(0.5, azimuth_drift))
-                    track['azimuth_drift'] = azimuth_drift
+                # Apply turn
+                turn_rad = math.radians(turn_rate)
+                cos_turn = math.cos(turn_rad)
+                sin_turn = math.sin(turn_rad)
+                vx_new = vx * cos_turn - vy * sin_turn
+                vy_new = vx * sin_turn + vy * cos_turn
+                vx, vy = vx_new, vy_new
                 
-                track['azimuth_deg'] += azimuth_drift
+                # Moderate speed variations for unknowns
+                if random.random() < 0.12 * dt * 30:  # ~12% per second
+                    speed_change = random.uniform(-4, 4)
+                    if current_speed > 1:
+                        new_speed = max(5.0, current_speed + speed_change)  # Enforce 5 m/s minimum
+                        scale = new_speed / current_speed
+                        vx *= scale
+                        vy *= scale
             
-            # Keep range in bounds and reverse direction with some randomness
-            # Add variance so tracks don't all bounce at exact same ranges
-            if track['range_m'] < 100:
-                track['range_m'] = 100
-                track['direction'] = 1  # Start moving away (increase range)
-                # Occasionally change course to avoid repetitive patterns
-                if random.random() < 0.3:
-                    track['azimuth_drift'] = random.uniform(-0.5, 0.5)
-            elif track['range_m'] > 3000:
-                track['range_m'] = 3000
-                track['direction'] = -1  # Start approaching (decrease range)
-                # Occasionally change course
-                if random.random() < 0.3:
-                    track['azimuth_drift'] = random.uniform(-0.5, 0.5)
+            # Convert current polar position to Cartesian
+            az_rad = math.radians(track['azimuth_deg'])
+            x = track['range_m'] * math.sin(az_rad)
+            y = track['range_m'] * math.cos(az_rad)
             
-            # Occasional direction reversals for realistic behavior (loitering, patrol patterns)
-            if random.random() < 0.001:  # 0.1% chance per update (~once every 100 seconds per track)
-                track['direction'] *= -1  # Reverse direction
-                if track_type == 'UAV':
-                    # UAVs might change course when reversing
-                    track['azimuth_drift'] = random.uniform(-0.3, 0.3)
+            # Update position using velocity and delta time
+            x += vx * dt
+            y += vy * dt
             
-            # Normalize azimuth
-            track['azimuth_deg'] %= 360
-            track['az_deg'] = track['azimuth_deg']  # Keep both fields in sync
+            # Convert back to polar coordinates
+            new_range = math.sqrt(x**2 + y**2)
+            new_azimuth = math.degrees(math.atan2(x, y))
             
-            # Very gradual elevation changes
+            # Normalize azimuth to 0-360
+            if new_azimuth < 0:
+                new_azimuth += 360
+            
+            # Smoothly redirect tracks that approach boundaries (keep them in valid zone)
+            if new_range < 200:
+                # Too close - redirect outward
+                track_az_rad = math.radians(new_azimuth)
+                outward_x = math.sin(track_az_rad)
+                outward_y = math.cos(track_az_rad)
+                # Blend current velocity with outward direction
+                blend = 0.3
+                vx = (1-blend) * vx + blend * outward_x * current_speed
+                vy = (1-blend) * vy + blend * outward_y * current_speed
+            elif new_range > 3000:
+                # Too far - redirect inward
+                track_az_rad = math.radians(new_azimuth)
+                inward_x = -math.sin(track_az_rad)
+                inward_y = -math.cos(track_az_rad)
+                # Blend current velocity with inward direction
+                blend = 0.3
+                vx = (1-blend) * vx + blend * inward_x * current_speed
+                vy = (1-blend) * vy + blend * inward_y * current_speed
+            
+            # Update track with new position and velocity
+            track['range_m'] = new_range
+            track['azimuth_deg'] = new_azimuth
+            track['az_deg'] = new_azimuth
+            track['velocity_x_mps'] = vx
+            track['velocity_y_mps'] = vy
+            
+            # Calculate actual speed from velocity components
+            track['speed_mps'] = math.sqrt(vx**2 + vy**2)
+            track['velocity_mps'] = track['speed_mps']
+            
+            # Update heading to match velocity direction
+            track['heading_deg'] = math.degrees(math.atan2(vx, vy))
+            if track['heading_deg'] < 0:
+                track['heading_deg'] += 360
+            
+            # Very gradual elevation changes (optional)
             if 'elevation_deg' in track:
-                el_change = track.get('elevation_drift', random.uniform(-0.05, 0.05))
-                
-                # Occasional elevation drift adjustment
-                if random.random() < 0.01:
-                    el_change += random.uniform(-0.02, 0.02)
-                    el_change = max(-0.1, min(0.1, el_change))
-                    track['elevation_drift'] = el_change
-                
+                el_change = random.uniform(-0.05, 0.05) * dt * 10  # Scale with dt
                 track['elevation_deg'] += el_change
                 track['elevation_deg'] = max(5, min(45, track['elevation_deg']))
                 track['el_deg'] = track['elevation_deg']
-            
-            # Calculate velocity components from actual movement
-            az_rad = math.radians(track['azimuth_deg'])
-            direction = track.get('direction', 1)
-            speed = track.get('velocity_mps', track.get('speed_mps', 20.0))
-            range_rate_mps = speed * direction
-            
-            track['velocity_x_mps'] = range_rate_mps * math.sin(az_rad)
-            track['velocity_y_mps'] = range_rate_mps * math.cos(az_rad)
-            track['velocity_z_mps'] = 0.0
         
+        # All tracks stay alive - they get redirected at boundaries
+        # No removal/respawning needed
         self.fused_tracks = {t['id']: t for t in self.test_config['static_tracks']}
     
     def get_tracks_snapshot(self):
@@ -908,7 +952,7 @@ class MockEngine(QObject):
                 track_id = 5100 + i
                 az = random.uniform(0, 360)
                 el = random.uniform(5, 30)
-                vel_mps = random.uniform(10, 50)
+                vel_mps = random.uniform(5, 50)
                 
                 # Weighted distribution: 50% UAV, 30% BIRD, 20% UNKNOWN
                 type_choice = random.random()
@@ -919,6 +963,14 @@ class MockEngine(QObject):
                 else:
                     track_type = 'UNKNOWN'
                 
+                # Generate random velocity direction
+                vel_azimuth = random.uniform(0, 360)
+                vel_az_rad = math.radians(vel_azimuth)
+                
+                # Calculate velocity components from speed and direction
+                velocity_x_mps = vel_mps * math.sin(vel_az_rad)
+                velocity_y_mps = vel_mps * math.cos(vel_az_rad)
+                
                 tracks.append({
                     'id': track_id,
                     'type': track_type,
@@ -928,17 +980,16 @@ class MockEngine(QObject):
                     'elevation_deg': el,
                     'el_deg': el,
                     'range_m': random.uniform(300, 2800),
-                    'velocity_x_mps': random.uniform(-20, 20),
-                    'velocity_y_mps': random.uniform(-20, 20),
+                    'velocity_x_mps': velocity_x_mps,
+                    'velocity_y_mps': velocity_y_mps,
                     'velocity_z_mps': random.uniform(-2, 2),
                     'speed_mps': vel_mps,
                     'velocity_mps': vel_mps,
-                    'heading_deg': random.uniform(0, 360),
+                    'heading_deg': vel_azimuth,  # Match velocity direction
                     'confidence': random.uniform(0.65, 0.95),
                     'status': 'TRACKING',
                     'rcs_m2': random.uniform(0.02, 0.1),
                     'last_update_ns': time.time_ns(),
-                    'direction': random.choice([-1, 1]),
                 })
                 
                 # Add RF intelligence to FUSED and RF tracks
@@ -956,7 +1007,9 @@ class MockEngine(QObject):
             
             self.test_config['static_tracks'] = tracks
             print(f"[ENGINE] Scenario 5: 25 tracks for stress testing")
-            print(f"[ENGINE]   Velocities: 10-50 m/s, mix of RADAR/RF/FUSED")
+            print(f"[ENGINE]   Velocities: 5-50 m/s (minimum enforced), mix of RADAR/RF/FUSED")
+            print(f"[ENGINE]   Smooth motion with realistic maneuvering")
+            print(f"[ENGINE]   Tracks stay in bounds (200-3000m) via boundary redirection")
         
         else:
             print(f"[ENGINE] Unknown scenario: {scenario_name}")

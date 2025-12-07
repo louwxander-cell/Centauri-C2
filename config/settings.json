@@ -16,8 +16,13 @@
     }
   },
   "gps": {
-    "port": "/dev/ttyUSB0",
-    "baudrate": 9600
+    "enabled": true,
+    "driver": "production",
+    "model": "septentrio_mosaic_h",
+    "port": "/dev/tty.usbmodem38382103",
+    "port_linux": "/dev/ttyACM0",
+    "baudrate": 115200,
+    "update_rate_hz": 5
   },
   "system": {
     "update_rate_hz": 10,

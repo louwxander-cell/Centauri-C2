@@ -73,7 +73,7 @@ Window {
     
     // Timer to periodically update highest priority (for dynamic threat changes)
     Timer {
-        interval: 1000  // Every 1 second
+        interval: 100  // Every 100ms - fast updates for immediate selection
         running: true
         repeat: true
         onTriggered: {

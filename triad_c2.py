@@ -5,6 +5,8 @@ Launches Orchestration Bridge + QML UI
 """
 
 import sys
+import json
+import glob
 from pathlib import Path
 from PySide6.QtCore import QUrl
 from PySide6.QtQml import QQmlApplicationEngine
@@ -13,6 +15,9 @@ from PySide6.QtGui import QGuiApplication
 # Import orchestration components
 from orchestration.bridge import OrchestrationBridge
 from engine.mock_engine_updated import MockEngine
+
+# Import GPS driver
+from src.drivers.gps_septentrio import SeptentrioMosaicDriver
 
 
 def main():
@@ -36,9 +41,49 @@ def main():
     print("[INIT] Starting mock engine...")
     engine = MockEngine()
     
+    # Initialize GPS (if enabled)
+    gps_driver = None
+    try:
+        config_path = Path(__file__).parent / "config" / "settings.json"
+        with open(config_path, 'r') as f:
+            config = json.load(f)
+        
+        if config.get('gps', {}).get('enabled', False):
+            print("[INIT] Initializing GPS...")
+            
+            # Determine port (try to find actual device)
+            port_pattern = config['gps'].get('port', '/dev/tty.usbmodem*')
+            baudrate = config['gps'].get('baudrate', 115200)
+            
+            # Try to find matching port
+            matching_ports = glob.glob(port_pattern)
+            if matching_ports:
+                port = matching_ports[0]
+            else:
+                # Fallback to Linux port if on Linux
+                port = config['gps'].get('port_linux', '/dev/ttyACM0')
+            
+            print(f"[INIT]   Model: Septentrio Mosaic-H")
+            print(f"[INIT]   Port: {port}")
+            print(f"[INIT]   Baud: {baudrate}")
+            
+            try:
+                gps_driver = SeptentrioMosaicDriver(port=port, baudrate=baudrate)
+                gps_driver.start_driver()  # Use start_driver() not start()
+                print(f"[INIT] ✓ GPS driver started")
+            except Exception as e:
+                print(f"[INIT] ✗ GPS initialization failed: {e}")
+                print(f"[INIT]   Continuing without GPS...")
+                gps_driver = None
+        else:
+            print("[INIT] GPS disabled in configuration")
+    except Exception as e:
+        print(f"[INIT] GPS configuration error: {e}")
+        print(f"[INIT]   Continuing without GPS...")
+    
     # Initialize orchestration bridge
     print("[INIT] Creating orchestration bridge...")
-    bridge = OrchestrationBridge(engine)
+    bridge = OrchestrationBridge(engine, gps_driver=gps_driver)
     
     # Create QML engine
     qml_engine = QQmlApplicationEngine()
