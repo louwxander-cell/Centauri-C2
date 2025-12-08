@@ -12,13 +12,7 @@ pip3 install -r requirements.txt
 ### Step 2: Run the Application
 
 ```bash
-python3 main.py
-```
-
-**OR**
-
-```bash
-./run.sh
+python3 triad_c2.py
 ```
 
 ### Step 3: See It In Action
@@ -35,11 +29,11 @@ Within seconds, you'll see:
 2. **Click the red "ENGAGE / SLEW" button**
 3. **Watch the console** for slew command output
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 TriAD_C2/
-├── main.py              ← START HERE
+├── triad_c2.py          ← START HERE
 ├── requirements.txt     ← Dependencies
 ├── README.md           ← Full documentation
 ├── ARCHITECTURE.md     ← System design
@@ -170,7 +164,7 @@ pip3 list | grep -E 'PyQt6|pydantic|pyqtgraph'
 ## One-Line Start
 
 ```bash
-cd /Users/xanderlouw/CascadeProjects/C2 && python3 main.py
+cd /Users/xanderlouw/CascadeProjects/C2 && python3 triad_c2.py
 ```
 
 **That's it! You're now running a Counter-UAS C2 system! 🎉**
