@@ -307,9 +307,8 @@ class OrchestrationBridge(QObject):
         # Set up update timer (simulates telemetry stream)
         self.update_timer = QTimer(self)
         self.update_timer.timeout.connect(self._update_from_engine)
-        # Windows: 15 Hz to reduce jitter, macOS: 30 Hz
-        update_interval = 67 if sys.platform == 'win32' else 33
-        self.update_timer.start(update_interval)  # 15 Hz on Windows, 30 Hz on macOS
+        # 30 Hz for high-performance systems with threaded rendering
+        self.update_timer.start(33)  # 30 Hz (33ms interval)
     
     def _update_from_engine(self):
         """Pull updates from engine and push to QML models"""

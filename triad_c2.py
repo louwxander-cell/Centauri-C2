@@ -32,10 +32,14 @@ from src.drivers.radar_controller import RadarController
 def main():
     """Main application entry point"""
     
-    # Windows-specific: Optimize Qt rendering for smoother performance
+    # Windows-specific: Optimize Qt rendering for high-performance GPU
     if sys.platform == 'win32':
-        # Use basic render loop for better VSync (keeps GPU acceleration)
-        os.environ['QSG_RENDER_LOOP'] = 'basic'
+        # Use threaded render loop for powerful GPUs (better performance)
+        os.environ['QSG_RENDER_LOOP'] = 'threaded'
+        # Enable GPU rasterization for smoother rendering
+        os.environ['QT_OPENGL'] = 'desktop'
+        # Disable VSync to allow higher frame rates
+        os.environ['QSG_INFO'] = '1'  # Enable debug info to verify settings
     
     # Create Qt application
     app = QGuiApplication(sys.argv)
