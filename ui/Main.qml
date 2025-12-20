@@ -11,6 +11,8 @@ Window {
     visible: true
     width: 1920
     height: 1032  // 1080 - 48px for Windows taskbar
+    x: 0  // Align to left edge of screen
+    y: 0  // Align to top edge of screen
     title: "TriAD C2 - Counter-UAS Command & Control"
     color: Theme.base0
     
