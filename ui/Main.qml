@@ -9,14 +9,14 @@ import "components"
 Window {
     id: root
     visible: true
-    width: 1900  // Slightly less than full width for safety
-    height: 1020  // More conservative height to avoid taskbar
-    x: 10  // Small margin from left edge
-    y: 10  // Small margin from top edge
+    width: 1920
+    height: 1000  // 1080 - 48px taskbar - 32px title bar
+    x: 0
+    y: 0
     title: "TriAD C2 - Counter-UAS Command & Control"
     color: Theme.base0
     
-    // Optimize for Full HD display with Windows taskbar
+    // Optimize for Full HD display (accounting for taskbar + title bar)
     minimumWidth: 1600
     minimumHeight: 850
     
