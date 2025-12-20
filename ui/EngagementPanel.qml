@@ -279,43 +279,48 @@ Rectangle {
                 Layout.fillWidth: true
             }
             
-            // DISENGAGE button - proper clickable button
-            Rectangle {
+            // DISENGAGE button - matching ENGAGE button style
+            Button {
+                id: disengageButton
                 Layout.fillWidth: true
-                Layout.preferredHeight: 32
-                Layout.topMargin: Theme.spacingSmall
-                color: disengageMouseArea.containsMouse ? Qt.lighter(Theme.accentThreat, 1.3) : Theme.accentThreat
-                radius: Theme.radiusSmall
+                Layout.preferredHeight: 48  // Same as engage button
                 
-                Text {
-                    anchors.centerIn: parent
-                    text: "CANCEL ENGAGEMENT"
-                    font.family: Theme.fontFamily
-                    font.pixelSize: Theme.fontSizeSmall
-                    font.weight: Font.Medium
-                    color: "#FFFFFF"
+                background: Rectangle {
+                    color: {
+                        if (parent.pressed) return Qt.darker(Theme.accentThreat, 1.1)
+                        if (parent.hovered) return Qt.lighter(Theme.accentThreat, 1.1)
+                        return Theme.accentThreat
+                    }
+                    radius: 4  // Same as engage button
+                    border.width: 0
+                    
+                    Behavior on color { ColorAnimation { duration: 150 } }
                 }
                 
-                MouseArea {
-                    id: disengageMouseArea
-                    anchors.fill: parent
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
+                contentItem: Text {
+                    text: `CANCEL ${engagedTrackId}`
+                    font.family: Theme.fontFamily
+                    font.pixelSize: 14
+                    font.weight: Font.Medium
+                    font.letterSpacing: 0.5
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                
+                onClicked: {
+                    console.log("[EngagementPanel] ========== DISENGAGE CLICKED ==========")
+                    console.log("[EngagementPanel] State: isEngaged=" + isEngaged + " engagedTrackId=" + engagedTrackId)
                     
-                    onClicked: {
-                        console.log("[EngagementPanel] ========== DISENGAGE BUTTON CLICKED ==========")
-                        console.log("[EngagementPanel] Current state - isEngaged:", isEngaged, "engagedTrackId:", engagedTrackId)
-                        
-                        var result = bridge.disengage_track()
-                        console.log("[EngagementPanel] Disengage result:", JSON.stringify(result))
-                        
-                        if (result && result.success) {
-                            isEngaged = false
-                            engagedTrackId = -1
-                            console.log("[EngagementPanel] ✓ Engagement cancelled - UI updated")
-                        } else {
-                            console.log("[EngagementPanel] ✗ Disengage failed:", result ? result.message : "No result")
-                        }
+                    var result = bridge.disengage_track()
+                    console.log("[EngagementPanel] Result: " + JSON.stringify(result))
+                    
+                    if (result && result.success) {
+                        isEngaged = false
+                        engagedTrackId = -1
+                        console.log("[EngagementPanel] ✓ CANCELLED")
+                    } else {
+                        console.log("[EngagementPanel] ✗ FAILED: " + (result ? result.message : "null"))
                     }
                 }
             }
