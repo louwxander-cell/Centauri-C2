@@ -10,13 +10,13 @@ Window {
     id: root
     visible: true
     width: 1920
-    height: 1080
+    height: 1040  // 1080 - 40px for Windows taskbar
     title: "TriAD C2 - Counter-UAS Command & Control"
     color: Theme.base0
     
-    // Optimize for Full HD display (1920×1080)
+    // Optimize for Full HD display with Windows taskbar (40px)
     minimumWidth: 1600
-    minimumHeight: 900
+    minimumHeight: 860  // 900 - 40px for taskbar
     
     // Data properties from Python (provided via setContextProperty)
     // tracksModel, ownship, systemMode, bridge, engine
