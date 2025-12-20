@@ -215,16 +215,21 @@ Rectangle {
             }
             
             onClicked: {
-                console.log("[EngagementPanel] Engage button clicked - Track:", selectedTrackId)
+                console.log("[EngagementPanel] ========== ENGAGE CLICKED ==========")
+                console.log("[EngagementPanel] BEFORE - isEngaged:", isEngaged, "Track:", selectedTrackId)
+                
                 var result = bridge.engage_track(selectedTrackId, "OPERATOR_1")
-                console.log("[EngagementPanel] Engage result:", JSON.stringify(result))
+                console.log("[EngagementPanel] Bridge result:", JSON.stringify(result))
                 
                 if (result && result.success) {
-                    isEngaged = true
-                    engagedTrackId = selectedTrackId
-                    console.log("[EngagementPanel] ✓ Engagement successful - isEngaged:", isEngaged, "engagedTrackId:", engagedTrackId)
+                    // Force state update
+                    engagementPanel.isEngaged = true
+                    engagementPanel.engagedTrackId = selectedTrackId
+                    
+                    console.log("[EngagementPanel] AFTER - isEngaged:", isEngaged, "engagedTrackId:", engagedTrackId)
+                    console.log("[EngagementPanel] ✓ ENGAGED - UI state set")
                 } else {
-                    console.log("[EngagementPanel] ✗ Engagement failed:", result ? result.message : "No result")
+                    console.log("[EngagementPanel] ✗ FAILED:", result ? result.message : "No result")
                 }
             }
         }
@@ -310,17 +315,20 @@ Rectangle {
                 
                 onClicked: {
                     console.log("[EngagementPanel] ========== DISENGAGE CLICKED ==========")
-                    console.log("[EngagementPanel] State: isEngaged=" + isEngaged + " engagedTrackId=" + engagedTrackId)
+                    console.log("[EngagementPanel] BEFORE - isEngaged:", isEngaged, "engagedTrackId:", engagedTrackId)
                     
                     var result = bridge.disengage_track()
-                    console.log("[EngagementPanel] Result: " + JSON.stringify(result))
+                    console.log("[EngagementPanel] Bridge result:", JSON.stringify(result))
                     
                     if (result && result.success) {
-                        isEngaged = false
-                        engagedTrackId = -1
-                        console.log("[EngagementPanel] ✓ CANCELLED")
+                        // Force state update
+                        engagementPanel.isEngaged = false
+                        engagementPanel.engagedTrackId = -1
+                        
+                        console.log("[EngagementPanel] AFTER - isEngaged:", isEngaged, "engagedTrackId:", engagedTrackId)
+                        console.log("[EngagementPanel] ✓ CANCELLED - UI state reset")
                     } else {
-                        console.log("[EngagementPanel] ✗ FAILED: " + (result ? result.message : "null"))
+                        console.log("[EngagementPanel] ✗ FAILED:", result ? result.message : "null")
                     }
                 }
             }
