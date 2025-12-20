@@ -10,14 +10,13 @@ Window {
     id: root
     visible: true
     width: 1920
-    height: 1032  // 1080 - 48px taskbar
+    height: 995  // 1080 - 48px taskbar - 37px title bar
     x: 0
     y: 0
-    flags: Qt.FramelessWindowHint | Qt.Window  // Remove window borders
     title: "TriAD C2 - Counter-UAS Command & Control"
     color: Theme.base0
     
-    // Optimize for Full HD display (borderless, accounting for taskbar only)
+    // Optimize for Full HD display with title bar and taskbar
     minimumWidth: 1600
     minimumHeight: 850
     
