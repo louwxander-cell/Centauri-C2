@@ -9,10 +9,14 @@ import "components"
 Window {
     id: root
     visible: true
-    width: 1800
-    height: 960
+    width: 1920
+    height: 1080
     title: "TriAD C2 - Counter-UAS Command & Control"
     color: Theme.base0
+    
+    // Optimize for Full HD display (1920×1080)
+    minimumWidth: 1600
+    minimumHeight: 900
     
     // Data properties from Python (provided via setContextProperty)
     // tracksModel, ownship, systemMode, bridge, engine
