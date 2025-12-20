@@ -430,4 +430,14 @@ Rectangle {
             }
         }
     }
+    
+    // Real-time track detail updates
+    Timer {
+        interval: 500  // Update every 500ms for smooth real-time display
+        running: selectedTrackId >= 0
+        repeat: true
+        onTriggered: {
+            updateSelectedTrack()
+        }
+    }
 }
