@@ -674,10 +674,10 @@ class OrchestrationBridge(QObject):
         
         # STEP 2: Weight with proximity, confidence and other factors
         base_score = (
-            base_threat * 0.35 +            # Zone × Tau (reduced for maximum proximity emphasis)
-            range_proximity * 0.40 +        # MAXIMUM: Direct distance emphasis (was 0.30)
-            confidence_factor * 0.15 +      # Confidence gating
-            type_factor * 0.08 +            # Classification bonus
+            base_threat * 0.25 +            # Zone × Tau (reduced to emphasize distance more)
+            range_proximity * 0.55 +        # MAXIMUM: Direct distance emphasis (increased from 0.40)
+            confidence_factor * 0.12 +      # Confidence gating (reduced)
+            type_factor * 0.06 +            # Classification bonus (reduced)
             source_factor * 0.02            # Sensor quality
         )
         
