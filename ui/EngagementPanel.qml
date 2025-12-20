@@ -279,28 +279,31 @@ Rectangle {
                 Layout.fillWidth: true
             }
             
-            // DISENGAGE button - minimal style
-            Text {
-                text: "Cancel Engagement"
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeSmall
-                color: Theme.accentThreat
+            // DISENGAGE button - proper clickable button
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 32
                 Layout.topMargin: Theme.spacingSmall
+                color: disengageMouseArea.containsMouse ? Qt.lighter(Theme.accentThreat, 1.3) : Theme.accentThreat
+                radius: Theme.radiusSmall
+                
+                Text {
+                    anchors.centerIn: parent
+                    text: "CANCEL ENGAGEMENT"
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontSizeSmall
+                    font.weight: Font.Medium
+                    color: "#FFFFFF"
+                }
                 
                 MouseArea {
+                    id: disengageMouseArea
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
                     hoverEnabled: true
                     
-                    onEntered: {
-                        parent.color = Qt.lighter(Theme.accentThreat, 1.2)
-                    }
-                    onExited: {
-                        parent.color = Theme.accentThreat
-                    }
-                    
                     onClicked: {
-                        console.log("[EngagementPanel] Disengage button clicked")
+                        console.log("[EngagementPanel] ========== DISENGAGE BUTTON CLICKED ==========")
                         console.log("[EngagementPanel] Current state - isEngaged:", isEngaged, "engagedTrackId:", engagedTrackId)
                         
                         var result = bridge.disengage_track()
