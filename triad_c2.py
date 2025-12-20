@@ -32,6 +32,15 @@ from src.drivers.radar_controller import RadarController
 def main():
     """Main application entry point"""
     
+    # Windows-specific: Optimize Qt rendering for smoother performance
+    if sys.platform == 'win32':
+        # Force software rendering backend (more stable on Windows)
+        os.environ['QT_QUICK_BACKEND'] = 'software'
+        # Enable VSync for smoother frame pacing
+        os.environ['QSG_RENDER_LOOP'] = 'basic'
+        # Disable threaded rendering (can cause jitter on Windows)
+        os.environ['QSG_RENDER_THREAD'] = '0'
+    
     # Create Qt application
     app = QGuiApplication(sys.argv)
     app.setOrganizationName("TriAD")
