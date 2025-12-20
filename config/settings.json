@@ -1,6 +1,7 @@
 {
   "network": {
     "radar": {
+      "enabled": true,
       "protocol": "TCP",
       "host": "192.168.1.25",
       "port": 29982
