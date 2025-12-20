@@ -215,14 +215,16 @@ Rectangle {
             }
             
             onClicked: {
-                console.log("Engaging track:", selectedTrackId)
+                console.log("[EngagementPanel] Engage button clicked - Track:", selectedTrackId)
                 var result = bridge.engage_track(selectedTrackId, "OPERATOR_1")
-                if (result.success) {
+                console.log("[EngagementPanel] Engage result:", JSON.stringify(result))
+                
+                if (result && result.success) {
                     isEngaged = true
                     engagedTrackId = selectedTrackId
-                    console.log("✓ Engagement successful")
+                    console.log("[EngagementPanel] ✓ Engagement successful - isEngaged:", isEngaged, "engagedTrackId:", engagedTrackId)
                 } else {
-                    console.log("✗ Engagement failed:", result.message)
+                    console.log("[EngagementPanel] ✗ Engagement failed:", result ? result.message : "No result")
                 }
             }
         }
@@ -288,13 +290,28 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
+                    hoverEnabled: true
+                    
+                    onEntered: {
+                        parent.color = Qt.lighter(Theme.accentThreat, 1.2)
+                    }
+                    onExited: {
+                        parent.color = Theme.accentThreat
+                    }
+                    
                     onClicked: {
-                        console.log("Cancelling engagement")
+                        console.log("[EngagementPanel] Disengage button clicked")
+                        console.log("[EngagementPanel] Current state - isEngaged:", isEngaged, "engagedTrackId:", engagedTrackId)
+                        
                         var result = bridge.disengage_track()
-                        if (result.success) {
+                        console.log("[EngagementPanel] Disengage result:", JSON.stringify(result))
+                        
+                        if (result && result.success) {
                             isEngaged = false
                             engagedTrackId = -1
-                            console.log("✓ Engagement cancelled")
+                            console.log("[EngagementPanel] ✓ Engagement cancelled - UI updated")
+                        } else {
+                            console.log("[EngagementPanel] ✗ Disengage failed:", result ? result.message : "No result")
                         }
                     }
                 }
