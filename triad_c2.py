@@ -34,12 +34,8 @@ def main():
     
     # Windows-specific: Optimize Qt rendering for smoother performance
     if sys.platform == 'win32':
-        # Force software rendering backend (more stable on Windows)
-        os.environ['QT_QUICK_BACKEND'] = 'software'
-        # Enable VSync for smoother frame pacing
+        # Use basic render loop for better VSync (keeps GPU acceleration)
         os.environ['QSG_RENDER_LOOP'] = 'basic'
-        # Disable threaded rendering (can cause jitter on Windows)
-        os.environ['QSG_RENDER_THREAD'] = '0'
     
     # Create Qt application
     app = QGuiApplication(sys.argv)
