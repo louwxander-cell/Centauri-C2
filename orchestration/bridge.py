@@ -811,8 +811,8 @@ class OrchestrationBridge(QObject):
         
         return -1
     
-    @Slot(int, str, result=dict)
-    def engage_track(self, track_id: int, operator_id: str) -> dict:
+    @Slot(int, str, result='QVariant')
+    def engage_track(self, track_id: int, operator_id: str):
         """
         C2 operator engages a specific track
         Begin streaming ONLY this track to gunners
@@ -843,8 +843,8 @@ class OrchestrationBridge(QObject):
             'message': f'Track {track_id} engaged'
         }
     
-    @Slot(result=dict)
-    def disengage_track(self) -> dict:
+    @Slot(result='QVariant')
+    def disengage_track(self):
         """
         C2 operator cancels current engagement
         Stop streaming to gunners
