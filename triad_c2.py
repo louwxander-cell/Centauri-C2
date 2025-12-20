@@ -2,9 +2,11 @@
 """
 TriAD C2 - Main Entry Point
 Launches Orchestration Bridge + QML UI
+With EchoGuard Radar Integration
 """
 
 import sys
+import os
 import json
 import glob
 from pathlib import Path
@@ -12,12 +14,19 @@ from PySide6.QtCore import QUrl
 from PySide6.QtQml import QQmlApplicationEngine
 from PySide6.QtGui import QGuiApplication
 
+# Windows-specific: Console I/O is much slower than macOS
+# This causes jitter when printing frequently
+WINDOWS_MODE = sys.platform == 'win32'
+
 # Import orchestration components
 from orchestration.bridge import OrchestrationBridge
 from engine.mock_engine_updated import MockEngine
 
 # Import GPS driver
 from src.drivers.gps_septentrio import SeptentrioMosaicDriver
+
+# Import Radar controller
+from src.drivers.radar_controller import RadarController
 
 
 def main():
@@ -31,7 +40,7 @@ def main():
     print("=" * 70)
     print("  TriAD C2 - Counter-UAS Command & Control")
     print("=" * 70)
-    print("  Architecture: Engine → Orchestration → UI")
+    print("  Architecture: Engine -> Orchestration -> UI")
     print("  Engine: Mock (Python prototype)")
     print("  UI: Qt Quick (QML) GPU-accelerated")
     print("=" * 70)
@@ -80,6 +89,49 @@ def main():
     except Exception as e:
         print(f"[INIT] GPS configuration error: {e}")
         print(f"[INIT]   Continuing without GPS...")
+    
+    # Initialize radar controller
+    # Note: Radar initialization is now handled separately to avoid UI jitter
+    # Run radar control script separately or enable here after testing
+    radar_controller = None
+    radar_enabled = config.get('network', {}).get('radar', {}).get('enabled', False)
+    
+    if radar_enabled:
+        try:
+            radar_config = config.get('network', {}).get('radar', {})
+            radar_host = radar_config.get('host', '192.168.1.25')
+            radar_port = radar_config.get('port', 29982)
+            
+            print(f"[INIT] Initializing EchoGuard radar at {radar_host}...")
+            radar_controller = RadarController(radar_host)
+            
+            if radar_controller.connect():
+                print(f"[INIT] Connected to radar command port")
+                if radar_controller.initialize_radar():
+                    print(f"[INIT] Radar initialized")
+                    radar_settings = {
+                        'operation_mode': 1,  # UAS mode
+                        'search_az_min': -60,
+                        'search_az_max': 60,
+                        'search_el_min': -40,
+                        'search_el_max': 40
+                    }
+                    radar_controller.configure_radar(radar_settings)
+                    if radar_controller.start_radar():
+                        print(f"[INIT] Radar started - streaming on port {radar_port}")
+                    else:
+                        print(f"[INIT] WARNING: Failed to start radar")
+                else:
+                    print(f"[INIT] WARNING: Radar initialization failed")
+            else:
+                print(f"[INIT] WARNING: Could not connect to radar at {radar_host}")
+                radar_controller = None
+        except Exception as e:
+            print(f"[INIT] Radar error: {e}")
+            print(f"[INIT]   Continuing without radar control...")
+            radar_controller = None
+    else:
+        print(f"[INIT] Radar control disabled in config (set radar.enabled=true to enable)")
     
     # Initialize orchestration bridge
     print("[INIT] Creating orchestration bridge...")

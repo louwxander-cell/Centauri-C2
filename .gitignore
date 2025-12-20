@@ -51,3 +51,13 @@ Thumbs.db
 # Integration docs (large files - contains zip files over 100MB)
 Integration docs/
 *.zip
+
+# Windows-specific test output files
+c2_*.txt
+qml_*.txt
+debug_*.txt
+triad_*.txt
+*_output.txt
+*_error.txt
+*_stderr*.txt
+*_stdout*.txt

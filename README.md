@@ -8,10 +8,19 @@ The TriAD C2 system provides real-time threat assessment and engagement control 
 
 ### Current Architecture
 
-- **Engine Layer**: Python-based threat prioritization and simulation
+- **Engine Layer**: Python-based threat prioritization and sensor fusion
 - **Orchestration Layer**: Qt bridge connecting backend to UI
 - **UI Layer**: GPU-accelerated QML tactical display
+- **Sensor Integration**: EchoGuard radar with full C2 control
 - **Gunner Interface**: UDP broadcast for external weapon systems
+
+### Integrated Sensors
+
+- ✅ **EchoGuard Radar** - Echodyne MESA radar with automatic control
+  - Full C2 control (no external software required)
+  - Track data streaming at 10 Hz
+  - UAS classification and tracking
+  - 900m range, 120° azimuth FOV
 
 ## Features
 

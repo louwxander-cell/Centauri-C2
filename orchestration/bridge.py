@@ -307,7 +307,9 @@ class OrchestrationBridge(QObject):
         # Set up update timer (simulates telemetry stream)
         self.update_timer = QTimer(self)
         self.update_timer.timeout.connect(self._update_from_engine)
-        self.update_timer.start(33)  # 30 Hz updates (~33ms interval)
+        # Windows: Reduce to 15 Hz to eliminate jitter (was 30 Hz on macOS)
+        update_interval = 67 if sys.platform == 'win32' else 33
+        self.update_timer.start(update_interval)  # 15 Hz on Windows, 30 Hz on macOS
     
     def _update_from_engine(self):
         """Pull updates from engine and push to QML models"""
@@ -371,17 +373,20 @@ class OrchestrationBridge(QObject):
         for tid in stale_tail_ids:
             del self.track_tails[tid]
         
-        # Debug: Print track count occasionally
-        if hasattr(self, '_debug_counter'):
-            self._debug_counter += 1
-        else:
-            self._debug_counter = 0
-        
-        if self._debug_counter % 50 == 0:  # Every 5 seconds
-            print(f"[BRIDGE] Updating UI with {len(snapshot['tracks'])} tracks")
-            if len(snapshot['tracks']) > 0:
-                first_track = snapshot['tracks'][0]
-                print(f"[BRIDGE] First track: ID={first_track.get('id')}, Range={first_track.get('range_m'):.0f}m")
+        # Debug: Print track count occasionally (disabled on Windows for performance)
+        # Windows console I/O is much slower than macOS and causes jitter
+        import sys
+        if sys.platform != 'win32':  # Only print on macOS/Linux
+            if hasattr(self, '_debug_counter'):
+                self._debug_counter += 1
+            else:
+                self._debug_counter = 0
+            
+            if self._debug_counter % 50 == 0:  # Every 5 seconds
+                print(f"[BRIDGE] Updating UI with {len(snapshot['tracks'])} tracks")
+                if len(snapshot['tracks']) > 0:
+                    first_track = snapshot['tracks'][0]
+                    print(f"[BRIDGE] First track: ID={first_track.get('id')}, Range={first_track.get('range_m'):.0f}m")
         
         self.tracks_model.update_tracks(snapshot['tracks'])
         
@@ -812,7 +817,10 @@ class OrchestrationBridge(QObject):
         C2 operator engages a specific track
         Begin streaming ONLY this track to gunners
         """
+        print(f"\n[BRIDGE] *** ENGAGE CALLED *** track_id={track_id}, operator={operator_id}")
+        
         if not self.gunner_interface:
+            print("[BRIDGE] ERROR: No gunner interface available")
             return {'success': False, 'message': 'Gunner interface not available'}
         
         # Validate track exists
@@ -841,7 +849,10 @@ class OrchestrationBridge(QObject):
         C2 operator cancels current engagement
         Stop streaming to gunners
         """
+        print(f"\n[BRIDGE] *** DISENGAGE CALLED *** currently engaged={self.engaged_track_id_value}")
+        
         if not self.gunner_interface:
+            print("[BRIDGE] ERROR: No gunner interface available")
             return {'success': False, 'message': 'Gunner interface not available'}
         
         if self.engaged_track_id_value != -1:

@@ -38,12 +38,11 @@ class SignalBus(QObject):
         """Enforce singleton pattern"""
         if cls._instance is None:
             cls._instance = super(SignalBus, cls).__new__(cls)
-            cls._instance._initialized = False
         return cls._instance
     
     def __init__(self):
         """Initialize the signal bus (only once)"""
-        if self._initialized:
+        if hasattr(self, '_initialized'):
             return
         super().__init__()
         self._initialized = True

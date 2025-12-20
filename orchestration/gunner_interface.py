@@ -247,7 +247,7 @@ class GunnerInterfaceService:
         )
         self.status_thread.start()
         
-        print("[GUNNER INTERFACE] ✓ Service started")
+        print("[GUNNER INTERFACE] [OK] Service started")
     
     def stop(self):
         """Stop the gunner interface service"""
@@ -264,16 +264,16 @@ class GunnerInterfaceService:
         if self.status_socket:
             self.status_socket.close()
         
-        print("[GUNNER INTERFACE] ✓ Stopped")
+        print("[GUNNER INTERFACE] [OK] Stopped")
     
     def _setup_stream_socket(self):
         """Set up UDP broadcast socket for track streaming"""
         try:
             self.stream_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             self.stream_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-            print(f"[GUNNER INTERFACE] ✓ Track stream socket ready")
+            print(f"[GUNNER INTERFACE] [OK] Track stream socket ready")
         except Exception as e:
-            print(f"[GUNNER INTERFACE] ✗ Stream socket error: {e}")
+            print(f"[GUNNER INTERFACE] [ERROR] Stream socket error: {e}")
             raise
     
     def _setup_status_socket(self):
@@ -282,9 +282,9 @@ class GunnerInterfaceService:
             self.status_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             self.status_socket.bind(('0.0.0.0', self.status_receive_port))
             self.status_socket.settimeout(1.0)  # 1 second timeout for clean shutdown
-            print(f"[GUNNER INTERFACE] ✓ Status receive socket ready on port {self.status_receive_port}")
+            print(f"[GUNNER INTERFACE] [OK] Status receive socket ready on port {self.status_receive_port}")
         except Exception as e:
-            print(f"[GUNNER INTERFACE] ✗ Status socket error: {e}")
+            print(f"[GUNNER INTERFACE] [ERROR] Status socket error: {e}")
             raise
     
     def engage_track(self, track_id: int, operator_id: str = "OPERATOR") -> bool:
@@ -296,7 +296,7 @@ class GunnerInterfaceService:
         self.streaming_enabled = True
         self.engagement_start_time = time.time()
         
-        print(f"[GUNNER INTERFACE] ✓ Track {track_id} ENGAGED by {operator_id}")
+        print(f"[GUNNER INTERFACE] [OK] Track {track_id} ENGAGED by {operator_id}")
         print(f"[GUNNER INTERFACE]   Streaming to gunners started")
         return True
     
@@ -306,7 +306,7 @@ class GunnerInterfaceService:
         Stop streaming to gunners
         """
         if self.engaged_track_id:
-            print(f"[GUNNER INTERFACE] ✗ Track {self.engaged_track_id} DISENGAGED")
+            print(f"[GUNNER INTERFACE] [OK] Track {self.engaged_track_id} DISENGAGED")
             self.engaged_track_id = None
             self.streaming_enabled = False
             self.engagement_start_time = None
@@ -365,8 +365,9 @@ class GunnerInterfaceService:
                         # Broadcast engaged track
                         self._broadcast_tracks(single_track_snapshot)
                         
-                        # Log periodically
-                        if iteration % 50 == 0:  # Every 5 seconds at 10 Hz
+                        # Log periodically (disabled on Windows for performance)
+                        import sys
+                        if sys.platform != 'win32' and iteration % 50 == 0:  # Every 5 seconds at 10 Hz
                             engagement_duration = time.time() - self.engagement_start_time
                             print(f"[GUNNER STREAM] Streaming Track {self.engaged_track_id} "
                                   f"({engagement_duration:.1f}s)")
@@ -452,7 +453,7 @@ class GunnerInterfaceService:
         with self.gunner_lock:
             # New or updated gunner
             if status.station_id not in self.gunner_stations:
-                print(f"[GUNNER REGISTRY] ✓ New gunner registered: {status.station_id}")
+                print(f"[GUNNER REGISTRY] [OK] New gunner registered: {status.station_id}")
             
             self.gunner_stations[status.station_id] = status
             

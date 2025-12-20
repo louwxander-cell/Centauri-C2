@@ -2,8 +2,8 @@
   "network": {
     "radar": {
       "protocol": "TCP",
-      "host": "127.0.0.1",
-      "port": 23000
+      "host": "192.168.1.25",
+      "port": 29982
     },
     "rws": {
       "protocol": "UDP",
@@ -16,10 +16,10 @@
     }
   },
   "gps": {
-    "enabled": true,
+    "enabled": false,
     "driver": "production",
     "model": "septentrio_mosaic_h",
-    "port": "/dev/tty.usbmodem38382103",
+    "port": "COM3",
     "port_linux": "/dev/ttyACM0",
     "baudrate": 115200,
     "update_rate_hz": 5
