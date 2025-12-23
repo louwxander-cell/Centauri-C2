@@ -306,20 +306,38 @@ Item {
                             horizontalAlignment: Text.AlignLeft
                         }
                         
-                        // Type badge - minimal (matches tactical display colors)
+                        // Classification badge - multiclass (matches tactical display colors)
                         Text {
-                            text: trackContainer.trackData ? trackContainer.trackData.type : ""
+                            text: {
+                                if (!trackContainer.trackData) return ""
+                                // Use classification if available, fallback to type
+                                var classification = trackContainer.trackData.classification || trackContainer.trackData.type
+                                // Format for display
+                                if (classification === "UAV_MULTI_ROTOR") return "Multi-Rotor"
+                                if (classification === "UAV_FIXED_WING") return "Fixed-Wing"
+                                if (classification === "UNDECLARED") return "Undeclared"
+                                return classification
+                            }
                             font.family: Theme.fontFamily
-                            font.pixelSize: 11
+                            font.pixelSize: 10
                             font.weight: Font.Medium
                             color: {
                                 if (!trackContainer.trackData) return Theme.textTertiary
-                                if (trackContainer.trackData.type === "UAV") return "#EF4444"  // Clean modern red (Monochrome)
-                                if (trackContainer.trackData.type === "BIRD") return "#475569"  // Darker muted slate
-                                if (trackContainer.trackData.type === "UNKNOWN") return "#00E5FF"  // Cyan
+                                var classification = trackContainer.trackData.classification || trackContainer.trackData.type
+                                // Match track classification colors
+                                if (classification === "UAV") return "#DC143C"
+                                if (classification === "UAV_MULTI_ROTOR") return "#8B0000"
+                                if (classification === "UAV_FIXED_WING") return "#FF6600"
+                                if (classification === "WALKER") return "#4169E1"
+                                if (classification === "PLANE") return "#FFD700"
+                                if (classification === "BIRD") return "#00CED1"
+                                if (classification === "VEHICLE") return "#9370DB"
+                                if (classification === "CLUTTER") return "#808080"
+                                if (classification === "UNDECLARED") return "#D3D3D3"
+                                if (classification === "UNKNOWN") return "#00E5FF"
                                 return Theme.textSecondary
                             }
-                            Layout.preferredWidth: 70
+                            Layout.preferredWidth: 85
                             horizontalAlignment: Text.AlignLeft
                         }
                         

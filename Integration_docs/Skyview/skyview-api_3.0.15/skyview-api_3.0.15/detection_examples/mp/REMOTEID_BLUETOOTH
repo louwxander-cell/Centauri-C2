@@ -1,0 +1,48 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "f7582a82-a6e7-4878-88c4-41f5de0fc4e4",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T15:10:30.303Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "REMOTEID_BLUETOOTH",
+        "detectionLabel": "RemoteID Bluetooth",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "fe103fc1-06b5-482a-90a0-83995269bfb4",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T15:10:30.300Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T15:10:30.000Z",
+        "detectionId": "8be38e14-84e2-4336-80bf-ac318ddb2554",
+        "primaryGain": false,
+        "power": 340887.21875,
+        "channel": 38,
+        "aircraftLatitude": 39.08013153076172,
+        "aircraftLongitude": -77.5514144897461,
+        "aircraftAltitude": 78,
+        "pilotLatitude": 39.08013153076172,
+        "pilotLongitude": -77.5514144897461,
+        "identifier": "f0:0c:ab:23:a6:63",
+        "frequency": 2400000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

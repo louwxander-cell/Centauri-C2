@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "7d720280-18f3-478f-ab36-c1815f5d57e7",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T13:17:42.317Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SIYI_DK32",
+        "detectionLabel": "Siyi DK32",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "c4b0a0ef-1d91-4f7a-945d-942a178b8664",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T13:17:42.316Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T13:17:41.000Z",
+        "detectionId": "b9e8e3b2-f4e3-44ad-8653-8c3672adc163",
+        "primaryGain": false,
+        "power": 1233860.25,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

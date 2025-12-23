@@ -99,9 +99,7 @@ def main():
         print(f"[INIT] GPS configuration error: {e}")
         print(f"[INIT]   Continuing without GPS...")
     
-    # Initialize radar controller
-    # Note: Radar initialization is now handled separately to avoid UI jitter
-    # Run radar control script separately or enable here after testing
+    # Initialize radar controller (but don't connect yet - operator will connect via UI)
     radar_controller = None
     radar_enabled = config.get('network', {}).get('radar', {}).get('enabled', False)
     
@@ -109,32 +107,12 @@ def main():
         try:
             radar_config = config.get('network', {}).get('radar', {})
             radar_host = radar_config.get('host', '192.168.1.25')
-            radar_port = radar_config.get('port', 29982)
+            radar_port = radar_config.get('command_port', 23)  # Command port is 23, NOT 29982 (tracks port)
             
-            print(f"[INIT] Initializing EchoGuard radar at {radar_host}...")
-            radar_controller = RadarController(radar_host)
+            print(f"[INIT] EchoGuard radar command port at {radar_host}:{radar_port}")
+            print(f"[INIT]   Status: STANDBY (click orange indicator to connect)")
+            radar_controller = RadarController(radar_host, port=radar_port)
             
-            if radar_controller.connect():
-                print(f"[INIT] Connected to radar command port")
-                if radar_controller.initialize_radar():
-                    print(f"[INIT] Radar initialized")
-                    radar_settings = {
-                        'operation_mode': 1,  # UAS mode
-                        'search_az_min': -60,
-                        'search_az_max': 60,
-                        'search_el_min': -40,
-                        'search_el_max': 40
-                    }
-                    radar_controller.configure_radar(radar_settings)
-                    if radar_controller.start_radar():
-                        print(f"[INIT] Radar started - streaming on port {radar_port}")
-                    else:
-                        print(f"[INIT] WARNING: Failed to start radar")
-                else:
-                    print(f"[INIT] WARNING: Radar initialization failed")
-            else:
-                print(f"[INIT] WARNING: Could not connect to radar at {radar_host}")
-                radar_controller = None
         except Exception as e:
             print(f"[INIT] Radar error: {e}")
             print(f"[INIT]   Continuing without radar control...")
@@ -144,7 +122,14 @@ def main():
     
     # Initialize orchestration bridge
     print("[INIT] Creating orchestration bridge...")
-    bridge = OrchestrationBridge(engine, gps_driver=gps_driver)
+    bridge = OrchestrationBridge(
+        engine, 
+        gps_driver=gps_driver, 
+        radar_driver=radar_controller,
+        gps_enabled=config.get('gps', {}).get('enabled', False),
+        radar_enabled=radar_enabled,
+        rf_enabled=False  # RF sensor not yet implemented
+    )
     
     # Create QML engine
     qml_engine = QQmlApplicationEngine()
@@ -154,6 +139,7 @@ def main():
     qml_engine.rootContext().setContextProperty("tracksModel", bridge.tracks_model)
     qml_engine.rootContext().setContextProperty("ownship", bridge.ownship)
     qml_engine.rootContext().setContextProperty("systemMode", bridge.system_mode)
+    qml_engine.rootContext().setContextProperty("systemStatus", bridge.system_status)
     qml_engine.rootContext().setContextProperty("bridge", bridge)
     qml_engine.rootContext().setContextProperty("engine", engine)  # For test scenario controls
     

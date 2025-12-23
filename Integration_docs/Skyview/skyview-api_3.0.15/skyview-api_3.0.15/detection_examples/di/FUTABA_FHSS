@@ -1,0 +1,268 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "e7b1d8d2-6d46-45c5-8048-793a96bed3af",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T21:26:27.582Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FUTABA_FHSS",
+        "detectionLabel": "Futaba FHSS 2.4",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "e1a78d5d-14b8-454b-b558-e371cf0a0d47",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:26:22.725Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T21:26:13.000Z",
+        "detectionId": "77a63de0-9a18-4820-bb91-37abe9d339ab",
+        "primaryGain": false,
+        "power": 1119611.75,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "FUTABA_FHSS",
+        "detectionLabel": "Futaba FHSS 2.4",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "066c5e12-d39a-4d19-80e9-54c6aa41df07",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:26:23.357Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "FUTABA_FHSS",
+            "detectionLabel": "Futaba FHSS 2.4",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "d9c6e472-86d8-4584-beb1-b092b0c7f428",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:26:14.739Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:26:09.000Z",
+            "detectionId": "fea5e440-4d49-471a-96ba-572716cd6e08",
+            "primaryGain": true,
+            "power": 132209.953125,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FUTABA_FHSS",
+            "detectionLabel": "Futaba FHSS 2.4",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "8a646182-1676-4305-ad85-ac7bafdbc379",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:26:15.816Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:26:09.000Z",
+            "detectionId": "a91233ef-167d-4ea7-b1b1-18e0818504e1",
+            "primaryGain": true,
+            "power": 50881.28125,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FUTABA_FHSS",
+            "detectionLabel": "Futaba FHSS 2.4",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "90fe4292-82bd-40d1-b2ad-fd37496d959b",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:26:17.890Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:26:14.000Z",
+            "detectionId": "8ea35a88-23d8-498a-ac78-232d477abe60",
+            "primaryGain": true,
+            "power": 2788905.75,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FUTABA_FHSS",
+            "detectionLabel": "Futaba FHSS 2.4",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "eae8af28-95da-4ffd-929a-6bcde56a4641",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:26:19.798Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:26:15.000Z",
+            "detectionId": "b1472929-f80c-4870-bc33-23b7962adbef",
+            "primaryGain": true,
+            "power": 92394.3359375,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FUTABA_FHSS",
+            "detectionLabel": "Futaba FHSS 2.4",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "fe610b9b-8552-4dd3-bd61-99cf5b7c11bf",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:26:21.612Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:26:16.000Z",
+            "detectionId": "444a1e06-a150-438b-9f90-ade8b507e05b",
+            "primaryGain": true,
+            "power": 52524.90625,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FUTABA_FHSS",
+            "detectionLabel": "Futaba FHSS 2.4",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "066c5e12-d39a-4d19-80e9-54c6aa41df07",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:26:23.357Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:26:18.000Z",
+            "detectionId": "b4b1be02-3cc1-4269-8b38-b8670dc2b273",
+            "primaryGain": true,
+            "power": 2970761,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FUTABA_FHSS",
+            "detectionLabel": "Futaba FHSS 2.4",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "bf686f24-105e-46d3-9596-5ef3bab83974",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:26:25.195Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:26:20.000Z",
+            "detectionId": "a3bb4019-aaf9-4660-a3a5-04d9e6586657",
+            "primaryGain": true,
+            "power": 113720.8359375,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FUTABA_FHSS",
+            "detectionLabel": "Futaba FHSS 2.4",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "f90d73d9-ab52-47ac-baa3-0534cc1baa0b",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:26:27.164Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:26:22.000Z",
+            "detectionId": "4e40de97-a0b2-4587-a3b7-0ecf2bb1de72",
+            "primaryGain": true,
+            "power": 46959.01953125,
+            "channel": 0,
+            "frequency": 2400000000
+          }
+        ],
+        "radio": "318A340|TXRX",
+        "directiveId": "5eecf4d3-91da-4f9b-8916-320ae0054091",
+        "sector": 7,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T21:26:18.000Z",
+        "detectionId": "b4b1be02-3cc1-4269-8b38-b8670dc2b273",
+        "primaryGain": true,
+        "power": 2970761,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ]
+  }
+}

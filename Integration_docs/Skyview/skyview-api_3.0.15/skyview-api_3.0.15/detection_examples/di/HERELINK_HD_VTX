@@ -1,0 +1,193 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "5f45175f-b0d2-4950-8eca-c475c4126256",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T21:32:13.138Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "HERELINK_HD_VTX",
+        "detectionLabel": "Herelink",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "f1569b78-0858-47e8-ba30-b910de6b1855",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:32:09.845Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T21:32:09.000Z",
+        "detectionId": "e396f860-0b86-4835-8da8-2a9bbdd0c6f0",
+        "primaryGain": false,
+        "power": 1304.5152587890625,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "HERELINK_HD_VTX",
+        "detectionLabel": "Herelink",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "188b9923-927f-4598-a432-5968cef488df",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:32:12.553Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "HERELINK_HD_VTX",
+            "detectionLabel": "Herelink",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "2cf5efb9-3c53-46bf-a7a8-60721c66ea24",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:32:12.370Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "4f9c7c13-f9ee-41e9-9503-d1ab2ccaeed9",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:32:12.000Z",
+            "detectionId": "0c19864e-e253-4cc3-a79f-798bc5a53ade",
+            "primaryGain": true,
+            "power": 377.67156982421875,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "HERELINK_HD_VTX",
+            "detectionLabel": "Herelink",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "811802de-7328-4e21-ae51-b94fc7432988",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:32:12.527Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "4f9c7c13-f9ee-41e9-9503-d1ab2ccaeed9",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:32:12.000Z",
+            "detectionId": "dfa0fc50-b7a0-46e4-81fb-83928731ef5c",
+            "primaryGain": true,
+            "power": 942.3154907226562,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "HERELINK_HD_VTX",
+            "detectionLabel": "Herelink",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "188b9923-927f-4598-a432-5968cef488df",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:32:12.553Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "4f9c7c13-f9ee-41e9-9503-d1ab2ccaeed9",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:32:12.000Z",
+            "detectionId": "e25a87c3-2d74-4e37-85ed-5816ec812a53",
+            "primaryGain": true,
+            "power": 28306.287109375,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "HERELINK_HD_VTX",
+            "detectionLabel": "Herelink",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "6c6c0d3b-ea5e-4990-a022-6994c446febd",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:32:12.614Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "4f9c7c13-f9ee-41e9-9503-d1ab2ccaeed9",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:32:12.000Z",
+            "detectionId": "d9e5925f-da67-4ebd-b6ba-fc9c0e8aa7b5",
+            "primaryGain": true,
+            "power": 383.605224609375,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "HERELINK_HD_VTX",
+            "detectionLabel": "Herelink",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "482d429b-d849-4e6c-a4e1-7fb1caadd661",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:32:12.732Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "4f9c7c13-f9ee-41e9-9503-d1ab2ccaeed9",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:32:12.000Z",
+            "detectionId": "6fbc841f-5f4f-4d26-83b7-f8a0b64d996f",
+            "primaryGain": true,
+            "power": 937.1309814453125,
+            "channel": 0,
+            "frequency": 2400000000
+          }
+        ],
+        "radio": "318A340|TXRX",
+        "directiveId": "4f9c7c13-f9ee-41e9-9503-d1ab2ccaeed9",
+        "sector": 7,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T21:32:12.000Z",
+        "detectionId": "e25a87c3-2d74-4e37-85ed-5816ec812a53",
+        "primaryGain": true,
+        "power": 28306.287109375,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ]
+  }
+}

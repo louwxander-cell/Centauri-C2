@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "15649dda-454d-48b6-ba40-19212e6501b9",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T15:08:15.518Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "AUTEL_SKYLINK",
+        "detectionLabel": "Autel Skylink",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "7d9322da-b71f-4385-8dc0-dc9e928bdfdf",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T15:08:15.466Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T15:08:08.000Z",
+        "detectionId": "3b51956c-527d-4fda-a27c-3b24bff048b1",
+        "primaryGain": false,
+        "power": 13801837,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

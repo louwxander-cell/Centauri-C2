@@ -1,0 +1,53 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "9a7572ae-40de-44a1-91b0-4a0656a96fa6",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:53:08.377Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "PIXHAWK",
+        "detectionLabel": "Pixhawk Telemetry",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "d88cc48b-7b08-48f4-9295-f70b1e147054",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:53:08.375Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:53:08.000Z",
+        "detectionId": "80f16151-1359-4aca-bb48-ed36cbe27e19",
+        "primaryGain": true,
+        "homeLatitude": 0,
+        "homeLongitude": 0,
+        "aircraftLatitude": 39.08022689819336,
+        "aircraftLongitude": -77.55152130126953,
+        "aircraftAltitude": 121.54000091552734,
+        "aircraftPitch": 0,
+        "aircraftRoll": 0,
+        "aircraftYaw": 0,
+        "aircraftVelocityNorth": 0,
+        "aircraftVelocityEast": 0,
+        "aircraftVelocityUp": 0,
+        "frequency": 433000000,
+        "netid": "25",
+        "power": 172344.84375,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

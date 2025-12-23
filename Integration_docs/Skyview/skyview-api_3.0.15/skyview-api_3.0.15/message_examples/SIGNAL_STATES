@@ -1,0 +1,184 @@
+{
+  "signalStates": [
+    {
+      "name": "autelevo",
+      "enabled": true
+    },
+    {
+      "name": "autelskylink",
+      "enabled": false
+    },
+    {
+      "name": "crossfire",
+      "enabled": true
+    },
+    {
+      "name": "digi",
+      "enabled": true
+    },
+    {
+      "name": "dlink",
+      "enabled": true
+    },
+    {
+      "name": "expresslrs",
+      "enabled": false
+    },
+    {
+      "name": "extendedexpresslrs",
+      "enabled": true
+    },
+    {
+      "name": "feiyufy605",
+      "enabled": false
+    },
+    {
+      "name": "fimi",
+      "enabled": false
+    },
+    {
+      "name": "freewavefgr3",
+      "enabled": false
+    },
+    {
+      "name": "frsky",
+      "enabled": false
+    },
+    {
+      "name": "futabafasst",
+      "enabled": true
+    },
+    {
+      "name": "futabafhss",
+      "enabled": false
+    },
+    {
+      "name": "graupner",
+      "enabled": false
+    },
+    {
+      "name": "herelink",
+      "enabled": false
+    },
+    {
+      "name": "hero",
+      "enabled": true
+    },
+    {
+      "name": "lancet",
+      "enabled": false
+    },
+    {
+      "name": "lightbridgeaircraft24",
+      "enabled": true
+    },
+    {
+      "name": "lightbridgeaircraft58",
+      "enabled": true
+    },
+    {
+      "name": "lightbridgehandset",
+      "enabled": false
+    },
+    {
+      "name": "mavicair",
+      "enabled": true
+    },
+    {
+      "name": "microhard",
+      "enabled": true
+    },
+    {
+      "name": "ntscext",
+      "enabled": false
+    },
+    {
+      "name": "ntschigh",
+      "enabled": true
+    },
+    {
+      "name": "ntsclow",
+      "enabled": true
+    },
+    {
+      "name": "ntscmid",
+      "enabled": true
+    },
+    {
+      "name": "ocusyncaircraft",
+      "enabled": true
+    },
+    {
+      "name": "orlan10",
+      "enabled": true
+    },
+    {
+      "name": "pixhawk",
+      "enabled": true
+    },
+    {
+      "name": "pixhawkrfd",
+      "enabled": true
+    },
+    {
+      "name": "remoteidbt",
+      "enabled": true
+    },
+    {
+      "name": "rfsurvey",
+      "enabled": false
+    },
+    {
+      "name": "rmilec",
+      "enabled": true
+    },
+    {
+      "name": "siyidk32",
+      "enabled": false
+    },
+    {
+      "name": "spektrum",
+      "enabled": true
+    },
+    {
+      "name": "splash",
+      "enabled": false
+    },
+    {
+      "name": "supercam",
+      "enabled": true
+    },
+    {
+      "name": "taranisx8r",
+      "enabled": true
+    },
+    {
+      "name": "yuneectyphoon",
+      "enabled": false
+    },
+    {
+      "name": "wifi3dr",
+      "enabled": false
+    },
+    {
+      "name": "wifidji",
+      "enabled": true
+    },
+    {
+      "name": "wifiparrot",
+      "enabled": true
+    },
+    {
+      "name": "wifiremoteid",
+      "enabled": true
+    },
+    {
+      "name": "wifiskydio",
+      "enabled": true
+    },
+    {
+      "name": "wifiyuneec",
+      "enabled": true
+    }
+  ]
+}

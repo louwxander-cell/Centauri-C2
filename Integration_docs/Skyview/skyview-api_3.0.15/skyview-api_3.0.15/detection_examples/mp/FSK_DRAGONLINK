@@ -1,0 +1,54 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "74c32f6e-d267-458a-a616-b02af897fe7d",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T15:24:01.426Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FSK_DRAGONLINK",
+        "detectionLabel": "DragonLink",
+        "signalType": "GCS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "3298f33b-896d-4f8c-bf18-0ec927659c71",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T15:24:01.423Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T15:24:00.000Z",
+        "detectionId": "d09e506c-572e-44c2-8e74-7d57748a8722",
+        "primaryGain": true,
+        "power": 202718.46875,
+        "homeLatitude": 0,
+        "homeLongitude": 0,
+        "aircraftLatitude": 0,
+        "aircraftLongitude": 0,
+        "aircraftAltitude": -17,
+        "aircraftPitch": 0,
+        "aircraftRoll": 0,
+        "aircraftYaw": 0,
+        "aircraftVelocityNorth": 0,
+        "aircraftVelocityEast": 0,
+        "aircraftVelocityUp": 0,
+        "netid": "321",
+        "dlinkVersion": "dragonlink 433 6x",
+        "frequency": 433000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

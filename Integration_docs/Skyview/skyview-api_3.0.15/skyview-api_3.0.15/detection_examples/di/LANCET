@@ -1,0 +1,138 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "9bc715a4-bdb6-46c2-b852-965156be450f",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T21:43:38.327Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "LANCET",
+        "detectionLabel": "ZALA Lancet UAS",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "4bb02817-33da-473c-b58a-51ec07b7b394",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:43:04.119Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T21:43:03.000Z",
+        "detectionId": "b704faac-7e8f-4210-a3d7-4b076a8cc4d8",
+        "primaryGain": false,
+        "power": 4316.16455078125,
+        "frequency": 868000000
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "LANCET",
+        "detectionLabel": "ZALA Lancet UAS",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "6ee633a0-08f6-4ca4-b8db-229629efd893",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:43:37.201Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "LANCET",
+            "detectionLabel": "ZALA Lancet UAS",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "e0285f55-9af4-4fba-a6ea-430ced4374fb",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:43:37.173Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "221b9b8f-e6cf-4ce8-a2b8-4c3788c965fe",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:43:37.000Z",
+            "detectionId": "2f7b0ad5-1a3d-40d5-83a0-68bdb32e8082",
+            "primaryGain": true,
+            "power": 4553.525390625,
+            "frequency": 868000000
+          },
+          {
+            "detectionType": "LANCET",
+            "detectionLabel": "ZALA Lancet UAS",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "e073b805-6431-4cb9-a1a2-0a3366226f4e",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:43:37.894Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "221b9b8f-e6cf-4ce8-a2b8-4c3788c965fe",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:43:37.000Z",
+            "detectionId": "646baa81-c6f9-42fd-bcaf-9fdff387bb21",
+            "primaryGain": true,
+            "power": 4268.72412109375,
+            "frequency": 868000000
+          },
+          {
+            "detectionType": "LANCET",
+            "detectionLabel": "ZALA Lancet UAS",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "b7bce2f7-c387-4f08-a2f1-fd93c4d2c339",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:43:37.925Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "221b9b8f-e6cf-4ce8-a2b8-4c3788c965fe",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:43:37.000Z",
+            "detectionId": "bb2204ae-1adf-4b69-ab54-bea1c4fa5815",
+            "primaryGain": true,
+            "power": 597689.0625,
+            "frequency": 868000000
+          }
+        ],
+        "radio": "318A340|TXRX",
+        "directiveId": "221b9b8f-e6cf-4ce8-a2b8-4c3788c965fe",
+        "sector": 7,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T21:43:37.000Z",
+        "detectionId": "dee5944e-7056-4ee4-a9a7-97db9c377544",
+        "primaryGain": true,
+        "power": 663596.25,
+        "frequency": 868000000
+      }
+    ]
+  }
+}

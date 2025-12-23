@@ -111,13 +111,19 @@ class MockRadarSensor:
                 'velocity_mps': speed,  # UI compatibility
                 'heading_deg': random.uniform(0, 360),
                 'type': 'UAV',
+                'classification': 'UAV_MULTI_ROTOR',  # Multiclass classifier result
                 'confidence': 0.75 + random.uniform(-0.1, 0.1),
                 'source': 'RADAR',
                 'status': 'TRACKING',
                 # Radar-specific
                 'rcs_m2': random.uniform(0.01, 0.1),  # Small UAV RCS
                 'probability_uav': 0.85 + random.uniform(-0.1, 0.1),
-                'probability_other': 0.15 + random.uniform(-0.1, 0.1),
+                'probability_bird': 0.05 + random.uniform(-0.02, 0.02),
+                'probability_plane': 0.02 + random.uniform(-0.01, 0.01),
+                'probability_walker': 0.01 + random.uniform(-0.01, 0.01),
+                'probability_vehicle': 0.01 + random.uniform(-0.01, 0.01),
+                'probability_clutter': 0.03 + random.uniform(-0.01, 0.01),
+                'probability_undeclared': 0.03 + random.uniform(-0.01, 0.01),
                 'num_associated_meas': random.randint(10, 50),
                 'est_confidence': 0.8 + random.uniform(-0.1, 0.1),
                 'lifetime_sec': lifetime,
@@ -415,13 +421,13 @@ class MockEngine(QObject):
             current_speed = math.sqrt(vx**2 + vy**2)
             
             if track_type == 'UAV':
-                # UAVs: Curved paths with visible turns
+                # UAVs: More aggressive maneuvering - evasive patterns
                 # Base continuous turning for curved flight
-                turn_rate = random.uniform(-5, 5) * dt  # degrees per update - gentle continuous curve
+                turn_rate = random.uniform(-10, 10) * dt  # Increased from -5,5 - more dynamic
                 
-                # Occasional course corrections (realistic drone maneuvering)
-                if random.random() < 0.15 * dt * 30:  # 15% chance per second
-                    turn_rate += random.uniform(-20, 20) * dt  # Moderate turns
+                # More frequent course corrections (aggressive drone maneuvering)
+                if random.random() < 0.30 * dt * 30:  # 30% chance per second (was 15%)
+                    turn_rate += random.uniform(-35, 35) * dt  # Sharper turns (was -20,20)
                 
                 # Apply turn by rotating velocity vector
                 turn_rad = math.radians(turn_rate)
@@ -431,9 +437,9 @@ class MockEngine(QObject):
                 vy_new = vx * sin_turn + vy * cos_turn
                 vx, vy = vx_new, vy_new
                 
-                # Occasional speed variations (wind, battery, maneuvering)
-                if random.random() < 0.10 * dt * 30:  # ~10% per second
-                    speed_change = random.uniform(-3, 3)
+                # More frequent speed variations (evasive maneuvers)
+                if random.random() < 0.20 * dt * 30:  # 20% per second (was 10%)
+                    speed_change = random.uniform(-5, 5)  # Larger changes (was -3,3)
                     if current_speed > 1:
                         new_speed = max(5.0, current_speed + speed_change)  # Enforce 5 m/s minimum
                         scale = new_speed / current_speed
@@ -443,11 +449,11 @@ class MockEngine(QObject):
             elif track_type == 'BIRD':
                 # Birds: Highly dynamic, circular patterns, rapid turns
                 # Continuous turning for circular/spiraling motion
-                turn_rate = random.uniform(-15, 15) * dt  # Moderate continuous turns
+                turn_rate = random.uniform(-20, 20) * dt  # Increased from -15,15
                 
                 # More frequent sharp direction changes (birds are erratic)
-                if random.random() < 0.25 * dt * 30:  # ~25% per second
-                    turn_rate += random.uniform(-35, 35) * dt  # Sharp turns
+                if random.random() < 0.35 * dt * 30:  # 35% per second (was 25%)
+                    turn_rate += random.uniform(-45, 45) * dt  # Sharper turns (was -35,35)
                 
                 # Apply turn
                 turn_rad = math.radians(turn_rate)
@@ -458,8 +464,8 @@ class MockEngine(QObject):
                 vx, vy = vx_new, vy_new
                 
                 # Birds have more speed variation
-                if random.random() < 0.15 * dt * 30:  # ~15% per second
-                    speed_change = random.uniform(-5, 5)
+                if random.random() < 0.25 * dt * 30:  # 25% per second (was 15%)
+                    speed_change = random.uniform(-7, 7)  # Larger changes (was -5,5)
                     if current_speed > 1:
                         new_speed = max(5.0, current_speed + speed_change)  # Enforce 5 m/s minimum
                         scale = new_speed / current_speed
@@ -469,7 +475,7 @@ class MockEngine(QObject):
             elif track_type == 'UNKNOWN':
                 # Unknown: Erratic, unpredictable behavior
                 # Continuous moderate turns
-                turn_rate = random.uniform(-8, 8) * dt
+                turn_rate = random.uniform(-12, 12) * dt  # Increased from -8,8
                 
                 # Occasional unpredictable course changes
                 if random.random() < 0.20 * dt * 30:  # ~20% per second - somewhat erratic
@@ -954,14 +960,32 @@ class MockEngine(QObject):
                 el = random.uniform(5, 30)
                 vel_mps = random.uniform(5, 50)
                 
-                # Weighted distribution: 50% UAV, 30% BIRD, 20% UNKNOWN
+                # Weighted distribution with multiclass classifications
                 type_choice = random.random()
-                if type_choice < 0.5:
+                if type_choice < 0.3:
                     track_type = 'UAV'
-                elif type_choice < 0.8:
+                    classification = 'UAV_MULTI_ROTOR'
+                elif type_choice < 0.45:
+                    track_type = 'UAV'
+                    classification = 'UAV_FIXED_WING'
+                elif type_choice < 0.6:
                     track_type = 'BIRD'
+                    classification = 'BIRD'
+                elif type_choice < 0.7:
+                    track_type = 'UAV'
+                    classification = 'WALKER'
+                elif type_choice < 0.8:
+                    track_type = 'UAV'
+                    classification = 'PLANE'
+                elif type_choice < 0.85:
+                    track_type = 'UAV'
+                    classification = 'VEHICLE'
+                elif type_choice < 0.9:
+                    track_type = 'UNKNOWN'
+                    classification = 'CLUTTER'
                 else:
                     track_type = 'UNKNOWN'
+                    classification = 'UNDECLARED'
                 
                 # Generate random velocity direction
                 vel_azimuth = random.uniform(0, 360)
@@ -974,6 +998,7 @@ class MockEngine(QObject):
                 tracks.append({
                     'id': track_id,
                     'type': track_type,
+                    'classification': classification,
                     'source': random.choice(['RADAR', 'RF', 'FUSED', 'RADAR', 'RADAR']),
                     'azimuth_deg': az,
                     'az_deg': az,
@@ -1010,6 +1035,12 @@ class MockEngine(QObject):
             print(f"[ENGINE]   Velocities: 5-50 m/s (minimum enforced), mix of RADAR/RF/FUSED")
             print(f"[ENGINE]   Smooth motion with realistic maneuvering")
             print(f"[ENGINE]   Tracks stay in bounds (200-3000m) via boundary redirection")
+            # Show classification breakdown
+            class_counts = {}
+            for t in tracks:
+                cls = t.get('classification', 'NONE')
+                class_counts[cls] = class_counts.get(cls, 0) + 1
+            print(f"[ENGINE]   Classifications: {class_counts}")
         
         else:
             print(f"[ENGINE] Unknown scenario: {scenario_name}")

@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "89a612c5-39d9-4e64-9a85-43779271764d",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:21:59.318Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FIMI",
+        "detectionLabel": "Fimi",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "b1c47e42-c159-4ef9-bc0a-c3f4cdb8aa4a",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:21:59.317Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:21:59.000Z",
+        "detectionId": "e099c878-ed7c-44e4-b4e4-38d7f744b5ea",
+        "primaryGain": false,
+        "power": 2033.6041259765625,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

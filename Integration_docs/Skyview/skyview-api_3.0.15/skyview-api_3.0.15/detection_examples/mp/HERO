@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "bbe5c95c-7993-4e13-8c9b-0b32ba8aecc9",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:49:24.169Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "HERO",
+        "detectionLabel": "HERO Loitering Munition",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "34358fa7-3896-4119-9f73-07f874364a1b",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:49:24.168Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:49:24.000Z",
+        "detectionId": "b1938f41-7161-4c51-8da5-08003fd47d8d",
+        "primaryGain": false,
+        "power": 5202.138671875,
+        "channel": 24,
+        "frequency": 2200000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

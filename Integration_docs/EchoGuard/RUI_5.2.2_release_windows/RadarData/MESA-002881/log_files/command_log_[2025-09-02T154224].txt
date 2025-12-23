@@ -1,0 +1,964 @@
+[15:42:24:243] BNET API:
+BNET VERSION: 11.2.1	BUILD TIME: Mar 21 2023 17:30:26
+Connected to MESA-002881 at 169.254.1.10:23
+	STATUS data: 29979
+	RVMAP data: 29980
+	DETECTION data: 29981
+	TRACK data: 29982
+	MEASUREMENT data: 29984
+
+[15:42:24:254] BNET:
+MODE:SWT:STOP 
+[15:42:24:255] MESA:
+Command Not Available
+NA
+
+[15:42:24:255] BNET:
+MODE:SEARCH:STOP 
+[15:42:24:256] MESA:
+Command Not Available
+NA
+
+[15:42:24:256] BNET:
+*TST? 
+[15:42:24:305] MESA:
+--------------- SYSTEM INIT STATUS---------------
+SDRAM: 0
+GLOBAL INTERRUPT INIT: 0
+CPU INTERRUPT INIT: 0
+GLOBAL TIMER: 0
+FPGA: 0
+SPI: 0
+GPIO INIT: 0
+GPIO CFG: 0
+CPU INTERRUPT ENABLE: 0
+GLOBAL INTERRUPT ENABLE: 0
+EMMC INIT: 0
+ETHERNET INIT: 0
+I2C INIT: 0
+IMU INIT: 0
+CACHE INIT: 0
+----------------- SYSTEM STATE ------------------
+CURRENT STATE: SYSTEM_STATE_STANDBY
+--------------- ETHERNET STATUS -----------------
+SPEED: 1000 Mb/s
+Filter log level: ERROR(4)
+Filter mask: FFFFFFFF
+------------------- Saved Log Begins ------------------- 
+0:1634518:ERROR:ETH(10): Conn = 2 tossing packet from 326273614747 @ 326903615026
+0:1634568:ERROR:ETH(10): Conn = 2 tossing packet from 326283614313 @ 326913615260
+0:1634618:ERROR:ETH(10): Conn = 2 tossing packet from 326293616709 @ 326923614192
+0:1634668:ERROR:ETH(10): Conn = 2 tossing packet from 326303617759 @ 326933630092
+0:1634718:ERROR:ETH(10): Conn = 2 tossing packet from 326313617410 @ 326943615581
+0:1634768:ERROR:ETH(10): Conn = 2 tossing packet from 326323615669 @ 326953616375
+0:1634818:ERROR:ETH(10): Conn = 2 tossing packet from 326333630034 @ 326963614260
+0:1634868:ERROR:ETH(10): Conn = 2 tossing packet from 326343616056 @ 326973614365
+0:1634918:ERROR:ETH(10): Conn = 2 tossing packet from 326353614381 @ 326983629143
+0:1634968:ERROR:ETH(10): Conn = 2 tossing packet from 326363617294 @ 326993614128
+0:1635018:ERROR:ETH(10): Conn = 2 tossing packet from 326373614682 @ 327003615149
+0:1635068:ERROR:ETH(10): Conn = 2 tossing packet from 326383630310 @ 327013615155
+0:1635118:ERROR:ETH(10): Conn = 2 tossing packet from 326393617470 @ 327023615730
+0:1635168:ERROR:ETH(10): Conn = 2 tossing packet from 326403614335 @ 327033630093
+0:1635218:ERROR:ETH(10): Conn = 2 tossing packet from 326413617050 @ 327043615422
+0:1635268:ERROR:ETH(10): Conn = 2 tossing packet from 326423615003 @ 327053615648
+0:1635318:ERROR:ETH(10): Conn = 2 tossing packet from 326433631073 @ 327063614851
+0:1635368:ERROR:ETH(10): Conn = 2 tossing packet from 326443615935 @ 327073616228
+0:1635418:ERROR:ETH(10): Conn = 2 tossing packet from 326453615370 @ 327083628898
+0:1635468:ERROR:ETH(10): Conn = 2 tossing packet from 326463615812 @ 327093614523
+0:1635518:ERROR:ETH(10): Conn = 2 tossing packet from 326473617402 @ 327103617294
+0:1635568:ERROR:ETH(10): Conn = 2 tossing packet from 326483614744 @ 327113616546
+0:1635618:ERROR:ETH(10): Conn = 2 tossing packet from 326493617362 @ 327123616887
+0:1635668:ERROR:ETH(10): Conn = 2 tossing packet from 326503616725 @ 327133630671
+0:1635718:ERROR:ETH(10): Conn = 2 tossing packet from 326513615554 @ 327143614965
+0:1635768:ERROR:ETH(10): Conn = 2 tossing packet from 326523614421 @ 327153614727
+0:1635818:ERROR:ETH(10): Conn = 2 tossing packet from 326533628244 @ 327163615527
+0:1635868:ERROR:ETH(10): Conn = 2 tossing packet from 326543616156 @ 327173615794
+0:1635918:ERROR:ETH(10): Conn = 2 tossing packet from 326553617133 @ 327183629410
+0:1635968:ERROR:ETH(10): Conn = 2 tossing packet from 326563616540 @ 327193615729
+0:1636018:ERROR:ETH(10): Conn = 2 tossing packet from 326573614777 @ 327203614992
+0:1636068:ERROR:ETH(10): Conn = 2 tossing packet from 326583630238 @ 327213617062
+0:1636118:ERROR:ETH(10): Conn = 2 tossing packet from 326593614157 @ 327223616437
+0:1636168:ERROR:ETH(10): Conn = 2 tossing packet from 326603617532 @ 327233629774
+0:1636218:ERROR:ETH(10): Conn = 2 tossing packet from 326613617343 @ 327243614018
+0:1636268:ERROR:ETH(10): Conn = 2 tossing packet from 326623617339 @ 327253617479
+0:1636318:ERROR:ETH(10): Conn = 2 tossing packet from 326633630712 @ 327263614500
+0:1636368:ERROR:ETH(10): Conn = 2 tossing packet from 326643614450 @ 327273615234
+0:1636418:ERROR:ETH(10): Conn = 2 tossing packet from 326653617392 @ 327283630048
+0:1636468:ERROR:ETH(10): Conn = 2 tossing packet from 326663617294 @ 327293616688
+0:1636518:ERROR:ETH(10): Conn = 2 tossing packet from 326673616360 @ 327303614030
+0:1636568:ERROR:ETH(10): Conn = 2 tossing packet from 326683613939 @ 327313615357
+0:1636618:ERROR:ETH(10): Conn = 2 tossing packet from 326693615366 @ 327323614810
+0:1636668:ERROR:ETH(10): Conn = 2 tossing packet from 326703615251 @ 327333629848
+0:1636718:ERROR:ETH(10): Conn = 2 tossing packet from 326713616950 @ 327343615900
+0:1636768:ERROR:ETH(10): Conn = 2 tossing packet from 326723614939 @ 327353617670
+0:1636818:ERROR:ETH(10): Conn = 2 tossing packet from 326733614126 @ 327363615519
+0:1636868:ERROR:ETH(10): Conn = 2 tossing packet from 326743616137 @ 327373614315
+0:1636918:ERROR:ETH(10): Conn = 2 tossing packet from 326753615119 @ 327383630476
+0:1636968:ERROR:ETH(10): Conn = 2 tossing packet from 326763614418 @ 327393616546
+0:1637018:ERROR:ETH(10): Conn = 2 tossing packet from 326773616757 @ 327403614124
+0:1637068:ERROR:ETH(10): Conn = 2 tossing packet from 326783628972 @ 327413617188
+0:1637118:ERROR:ETH(10): Conn = 2 tossing packet from 326793614722 @ 327423615938
+0:1637168:ERROR:ETH(10): Conn = 2 tossing packet from 326803615621 @ 327433629964
+0:1637218:ERROR:ETH(10): Conn = 2 tossing packet from 326813614494 @ 327443615294
+0:1637268:ERROR:ETH(10): Conn = 2 tossing packet from 326823614368 @ 327453615834
+0:1637318:ERROR:ETH(10): Conn = 2 tossing packet from 326833629496 @ 327463616412
+0:1637368:ERROR:ETH(10): Conn = 2 tossing packet from 326843615676 @ 327473616585
+0:1637418:ERROR:ETH(10): Conn = 2 tossing packet from 326853616471 @ 327483628435
+0:1637468:ERROR:ETH(10): Conn = 2 tossing packet from 326863616518 @ 327493614555
+0:1637518:ERROR:ETH(10): Conn = 2 tossing packet from 326873617102 @ 327503614668
+0:1637568:ERROR:ETH(10): Conn = 2 tossing packet from 326883629180 @ 327513614629
+0:1637618:ERROR:ETH(10): Conn = 2 tossing packet from 326893617507 @ 327523616914
+0:1637668:ERROR:ETH(10): Conn = 2 tossing packet from 326903621759 @ 327533629462
+0:1637718:ERROR:ETH(10): Conn = 2 tossing packet from 326913621016 @ 327543615796
+0:1637768:ERROR:ETH(10): Conn = 2 tossing packet from 326923620027 @ 327553616308
+0:1637781:ERROR:ETH(10): Keep-Alive Timeout Expired - PCB Remove
+0:1637818:ERROR:ETH(10): Conn = 2 tossing packet from 326933636174 @ 327563615974
+0:1637868:ERROR:ETH(10): Conn = 2 tossing packet from 326943621600 @ 327573614411
+0:1637918:ERROR:ETH(10): Conn = 2 tossing packet from 326953622508 @ 327583628933
+0:1637968:ERROR:ETH(10): Conn = 2 tossing packet from 326963620204 @ 327593616854
+0:1638018:ERROR:ETH(10): Conn = 2 tossing packet from 326973620243 @ 327603615959
+0:1638068:ERROR:ETH(10): Conn = 2 tossing packet from 326983635142 @ 327613614851
+0:1638118:ERROR:ETH(10): Conn = 2 tossing packet from 326993620102 @ 327623614951
+0:1638168:ERROR:ETH(10): Conn = 2 tossing packet from 327003621223 @ 327633614154
+0:1638218:ERROR:ETH(10): Conn = 2 tossing packet from 327013621037 @ 327643617252
+0:1638268:ERROR:ETH(10): Conn = 2 tossing packet from 327023621679 @ 327653616789
+0:1638318:ERROR:ETH(10): Conn = 2 tossing packet from 327033635966 @ 327663614735
+0:1638368:ERROR:ETH(10): Conn = 2 tossing packet from 327043621350 @ 327673616137
+0:1638418:ERROR:ETH(10): Conn = 2 tossing packet from 327053621667 @ 327683614045
+0:1638468:ERROR:ETH(10): Conn = 2 tossing packet from 327063620679 @ 327693615052
+0:1638518:ERROR:ETH(10): Conn = 2 tossing packet from 327073622362 @ 327703616063
+0:1638568:ERROR:ETH(10): Conn = 2 tossing packet from 327083634987 @ 327713617394
+0:1638618:ERROR:ETH(10): Conn = 2 tossing packet from 327093620371 @ 327723616912
+0:1638668:ERROR:ETH(10): Conn = 2 tossing packet from 327103623272 @ 327733613928
+0:1638718:ERROR:ETH(10): Conn = 2 tossing packet from 327113622481 @ 327743614237
+0:1638768:ERROR:ETH(10): Conn = 2 tossing packet from 327123623043 @ 327753614753
+0:1638818:ERROR:ETH(10): Conn = 2 tossing packet from 327133636679 @ 327763614909
+0:1638868:ERROR:ETH(10): Conn = 2 tossing packet from 327143620948 @ 327773615505
+0:1638918:ERROR:ETH(10): Conn = 2 tossing packet from 327153620665 @ 327783629064
+0:1638968:ERROR:ETH(10): Conn = 2 tossing packet from 327163621483 @ 327793616628
+0:1639015:ERROR:ETH(10): Keep-Alive Timeout Expired - PCB Remove
+-------------------  Saved Log Ends  ------------------- 
+OK
+
+[15:42:24:308] BNET:
+SYS:TIME 0,0 
+[15:42:24:309] MESA:
+OK
+
+[15:42:24:309] BNET:
+SYS:TIME? 
+[15:42:24:311] MESA:
+0, 2097230
+OK
+
+[15:42:24:312] BNET:
+SYS:TIME 20333,47247081 
+[15:42:24:312] MESA:
+OK
+
+[15:42:24:312] BNET:
+RESET:PARAMETERS 
+[15:42:24:342] MESA:
+NOTE: Reset persistent configuration data to factory defaults (Configuration version: 49).
+OK
+
+[15:42:24:342] BNET:
+*IDN? 
+[15:42:24:347] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: Pedestrian
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:42:24:348] BNET:
+SYSPARAM? <superuser_password> 
+[15:42:24:399] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             1
+MODE:SWT:OPERATIONMODE                  0	(0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -60.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                60.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                0.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                12.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      100.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      2.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           8.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      10.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  -1, -1, -1, -1
+RANGE:MASK                              1  -1, -1, -1, -1
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	0.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	0.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	0.000000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		0.000000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.923337	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[15:42:24:446] BNET API:
+STATUS data collect set to true.
+[15:42:26:332] BNET:
+MODE:SWT:OPERATIONMODE 0 
+[15:42:26:356] MESA:
+OK
+
+[15:42:26:357] BNET:
+MODE:SWT:SEARCH:AZFOVMIN -60 
+[15:42:26:359] MESA:
+OK
+
+[15:42:26:359] BNET:
+MODE:SWT:SEARCH:AZFOVMAX 60 
+[15:42:26:361] MESA:
+OK
+
+[15:42:26:378] BNET:
+MODE:SWT:TRACK:AZFOVMIN -60 
+[15:42:26:380] MESA:
+OK
+
+[15:42:26:381] BNET:
+MODE:SWT:TRACK:AZFOVMAX 60 
+[15:42:26:383] MESA:
+OK
+
+[15:42:26:383] BNET:
+MODE:SWT:SEARCH:ELFOVMIN -40 
+[15:42:26:385] MESA:
+OK
+
+[15:42:26:400] BNET:
+MODE:SWT:SEARCH:ELFOVMAX 12 
+[15:42:26:402] MESA:
+OK
+
+[15:42:26:402] BNET:
+MODE:SWT:TRACK:ELFOVMIN -40 
+[15:42:26:404] MESA:
+OK
+
+[15:42:26:404] BNET:
+MODE:SWT:TRACK:ELFOVMAX 40 
+[15:42:26:406] MESA:
+OK
+
+[15:42:26:421] BNET:
+RANGE:MASK <superuser_password> 0, 128, 134, 0, 31 
+[15:42:26:426] MESA:
+OK
+
+[15:42:26:427] BNET:
+RANGE:MASK <superuser_password> 1, 435, 2047, 0, 31 
+[15:42:26:431] MESA:
+OK
+
+[15:42:26:443] BNET:
+DMS:CHANNEL 0 
+[15:42:26:446] MESA:
+OK
+
+[15:42:26:447] BNET:
+TIME:CHANNEL:ENABLE <superuser_password> FALSE 
+[15:42:26:448] MESA:
+OK
+
+[15:42:26:465] BNET:
+PRISM:CHANNEL:ENABLE <superuser_password> FALSE 
+[15:42:26:467] MESA:
+PRISM Enable:0
+OK
+
+[15:42:26:467] BNET:
+ZONE:MASK:CLEAR <superuser_password> 
+[15:42:26:468] MESA:
+OK
+
+[15:42:26:468] BNET:
+ZONE:MASK:ENABLE <superuser_password> FALSE 
+[15:42:26:469] MESA:
+OK
+
+[15:42:26:469] BNET:
+PLATFORM:STATE:ORIENTATION <superuser_password> 330.000000, 19.799999, -0.300000 
+[15:42:26:469] MESA:
+OK
+
+[15:42:26:470] BNET:
+PLATFORM:STATE:ELEVATIONAGL <superuser_password> 1.400000 
+[15:42:26:470] MESA:
+OK
+
+[15:42:26:470] BNET:
+RSP:CLUTTERMASKWIDTH <superuser_password> 3 
+[15:42:26:477] MESA:
+OK
+
+[15:42:26:487] BNET:
+RSP:RCSMASK:MINRCS -30 
+[15:42:26:494] MESA:
+OK
+
+[15:42:26:510] BNET:
+RSP:RCSMASK:MAXRCS 19 
+[15:42:26:516] MESA:
+OK
+
+[15:42:26:531] BNET:
+AGLMASK:MINAGL <superuser_password> -10000 
+[15:42:26:532] MESA:
+OK
+
+[15:42:26:533] BNET:
+AGLMASK:MAXAGL <superuser_password> 10000 
+[15:42:26:533] MESA:
+OK
+
+[15:42:26:534] BNET:
+AGLMASK:ENABLE <superuser_password> FALSE 
+[15:42:26:534] MESA:
+OK
+
+[15:42:26:535] BNET:
+OUTPUT:EXTENDEDPACKET:ENABLE TRUE 
+[15:42:26:536] MESA:
+OK
+
+[15:42:26:536] BNET API:
+Chunking set to true.
+[15:42:26:539] BNET API:
+New save folder created: C:\RUI_5.2.2_release_windows\RadarData\MESA-002881\2025-09-02T154226\ 
+[15:42:26:539] BNET:
+MODE:SWT:START 
+[15:42:26:616] MESA:
+OK
+
+[15:42:26:617] BNET:
+SYSPARAM? <superuser_password> 
+[15:42:26:657] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             0
+MODE:SWT:OPERATIONMODE                  0 (with modifications) (0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -60.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                60.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                -40.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                12.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      19.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      2.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           8.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      10.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  128, 134, 0, 31
+RANGE:MASK                              1  435, 2047, 0, 31
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	330.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	19.799999 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	-0.300000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		1.400000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.925306	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[15:42:26:667] BNET API:
+TRACK data save set to true.
+[15:42:26:667] BNET API:
+TRACK data collect set to true.
+[15:42:26:667] BNET API:
+RVMAP data save set to false.
+[15:42:26:667] BNET API:
+RVMAP data collect set to false.
+[15:42:26:667] BNET API:
+MEASUREMENT data save set to true.
+[15:42:26:672] BNET API:
+MEASUREMENT data collect set to true.
+[15:42:26:672] BNET API:
+DETECTION data save set to true.
+[15:42:26:673] BNET API:
+DETECTION data collect set to true.
+[15:42:26:673] BNET API:
+STATUS data save set to true.
+[15:42:30:243] BNET API:
+MEASUREMENT data collect set to false.
+[15:42:30:243] BNET API:
+MEASUREMENT data save set to false.
+[15:42:30:244] BNET API:
+TRACK data collect set to false.
+[15:42:30:245] BNET API:
+TRACK data save set to false.
+[15:42:30:245] BNET API:
+RVMAP data collect set to false.
+[15:42:30:245] BNET API:
+RVMAP data save set to false.
+[15:42:30:245] BNET API:
+DETECTION data collect set to false.
+[15:42:30:245] BNET API:
+DETECTION data save set to false.
+[15:42:30:246] BNET API:
+DETECTION data collect set to false.
+[15:42:30:246] BNET API:
+DETECTION data save set to false.
+[15:42:30:246] BNET API:
+STATUS data save set to false.
+[15:42:30:247] BNET:
+SYSPARAM? <superuser_password> 
+[15:42:30:290] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             0
+MODE:SWT:OPERATIONMODE                  0 (with modifications) (0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -60.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                60.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                -40.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                12.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      19.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      2.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           8.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      10.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  128, 134, 0, 31
+RANGE:MASK                              1  435, 2047, 0, 31
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	330.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	19.799999 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	-0.300000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		1.400000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.925306	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[15:42:30:290] BNET API:
+Save to folder requested
+[15:42:30:290] BNET:
+MODE:SWT:STOP 
+[15:42:30:393] MESA:
+OK
+
+[15:42:31:477] BNET:
+*IDN? 
+[15:42:31:480] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: Pedestrian (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:42:31:481] BNET:
+*TST? 
+[15:42:31:493] MESA:
+--------------- SYSTEM INIT STATUS---------------
+SDRAM: 0
+GLOBAL INTERRUPT INIT: 0
+CPU INTERRUPT INIT: 0
+GLOBAL TIMER: 0
+FPGA: 0
+SPI: 0
+GPIO INIT: 0
+GPIO CFG: 0
+CPU INTERRUPT ENABLE: 0
+GLOBAL INTERRUPT ENABLE: 0
+EMMC INIT: 0
+ETHERNET INIT: 0
+I2C INIT: 0
+IMU INIT: 0
+CACHE INIT: 0
+----------------- SYSTEM STATE ------------------
+CURRENT STATE: SYSTEM_STATE_STANDBY
+--------------- ETHERNET STATUS -----------------
+SPEED: 1000 Mb/s
+Filter log level: ERROR(4)
+Filter mask: FFFFFFFF
+------------------- Saved Log Begins ------------------- 
+0:1634518:ERROR:ETH(10): Conn = 2 tossing packet from 326273614747 @ 326903615026
+0:1634568:ERROR:ETH(10): Conn = 2 tossing packet from 326283614313 @ 326913615260
+0:1634618:ERROR:ETH(10): Conn = 2 tossing packet from 326293616709 @ 326923614192
+0:1634668:ERROR:ETH(10): Conn = 2 tossing packet from 326303617759 @ 326933630092
+0:1634718:ERROR:ETH(10): Conn = 2 tossing packet from 326313617410 @ 326943615581
+0:1634768:ERROR:ETH(10): Conn = 2 tossing packet from 326323615669 @ 326953616375
+0:1634818:ERROR:ETH(10): Conn = 2 tossing packet from 326333630034 @ 326963614260
+0:1634868:ERROR:ETH(10): Conn = 2 tossing packet from 326343616056 @ 326973614365
+0:1634918:ERROR:ETH(10): Conn = 2 tossing packet from 326353614381 @ 326983629143
+0:1634968:ERROR:ETH(10): Conn = 2 tossing packet from 326363617294 @ 326993614128
+0:1635018:ERROR:ETH(10): Conn = 2 tossing packet from 326373614682 @ 327003615149
+0:1635068:ERROR:ETH(10): Conn = 2 tossing packet from 326383630310 @ 327013615155
+0:1635118:ERROR:ETH(10): Conn = 2 tossing packet from 326393617470 @ 327023615730
+0:1635168:ERROR:ETH(10): Conn = 2 tossing packet from 326403614335 @ 327033630093
+0:1635218:ERROR:ETH(10): Conn = 2 tossing packet from 326413617050 @ 327043615422
+0:1635268:ERROR:ETH(10): Conn = 2 tossing packet from 326423615003 @ 327053615648
+0:1635318:ERROR:ETH(10): Conn = 2 tossing packet from 326433631073 @ 327063614851
+0:1635368:ERROR:ETH(10): Conn = 2 tossing packet from 326443615935 @ 327073616228
+0:1635418:ERROR:ETH(10): Conn = 2 tossing packet from 326453615370 @ 327083628898
+0:1635468:ERROR:ETH(10): Conn = 2 tossing packet from 326463615812 @ 327093614523
+0:1635518:ERROR:ETH(10): Conn = 2 tossing packet from 326473617402 @ 327103617294
+0:1635568:ERROR:ETH(10): Conn = 2 tossing packet from 326483614744 @ 327113616546
+0:1635618:ERROR:ETH(10): Conn = 2 tossing packet from 326493617362 @ 327123616887
+0:1635668:ERROR:ETH(10): Conn = 2 tossing packet from 326503616725 @ 327133630671
+0:1635718:ERROR:ETH(10): Conn = 2 tossing packet from 326513615554 @ 327143614965
+0:1635768:ERROR:ETH(10): Conn = 2 tossing packet from 326523614421 @ 327153614727
+0:1635818:ERROR:ETH(10): Conn = 2 tossing packet from 326533628244 @ 327163615527
+0:1635868:ERROR:ETH(10): Conn = 2 tossing packet from 326543616156 @ 327173615794
+0:1635918:ERROR:ETH(10): Conn = 2 tossing packet from 326553617133 @ 327183629410
+0:1635968:ERROR:ETH(10): Conn = 2 tossing packet from 326563616540 @ 327193615729
+0:1636018:ERROR:ETH(10): Conn = 2 tossing packet from 326573614777 @ 327203614992
+0:1636068:ERROR:ETH(10): Conn = 2 tossing packet from 326583630238 @ 327213617062
+0:1636118:ERROR:ETH(10): Conn = 2 tossing packet from 326593614157 @ 327223616437
+0:1636168:ERROR:ETH(10): Conn = 2 tossing packet from 326603617532 @ 327233629774
+0:1636218:ERROR:ETH(10): Conn = 2 tossing packet from 326613617343 @ 327243614018
+0:1636268:ERROR:ETH(10): Conn = 2 tossing packet from 326623617339 @ 327253617479
+0:1636318:ERROR:ETH(10): Conn = 2 tossing packet from 326633630712 @ 327263614500
+0:1636368:ERROR:ETH(10): Conn = 2 tossing packet from 326643614450 @ 327273615234
+0:1636418:ERROR:ETH(10): Conn = 2 tossing packet from 326653617392 @ 327283630048
+0:1636468:ERROR:ETH(10): Conn = 2 tossing packet from 326663617294 @ 327293616688
+0:1636518:ERROR:ETH(10): Conn = 2 tossing packet from 326673616360 @ 327303614030
+0:1636568:ERROR:ETH(10): Conn = 2 tossing packet from 326683613939 @ 327313615357
+0:1636618:ERROR:ETH(10): Conn = 2 tossing packet from 326693615366 @ 327323614810
+0:1636668:ERROR:ETH(10): Conn = 2 tossing packet from 326703615251 @ 327333629848
+0:1636718:ERROR:ETH(10): Conn = 2 tossing packet from 326713616950 @ 327343615900
+0:1636768:ERROR:ETH(10): Conn = 2 tossing packet from 326723614939 @ 327353617670
+0:1636818:ERROR:ETH(10): Conn = 2 tossing packet from 326733614126 @ 327363615519
+0:1636868:ERROR:ETH(10): Conn = 2 tossing packet from 326743616137 @ 327373614315
+0:1636918:ERROR:ETH(10): Conn = 2 tossing packet from 326753615119 @ 327383630476
+0:1636968:ERROR:ETH(10): Conn = 2 tossing packet from 326763614418 @ 327393616546
+0:1637018:ERROR:ETH(10): Conn = 2 tossing packet from 326773616757 @ 327403614124
+0:1637068:ERROR:ETH(10): Conn = 2 tossing packet from 326783628972 @ 327413617188
+0:1637118:ERROR:ETH(10): Conn = 2 tossing packet from 326793614722 @ 327423615938
+0:1637168:ERROR:ETH(10): Conn = 2 tossing packet from 326803615621 @ 327433629964
+0:1637218:ERROR:ETH(10): Conn = 2 tossing packet from 326813614494 @ 327443615294
+0:1637268:ERROR:ETH(10): Conn = 2 tossing packet from 326823614368 @ 327453615834
+0:1637318:ERROR:ETH(10): Conn = 2 tossing packet from 326833629496 @ 327463616412
+0:1637368:ERROR:ETH(10): Conn = 2 tossing packet from 326843615676 @ 327473616585
+0:1637418:ERROR:ETH(10): Conn = 2 tossing packet from 326853616471 @ 327483628435
+0:1637468:ERROR:ETH(10): Conn = 2 tossing packet from 326863616518 @ 327493614555
+0:1637518:ERROR:ETH(10): Conn = 2 tossing packet from 326873617102 @ 327503614668
+0:1637568:ERROR:ETH(10): Conn = 2 tossing packet from 326883629180 @ 327513614629
+0:1637618:ERROR:ETH(10): Conn = 2 tossing packet from 326893617507 @ 327523616914
+0:1637668:ERROR:ETH(10): Conn = 2 tossing packet from 326903621759 @ 327533629462
+0:1637718:ERROR:ETH(10): Conn = 2 tossing packet from 326913621016 @ 327543615796
+0:1637768:ERROR:ETH(10): Conn = 2 tossing packet from 326923620027 @ 327553616308
+0:1637781:ERROR:ETH(10): Keep-Alive Timeout Expired - PCB Remove
+0:1637818:ERROR:ETH(10): Conn = 2 tossing packet from 326933636174 @ 327563615974
+0:1637868:ERROR:ETH(10): Conn = 2 tossing packet from 326943621600 @ 327573614411
+0:1637918:ERROR:ETH(10): Conn = 2 tossing packet from 326953622508 @ 327583628933
+0:1637968:ERROR:ETH(10): Conn = 2 tossing packet from 326963620204 @ 327593616854
+0:1638018:ERROR:ETH(10): Conn = 2 tossing packet from 326973620243 @ 327603615959
+0:1638068:ERROR:ETH(10): Conn = 2 tossing packet from 326983635142 @ 327613614851
+0:1638118:ERROR:ETH(10): Conn = 2 tossing packet from 326993620102 @ 327623614951
+0:1638168:ERROR:ETH(10): Conn = 2 tossing packet from 327003621223 @ 327633614154
+0:1638218:ERROR:ETH(10): Conn = 2 tossing packet from 327013621037 @ 327643617252
+0:1638268:ERROR:ETH(10): Conn = 2 tossing packet from 327023621679 @ 327653616789
+0:1638318:ERROR:ETH(10): Conn = 2 tossing packet from 327033635966 @ 327663614735
+0:1638368:ERROR:ETH(10): Conn = 2 tossing packet from 327043621350 @ 327673616137
+0:1638418:ERROR:ETH(10): Conn = 2 tossing packet from 327053621667 @ 327683614045
+0:1638468:ERROR:ETH(10): Conn = 2 tossing packet from 327063620679 @ 327693615052
+0:1638518:ERROR:ETH(10): Conn = 2 tossing packet from 327073622362 @ 327703616063
+0:1638568:ERROR:ETH(10): Conn = 2 tossing packet from 327083634987 @ 327713617394
+0:1638618:ERROR:ETH(10): Conn = 2 tossing packet from 327093620371 @ 327723616912
+0:1638668:ERROR:ETH(10): Conn = 2 tossing packet from 327103623272 @ 327733613928
+0:1638718:ERROR:ETH(10): Conn = 2 tossing packet from 327113622481 @ 327743614237
+0:1638768:ERROR:ETH(10): Conn = 2 tossing packet from 327123623043 @ 327753614753
+0:1638818:ERROR:ETH(10): Conn = 2 tossing packet from 327133636679 @ 327763614909
+0:1638868:ERROR:ETH(10): Conn = 2 tossing packet from 327143620948 @ 327773615505
+0:1638918:ERROR:ETH(10): Conn = 2 tossing packet from 327153620665 @ 327783629064
+0:1638968:ERROR:ETH(10): Conn = 2 tossing packet from 327163621483 @ 327793616628
+0:1639015:ERROR:ETH(10): Keep-Alive Timeout Expired - PCB Remove
+-------------------  Saved Log Ends  ------------------- 
+OK
+
+[15:42:31:494] BNET:
+LIST 
+[15:42:31:495] MESA:
+The following commands are available:
+
+0 RESET:PARAMETERS
+1 SYSPARAM?
+2 SYSPARAM:JSON?
+3 GETSERIAL
+4 ETH:IP?
+5 ETH:IP
+6 ETH:MAC?
+7 DMS:CHANNEL?
+8 DMS:CHANNEL
+9 MODE:SEARCH:AZFOVMIN
+10 MODE:SEARCH:AZFOVMIN?
+11 MODE:SEARCH:AZSTEP?
+12 MODE:SEARCH:AZSTEP
+13 MODE:SEARCH:ELSTEP?
+14 MODE:SEARCH:ELSTEP
+15 MODE:SEARCH:ELFOVMIN
+16 MODE:SEARCH:ELFOVMIN?
+17 MODE:SEARCH:AZFOVMAX
+18 MODE:SEARCH:AZFOVMAX?
+19 MODE:SEARCH:ELFOVMAX
+20 MODE:SEARCH:ELFOVMAX?
+21 MODE:SWT:SEARCH:AZFOVMIN
+22 MODE:SWT:SEARCH:AZFOVMIN?
+23 MODE:SWT:SEARCH:AZFOVMAX
+24 MODE:SWT:SEARCH:AZFOVMAX?
+25 MODE:SWT:SEARCH:ELFOVMIN
+26 MODE:SWT:SEARCH:ELFOVMIN?
+27 MODE:SWT:SEARCH:ELFOVMAX
+28 MODE:SWT:SEARCH:ELFOVMAX?
+29 MODE:SWT:TRACK:AZFOVMIN
+30 MODE:SWT:TRACK:AZFOVMIN?
+31 MODE:SWT:TRACK:AZFOVMAX
+32 MODE:SWT:TRACK:AZFOVMAX?
+33 MODE:SWT:TRACK:ELFOVMIN
+34 MODE:SWT:TRACK:ELFOVMIN?
+35 MODE:SWT:TRACK:ELFOVMAX
+36 MODE:SWT:TRACK:ELFOVMAX?
+37 MODE:SWT:OPERATIONMODE
+38 MODE:SWT:OPERATIONMODE?
+39 RSP:RCSMASK:MINRCS
+40 RSP:RCSMASK:MAXRCS
+41 RSP:RCSMASK:MINRCS?
+42 RSP:RCSMASK:MAXRCS?
+43 *IDN?
+44 FPGA?
+45 LIST
+46 *TST?
+47 RESET:SYSTEM
+48 MODE:SEARCH:START
+49 MODE:SWT:START
+50 SYS:TIME?
+51 SYS:TIME
+52 OUTPUT:EXTENDEDPACKET:ENABLE
+53 OUTPUT:EXTENDEDPACKET:ENABLE?
+54 DATAFORMAT:TRACK?
+55 DATAFORMAT:DETECTION?
+56 DATAFORMAT:RVMAP?
+57 DATAFORMAT:MEASUREMENT?
+58 DATAFORMAT:STATUS?
+OK
+
+[15:42:31:496] BNET API:
+Disconnected

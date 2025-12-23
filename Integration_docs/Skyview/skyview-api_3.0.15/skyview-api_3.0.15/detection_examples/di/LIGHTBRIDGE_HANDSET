@@ -1,0 +1,268 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "e92ef1ec-4192-4d9a-b352-92b267e67158",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T21:48:30.881Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "LIGHTBRIDGE_HANDSET",
+        "detectionLabel": "DJI Lightbridge RC",
+        "signalType": "GCS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "d4193b0d-4c86-4c59-8b3c-f5b94dfee4d5",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:48:30.879Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T21:48:30.000Z",
+        "detectionId": "803ff082-db1e-44a2-bcd4-f3dd74dacf3e",
+        "primaryGain": false,
+        "power": 96.76624298095703,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "LIGHTBRIDGE_HANDSET",
+        "detectionLabel": "DJI Lightbridge RC",
+        "signalType": "GCS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "85862c28-9c82-4bb1-a771-16589294a4d9",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:48:21.728Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "LIGHTBRIDGE_HANDSET",
+            "detectionLabel": "DJI Lightbridge RC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "d61c8cba-cf93-44ff-8cee-4b5ad7c6de45",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:48:19.358Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:48:15.000Z",
+            "detectionId": "5a2cfcbe-25d3-483c-89be-6423485e8715",
+            "primaryGain": false,
+            "power": 252.96920776367188,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "LIGHTBRIDGE_HANDSET",
+            "detectionLabel": "DJI Lightbridge RC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "06a35ee6-d257-47e7-89f6-4d6933426fee",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:48:19.775Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:48:15.000Z",
+            "detectionId": "68c3d705-1dda-4fad-8e68-b30ff5553e14",
+            "primaryGain": false,
+            "power": 712.8187255859375,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "LIGHTBRIDGE_HANDSET",
+            "detectionLabel": "DJI Lightbridge RC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "3bbfbdc0-456a-4283-ab1a-8796721064ff",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:48:20.821Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:48:20.000Z",
+            "detectionId": "8ac4ebc8-7314-48a2-bc08-fc37419b64ac",
+            "primaryGain": false,
+            "power": 249.7178192138672,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "LIGHTBRIDGE_HANDSET",
+            "detectionLabel": "DJI Lightbridge RC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "36ff8395-4dc4-4d44-9f98-708deb107f75",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:48:21.311Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:48:20.000Z",
+            "detectionId": "698b7265-457e-4b57-b6fb-a88d9748be64",
+            "primaryGain": false,
+            "power": 727.1256103515625,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "LIGHTBRIDGE_HANDSET",
+            "detectionLabel": "DJI Lightbridge RC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "85862c28-9c82-4bb1-a771-16589294a4d9",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:48:21.728Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:48:21.000Z",
+            "detectionId": "7f01d241-973c-486d-9eec-14097d76ffea",
+            "primaryGain": false,
+            "power": 47610.40234375,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "LIGHTBRIDGE_HANDSET",
+            "detectionLabel": "DJI Lightbridge RC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "2845a890-8fd8-4063-a2d4-276fc3642383",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:48:22.369Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:48:21.000Z",
+            "detectionId": "a10acb54-aa6e-4ce9-a52b-45487ee6dad9",
+            "primaryGain": false,
+            "power": 247.63363647460938,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "LIGHTBRIDGE_HANDSET",
+            "detectionLabel": "DJI Lightbridge RC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "c0877497-1888-4b8b-9338-06a5eca01a32",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:48:22.889Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:48:21.000Z",
+            "detectionId": "db6c53dd-cc54-4f96-8b1d-6edc14c0493f",
+            "primaryGain": false,
+            "power": 715.2994384765625,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "LIGHTBRIDGE_HANDSET",
+            "detectionLabel": "DJI Lightbridge RC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "97e259c1-53dd-4de0-b122-1ceb93e1bad8",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:48:23.291Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:48:22.000Z",
+            "detectionId": "bcc73229-867b-4488-8204-947fae832951",
+            "primaryGain": false,
+            "power": 46617.140625,
+            "channel": 0,
+            "frequency": 2400000000
+          }
+        ],
+        "radio": "318A340|TXRX",
+        "directiveId": "5133dd28-4beb-46bf-84bc-5eda9a587c1c",
+        "sector": 7,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T21:48:21.000Z",
+        "detectionId": "7f01d241-973c-486d-9eec-14097d76ffea",
+        "primaryGain": false,
+        "power": 47610.40234375,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ]
+  }
+}

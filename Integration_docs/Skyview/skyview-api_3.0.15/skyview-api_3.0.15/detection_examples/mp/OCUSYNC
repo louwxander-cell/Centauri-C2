@@ -1,0 +1,58 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "2a46cb36-baec-4a1e-bbc8-9bff2b19ff6d",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T20:11:27.951Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "OCUSYNC",
+        "detectionLabel": "DJI Ocusync",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "7190bddf-b0a9-4ea3-ad2e-fa733b6bfc41",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T20:11:27.949Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T20:11:24.000Z",
+        "detectionId": "e02152a7-abe9-4e2b-a804-dd2dbf1b5ebd",
+        "primaryGain": true,
+        "power": 417.137451171875,
+        "channel": 2400,
+        "serial": "08RDD8K00100E6",
+        "homeLatitude": 39.2335319519043,
+        "homeLongitude": -77.54840087890625,
+        "aircraftLatitude": 39.23351287841797,
+        "aircraftLongitude": -77.54838562011719,
+        "aircraftAltitude": 133,
+        "aircraftHeightAboveGround": 0,
+        "aircraftVelocityNorth": -0.012000000104308128,
+        "aircraftVelocityEast": 0.039000000804662704,
+        "aircraftVelocityUp": -0.0010000000474974513,
+        "aircraftPitch": -14358,
+        "aircraftRoll": 1562,
+        "aircraftYaw": -25693,
+        "pilotLatitude": 39.23351287841797,
+        "pilotLongitude": -77.54850769042969,
+        "aircraftModel": "Mavic Pro",
+        "frequency": 2400000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

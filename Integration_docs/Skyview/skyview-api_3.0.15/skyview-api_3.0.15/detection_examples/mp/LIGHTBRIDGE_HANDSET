@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "54c67edf-299b-4e5f-9841-208e7116a664",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:55:20.274Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "LIGHTBRIDGE_HANDSET",
+        "detectionLabel": "DJI Lightbridge RC",
+        "signalType": "GCS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "fe0577ff-b97f-4cff-ac7a-3df8afd820f5",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:55:19.980Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:55:15.000Z",
+        "detectionId": "028a98ec-8dd2-4168-ab38-e11220ee2751",
+        "primaryGain": false,
+        "power": 47928.78515625,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

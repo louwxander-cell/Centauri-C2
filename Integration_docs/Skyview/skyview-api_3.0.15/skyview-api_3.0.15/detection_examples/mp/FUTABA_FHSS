@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "eaf6ff58-43b0-4c95-b071-dbf270ad0d86",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:45:09.155Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FUTABA_FHSS",
+        "detectionLabel": "Futaba FHSS 2.4",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "4bc1fe04-4119-4fdc-9b37-d08e2588a67f",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:45:09.154Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:45:05.000Z",
+        "detectionId": "027dd778-1211-4179-a908-f01b1a1a527e",
+        "primaryGain": true,
+        "power": 1218037.875,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

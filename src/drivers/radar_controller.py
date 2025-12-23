@@ -43,12 +43,13 @@ class RadarController:
             self.sock.connect((self.host, self.port))
             self.connected = True
             
-            # Clear any initial messages
-            time.sleep(0.5)
+            # Clear any initial messages (non-blocking)
+            self.sock.setblocking(False)
             try:
                 self.sock.recv(4096)
-            except socket.timeout:
+            except (socket.timeout, BlockingIOError):
                 pass
+            self.sock.setblocking(True)
             
             logger.info("Connected to radar command port")
             return True
@@ -69,7 +70,11 @@ class RadarController:
         self.connected = False
         logger.info("Disconnected from radar")
     
-    def _send_command(self, command: str, timeout: float = 5.0) -> str:
+    def is_online(self) -> bool:
+        """Check if radar is connected and online"""
+        return self.connected
+    
+    def _send_command(self, command: str, timeout: float = 1.0) -> str:
         """
         Send command to radar and get response
         
@@ -136,12 +141,12 @@ class RadarController:
             
             # Get radar identification
             logger.debug("Querying radar identification...")
-            response = self.send_command("*IDN?", wait=1.0)
+            response = self.send_command("*IDN?", wait=0.1)
             logger.info(f"Radar ID: {response[:100]}")
             
             # Check built-in test status
             logger.debug("Checking BIT status...")
-            response = self.send_command("*TST?", wait=1.0)
+            response = self.send_command("*TST?", wait=0.1)
             if "CURRENT STATE: SYSTEM_STATE_STANDBY" in response or "OK" in response:
                 logger.info("Radar BIT passed")
             else:
@@ -153,7 +158,7 @@ class RadarController:
             
             # Reset parameters to factory defaults
             logger.debug("Resetting parameters to factory defaults...")
-            response = self.send_command("RESET:PARAMETERS", wait=1.0)
+            response = self.send_command("RESET:PARAMETERS", wait=0.1)
             if "OK" in response:
                 logger.info("Parameters reset to factory defaults")
             
@@ -183,23 +188,29 @@ class RadarController:
             self.send_command(f"MODE:SWT:OPERATIONMODE {mode}")
             
             # Set search FOV
-            az_min = config.get('search_az_min', -60)
-            az_max = config.get('search_az_max', 60)
-            el_min = config.get('search_el_min', -40)
-            el_max = config.get('search_el_max', 40)
+            search_az_min = config.get('search_az_min', -60)
+            search_az_max = config.get('search_az_max', 60)
+            search_el_min = config.get('search_el_min', -40)
+            search_el_max = config.get('search_el_max', 40)
             
-            logger.debug(f"Setting search FOV: Az[{az_min},{az_max}], El[{el_min},{el_max}]")
-            self.send_command(f"MODE:SWT:SEARCH:AZFOVMIN {az_min}")
-            self.send_command(f"MODE:SWT:SEARCH:AZFOVMAX {az_max}")
-            self.send_command(f"MODE:SWT:SEARCH:ELFOVMIN {el_min}")
-            self.send_command(f"MODE:SWT:SEARCH:ELFOVMAX {el_max}")
+            logger.debug(f"Setting search FOV: Az[{search_az_min},{search_az_max}], El[{search_el_min},{search_el_max}]")
+            self.send_command(f"MODE:SWT:SEARCH:AZFOVMIN {search_az_min}")
+            self.send_command(f"MODE:SWT:SEARCH:AZFOVMAX {search_az_max}")
+            
+            self.send_command(f"MODE:SWT:SEARCH:ELFOVMIN {search_el_min}")
+            self.send_command(f"MODE:SWT:SEARCH:ELFOVMAX {search_el_max}")
             
             # Set track FOV
-            logger.debug("Setting track FOV...")
-            self.send_command(f"MODE:SWT:TRACK:AZFOVMIN {az_min}")
-            self.send_command(f"MODE:SWT:TRACK:AZFOVMAX {az_max}")
-            self.send_command(f"MODE:SWT:TRACK:ELFOVMIN {el_min}")
-            self.send_command(f"MODE:SWT:TRACK:ELFOVMAX {el_max}")
+            track_az_min = config.get('track_az_min', -60)
+            track_az_max = config.get('track_az_max', 60)
+            track_el_min = config.get('track_el_min', -40)
+            track_el_max = config.get('track_el_max', 40)
+            
+            logger.debug(f"Setting track FOV: Az[{track_az_min},{track_az_max}], El[{track_el_min},{track_el_max}]")
+            self.send_command(f"MODE:SWT:TRACK:AZFOVMIN {track_az_min}")
+            self.send_command(f"MODE:SWT:TRACK:AZFOVMAX {track_az_max}")
+            self.send_command(f"MODE:SWT:TRACK:ELFOVMIN {track_el_min}")
+            self.send_command(f"MODE:SWT:TRACK:ELFOVMAX {track_el_max}")
             
             # Set platform orientation if provided
             if 'platform_heading' in config or 'platform_pitch' in config or 'platform_roll' in config:
@@ -226,7 +237,7 @@ class RadarController:
         """
         try:
             logger.info("Starting radar in Search-While-Track mode...")
-            response = self.send_command("MODE:SWT:START", wait=1.0)
+            response = self.send_command("MODE:SWT:START", wait=0.1)
             
             if "OK" in response:
                 logger.info("Radar started successfully - now streaming data")
@@ -248,7 +259,7 @@ class RadarController:
         """
         try:
             logger.info("Stopping radar...")
-            response = self.send_command("MODE:SWT:STOP", wait=1.0)
+            response = self.send_command("MODE:SWT:STOP", wait=0.1)
             
             if "OK" in response or "Command Not Available" in response:
                 logger.info("Radar stopped")
@@ -269,7 +280,7 @@ class RadarController:
             Dictionary with radar status information
         """
         try:
-            response = self.send_command("*TST?", wait=1.0)
+            response = self.send_command("*TST?", wait=0.1)
             
             status = {
                 'connected': self.connected,
@@ -289,6 +300,98 @@ class RadarController:
         except Exception as e:
             logger.error(f"Failed to get radar status: {e}")
             return {'connected': self.connected, 'error': str(e)}
+    
+    def get_configuration(self) -> Dict[str, Any]:
+        """
+        Query radar for current configuration settings
+        
+        Returns:
+            Dictionary with current radar configuration
+        """
+        if not self.connected:
+            logger.warning("Cannot get configuration - not connected")
+            return {}
+        
+        try:
+            logger.info("Querying radar configuration...")
+            config = {}
+            
+            # Query operation mode
+            response = self.send_command("MODE:SWT:OPERATIONMODE?", wait=0.1)
+            if response:
+                try:
+                    config['operation_mode'] = int(response.strip())
+                except:
+                    config['operation_mode'] = 1
+            
+            # Query search FOV
+            response = self.send_command("MODE:SWT:SEARCH:AZFOVMIN?", wait=0.1)
+            if response and "Command Not Available" not in response:
+                try:
+                    config['search_az_min'] = int(float(response.strip()))
+                except Exception as e:
+                    logger.debug(f"Failed to parse AZFOVMIN: {e}")
+                    config['search_az_min'] = -60
+            else:
+                logger.debug("Cannot query FOV while streaming")
+                return {}  # Return empty dict to signal verification is not possible
+            
+            response = self.send_command("MODE:SWT:SEARCH:AZFOVMAX?", wait=0.1)
+            if response:
+                try:
+                    config['search_az_max'] = int(float(response.strip()))
+                except:
+                    config['search_az_max'] = 60
+            
+            response = self.send_command("MODE:SWT:SEARCH:ELFOVMIN?", wait=0.1)
+            if response:
+                try:
+                    config['search_el_min'] = int(float(response.strip()))
+                except:
+                    config['search_el_min'] = -40
+            
+            response = self.send_command("MODE:SWT:SEARCH:ELFOVMAX?", wait=0.1)
+            if response:
+                try:
+                    config['search_el_max'] = int(float(response.strip()))
+                except:
+                    config['search_el_max'] = 40
+            
+            # Query track FOV
+            response = self.send_command("MODE:SWT:TRACK:AZFOVMIN?", wait=0.1)
+            if response:
+                try:
+                    config['track_az_min'] = int(float(response.strip()))
+                except:
+                    config['track_az_min'] = -60
+            
+            response = self.send_command("MODE:SWT:TRACK:AZFOVMAX?", wait=0.1)
+            if response:
+                try:
+                    config['track_az_max'] = int(float(response.strip()))
+                except:
+                    config['track_az_max'] = 60
+            
+            response = self.send_command("MODE:SWT:TRACK:ELFOVMIN?", wait=0.1)
+            if response:
+                try:
+                    config['track_el_min'] = int(float(response.strip()))
+                except:
+                    config['track_el_min'] = -40
+            
+            response = self.send_command("MODE:SWT:TRACK:ELFOVMAX?", wait=0.1)
+            if response:
+                try:
+                    config['track_el_max'] = int(float(response.strip()))
+                except:
+                    config['track_el_max'] = 40
+            
+            logger.info(f"Retrieved radar configuration: {config}")
+            return config
+            
+        except Exception as e:
+            logger.error(f"Failed to get radar configuration: {e}")
+            return {}
     
     def __enter__(self):
         """Context manager entry"""

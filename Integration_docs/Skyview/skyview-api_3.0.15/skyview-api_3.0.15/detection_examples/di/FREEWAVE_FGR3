@@ -1,0 +1,243 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "70f78b26-247b-4b2e-aa26-13f088d9d0f5",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T21:17:10.683Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FREEWAVE_FGR3",
+        "detectionLabel": "Freewave FGR3",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "a5b69d0f-1345-464e-af60-245d09e40749",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:17:05.677Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T21:17:05.000Z",
+        "detectionId": "298311bb-fcec-4994-b979-1111c7dae043",
+        "primaryGain": true,
+        "power": 1327.9822998046875,
+        "channel": 0,
+        "frequency": 915000000
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "FREEWAVE_FGR3",
+        "detectionLabel": "Freewave FGR3",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "7e4ec745-6b2d-4a62-9b44-d6ce10421587",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:17:09.254Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "FREEWAVE_FGR3",
+            "detectionLabel": "Freewave FGR3",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "62d10791-30c1-4932-987b-ba7efa5f8e76",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:17:09.343Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5644ca9e-872e-40f1-a6e4-0434b294ff7f",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:17:09.000Z",
+            "detectionId": "124c47e1-d49d-43b5-bd99-60fe163d978e",
+            "primaryGain": true,
+            "power": 13319.05859375,
+            "channel": 0,
+            "frequency": 915000000
+          },
+          {
+            "detectionType": "FREEWAVE_FGR3",
+            "detectionLabel": "Freewave FGR3",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "6678c1d4-f69b-48c2-b512-ce0480e67c57",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:17:09.697Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "5644ca9e-872e-40f1-a6e4-0434b294ff7f",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:17:09.000Z",
+            "detectionId": "4dd6bb57-b322-46bf-a186-f45a98d410fa",
+            "primaryGain": true,
+            "power": 2341754,
+            "channel": 0,
+            "frequency": 915000000
+          },
+          {
+            "detectionType": "FREEWAVE_FGR3",
+            "detectionLabel": "Freewave FGR3",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "a1e4e176-ab15-49ea-a0c7-e0e867c66d29",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:17:09.827Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5644ca9e-872e-40f1-a6e4-0434b294ff7f",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:17:09.000Z",
+            "detectionId": "fcd76978-7b4d-4381-9730-e9c4455fcc29",
+            "primaryGain": true,
+            "power": 12634.052734375,
+            "channel": 0,
+            "frequency": 915000000
+          },
+          {
+            "detectionType": "FREEWAVE_FGR3",
+            "detectionLabel": "Freewave FGR3",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "4d8251e9-04a1-4abc-9de4-d7db500cd25d",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:17:09.886Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "5644ca9e-872e-40f1-a6e4-0434b294ff7f",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:17:09.000Z",
+            "detectionId": "8e907eea-1f94-47a8-86e4-283723fcece3",
+            "primaryGain": true,
+            "power": 10700.2353515625,
+            "channel": 0,
+            "frequency": 915000000
+          },
+          {
+            "detectionType": "FREEWAVE_FGR3",
+            "detectionLabel": "Freewave FGR3",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "626ab270-3c32-484e-a1f3-ab2fc7872cab",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:17:10.133Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "5644ca9e-872e-40f1-a6e4-0434b294ff7f",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:17:09.000Z",
+            "detectionId": "11c6f46e-df5e-4f5d-881c-9ccb7eb7df6e",
+            "primaryGain": true,
+            "power": 2412983.75,
+            "channel": 0,
+            "frequency": 915000000
+          },
+          {
+            "detectionType": "FREEWAVE_FGR3",
+            "detectionLabel": "Freewave FGR3",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "1ac8ddb1-0aa4-48e4-a9d3-8e9408d69d22",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:17:10.223Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "5644ca9e-872e-40f1-a6e4-0434b294ff7f",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:17:10.000Z",
+            "detectionId": "0e670344-dd39-45cb-8346-3dda601d22ed",
+            "primaryGain": true,
+            "power": 13773.1435546875,
+            "channel": 0,
+            "frequency": 915000000
+          },
+          {
+            "detectionType": "FREEWAVE_FGR3",
+            "detectionLabel": "Freewave FGR3",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "1fb1bec1-df82-4958-a8b5-0fc3a7c3bd53",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:17:10.275Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "5644ca9e-872e-40f1-a6e4-0434b294ff7f",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:17:10.000Z",
+            "detectionId": "e9cfe4eb-3ed2-469f-9980-e27e46783a75",
+            "primaryGain": true,
+            "power": 9618.943359375,
+            "channel": 0,
+            "frequency": 915000000
+          }
+        ],
+        "radio": "318A340|TXRX",
+        "directiveId": "5644ca9e-872e-40f1-a6e4-0434b294ff7f",
+        "sector": 7,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T21:17:09.000Z",
+        "detectionId": "1453fff3-501d-4322-9c31-2b3539f0c8df",
+        "primaryGain": true,
+        "power": 2521557.25,
+        "channel": 0,
+        "frequency": 915000000
+      }
+    ]
+  }
+}

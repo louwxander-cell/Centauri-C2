@@ -1,0 +1,268 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "a324bc8f-b0a2-4eb2-97b0-cee76649aae2",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T21:36:33.678Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "HERO",
+        "detectionLabel": "HERO Loitering Munition",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "32ffccc6-a82b-40b2-9722-e91b6d15d982",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:36:28.610Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T21:36:28.000Z",
+        "detectionId": "11079f59-11b7-4a0b-9980-d788edb4d680",
+        "primaryGain": true,
+        "power": 43.577178955078125,
+        "channel": 24,
+        "frequency": 2200000000
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "HERO",
+        "detectionLabel": "HERO Loitering Munition",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "77370b76-4fd9-48b8-ba74-66e35647381c",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:36:33.122Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "HERO",
+            "detectionLabel": "HERO Loitering Munition",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "d2d778e5-9758-4abc-be72-f6949c349a53",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:36:32.079Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:36:30.000Z",
+            "detectionId": "95f991cb-7611-4934-9c11-35dd949eba72",
+            "primaryGain": true,
+            "power": 89.91500091552734,
+            "channel": 24,
+            "frequency": 2200000000
+          },
+          {
+            "detectionType": "HERO",
+            "detectionLabel": "HERO Loitering Munition",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "465ca842-0943-44d8-a023-2eb79b6ef3c4",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:36:32.095Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:36:30.000Z",
+            "detectionId": "357a5a7b-c5db-4a48-9091-260de1603c6c",
+            "primaryGain": true,
+            "power": 221.95361328125,
+            "channel": 24,
+            "frequency": 2200000000
+          },
+          {
+            "detectionType": "HERO",
+            "detectionLabel": "HERO Loitering Munition",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "01c76316-efc3-4c1c-8211-d109afcf37a2",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:36:32.660Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:36:32.000Z",
+            "detectionId": "9088840e-62c0-4d6e-8fdc-06ee83abcbac",
+            "primaryGain": true,
+            "power": 4436.486328125,
+            "channel": 24,
+            "frequency": 2200000000
+          },
+          {
+            "detectionType": "HERO",
+            "detectionLabel": "HERO Loitering Munition",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "b5e221e0-881c-4600-aef1-7253248ad670",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:36:32.700Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:36:32.000Z",
+            "detectionId": "6dcda50f-f73e-48f1-935d-a8b4416d9da1",
+            "primaryGain": true,
+            "power": 232.45599365234375,
+            "channel": 24,
+            "frequency": 2200000000
+          },
+          {
+            "detectionType": "HERO",
+            "detectionLabel": "HERO Loitering Munition",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "c992f6b8-d2c6-416e-980c-9b140b2c7749",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:36:32.715Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:36:32.000Z",
+            "detectionId": "e9b05b7d-7a3d-4b17-912e-9386d13a310b",
+            "primaryGain": true,
+            "power": 92.38854217529297,
+            "channel": 24,
+            "frequency": 2200000000
+          },
+          {
+            "detectionType": "HERO",
+            "detectionLabel": "HERO Loitering Munition",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "77370b76-4fd9-48b8-ba74-66e35647381c",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:36:33.122Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:36:32.000Z",
+            "detectionId": "b0558ecf-40ef-493b-bca0-0480f564fe17",
+            "primaryGain": true,
+            "power": 4453.93017578125,
+            "channel": 24,
+            "frequency": 2200000000
+          },
+          {
+            "detectionType": "HERO",
+            "detectionLabel": "HERO Loitering Munition",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "a9d73e8f-7417-4adb-8820-841001be8760",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:36:33.195Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:36:32.000Z",
+            "detectionId": "6da192fe-ce4c-4e2d-ae49-3fcf4e247464",
+            "primaryGain": true,
+            "power": 231.81564331054688,
+            "channel": 24,
+            "frequency": 2200000000
+          },
+          {
+            "detectionType": "HERO",
+            "detectionLabel": "HERO Loitering Munition",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "5ccc34b7-8cb0-46fe-b091-e8b8722f7839",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:36:33.275Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:36:33.000Z",
+            "detectionId": "937a8e35-81ee-4d68-a246-f9f224e3cb7b",
+            "primaryGain": true,
+            "power": 92.82608032226562,
+            "channel": 24,
+            "frequency": 2200000000
+          }
+        ],
+        "radio": "318A340|TXRX",
+        "directiveId": "6cb75769-ef86-43f0-b63c-05863830cc4c",
+        "sector": 7,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T21:36:32.000Z",
+        "detectionId": "b0558ecf-40ef-493b-bca0-0480f564fe17",
+        "primaryGain": true,
+        "power": 4453.93017578125,
+        "channel": 24,
+        "frequency": 2200000000
+      }
+    ]
+  }
+}

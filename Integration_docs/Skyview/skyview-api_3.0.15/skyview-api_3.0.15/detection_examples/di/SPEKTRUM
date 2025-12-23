@@ -1,0 +1,938 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "4c37411f-65ba-4be7-bc13-024a3a5578aa",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:16:17.355Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "c88cb379-0908-479a-b3db-cd9c84251074",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:12.720Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:16:03.000Z",
+        "detectionId": "62f42ba0-ed09-4c0a-b18c-04add0c05392",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 5754.6953125,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "7e51770f-fc04-4c09-b791-b0584dde4489",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:14.161Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "30d48d5b-7258-448e-8d79-4b7c397570a1",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:15.576Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "2fb6aa5d-750e-419a-bd94-beee96931d33",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:14.000Z",
+            "detectionId": "d18454eb-c5e9-46db-a465-283046b85c01",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 13251.0048828125,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          },
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "9861cac4-d586-41e4-900b-fd8922aa1835",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:16.945Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "2fb6aa5d-750e-419a-bd94-beee96931d33",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:15.000Z",
+            "detectionId": "18911d0f-c433-4b99-935f-841c86722f99",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12836.2109375,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          }
+        ],
+        "radio": "318A394|TXRX",
+        "directiveId": "2fb6aa5d-750e-419a-bd94-beee96931d33",
+        "sector": 8,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-29T14:16:13.000Z",
+        "detectionId": "5bb0204b-deef-4627-aa4e-b49cdf910b11",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 13461.55078125,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "a5868a05-4f3a-48d2-bda4-c887d0441f2c",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:16:21.847Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "c88cb379-0908-479a-b3db-cd9c84251074",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:12.720Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:16:03.000Z",
+        "detectionId": "62f42ba0-ed09-4c0a-b18c-04add0c05392",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 5754.6953125,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "414e1107-a2e0-4ee1-988b-74925c62a788",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:18.375Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "355be1dd-84fd-4321-b4d0-4591d741c370",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:19.841Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "c9e0d348-d7ab-4f3b-a42a-e3f1c1a1601b",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:18.000Z",
+            "detectionId": "9fb6166f-8105-4919-8676-ffb9cf1447f9",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12201.806640625,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          },
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "323276e2-f05f-466d-a26e-7cb4f6913ee9",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:21.444Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "c9e0d348-d7ab-4f3b-a42a-e3f1c1a1601b",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:20.000Z",
+            "detectionId": "dd2a52ba-37ac-47ca-b5f8-c353d9912092",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12161.38671875,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          }
+        ],
+        "radio": "318A394|TXRX",
+        "directiveId": "c9e0d348-d7ab-4f3b-a42a-e3f1c1a1601b",
+        "sector": 8,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-29T14:16:17.000Z",
+        "detectionId": "b1b49979-3a25-48c4-afee-2efc9fdcb2aa",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 12383.51171875,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "e84bdb58-4aeb-4e05-b8d6-f04cbf5262bb",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:16:25.736Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "c88cb379-0908-479a-b3db-cd9c84251074",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:12.720Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:16:03.000Z",
+        "detectionId": "62f42ba0-ed09-4c0a-b18c-04add0c05392",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 5754.6953125,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "32c854d5-2d06-44bd-a5ce-c4d2d53c1393",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:24.081Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "32c854d5-2d06-44bd-a5ce-c4d2d53c1393",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:24.081Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "51168ce8-2eff-49bf-9103-221100552fa7",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:22.000Z",
+            "detectionId": "911ddcb2-a425-440c-a16e-907ca4d5f7d7",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12272.1328125,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          },
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "4a64d346-b3e8-4132-be56-a1d1714cf084",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:25.332Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "51168ce8-2eff-49bf-9103-221100552fa7",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:24.000Z",
+            "detectionId": "c679d5d9-d426-4bbe-bde7-c34afe147694",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12182.4580078125,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          }
+        ],
+        "radio": "318A394|TXRX",
+        "directiveId": "51168ce8-2eff-49bf-9103-221100552fa7",
+        "sector": 8,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-29T14:16:22.000Z",
+        "detectionId": "911ddcb2-a425-440c-a16e-907ca4d5f7d7",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 12272.1328125,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "2df0e7ef-6733-4358-9d8c-455e66c7ccc2",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:16:29.737Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "ceee95e1-3e0e-4ca4-8fb2-b0dd34b1578e",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:29.581Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:16:28.000Z",
+        "detectionId": "ddab4cd6-4fbf-4489-9ee5-ea2147018962",
+        "primaryGain": false,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 83488.296875,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "497307a2-41ae-4621-897d-47df8774ba6c",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:29.333Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "ff4b4ab7-e4fe-48bc-a2f5-c52b87d2634a",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:27.950Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "206f961b-ed12-4bd7-90eb-8396dcc21b88",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:26.000Z",
+            "detectionId": "595979be-2c05-4fba-b5ea-e05624f202b3",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12232.4091796875,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          },
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "497307a2-41ae-4621-897d-47df8774ba6c",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:29.333Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "206f961b-ed12-4bd7-90eb-8396dcc21b88",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:28.000Z",
+            "detectionId": "e23d7223-ea60-4da8-a4b6-244ffcbed482",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12459.98046875,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          }
+        ],
+        "radio": "318A394|TXRX",
+        "directiveId": "206f961b-ed12-4bd7-90eb-8396dcc21b88",
+        "sector": 8,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-29T14:16:28.000Z",
+        "detectionId": "e23d7223-ea60-4da8-a4b6-244ffcbed482",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 12459.98046875,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "fb0de480-c4b4-47e0-9c0b-a98e149016d9",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:16:33.950Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "ceee95e1-3e0e-4ca4-8fb2-b0dd34b1578e",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:29.581Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:16:28.000Z",
+        "detectionId": "ddab4cd6-4fbf-4489-9ee5-ea2147018962",
+        "primaryGain": false,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 83488.296875,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "0d0363f7-802c-41e1-bb47-fe0e47459018",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:33.547Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "3a51024a-cb0f-4e4f-8741-13103d171172",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:32.147Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "673c4c49-8e64-4b9c-995b-3012fdda96bb",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:30.000Z",
+            "detectionId": "17a992d8-d962-47ca-b527-7951acf82de4",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12446.5224609375,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          },
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "0d0363f7-802c-41e1-bb47-fe0e47459018",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:33.547Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "673c4c49-8e64-4b9c-995b-3012fdda96bb",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:32.000Z",
+            "detectionId": "4c68bd2d-1d97-4d6f-b1ff-4cf8351a917f",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12636.767578125,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          }
+        ],
+        "radio": "318A394|TXRX",
+        "directiveId": "673c4c49-8e64-4b9c-995b-3012fdda96bb",
+        "sector": 8,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-29T14:16:32.000Z",
+        "detectionId": "4c68bd2d-1d97-4d6f-b1ff-4cf8351a917f",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 12636.767578125,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "9bfbbbaf-da24-4f0a-915f-e8229b0bbe08",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:16:34.600Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "b32936c1-9e18-4cdd-add1-4c706c5d740a",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:34.599Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:16:33.000Z",
+        "detectionId": "341bca1f-a673-4a4b-a195-70b415de7bf7",
+        "primaryGain": false,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 84328.9609375,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "0d0363f7-802c-41e1-bb47-fe0e47459018",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:33.547Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "3a51024a-cb0f-4e4f-8741-13103d171172",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:32.147Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "673c4c49-8e64-4b9c-995b-3012fdda96bb",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:30.000Z",
+            "detectionId": "17a992d8-d962-47ca-b527-7951acf82de4",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12446.5224609375,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          },
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "0d0363f7-802c-41e1-bb47-fe0e47459018",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:33.547Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "673c4c49-8e64-4b9c-995b-3012fdda96bb",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:32.000Z",
+            "detectionId": "4c68bd2d-1d97-4d6f-b1ff-4cf8351a917f",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12636.767578125,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          }
+        ],
+        "radio": "318A394|TXRX",
+        "directiveId": "673c4c49-8e64-4b9c-995b-3012fdda96bb",
+        "sector": 8,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-29T14:16:32.000Z",
+        "detectionId": "4c68bd2d-1d97-4d6f-b1ff-4cf8351a917f",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 12636.767578125,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "183bfc8e-e879-4004-895d-4f7f746cd4bd",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:16:38.055Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "ec054b74-920a-48ed-9c9d-9846149b48bb",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:37.990Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:16:36.000Z",
+        "detectionId": "5771f358-393c-473b-b542-f4f96544518b",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 29792.732421875,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "313c8b9e-bee4-4743-959d-b4b0f9b966d3",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:16:37.653Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "7c5b3d0f-fe70-43b5-861a-2f06539d3887",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:36.214Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "b34993d2-ef26-415c-855d-2b0c4163a4f6",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:35.000Z",
+            "detectionId": "d0b4a48e-789f-4301-814c-a275a4ffe8fe",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12562.298828125,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          },
+          {
+            "detectionType": "SPEKTRUM",
+            "detectionLabel": "Spektrum RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "313c8b9e-bee4-4743-959d-b4b0f9b966d3",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:16:37.653Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "b34993d2-ef26-415c-855d-2b0c4163a4f6",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:16:36.000Z",
+            "detectionId": "65076ba7-48be-4e07-bebe-24c45873e866",
+            "primaryGain": true,
+            "frequency": 2400000000,
+            "id": "",
+            "power": 12638.0732421875,
+            "aircraftLatitude": 39.08025360107422,
+            "aircraftLongitude": -77.55138397216797,
+            "aircraftAltitude": 0,
+            "altitudeMode": "Unknown"
+          }
+        ],
+        "radio": "318A394|TXRX",
+        "directiveId": "b34993d2-ef26-415c-855d-2b0c4163a4f6",
+        "sector": 8,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-29T14:16:36.000Z",
+        "detectionId": "65076ba7-48be-4e07-bebe-24c45873e866",
+        "primaryGain": true,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 12638.0732421875,
+        "aircraftLatitude": 39.08025360107422,
+        "aircraftLongitude": -77.55138397216797,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}

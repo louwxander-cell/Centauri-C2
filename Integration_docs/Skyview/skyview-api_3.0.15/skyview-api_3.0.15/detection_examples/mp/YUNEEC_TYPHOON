@@ -1,0 +1,47 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "704902e7-9afc-4657-b559-351645c37ebd",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T13:56:27.166Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "YUNEEC_TYPHOON",
+        "aircraftAltitude": 0.8199999928474426,
+        "detectionLabel": "Yuneec Typhoon",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "59a4a10d-b5cd-44be-946b-d47f8232cbe2",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T13:56:27.164Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "ed24ccc7-fc1a-4b31-95f5-1daa2b8dfc14",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T13:56:26.000Z",
+        "detectionId": "d52461fe-89cc-49d1-bf68-051b4c879731",
+        "primaryGain": false,
+        "hits": 0,
+        "aircraftLatitude": 39.080135345458984,
+        "aircraftLongitude": -77.5514144897461,
+        "pilotLatitude": 0,
+        "pilotLongitude": 0,
+        "power": 181790.65625,
+        "frequency": 2400000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

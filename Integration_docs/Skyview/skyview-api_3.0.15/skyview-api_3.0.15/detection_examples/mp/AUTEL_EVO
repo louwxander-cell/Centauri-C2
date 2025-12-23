@@ -1,0 +1,50 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "96a6b5c2-7f91-4b1a-88c2-543860f95cd5",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T15:04:30.531Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "AUTEL_EVO",
+        "detectionLabel": "Autel Evo",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "33e8551d-bb73-42f1-9dd9-0a2c83368416",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T15:04:30.471Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T15:04:30.000Z",
+        "detectionId": "e2e8f291-abbe-4971-9944-115c7969473d",
+        "primaryGain": true,
+        "homeLatitude": 39.233497619628906,
+        "homeLongitude": -77.54844665527344,
+        "aircraftLatitude": 39.2335090637207,
+        "aircraftLongitude": -77.54842376708984,
+        "aircraftAltitude": 1.399999976158142,
+        "aircraftVelocityNorth": 1.159999966621399,
+        "aircraftVelocityEast": 2.2699999809265137,
+        "aircraftVelocityUp": -0.20000000298023224,
+        "serial": "156901794",
+        "power": 2710.8837890625,
+        "frequency": 2400000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

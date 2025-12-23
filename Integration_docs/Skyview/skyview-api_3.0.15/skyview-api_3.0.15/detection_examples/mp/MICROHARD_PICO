@@ -1,0 +1,52 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "d0e4b4b1-a81d-4075-b9eb-fbb7396a237d",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T20:09:24.410Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "MICROHARD_PICO",
+        "detectionLabel": "Microhard Pico",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "d56b23ad-d0ca-46fd-97e4-20347d17d842",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T20:09:24.408Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T20:09:22.000Z",
+        "detectionId": "f51872f3-bf6c-421d-9f93-e6b996c8433e",
+        "primaryGain": false,
+        "homeLatitude": 0,
+        "homeLongitude": 0,
+        "aircraftLatitude": 39.0802001953125,
+        "aircraftLongitude": -77.55145263671875,
+        "aircraftAltitude": 114.6199951171875,
+        "aircraftPitch": 0,
+        "aircraftRoll": 0,
+        "aircraftYaw": 0,
+        "aircraftVelocityNorth": 0,
+        "aircraftVelocityEast": 0,
+        "aircraftVelocityUp": 0,
+        "power": 1433944,
+        "frequency": 915000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

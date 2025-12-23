@@ -1,0 +1,44 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "bbe8062a-755b-4cbf-9ae4-124024f53a59",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:43:51.367Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FUTABA_FASST",
+        "detectionLabel": "Futaba C2",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "851d23e8-8b46-4616-916d-6db8d384209a",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:43:51.366Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:43:48.000Z",
+        "detectionId": "995c8e54-78fe-4c9d-84cc-7af4cb76dad0",
+        "primaryGain": false,
+        "power": 317125.65625,
+        "aircraftLatitude": 0,
+        "aircraftLongitude": 0,
+        "aircraftAltitude": 0,
+        "frequency": 2400000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

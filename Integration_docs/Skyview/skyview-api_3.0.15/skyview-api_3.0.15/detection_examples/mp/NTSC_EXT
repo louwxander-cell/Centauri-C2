@@ -1,0 +1,45 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "9d4547b5-c0ce-4f76-aee1-f61ca5f61c81",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T13:30:27.586Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "NTSC_EXT",
+        "detectionLabel": "NTSC Ext Video (4.9GHz)",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "7cc56ed1-4131-426d-9c34-29a1c0b68c3a",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T13:30:27.581Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T13:30:26.000Z",
+        "detectionId": "52ad287b-1f12-46b3-aedc-1b0a4c284d02",
+        "primaryGain": true,
+        "frameNumBytes": 40831,
+        "power": 195735.5625,
+        "energy": 195735.5625,
+        "transmitterBand": "low",
+        "channel": 1,
+        "centerFrequency": 4990000000,
+        "frequency": 4990000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

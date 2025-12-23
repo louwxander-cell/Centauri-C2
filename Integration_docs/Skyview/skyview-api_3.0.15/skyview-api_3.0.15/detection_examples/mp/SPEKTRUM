@@ -1,0 +1,45 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "d3a171eb-4770-4ea8-acf3-f6686b9fb868",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T13:22:32.998Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPEKTRUM",
+        "detectionLabel": "Spektrum RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "e1346820-3222-451d-9ed4-de6e92e1647f",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T13:22:32.996Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T13:22:30.000Z",
+        "detectionId": "124b388a-6f5c-42bc-880f-f90fa8a9636a",
+        "primaryGain": false,
+        "frequency": 2400000000,
+        "id": "",
+        "power": 276891.4375,
+        "aircraftLatitude": 0,
+        "aircraftLongitude": 0,
+        "aircraftAltitude": 0,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

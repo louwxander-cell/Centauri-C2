@@ -1,0 +1,21 @@
+{
+    "radarInfo": [
+        {
+            "accelCalibrated": "false",
+            "dV": 0.9253060221672058,
+            "fpgaVersion": "9D26",
+            "hpsVersion": "23.7.D.9.5",
+            "idn": "ECHODYNE Corp. EchoGuard Radar\nCOUNTRY MODE: INTL\nOPERATION MODE: Pedestrian\nSerial Number: \"002881\"\n\nSW Suite: 18.1.5\n\nMCU Firmware version: 23.7.D.9.5 (35.9.5)\nMCU Firmware build date: Jul 22 2025 16:17:36\nFPGA Firmware version: 9D26\nFPGA ID: A6\nFPGA Time Stamp: Tue Jan 23 19:48:21 2024\nHW CONFIG: BLOCK2\n\nPlease report issues to help@echodyne.com\nOK\r\n",
+            "mac": "34.4C.C8.00.0B.41",
+            "nVelocities": 32,
+            "productMode": "EchoGuard",
+            "serialNumber": "002881"
+        },
+        {
+        },
+        {
+        },
+        {
+        }
+    ]
+}

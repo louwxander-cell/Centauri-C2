@@ -1,0 +1,40 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "ae3369ca-2065-41d9-88fa-3fa2a9e9f5cb",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-30T15:13:02.211Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SUPERCAM",
+        "detectionLabel": "Supercam",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "48fbe397-d495-42af-9d8b-0f2c793771c7",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-30T15:13:02.209Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "31898B4|",
+        "directiveId": "d0e10b85-2319-4391-b100-165419332042",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-30T15:13:00.000Z",
+        "detectionId": "0659d5b4-5ba0-4370-b804-9807a789c519",
+        "primaryGain": false,
+        "power": 1792258.5,
+        "frequency": 970000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

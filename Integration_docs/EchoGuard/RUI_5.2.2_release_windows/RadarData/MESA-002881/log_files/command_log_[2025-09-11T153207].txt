@@ -1,0 +1,900 @@
+[15:32:07:856] BNET API:
+BNET VERSION: 11.2.1	BUILD TIME: Mar 21 2023 17:30:26
+Connected to MESA-002881 at 169.254.1.10:29978
+	STATUS data: 29979
+	RVMAP data: 29980
+	DETECTION data: 29981
+	TRACK data: 29982
+	MEASUREMENT data: 29984
+
+[15:32:07:861] BNET:
+MODE:SWT:STOP 
+[15:32:07:861] MESA:
+Command Not Available
+NA
+
+[15:32:07:861] BNET:
+MODE:SEARCH:STOP 
+[15:32:07:862] MESA:
+Command Not Available
+NA
+
+[15:32:07:862] BNET:
+*TST? 
+[15:32:07:863] MESA:
+--------------- SYSTEM INIT STATUS---------------
+SDRAM: 0
+GLOBAL INTERRUPT INIT: 0
+CPU INTERRUPT INIT: 0
+GLOBAL TIMER: 0
+FPGA: 0
+SPI: 0
+GPIO INIT: 0
+GPIO CFG: 0
+CPU INTERRUPT ENABLE: 0
+GLOBAL INTERRUPT ENABLE: 0
+EMMC INIT: 0
+ETHERNET INIT: 0
+I2C INIT: 0
+IMU INIT: 0
+CACHE INIT: 0
+----------------- SYSTEM STATE ------------------
+CURRENT STATE: SYSTEM_STATE_STANDBY
+--------------- ETHERNET STATUS -----------------
+SPEED: 1000 Mb/s
+Filter log level: ERROR(4)
+Filter mask: FFFFFFFF
+------------------- Saved Log Begins ------------------- 
+-------------------  Saved Log Ends  ------------------- 
+OK
+
+[15:32:07:865] BNET:
+SYS:TIME 0,0 
+[15:32:07:866] MESA:
+OK
+
+[15:32:07:866] BNET:
+SYS:TIME? 
+[15:32:07:867] MESA:
+0, 2613333
+OK
+
+[15:32:07:867] BNET:
+SYS:TIME 20342,46114534 
+[15:32:07:867] MESA:
+OK
+
+[15:32:07:867] BNET:
+RESET:PARAMETERS 
+[15:32:07:897] MESA:
+NOTE: Reset persistent configuration data to factory defaults (Configuration version: 49).
+OK
+
+[15:32:07:898] BNET:
+*IDN? 
+[15:32:07:904] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: Pedestrian
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:32:07:904] BNET:
+SYSPARAM? <superuser_password> 
+[15:32:07:953] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             1
+MODE:SWT:OPERATIONMODE                  0	(0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -60.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                60.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                0.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                12.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      100.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      2.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           8.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      10.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  -1, -1, -1, -1
+RANGE:MASK                              1  -1, -1, -1, -1
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	0.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	0.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	0.000000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		0.000000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.923337	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[15:32:07:989] BNET API:
+STATUS data collect set to true.
+[15:32:17:900] BNET:
+*IDN? 
+[15:32:17:907] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: Pedestrian
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:32:18:334] BNET:
+MODE:SWT:OPERATIONMODE 1 
+[15:32:18:354] MESA:
+OK
+
+[15:32:18:354] BNET:
+MODE:SWT:SEARCH:AZFOVMIN -30 
+[15:32:18:356] MESA:
+OK
+
+[15:32:18:356] BNET:
+MODE:SWT:SEARCH:AZFOVMAX 30 
+[15:32:18:358] MESA:
+OK
+
+[15:32:18:358] BNET:
+MODE:SWT:TRACK:AZFOVMIN -60 
+[15:32:18:360] MESA:
+OK
+
+[15:32:18:360] BNET:
+MODE:SWT:TRACK:AZFOVMAX 60 
+[15:32:18:362] MESA:
+OK
+
+[15:32:18:362] BNET:
+MODE:SWT:SEARCH:ELFOVMIN -24 
+[15:32:18:363] MESA:
+OK
+
+[15:32:18:364] BNET:
+MODE:SWT:SEARCH:ELFOVMAX 40 
+[15:32:18:365] MESA:
+OK
+
+[15:32:18:365] BNET:
+MODE:SWT:TRACK:ELFOVMIN -40 
+[15:32:18:367] MESA:
+OK
+
+[15:32:18:367] BNET:
+MODE:SWT:TRACK:ELFOVMAX 40 
+[15:32:18:369] MESA:
+OK
+
+[15:32:18:369] BNET:
+RANGE:MASK <superuser_password> 0, 128, 134, 0, 31 
+[15:32:18:374] MESA:
+OK
+
+[15:32:18:374] BNET:
+RANGE:MASK <superuser_password> 1, 435, 2047, 0, 31 
+[15:32:18:379] MESA:
+OK
+
+[15:32:18:379] BNET:
+DMS:CHANNEL 0 
+[15:32:18:382] MESA:
+OK
+
+[15:32:18:382] BNET:
+TIME:CHANNEL:ENABLE <superuser_password> FALSE 
+[15:32:18:383] MESA:
+OK
+
+[15:32:18:383] BNET:
+PRISM:CHANNEL:ENABLE <superuser_password> FALSE 
+[15:32:18:385] MESA:
+PRISM Enable:0
+OK
+
+[15:32:18:385] BNET:
+ZONE:MASK:CLEAR <superuser_password> 
+[15:32:18:386] MESA:
+OK
+
+[15:32:18:386] BNET:
+ZONE:MASK:ENABLE <superuser_password> FALSE 
+[15:32:18:386] MESA:
+OK
+
+[15:32:18:386] BNET:
+PLATFORM:STATE:ORIENTATION <superuser_password> 30.000000, 19.799999, -0.300000 
+[15:32:18:387] MESA:
+OK
+
+[15:32:18:387] BNET:
+PLATFORM:STATE:ELEVATIONAGL <superuser_password> 1.400000 
+[15:32:18:387] MESA:
+OK
+
+[15:32:18:388] BNET:
+RSP:CLUTTERMASKWIDTH <superuser_password> 3 
+[15:32:18:394] MESA:
+OK
+
+[15:32:18:394] BNET:
+RSP:RCSMASK:MINRCS -30 
+[15:32:18:401] MESA:
+OK
+
+[15:32:18:401] BNET:
+RSP:RCSMASK:MAXRCS 0 
+[15:32:18:408] MESA:
+OK
+
+[15:32:18:408] BNET:
+AGLMASK:MINAGL <superuser_password> -10000 
+[15:32:18:408] MESA:
+OK
+
+[15:32:18:410] BNET:
+AGLMASK:MAXAGL <superuser_password> 10000 
+[15:32:18:410] MESA:
+OK
+
+[15:32:18:410] BNET:
+AGLMASK:ENABLE <superuser_password> FALSE 
+[15:32:18:410] MESA:
+OK
+
+[15:32:18:411] BNET:
+OUTPUT:EXTENDEDPACKET:ENABLE TRUE 
+[15:32:18:411] MESA:
+OK
+
+[15:32:18:411] BNET API:
+Chunking set to true.
+[15:32:18:414] BNET API:
+New save folder created: C:\RUI_5.2.2_release_windows\RadarData\MESA-002881\2025-09-11T153218\ 
+[15:32:18:414] BNET:
+MODE:SWT:START 
+[15:32:18:490] MESA:
+OK
+
+[15:32:18:490] BNET:
+SYSPARAM? <superuser_password> 
+[15:32:18:499] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             0
+MODE:SWT:OPERATIONMODE                  1 (with modifications) (0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -30.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                30.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                -24.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                40.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      0.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      1.250000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           5.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      30.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  128, 134, 0, 31
+RANGE:MASK                              1  435, 2047, 0, 31
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	30.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	19.799999 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	-0.300000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		1.400000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.925306	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[15:32:18:508] BNET API:
+TRACK data save set to true.
+[15:32:18:509] BNET API:
+TRACK data collect set to true.
+[15:32:18:509] BNET API:
+RVMAP data save set to false.
+[15:32:18:509] BNET API:
+RVMAP data collect set to false.
+[15:32:18:509] BNET API:
+MEASUREMENT data save set to true.
+[15:32:18:510] BNET API:
+MEASUREMENT data collect set to true.
+[15:32:18:510] BNET API:
+DETECTION data save set to true.
+[15:32:18:510] BNET API:
+DETECTION data collect set to true.
+[15:32:18:510] BNET API:
+STATUS data save set to true.
+[15:32:27:846] BNET:
+*IDN? 
+[15:32:27:851] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:32:37:793] BNET:
+*IDN? 
+[15:32:37:797] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:32:47:739] BNET:
+*IDN? 
+[15:32:47:745] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:32:57:689] BNET:
+*IDN? 
+[15:32:57:692] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:33:07:448] BNET API:
+MEASUREMENT data collect set to false.
+[15:33:07:448] BNET API:
+MEASUREMENT data save set to false.
+[15:33:07:448] BNET API:
+TRACK data collect set to false.
+[15:33:07:448] BNET API:
+TRACK data save set to false.
+[15:33:07:448] BNET API:
+RVMAP data collect set to false.
+[15:33:07:448] BNET API:
+RVMAP data save set to false.
+[15:33:07:449] BNET API:
+DETECTION data collect set to false.
+[15:33:07:449] BNET API:
+DETECTION data save set to false.
+[15:33:07:449] BNET API:
+DETECTION data collect set to false.
+[15:33:07:449] BNET API:
+DETECTION data save set to false.
+[15:33:07:449] BNET API:
+STATUS data save set to false.
+[15:33:07:450] BNET:
+SYSPARAM? <superuser_password> 
+[15:33:07:469] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             0
+MODE:SWT:OPERATIONMODE                  1 (with modifications) (0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -30.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                30.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                -24.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                40.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      0.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      1.250000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           5.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      30.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  128, 134, 0, 31
+RANGE:MASK                              1  435, 2047, 0, 31
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	30.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	19.799999 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	-0.300000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		1.400000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.925306	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[15:33:07:469] BNET API:
+Save to folder requested
+[15:33:07:469] BNET:
+MODE:SWT:STOP 
+[15:33:07:574] MESA:
+OK
+
+[15:33:07:689] BNET:
+*IDN? 
+[15:33:07:691] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:33:10:114] BNET:
+*IDN? 
+[15:33:10:118] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[15:33:10:124] BNET:
+*TST? 
+[15:33:10:125] MESA:
+--------------- SYSTEM INIT STATUS---------------
+SDRAM: 0
+GLOBAL INTERRUPT INIT: 0
+CPU INTERRUPT INIT: 0
+GLOBAL TIMER: 0
+FPGA: 0
+SPI: 0
+GPIO INIT: 0
+GPIO CFG: 0
+CPU INTERRUPT ENABLE: 0
+GLOBAL INTERRUPT ENABLE: 0
+EMMC INIT: 0
+ETHERNET INIT: 0
+I2C INIT: 0
+IMU INIT: 0
+CACHE INIT: 0
+----------------- SYSTEM STATE ------------------
+CURRENT STATE: SYSTEM_STATE_STANDBY
+--------------- ETHERNET STATUS -----------------
+SPEED: 1000 Mb/s
+Filter log level: ERROR(4)
+Filter mask: FFFFFFFF
+------------------- Saved Log Begins ------------------- 
+-------------------  Saved Log Ends  ------------------- 
+OK
+
+[15:33:10:141] BNET:
+LIST 
+[15:33:10:142] MESA:
+The following commands are available:
+
+0 RESET:PARAMETERS
+1 SYSPARAM?
+2 SYSPARAM:JSON?
+3 GETSERIAL
+4 ETH:IP?
+5 ETH:IP
+6 ETH:MAC?
+7 DMS:CHANNEL?
+8 DMS:CHANNEL
+9 MODE:SEARCH:AZFOVMIN
+10 MODE:SEARCH:AZFOVMIN?
+11 MODE:SEARCH:AZSTEP?
+12 MODE:SEARCH:AZSTEP
+13 MODE:SEARCH:ELSTEP?
+14 MODE:SEARCH:ELSTEP
+15 MODE:SEARCH:ELFOVMIN
+16 MODE:SEARCH:ELFOVMIN?
+17 MODE:SEARCH:AZFOVMAX
+18 MODE:SEARCH:AZFOVMAX?
+19 MODE:SEARCH:ELFOVMAX
+20 MODE:SEARCH:ELFOVMAX?
+21 MODE:SWT:SEARCH:AZFOVMIN
+22 MODE:SWT:SEARCH:AZFOVMIN?
+23 MODE:SWT:SEARCH:AZFOVMAX
+24 MODE:SWT:SEARCH:AZFOVMAX?
+25 MODE:SWT:SEARCH:ELFOVMIN
+26 MODE:SWT:SEARCH:ELFOVMIN?
+27 MODE:SWT:SEARCH:ELFOVMAX
+28 MODE:SWT:SEARCH:ELFOVMAX?
+29 MODE:SWT:TRACK:AZFOVMIN
+30 MODE:SWT:TRACK:AZFOVMIN?
+31 MODE:SWT:TRACK:AZFOVMAX
+32 MODE:SWT:TRACK:AZFOVMAX?
+33 MODE:SWT:TRACK:ELFOVMIN
+34 MODE:SWT:TRACK:ELFOVMIN?
+35 MODE:SWT:TRACK:ELFOVMAX
+36 MODE:SWT:TRACK:ELFOVMAX?
+37 MODE:SWT:OPERATIONMODE
+38 MODE:SWT:OPERATIONMODE?
+39 RSP:RCSMASK:MINRCS
+40 RSP:RCSMASK:MAXRCS
+41 RSP:RCSMASK:MINRCS?
+42 RSP:RCSMASK:MAXRCS?
+43 *IDN?
+44 FPGA?
+45 LIST
+46 *TST?
+47 RESET:SYSTEM
+48 MODE:SEARCH:START
+49 MODE:SWT:START
+50 SYS:TIME?
+51 SYS:TIME
+52 OUTPUT:EXTENDEDPACKET:ENABLE
+53 OUTPUT:EXTENDEDPACKET:ENABLE?
+54 DATAFORMAT:TRACK?
+55 DATAFORMAT:DETECTION?
+56 DATAFORMAT:RVMAP?
+57 DATAFORMAT:MEASUREMENT?
+58 DATAFORMAT:STATUS?
+OK
+
+[15:33:10:143] BNET API:
+Disconnected

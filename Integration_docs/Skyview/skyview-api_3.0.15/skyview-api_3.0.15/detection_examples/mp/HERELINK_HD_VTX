@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "38190f5e-c842-45a0-8625-6082c0e64e93",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:46:54.296Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "HERELINK_HD_VTX",
+        "detectionLabel": "Herelink",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "980d56f2-7917-4124-86a6-47d782194eb1",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:46:54.294Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:46:54.000Z",
+        "detectionId": "cb9c8eb8-f9a6-42f9-8e52-892385c48474",
+        "primaryGain": true,
+        "power": 6607.75,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

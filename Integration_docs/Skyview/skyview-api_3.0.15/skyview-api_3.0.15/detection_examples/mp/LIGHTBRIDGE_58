@@ -1,0 +1,50 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "d5817afc-0960-47e7-8f9a-db54ab5a0e6c",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T20:00:34.884Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "transmitterId": "32-241-137-167",
+        "detectionType": "LIGHTBRIDGE_58",
+        "detectionLabel": "DJI Lightbridge 5.8GHz",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "c1ab9068-b1b7-4c93-bad1-a2a83bcc75f4",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T20:00:34.883Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T20:00:34.000Z",
+        "detectionId": "b2384bc1-0ae1-424b-a2f2-cc1a9df947ed",
+        "primaryGain": true,
+        "aircraftModel": "Phantom 4",
+        "serial": "07JDD95001014T",
+        "power": 30.04559898376465,
+        "channel": 7,
+        "homeLatitude": 0,
+        "homeLongitude": 0,
+        "aircraftAltitude": 0,
+        "aircraftLatitude": 0,
+        "aircraftLongitude": 0,
+        "frequency": 5760000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

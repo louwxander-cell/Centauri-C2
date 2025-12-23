@@ -1,0 +1,640 @@
+
+--- Page 1 ---
+EchoGuard™ INTL
+Security and Surveillance Radar
+User Manual
+EchoGuard-INTL Model #s: 700-0005-206-100 (white, convective heatsink)
+700-0005-206-200 (tan, convective heatsink)
+700-0005-207-100 (white, cold plate)
+Frequency of Operation: 24.05-24.25 GHz
+Release Date: March 2023
+Doc #: 300060-001 rev03
+ECHODYNE CORP IMPORTER ADDRESS & CONTACT INFO
+12112 115TH AVE NE, SUITE A
+KIRKLAND, WA USA 98034
+Corporate Phone: +1 (425) 454-3246
+Corporate Email: info@echodyne.com
+Corporate Web: www.echodyne.com
+Pa ge | 1
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 2 ---
+TABLE OF CONTENTS
+1. PRODUCT OVERVIEW .......................................................................................................................... 3
+1.1 Introduction to Echodyne’s Echoguard MESA Radar ................................................................................................................. 3
+1.2 EchoGuard Radar Use Cases ...................................................................................................................................................... 4
+1.2.1 Counter-UAS Detection ......................................................................................................................................................... 4
+1.2.2 Border Security Radar ........................................................................................................................................................... 4
+1.2.3 Base Security & Force Protection Radar ............................................................................................................................... 4
+1.2.4 Critical Infrastructure ............................................................................................................................................................ 5
+1.2.5 Portable ISR Radar ................................................................................................................................................................ 5
+1.2.6 Law Enforcement, Fire, Search and Rescue .......................................................................................................................... 5
+2. PRODUCT PHYSICAL FEATURES ............................................................................................................ 6
+2.1 EchoGuard Radar – Front & Rear ............................................................................................................................................... 6
+2.2 EchoGuard Radar – ICD .............................................................................................................................................................. 6
+2.3 EchoGuard Radar System Components ..................................................................................................................................... 7
+2.4 Radar Primary Power, Control & Data Cable ............................................................................................................................. 7
+3. KEY RADAR SPECIFICATIONS ................................................................................................................ 8
+4. REGULATORY & SAFETY NOTIFICATIONS ............................................................................................ 10
+4.1 EU and UK Country Specific Spectrum Licensing Requirements .............................................................................................. 10
+4.1.1 UK Specific Spectrum Licensing Requirements ................................................................................................................... 10
+4.2 RF Radiated Emission Hazard ................................................................................................................................................... 10
+4.2.1 Declaration of Conformity .................................................................................................................................................. 11
+4.2.2 EchoGuard International - Export Requirements ................................................................................................................ 11
+4.3 Radar Interference ................................................................................................................................................................... 11
+5. RADAR ARCHITECTURE ...................................................................................................................... 12
+5.1 EchoGuard Scan Modes ........................................................................................................................................................... 13
+5.2 EchoGuard Channelization ....................................................................................................................................................... 13
+6. RADAR INSTALLATION ....................................................................................................................... 14
+6.1 Physical Installation ................................................................................................................................................................. 14
+6.2 Thermal Considerations ........................................................................................................................................................... 14
+6.3 DC Power Requirements .......................................................................................................................................................... 14
+7. BASIC OPERATION ............................................................................................................................. 15
+7.1 Command & Control Computer ............................................................................................................................................... 15
+7.2 Off-Radar Software .................................................................................................................................................................. 15
+7.3 Power–on sequence and setup................................................................................................................................................ 16
+7.4 Basic Functional System Connections ...................................................................................................................................... 16
+CHANGE SUMMARY
+REV DATE CHANGE NOTES & HIGHLIGHTS AUTHOR
+2021-May Creation in support of CE RED Type Certification S Straka
+2022-June Corrected radar default IP address to be 169.254.1.10 S Straka
+2023-May Updates based on 2023 CE Type Cert refresh D Garrison
+Pa ge | 2
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 3 ---
+1. PRODUCT OVERVIEW
+1.1 Introduction to Echodyne’s Echoguard MESA Radar
+Echodyne’s MESA (Metamaterial Electronically Scanning Array) technology is a new
+architecture for forming and controlling a beam of radiating energy from a surface. The
+MESA architecture is inherently simpler than alternatives as it does not require the moving
+parts of dish antenna systems, nor the phase shifters of phased array antennas. This
+simplicity allows MESA to make imaging radar solutions accessible to a broad range of
+applications, even platforms which may be highly C-SWAP (Cost, Size, Weight, and Power)
+constrained.
+EchoGuard™ Security and Surveillance Radar (SSR) is uniquely designed to enable multiple
+missions such as perimeter security for border or critical infrastructure applications, counter-UAS (cUAS)
+detection and tracking of intruders and Ground-Based Detect and Avoid (GB-DAA) applications. It can provide
+the same level of safe operation for small UAS vehicles too small to carry their own radar system, by providing
+localized situational pilot awareness of both own-ship position, along with cooperative and non-cooperative
+intruder air vehicles. Multiple EchoGuard units may be combined into flexible local networks for increased
+coverage. EchoGuard provides 20-30% longer range than EchoFlight™ (Airborne Detect and Avoid Radar) by
+maximizing transmitter power, waveform processing and through design of an all-passive cooling system (no
+forced air cooling) optimized for fixed and portable ground-based use.
+EchoGuard MESA Key benefits of true electronically scanning beam radar are:
+1) Active SWT (Search While Track) of detected intruders with high accuracy and track retention
+2) The EchoGuard beam scheduler intelligently allocates beam time on target to optimize tracking
+accuracy and search time while in the SWT mode.
+3) Improved clutter suppression and false-alarm rejection
+4) IMU-based self-stabilization to work with platform dynamics.
+5) All-electronic architecture eliminates mechanical failure mechanisms.
+6) Reduced false alarm rates for objects being tracked.
+7) Dynamically reconfigurable Field of Regard (FoR) for changing system needs.
+Traditional security radars are expensive and have largely focused on ground intruders such as walkers and land
+vehicles. The EchoGuard radar incorporates full electronic elevation and azimuth scanning adding the capability
+to detect and track in-coming airborne drone threats simultaneously while monitoring ground activity.
+Pa ge | 3
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 4 ---
+1.2 EchoGuard Radar Use Cases
+If an ESA radar could be reduced to the size of a paperback book with
+COTS pricing, it would be used everywhere. Echodyne delivers this
+breakthrough with its innovations in software-defined radar
+technology. Echodyne radars can operate standalone or as part of a
+larger system. We work with solution integrators, defense
+contractors, and military and government agencies to ensure
+mission requirements are met to accurately track air and ground
+targets in real-world conditions at best-in-class ranges.
+1.2.1 Counter-UAS Detection
+EchoGuard is the ideal radar for counter-UAS site protection. With a large vertical field of view and
+fast update rates thanks to true 3D electronic beam steering, EchoGuard accurately detects, tracks,
+and classifies small UAS where it matters most - within 1 km of your protected site. It provides
+precise and reliable target location for putting eyes on target, cueing optical sensors, and directing
+mitigation responses.
+With proven performance in live operations and in countless defense,
+federal, and private tests across diverse environments (urban, suburban,
+rural, maritime, and even airborne), EchoGuard has earned its place as
+the preferred C-UAS radar for dozens of counter-UAS system suppliers.
+Echodyne offers the counter-drone radar of choice for defense and
+homeland applications.
+1.2.2 Border Security Radar
+Unauthorized border crossings by ground, sea, or air threaten
+national security across the globe. Yesterday's fixed surveillance towers were large, expensive, and
+left vast expanses of borders unprotected. The portable kits were anything but portable.
+Today's innovative autonomous towers benefit from Echodyne's 3D radar surveillance capabilities
+to anchor their sensor suite. Powerful radar data cues multi-spectral cameras to create real-time situational
+awareness of air, ground, and marine domains. The same powerful and highly portable radar on a tripod or
+vehicle acts as a robust and cost-effective force multiplier for field agents.
+1.2.3 Base Security & Force Protection Radar
+3D radar is an essential perimeter surveillance sensor for sensitive facilities and high-risk locations.
+EchoGuard’s ultra-low SWaP-C, built-in interference
+mitigation, and extensive software-defined masking
+capabilities make it easy to network multiple radars
+around a single site or perimeter, delivering 3D
+perimeter surveillance with robust coverage and low false alarms.
+Rich data output from the radar precisely cues EO/IR sensors for
+visual tracking and object confirmation, ensuring timely security
+response. Echodyne radars offer unrivaled data integration options
+for robust ground and air domain surveillance with extraordinary
+accuracy – all at commercial prices.
+Pa ge | 4
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 5 ---
+1.2.4 Critical Infrastructure
+Comprehensive ground + airspace surveillance from one
+radar. Ideal for integrators and resellers for use with
+existing security systems. Rich data for systems integration
+and optical sensor slew-to-cue for "eyes on object". High-
+performance radar at commercial prices. Outperforms
+every other radar in its class. The new standard in affordable 3D security
+for critical infrastructure. Typical tracking ranges exceed all comparable
+radars. ESA performance at commercial prices.
+1.2.5 Portable ISR Radar
+Until now, high-performance 3D ESA radar was not feasible
+for portable ISR needs. But with its ultra-low SWaP and a
+rugged solid-state design, EchoGuard is a truly man-
+portable high-performance radar -- less than ten kilograms
+total system carry weight for ten hours of battery powered field use.
+Whether deployed standalone or integrated with additional sensors
+(optical/thermal), EchoGuard’s actionable radar data enhances ISR, acts
+as a force multiplier, and contributes to improved intelligence,
+surveillance, and reconnaissance.
+1.2.6 Law Enforcement, Fire, Search and Rescue
+Robust temporary ground and airspace security is both necessary and possible. Whether ensuring
+clear airspace for first responders or protecting public events, radar can detect, track, and classify
+drones, and create a 3D evidence record needed for prosecution. Ideal for law enforcement,
+wildfire, and search and rescue missions. Proven at major sporting events for counter-drone
+security, Echodyne radars are rapidly deployable, all-weather, lightweight, solid-state, and low power, all while
+delivering superior performance.
+Pa ge | 5
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 6 ---
+2. PRODUCT PHYSICAL FEATURES
+2.1 EchoGuard Radar – Front & Rear
+The pictures below show the EchoGuard radar front and rear detail with the white radome protecting the top
+transmit and bottom receive antenna apertures which are aimed at the target region of interested (ROI).
+FRONT (Radome Aperture) REAR (Heatsink mounting & I/O)
+Heatsink
+Transmit
+(Do not block
+Aperture
+airflow)
+Receive
+Aperture
+2.2 EchoGuard Radar – ICD
+The picture below is an excerpt from the official Interface Control Drawing (ICD) for the EchoGuard International
+Radar p/n 700-0005-206-100 with dimensions shown in inches [millimeters].
+WARNING: Only apply power and operate after the radar is properly installed and pointed at the area of
+interest to avoid inadvertent exposure to RF energy. Observed the 1 meter keep clear distance.
+CAUTION: The radome surface is delicate and should be treated similar to a camera aperture, keeping
+protected from tools and other blunt or protruding objects.
+CAUTION: The 11x M4 mounting bolts have a maximum torque rating of 10 in-lb. [1.3 Nm].
+Pa ge | 6
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 7 ---
+2.3 EchoGuard Radar System Components
+Deploying an Echoguard radar to the field requires the typical system components shown below. Echodyne
+software and documentation is available on the secure Customer Portal. Contact support@echodyne.com for
+access as well as additional details regarding cabling, mounting solutions and software integration options.
+EchoGuard Radar Radar Cable Mounting Hardware
+2’ [0.6m], 8’ [2.4m] or 20’ [6.1m] (Purchased separately)
+Off-Radar Software Command & Control (C2) PC DC Power Source – 24VDC
+(BNET, RadarUI, customer C2, etc.) (Customer supplied) (Customer supplied, 50W/radar)
+2.4 Radar Primary Power, Control & Data Cable
+The single electrical port (J1) on the EchoGuard radar is a Fischer MiniMax IP-68 circular snap lock connector
+which mates with a custom EchoGuard cable. All DC power, radar data and command control is provided through
+this single connector which has a “Y” configuration shown below. Echodyne provides three standard lengths for
+this cable (“A” dimension = 2’ [0.6m], 8’ [2.4m] or 20’ [6.1m]) as well as an unterminated 20’ [6.1m] version.
+The “Y” cable splits the 12-pin circular connector radar interface into a standard RJ-45 Gig-Ethernet on one
+connector and a MOLEX DC Power input connector on the other. The user may choose to either use the provided
+MOLEX connector and mate for DC Power prime input power or cut this off and direct wire to an alternate
+connector of choice. Any alternate connector chosen must support 24VDC and > 2.5 Amperes current rating (22
+AWG wire or larger is recommended). The following table is intended as a reference for color codes and pinouts
+of the supplied “Y” cable assembly.
+Pa ge | 7
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 8 ---
+3. KEY RADAR SPECIFICATIONS
+EchoGuard International radar configuration SKUs:
+• 700-0005-206-100 (white radome, black chassis, silver heatsink)
+• 700-0005-207-100 (white radome, black chassis, cold plate variant, contact for ICD)
+Note: Specifications subject to change without notice.
+INTERFACES
+DC/Control Cable Assembly The radar is powered and controlled through a single Fischer MiniMax IP-68 watertight snap
+lock circular connector and custom cable harness. Only the snap lock radar end (P1) is
+watertight. A cable assembly is provided with each radar and additional cables may be
+purchased as needed. It is intended that the user would route the non-watertight P2/P3
+inside a watertight enclosure for C2 integration.
+P1 – (Radar-End) Snap Lock watertight 12 pin connector.
+P2 – (User End) standard RJ45 shielded non-watertight Gbit Ethernet
+P3 – (User End) Molex 43645-0500 5 socket contact connector for DC power and discrete
+digital control lines.
+DC Power DC Power is connected through the P3 Molex connector of the cable harness and is routed
+to the P1 radar interface connector.
+PIN 1 - RED Wire +VDC 22 AWG
+PIN 2 – BLACK Wire -VDC RTN 22 AWG
+Note reduced maximum Input Voltage for CE/International model.
+Recommended DC power: +15 to +24 V @ typically 45 Watts.
+DC
+Abs Max DC power: +12 to +25 V @ 50 Watts
+DC
+Note: Maximum current in harness and contacts is 5 Amperes. Current will vary as a function
+of the input voltage. Size the DC supply accordingly.
+EchoGuard Current Limit = 50 Watts/V
+OPERATING
+Power on Hot Standby (No Transmission) ≤ 7 Watts
+Discrete Control Digital Lines Discrete 3.3V TTL Control Wires
+PIN 3 – ORANGE – RESET_N (PIN2-BLK GND Hold 10 sec =Factory Reset)
+PIN 4 – GREEN – CTRL2 (Designed for future Use)
+PIN 5 – WHITE – Digital Shield Ground
+Note: These need not be connected at all in the base model radar. They should be taped off
+and insulated well to prevent damage. PIN 3 may be configured to reset the unit to factory
+configuration.
+Contact Echodyne Applications engineering for specific use case.
+RF Transmit Power Maximum RF power emission under all conditions < 4 watts.
+RF safe distance from aperture under operating conditions:
+>1m for FCC Maximum Human Exposure (MPE) per FCC Bulletin 65
+PERFORMANCE
+Radar parameters
+Operation center frequency 24.05-24.25 GHz
+Operating bandwidth Baseline Configuration:
+Mode A1 (45MHz swept BW with 200uSec chirp – NTIA compliant Mask)
+Channel A1-A 24.0675 to 24.1125 GHz (Fc=24.09 GHz / 45MHz swept BW)
+Channel A1-B 24.1275 to 24.1725 GHz (Fc = 24.15 GHz / 45MHz swept BW)
+Channel A1-C 24.1875 to 24.2325 GHz (Fc = 24.21 GHz / 45MHz swept BW)
+Note: NTIA spectrum mask allows for about 15MHz overshoot on each edge.
+Frequency Accuracy ± 10ppm (± 250kHz) including temperature and aging 8 years
+Waveforms FMCW 32 chirp CPI with 45MHz swept BW over 200uSec SAWTOOTH (default) with power
+blanking.
+Transmitted Power 3.2 Watts CW (35 dBm)
+Blanking (~-50 dB) when not in use
+Pa ge | 8
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 9 ---
+Transmitter only enabled during valid radar trigger event.
+Transmitter not enabled during BIT fault or bootup until issuing START
+Aperture Characteristics
+Polarization Linear, Horizontal
+Cross-pol Typically, 20 dB
+AZ/EL (HPBW), typical 2° horizontal (E-plane, at broadside), 6° vertical (H-plane, at broadside)
+Note: Beam width increases 30-50% at FOV edges.
+Field of regard Azimuth/Elevation ± 60° / ± 40°
+Beam Step resolution/accuracy 2° Resolution, ≤1° pointing accuracy
+Realized Gain at broadside 21 dBi typ. (safety absolute maximum gain of 22 dBi)
+Gain average roll-off 2.0 dB typical over full field of regard
+Side lobe level Two-way radar Sidelobes
+Center (< ±40° Az or El) SLL -32 dB average
+Edges SLL -28 dB average
+Next-beam buffer time < 100 microsecs (serial write time)
+Beam-to-beam transition time < 1 microsecs (after enable)
+Object Detection parameters
+Object RCS -30 to +100 dBsm
+(Approximate User settable window – See RCS commands)
+0dBSm @ >2500m @ 90% P /10-6 P Typical
+D FA
+Range Minimum 20 meters, Maximum 5987 meters operational
+Range Resolution 3.25 m typ.
+Velocity Resolution 0.91 m/s typ.
+Angular Resolution ±1° Az and ±3° El while in Search Mode, smaller for tracked targets
+Search & Track
+Search User configurable scan volume
+Track acquisition New tracks are acquired in < 1 sec
+Track updates 5-10 updates /sec (for each track) depending upon Operation Mode
+Max Tracks 20 simultaneous tracks dynamically allocated via i-SCAN
+Modes Search & Search-While-Track
+General Physical
+External Finish Anodized Aluminum Body
+Radome: 1mm polycarbonate with white/tan overpaint
+Size (Packaged) 18.7cm x 16.2cm x 5.1cm
+Weight (Packaged) EchoGuard < 1250 grams fixed install natural convection (no-fans)
+Mechanical Interface EchoGuard has 75mm and 100mm square VESA mounting holes using standard M-4 screws.
+See – Mechanical ICD 700-0005-203
+ENVIRONMENTAL
+Operational Temp -40 ° C to 75 °C Continuous Operation
+Storage Temp -55 ° C to 95 °C (Non-Operational)
+Humidity (operation) < 95 % non-condensing
+Moisture Resistance Main Radar package is an IP67 moisture and dust protected package as delivered. It has a
+Gore vent gasket that supports air transport pressure changes
+Fungus None Specified
+Salt Fog None Specified
+Sand & Dust Tolerant with protective cap or connector attached.
+MTBF 110,000 hours; per MIL-STD-217, Ground Fixed environment
+Operational altitude 0-30,000 ft (0 to 9.1 km) AGL
+Shock None Specified
+Vibration Typical mounting on fixed structures requires no special mechanical isolation mounts. Care
+should be exercised with mount designs to avoid resonant modes in the 100-3000 Hz range
+with large deflections as this could potentially generate false Doppler signatures and impact
+angular pointing accuracy.
+Prime Power 1. Maximum ripple provided to radar on prime power required to be less than 200
+mV P-P
+2. Ramp-Up Prime power voltage < 50 msec
+ESD Handle with normal sensitivity (Standard HBM)
+Lightning None Specified
+Pa ge | 9
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 10 ---
+4. REGULATORY & SAFETY NOTIFICATIONS
+4.1 EU and UK Country Specific Spectrum Licensing Requirements
+In accordance with 2014/53/EU Article 10(10), the above pictogram on the packaging indicates that the device
+has the following restrictions in the countries shown.
+In each of the countries listed the EchoGuard radar must be licensed to operate in the 24.05-24.25 GHz
+frequency band. The user of the radar must apply to the relevant national telecommunications authority for a
+license covering one or more specific installations of the radar. Such a license may be referred to as an individual
+license, a regional license, a site license, a frequency authorization, etc. depending on the rules in the particular
+jurisdiction.
+4.1.1 UK Specific Spectrum Licensing Requirements
+In the United Kingdom, the EchoGuard radar must be licensed in order to operate in the 24.05-24.25 GHz
+frequency band. The user of the radar must apply to OFCOM UK for a license covering one or more specific
+installations of the radar.
+The user of the radar may contact Echodyne for advice and assistance in preparing a license application for a
+national telecommunications authority.
+4.2 RF Radiated Emission Hazard
+The EchoGuard International band radars have a primary operating frequency centered at 24.15 GHz with
+maximum transmit power under 4 watts. While the transmit power is like other low power radios that humans
+encounter (cellular phones, handheld radios, CB radios etc.) there is slightly more risk due to the focused beam
+of the radar. A focused beam with a nominal gain of 21 dBi and an absolute maximum gain of 22dBi (Factor of
+160) multiplies the effective power radiated. To address this, Echodyne has reviewed the FCC Maximum
+Permissible Exposure ( MPE) as described in FCC OEP Bulletin 65 and used the principles and guidelines to
+develop a conservative safe operating distance to recommend. This is exactly the process used by marine radar
+manufacturers to recommend safe operational distances for humans.
+For safe operation, the radar should be in such a position to ensure closest proximity to operators, or the general
+population is greater than 1 meter (39 inches) radial arc over the 120˚ azimuth
+and 80˚ elevation scanning field of view. Do not transmit with radar and antenna
+when persons are within the MPE radius of the antenna. The MPE radius is the
+Pa ge | 10
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 11 ---
+minimum distance from the antenna axis that humans should maintain to avoid RF exposure higher than the
+allowable MPE level set by FCC.
+CAUTION: It is the responsibility of the radar operator to ensure that the maximum permissible exposure
+limits as labeled as are observed at all times during radar transmission.
+4.2.1 Declaration of Conformity
+For International operation (non-US/FCC), EchoGuard MESA radars have an operating frequency centered at
+24.15 GHz with maximum transmit power under 4 watts and an operation frequency band of 24.05 to 24.25 GHz
+with three sub-channels. For any questions regarding country availability and UKCA and CE Declaration of
+Conformity (DoC) documentation including translations, please contact Echodyne. The translated DoC for the
+country of destination will be included in the radar shipment.
+4.2.2 EchoGuard International - Export Requirements
+The US Commerce Department limits export of certain commodities to specific countries. Based on the product
+type, Echodyne has determined it is contained within the EAR Export Classification ECCN #6A008.e for export
+licensing. The applicable HS Code is 8526.10. For additional export & shipping information, please contact
+Echodyne.
+4.3 Radar Interference
+As with any RF device, the EchoGuard radar is subject to interference from nearby transmitters operating in the
+same frequency band. In the case of nearby EchoGuard radars within line of sight (LOS), a variety of built-in
+radar channelization options exist (frequency channels, time channels, PRISM coded channels) that enable
+deconfliction of operating radars to avoid any self-interference and resulting performance degradation.
+For the case of non-cooperating RF transmitters in the vicinity and same frequency band, it is possible the radar
+will receive and demodulate those signals resulting in some degree of desensitization and/or spurious targets
+depending on the nature of the interference. The radar in this situation acts like an analog receiver with broad
+band interference serving to raise the received signal noise floor which can be monitored via the RVmap data
+ports or detection packets. In the case of narrow band in channel spectrum interference, these signals are not
+time aligned to the radar master oscillator and may cause spurious false detections rolling in range and angle
+through the radar field of regard.
+Note: The radar is subject to in band (24.05 to 24.25 GHz) interference which can increase the noise floor
+and desensitize the radar or generate false detections. When operating and observing either an
+increase in the system noise floor or spurious target detections where no moving object exists,
+attempt to reposition the radar to remove a line-of-sight (LOS) link between interfering transmitter
+or select another frequency channel for radar operation.
+Pa ge | 11
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 12 ---
+5. RADAR ARCHITECTURE
+The EchoGuard radar block diagram as illustrated below can provide insight into the basic radar architecture.
+Fundamentally this radar is a multi-chirp FMCW (Frequency Modulated Continuous Wave) radar that provides
+range and velocity information for each beam (look) direction. Range information from the delayed returned
+echo frequency spectrum is extracted from the first “Fast-Time” FFT (Fast Fourier Transform). Range rate is
+derived from the phase advance observed over multiple fast chirp cycles extracted from what is called the
+second or “Slow-Time” FFT. There are three main hardware sections of the radar: 1) Exciter Transmitter, 2)
+Receiver, 3) The Digital Controller and processor. The dual aperture architecture is classically referred to as Bi-
+Static since there are separate transmit and receive antenna. This separation provides greater than 60dB of TX
+to RX isolation allowing us to support simultaneous high-power CW transmission while maintaining a linear low
+noise figure receiver. The radar as delivered, has been fully tested and verified in our production synthetic target
+test chamber. This test system verifies the signal to noise ratio and detection of multiple objects at simulated
+velocity, ranges, and RCS levels over the entire radar field of regard, requiring no user calibration.
+Transmitter
+M
+E
+S
+A
+EXCITER RF DRIVER S S X T -
+AMP
+A
+P
+A
+p
+e
+ATTENUATOR r
+t
+u
+r
+e
+Receiver
+M
+ADC I/Q Mixer Down – I/Q E
+A S
+Video Gain N A -
+DSP L R
+X
+A
+p
+e
+r
+t
+u
+r
+e
+Gigabit Radar DSP & Beam
+Ethernet Control
+Scheduler
+DC Power Processor
+Radiating Apertures MESA-TX and RX – The Radar uses separate but identical MESA apertures for reception
+and transmission. Each aperture delivers a nominal gain of 21 dBi and has AZ/EL half power beam widths of
+4°/12° respectively at bore sight. This results in a radar round trip half power effective beam width of nominally
+2°/6° that is capable of scanning across 120° in azimuth and 80° of elevation. This phased array like performance
+is made possible by Echodyne’s patented MESA technology. All possible antenna beam positions are pre-
+programed and verified requiring no user calibration.
+Transmitter/Exciter – The transmitter is a solid-state balanced pair of PHEMT MMIC power amplifier devices set
+at a bias point to deliver 35dBm (3160mW) for EchoGuard. Transmit power is automatically blanked when radar
+is not being triggered to take data or when radar is stopped. Transmitter will also be disabled if the exciter is
+unlocked and reporting a BIT fault or if the control computer loses connection with the radar. To create the
+FMCW saw tooth radar waveform (chirp), an all-digital fractional N phase locked loop microchip is used to lock
+a high performance VCO to the system coherent reference crystal oscillator. This precisely controlled waveform
+Pa ge | 12
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 13 ---
+generator drives the SSPA (Solid State Power Amplifier) and provides a second coherent sample to the receiver
+down-converter.
+Receiver – The receiver consists of a single channel LNA (Low Noise Amplifier) followed by a high intercept
+balanced I/Q down-converter with video gain and filtering. The receiver is very robust against RF high power
+damage. First, the MESA antenna has a band-pass behavior with very high loss below 18GHz where most high-
+power emitters exist. Second, in-band reflected RF energy cannot damage the receiver until RX power exceeds
++15dBm into the LNA. While our +35dBm transmitter is highly isolated from the receiver when radiating into
+free space, users are cautioned to maintain at least 1-meter safe distance from highly reflective surfaces to
+reduce risk of LNA damage. Following the down conversion, the I and Q signals are delivered to a precision
+balanced video gain chain that incorporates both high-pass and low-pass filter characteristics. The low-pass filter
+provides classic anti-aliasing while the high-pass filter blocks mixer DC-Offsets and prevents saturation from
+large close-range objects. The high-pass transfer function has a graceful R4 slope (-12dB Octave) creating a
+variable gain over the 0-200m range zone to reduce the effect of large-echo saturation at close ranges.
+Digital Controller and Processer - The end user communicates with the radar via the fast TCP/IP Gbit Ethernet
+interface by selecting ports (described in a later section). The System on Chip (SoC) microprocessor parses
+commands, modes, and configures the user data stream selection. Once the radar is configured and triggered,
+all timing and control is managed using a synchronous FPGA (Field Programmable Gate Array) which aligns the
+sample timing with each radar waveform generation. Video I/Q Samples are delivered to the FPGA from the dual
+14-bit analog-to-digital converters (ADCs). Dual FFT blocks process the I and Q data into a range velocity map
+and either package the data for delivery to the user or for further use in internal CFAR (Constant False Alarm
+Rate) detection and tracking algorithms. The radar processor also functions as the radar beam scheduler.
+5.1 EchoGuard Scan Modes
+The MESA radar can be pointed in a user-specified direction using an automated scan using either the
+MODE:SEARCH:START (Sequential raster scan defined FOV) or MODE:SWT:START commands (smart Search-
+While-Track algorithm).
+At every beam pointing direction the MESA points to, called a ‘beam step’, the MESA collects a single set of radar
+data and then performs two types of data processing on the collected data set. The first type of data processing
+produces a RVmap (Range-Velocity Map) that represents the magnitude of the radar return from all ranges and
+radial-velocities observed in the current beam direction. The second type of data processing uses a CFAR
+(Constant False Alarm Rate) detector to identify the range and radial velocities of objects in the current RVmap.
+In Search-While-Track mode, a third layer of data processing then correlates in space and time the detections
+produced from all beam steps as the radar scans the field of view to track distinct, persistent, intruders. Each
+tracked intruder has an associated ID and various properties are estimated about each of them.
+5.2 EchoGuard Channelization
+The radar offers three (3) channelization methods (Frequency, PRISM and TCM) for mitigating the effects of
+radar self-interference when multiple EchoGuard radars are operated within line of sight (LOS) of each other.
+The signal from an in-band interfering radar will look just like a real target if the chirp start-times align to put the
+interference within the instrumented range. While normal radar operation requires transmitted energy to
+propagate to the target and back to the radar receiver, incurring greatly attenuated R4 (where R=range) signal
+path losses along the way, nearby interfering radar energy need only propagate one-way (R2 signal attenuation),
+resulting in potential self-generated interference false targets from distant radars without proper steps to
+deconflict through correct radar channel selection. By utilizing the 3 frequency channels, 4 PRISM channels and
+4 TCM channels, operators now have up to 48 channel combinations (with supporting hardware) to address any
+realistic radar deployment density. Contact support@echodyne.com for advice on optimal channelization
+strategies and site-planning support.
+Pa ge | 13
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 14 ---
+6. RADAR INSTALLATION
+6.1 Physical Installation
+The EchoGuard radar has a large backplate for natural convective cooling. Embedded in this backplate is a square
+VESA 75mm and VESA 100mm hole pattern for mounting brackets as well as an alternate three-hole AMP circular
+mounting pattern. Only one of these patterns need be used with standard industry brackets. Screws should be
+standard M4 x 0.7 x 10mm hardware and torqued to 1.3 Nm (10 in-lb.) for dry hardware (do not use thread lock
+liquid) in threaded steel inserts.
+When mounting to a bracket or other physical installation, observe the
+coordinate system shown below (also laser engraved on top of radar) as it is tied
+to the internal coordinate reference system defined by Echodyne for beam
+scheduling and target tracking. The coordinate system defined for Echodyne
+radars is a standard Azimuth (AZ) / Elevation (EL) system with antenna
+coordinates defined in X/Y/Z coordinates. The official ICD provides a reference
+coordinate system anchoring the physical dimensions to the unit physical
+features. Also, for successful mounting, remember that the radar cable connector
+(J1, round, 12-pin Fischer connector) is towards the bottom of the radar and should be free and accessible for
+cable insertion and removal. The two LEDs should also be visible for confirming power and Ethernet link activity.
+The radar should always be mounted with 0° roll (about the Z axis) and 0 to 20° pitch
+(about the X axis) depending on the target use case. Once mounted, the exact X, Y, Z
+radar geographic position (typically Latitude & Longitude in decimal degrees and Altitude
+in meters) should be recorded, typically measured via an external GPS instrument. Also,
+the final roll, pitch and yaw (compass heading) should also be measured and recording in
+degrees. For more information on mounting solutions and installation training, please
+contact support@echodyne.com.
+6.2 Thermal Considerations
+EchoGuard is designed to achieve maximum reliability with only natural convection in a fixed installed location
+without any forced air. It draws 45-50 Watts of DC wall power and must dissipate ~41-44W through thermal
+conduction to the environment. All internal circuits are thermally bonded to the T6061 aluminum housing and
+external heatsink.
+The thermal path is through the case and heatsink fins to the ambient air. For maximum reliability, it is important
+to provide enough free air flow, such that the unit internal temperature is no more than 15-25C above ambient
+temperature. In a typical outdoor configuration with near still air (no moving air other than convection), at our
+specified maximum operating temperature of 75C, this will keep the power amplifier junction temperature
+under 140C, supporting an 8-10 year service life with margin.
+CAUTION: The heatsink will become hot after prolonged operation in the sun. Allow to cool before touching.
+6.3 DC Power Requirements
+A 24VDC power supply capable of sourcing 50W (> 2.1A) per connected radar is required. The power
+supply should be sufficiently robust (operating temperature range and IP-rated sealing) to survive
+outdoor installation. We recommend 22 AWG (American Wire Gauge) stranded wire less than 8’
+(2.6m) from the power delivery point. If you require longer wiring runs, please size wire appropriately to support
+the voltage and current load to avoid unstable power to the radar and potential brownouts.
+CAUTION: To avoid shock hazard in wet environments, observed a maximum voltage of 25VDC at all times.
+Pa ge | 14
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 15 ---
+7. BASIC OPERATION
+To operate the radar, the following section shall be observed. For detailed radar configuration commands and
+advanced interface details including packet definitions, consult the Programmer’s Manual.
+7.1 Command & Control Computer
+A modern Intel i7 PC or equivalent should be obtained for controlling and interacting with the
+radar. The computer shall have a 100 Mbit or Gb (for RVmaps data) Ethernet connection for
+communicating with the radar. Depending on the nature of the deployment, sufficient hard disk
+space shall be provisioned to store the desired radar data products.
+INFO: The radar does not support DHCP and has a fixed, default IP address at 169.254.1.10 which can be
+configured via software commands along with the subnet mask and gateway address.
+7.2 Off-Radar Software
+The EchoGuard radar is a purely digital ‘bits in, bits out’ TCP/IP configured sensor which is controlled
+remotely by a separate mission computer. This computer configures the radar with a variety of
+commands to customize operation (see Programmer’s Manual), commands the radar to start
+operation and consumes the track, status, detection, and other data products to plot on a map or fuse with
+other sensor systems and end effectors pursuant to the mission objectives.
+Echodyne provides a number of off-radar software solutions for interacting with the radar.
+• BNET – Executable Command Line Interpreter (CLI) for Win10 & Linux
+• BNET DLL – A dynamic linked C++ library for integration into customer C2 software solutions (Win10 & Linux)
+• RadarNet – A headless radar network manager for automatically managed 12+ EchoGuard radars in a
+cooperative network.
+• Radar Update Utility – A GUI for easily updating the radar embedded firmware over Ethernet connection
+(Win10 & Linux)
+• RadarUI – A GUI for operating up to 4 EchoGuard radars and plotting the tracks on an interactive 2-D map.
+RadarUI
+BNET CLI/DLL Update Utility
+(Windows10 & Linux)
+(Windows10 & Linux) (Windows10 & Linux)
+Pa ge | 15
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.
+--- Page 16 ---
+7.3 Power–on sequence and setup
+1. With the not radar connected, set your DC power supply (if adjustable) to 24VDC and the current limit
+to 2.5A. This will ensure the unit has enough peak current to start properly but prevent damage to the
+cable assembly in the event of a problem such as short.
+2. Next, make all connections shown in the diagram below. Connect the radar to cable harness P1 end
+while ensuring it snap locks into position at the correct clocking angle (white dot to white dot). Plug the
+RJ45 connector into your Ethernet switch or computer, plug the DC Power supply into the Molex
+connector RED/BLACK pins. Use a minimum of 22 AWG stranded wire for integration.
+3. Turn “ON” the DC power source. As the unit boots up internally, the power will increase to about 10
+Watts in IDLE state. It will hold here until given commands.
+4. Within 60 seconds the radar should completely boot up and be ready to communicate through the
+Ethernet ports. Verify the LED indicator lights are illuminated and communicating with the port
+connection. The right-hand light should be steady. The right-hand light on confirms unit auto negotiation
+to GbE, left hand light indicates that the unit has negotiated to 100Mbit speed, and both LEDs
+illuminated indicate there has been a negotiation fault and is there is no communication to the radar.
+Please note that if no LEDs are lit, there has likely been an issue with the Ethernet connection or power
+supply. You can ‘ping’ the radar as well to confirm connection.
+5. Proceed with control commands to query the radar. Execute the command line BNET.exe program
+provided and start with [*IDN?] which should respond with a message stack that includes serial number,
+firmware revision and MCU code revision.
+6. You are now ready to begin operating your new radar, advancing to the RadarUI, RadarNet or other
+software integration solutions. Consult the appropriate software manual as necessary.
+7.4 Basic Functional System Connections
+EchoGuard Radar
+Cat6 Gb Ethernet Cable
+Radar Interface
+Optional P1
+Cable
+100Mb/1Gb
+Ethernet Switch
+Cat6 Gb
+Ethernet Cable
+Power Supply P2 RJ45
+24VDC, 2.5A (50W)
+P3 Molex
+Pa ge | 16
+ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PIA This document contains proprietary information that shall be distributed or made available solely in
+accordance with a nondisclosure or proprietary information agreement. Copyright © 2023 Echodyne Corp. All rights reserved.

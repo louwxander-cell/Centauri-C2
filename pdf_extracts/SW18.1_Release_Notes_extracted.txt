@@ -1,0 +1,51 @@
+SW1 8.1 Suite Release Notes  
+   Doc:  901940  Rev:  01 August 2025  
+ ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PI A   Copyright © 2025  Echodyne Corp.  All rights reserved.  Page 1 of 2 
+SW18.1  
+Release Features:  
+• Improved the multiclass classifier, resulting in significant classification performance. Th e SW18.1  release 
+replaces the earlier decision tree model used in SW 17.0 with a more sophisticated random forest 
+model , yielding improved accuracy in classifying objects, with notable gains in UAV recognition.  For 
+more information on the multiclass classifier improvements, contact support  to obtain the Echodyne® 
+EchoGuard Multi -class Classifier (SW 18.1) white paper.  
+• Added net:port23enable  command to the list of NET User Commands. The net:port23enable  command 
+disables port 23. This new command results in additions to all SYSPARAM queries. This 
+command/setting should be persistent such that it persists through power cycles. For more information, 
+refer to the EchoGuard Developer Manual . 
+• Added new command to enable/disable CFAR (Constant Fale Alarm Rate), measurements, and track 
+processing. Default value for RSP:CFAR:ENABLE is now set to “true” such that CFAR processing is 
+enabled. This is a particularly useful feature for customers who le verage RV Map data.  
+ 
+When set to “false”, CFAR is disabled – resulting in no Detect, Measurements, or Track packets. To reset 
+the parameter back to an enabled state, the RESET:PARAMETER is required. You can also reset the 
+parameter using CFAR:  
+ 
+RSP:CFAR:E NABLE <pswd> true  
+ 
+For more information, refer to the EchoGuard Developer Manual .  
+• Added information that details when downgrading an EchoGuard radar from software version 18.1.4 to 
+18.0.4, the radar's IP address will revert to the default only if the radar is set to a custom (non -default) IP 
+address. This behavior applies only in this specific downgrade scenario . 
+ 
+NOTE: After downgrading, if the radar's IP address is reset to the default, the Radar Update Utility (RUU) 
+will automatically restore it to its original IP address. In order for the RUU to restore the original IP 
+address, it must first talk to the radar on the default IP within the 169.254.1.X (excluding 169.254.1.10) 
+subnet.  
+ 
+For customers not using the RUU,  you may still be affected. Please use the above guidance regarding 
+the specific downgrade from 18.1.4 to 18.0.4.  
+ 
+For full details, refer to its corresponding new section, “Software Downgrade (Custom/Non -default IP 
+only) ” in the EchoGuard ™ Developer  Manual . 
+• Replaced DAA references with “Airborne”  (where nec essary) and m ade minor copyedits (throughout) 
+for clarity and conciseness  in the EchoGuard ™ Developer  Manual . 
+• Moved TIME:CHANNEL:PWRTHRESHOLD from “SUPER -USER COMMANDS” section to its correct status 
+(as an engineering command) in the “USER COMMANDS” section  of the EchoGuard Developer Manual . 
+SW1 8.1 Suite Release Notes  
+   Doc:  901940  Rev:  01 August 2025  
+ ECHODYNE PROPRIETARY - SUBJECT TO NDA OR PI A   Copyright © 2025  Echodyne Corp.  All rights reserved.  Page 2 of 2 
+• Added additional hazard warnings in both the EchoGuard Developer Manual and EchoGuard User 
+Manual . 
+Reminder: All Feedback is Useful Feedback ! 
+We’d love to hear how things are going, especially if you are actively testing the radar. Please reach out and we’d 
+be happy to schedule a call.  

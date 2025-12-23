@@ -1,0 +1,53 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "bcf326bc-035f-4494-9f69-f18517cc2f4f",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T15:12:07.094Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "CROSSFIRE",
+        "detectionLabel": "Crossfire",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "cd9e1dfe-67c1-40dd-bfc6-fdf720071389",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T15:12:07.089Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T15:12:06.000Z",
+        "detectionId": "08209cb9-d5a1-423e-a441-55161afe7b6e",
+        "primaryGain": true,
+        "power": 301791.09375,
+        "homeLatitude": 0,
+        "homeLongitude": 0,
+        "aircraftLatitude": 27.94097328186035,
+        "aircraftLongitude": -82.45415496826172,
+        "aircraftAltitude": 63.23500061035156,
+        "aircraftPitch": -0.07666344195604324,
+        "aircraftRoll": -0.04064866527915001,
+        "aircraftYaw": -0.36076819896698,
+        "aircraftVelocityNorth": 0,
+        "aircraftVelocityEast": 0,
+        "aircraftVelocityUp": 0,
+        "protocol": "MAV",
+        "frequency": 915000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

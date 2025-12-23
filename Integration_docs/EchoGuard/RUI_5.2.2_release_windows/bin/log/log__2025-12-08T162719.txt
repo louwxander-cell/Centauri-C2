@@ -1,0 +1,41 @@
+16:27:19.415:TRACE: SysMgr: SysMgrInitReq from (Unspecified) (seq=0)
+16:27:19.416:TRACE: SysMgr: state=[testRegion2]
+16:27:19.416:TRACE: SysMgr: state=[testRegion2,configInitWait]
+16:27:19.416:TRACE: SysMgr: state=[testRegion2,configInitWait,auxState1]
+16:27:19.416:TRACE: GuiMgr: state=[reset]
+16:27:19.416:TRACE: GuiMgr: state=[reset,radarsNotAvailable]
+16:27:19.416:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed]
+16:27:19.416:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed,disconnected]
+16:27:19.416:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed,disconnected,disconnected]
+16:27:19.416:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed,disconnected,disconnected,disconnected]
+16:27:19.416:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed,disconnected,disconnected,disconnected,disconnected]
+16:27:19.416:TRACE: ConfigMgr: state=[reset]
+16:27:19.416:TRACE: ConfigMgr: ConfigMgrInitReq from SysMgr (seq=0)
+16:27:19.416:TRACE: ConfigMgr: state=[initWait]
+16:27:19.417:TRACE: Load config ../SysConfig.json successful
+16:27:19.417:TRACE: ConfigMgr: InitDone
+16:27:19.417:TRACE: ConfigMgr: state=[initialized]
+16:27:19.417:TRACE: PlatformMgr: state=[reset]
+16:27:19.417:TRACE: RadarMgr0: state=[reset]
+16:27:19.417:TRACE: RadarMgr1: state=[reset]
+16:27:19.417:TRACE: RadarMgr2: state=[reset]
+16:27:19.417:TRACE: RadarMgr3: state=[reset]
+16:27:19.417:TRACE: RadarJupMgr0: state=[reset]
+16:27:19.417:TRACE: RadarJupMgr1: state=[reset]
+16:27:19.417:TRACE: RadarJupMgr2: state=[reset]
+16:27:19.417:TRACE: RadarJupMgr3: state=[reset]
+16:27:19.417:TRACE: RadarGrp: state=[reset]
+16:27:19.417:TRACE: PlaybackMgr0: state=[reset]
+16:27:19.417:TRACE: PlaybackMgr1: state=[reset]
+16:27:19.417:TRACE: PlaybackMgr2: state=[reset]
+16:27:19.417:TRACE: PlaybackMgr3: state=[reset]
+16:27:19.417:TRACE: PlaybackGrp: state=[reset]
+16:27:19.417:TRACE: DebugMgr: state=[reset]
+16:27:19.417:TRACE: SysMgr: ConfigMgrInitRsp from ConfigMgr (seq=0) status=SUCCESS, reason=NONE origin=(Unspecified)
+16:27:19.557:ERROR: m_toughbookGetModelNumber() failed (err=6)
+16:28:18.356:WARN : bnet send_command_async() failed
+16:28:18.356:WARN : Failed to send cleanup cmds to radar
+16:28:41.436:WARN : bnet send_command_async() failed
+16:28:41.436:WARN : Failed to send cleanup cmds to radar
+16:29:29.794:WARN : bnet send_command_async() failed
+16:29:29.794:WARN : Failed to send cleanup cmds to radar

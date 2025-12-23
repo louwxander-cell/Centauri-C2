@@ -23,6 +23,58 @@ Window {
     property bool manualSelection: false
     property int highestPriorityTrackId: -1  // Single source of truth
     
+    // Track classification colors (exact match to RadarUI)
+    property var trackClassColors: ({
+        "UAV": "#DC143C",              // Crimson red
+        "UAV_MULTI_ROTOR": "#8B0000",  // Dark red
+        "UAV_FIXED_WING": "#FF6600",   // Bright orange (more distinct from gold)
+        "WALKER": "#4169E1",           // Royal blue
+        "PLANE": "#FFD700",            // Gold
+        "BIRD": "#00CED1",             // Dark turquoise
+        "VEHICLE": "#9370DB",          // Medium purple
+        "CLUTTER": "#808080",          // Gray
+        "UNDECLARED": "#D3D3D3",       // Light gray
+        "UNKNOWN": "#00E5FF"           // Fallback for old data
+    })
+    
+    // Get track color based on classification
+    function getTrackColor(trackData) {
+        if (!trackData) return "#a0a0a0"
+        
+        // Use classification if available
+        if (trackData.classification && trackData.classification !== "UNKNOWN") {
+            var classColor = trackClassColors[trackData.classification]
+            if (classColor) return classColor
+        }
+        
+        // Fallback to old type-based coloring
+        if (trackData.type === "UAV") return trackClassColors["UAV"]
+        if (trackData.type === "BIRD") return trackClassColors["BIRD"]
+        if (trackData.type === "UNKNOWN") return trackClassColors["UNKNOWN"]
+        
+        return "#a0a0a0"  // Gray fallback
+    }
+    
+    // Check if track should be visible based on class filters
+    function isTrackVisible(trackData) {
+        if (!trackData) return false
+        if (!radarConfigDialog.config || !radarConfigDialog.config.show_classes) return true
+        
+        var showClasses = radarConfigDialog.config.show_classes
+        var classification = trackData.classification || "UNDECLARED"
+        
+        // Map classification to config key
+        var classKey = classification.toLowerCase()
+        
+        // Check if this class should be shown
+        if (showClasses[classKey] !== undefined) {
+            return showClasses[classKey]
+        }
+        
+        // Default to showing if not in filter list
+        return true
+    }
+    
     Component.onCompleted: {
         // Select highest priority track on startup
         updateHighestPriority()
@@ -415,75 +467,306 @@ Window {
                         Layout.fillWidth: true
                         
                         // GPS
-                        RowLayout {
-                            spacing: 6
-                            Rectangle {
-                                width: 7
-                                height: 7
-                                radius: 3.5
-                                color: "#64748B"  // Offline: darker slate
-                            }
-                            Text {
-                                text: "GPS"
-                                font.family: Theme.fontFamily
-                                font.pixelSize: 10
-                                font.weight: Theme.fontWeightMedium
-                                color: "#64748B"  // Offline: darker slate
-                            }
+                        StatusIndicator {
+                            sensorName: "GPS"
+                            status: systemStatus ? systemStatus.gpsStatus : "offline"
+                            interactive: false
                         }
                         
-                        // SkyView
-                        RowLayout {
-                            spacing: 6
-                            Rectangle {
-                                width: 7
-                                height: 7
-                                radius: 3.5
-                                color: "#64748B"  // Offline: darker slate
-                            }
-                            Text {
-                                text: "SKYVIEW"
-                                font.family: Theme.fontFamily
-                                font.pixelSize: 10
-                                font.weight: Theme.fontWeightMedium
-                                color: "#64748B"  // Offline: darker slate
-                            }
+                        // SkyView (RF Sensor)
+                        StatusIndicator {
+                            sensorName: "SKYVIEW"
+                            status: systemStatus ? systemStatus.rfStatus : "offline"
+                            interactive: false
                         }
                         
-                        // Echoguard
+                        // Echoguard (Radar) - Interactive!
                         RowLayout {
                             spacing: 6
+                            
                             Rectangle {
                                 width: 7
                                 height: 7
                                 radius: 3.5
-                                color: "#64748B"  // Offline: darker slate
+                                color: {
+                                    if (!systemStatus) return "#64748B"
+                                    if (systemStatus.radarStatus === "online") return "#10B981"
+                                    if (systemStatus.radarStatus === "standby") return "#F59E0B"
+                                    return "#64748B"
+                                }
+                                
+                                SequentialAnimation on opacity {
+                                    running: systemStatus && systemStatus.radarStatus === "online"
+                                    loops: Animation.Infinite
+                                    NumberAnimation { to: 0.4; duration: 1000 }
+                                    NumberAnimation { to: 1.0; duration: 1000 }
+                                }
+                                
+                                SequentialAnimation on opacity {
+                                    running: systemStatus && systemStatus.radarStatus === "standby"
+                                    loops: Animation.Infinite
+                                    NumberAnimation { to: 0.6; duration: 1500 }
+                                    NumberAnimation { to: 1.0; duration: 1500 }
+                                }
                             }
+                            
                             Text {
                                 text: "ECHOGUARD"
                                 font.family: Theme.fontFamily
                                 font.pixelSize: 10
                                 font.weight: Theme.fontWeightMedium
-                                color: "#64748B"  // Offline: darker slate
+                                color: {
+                                    if (!systemStatus) return "#64748B"
+                                    if (systemStatus.radarStatus === "online") return "#10B981"  // Green - streaming
+                                    if (systemStatus.radarStatus === "idle") return "#3B82F6"    // Blue - connected
+                                    if (systemStatus.radarStatus === "standby") return "#F59E0B" // Orange - ready
+                                    return "#64748B"  // Gray - offline
+                                }
+                            }
+                            
+                            MouseArea {
+                                anchors.fill: parent
+                                enabled: systemStatus && (systemStatus.radarStatus === "standby" || systemStatus.radarStatus === "idle" || systemStatus.radarStatus === "online")
+                                cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
+                                hoverEnabled: true
+                                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                                
+                                onClicked: {
+                                    console.log("[UI] Radar indicator clicked, status:", systemStatus.radarStatus)
+                                    radarMenu.popup()
+                                }
+                                
+                                onEntered: {
+                                    if (enabled) parent.opacity = 0.7
+                                }
+                                onExited: {
+                                    parent.opacity = 1.0
+                                }
+                            }
+                            
+                            Menu {
+                                id: radarMenu
+                                width: 160
+                                
+                                // Style the menu to match theme
+                                background: Rectangle {
+                                    implicitWidth: 160
+                                    color: Theme.base1
+                                    border.color: Theme.accentCyan
+                                    border.width: 1
+                                    radius: 4
+                                    clip: true
+                                    
+                                    // Add subtle shadow
+                                    layer.enabled: true
+                                    layer.effect: DropShadow {
+                                        horizontalOffset: 0
+                                        verticalOffset: 2
+                                        radius: 8
+                                        samples: 17
+                                        color: "#80000000"
+                                    }
+                                }
+                                
+                                // Connect (when standby/offline)
+                                MenuItem {
+                                    text: "Connect"
+                                    visible: systemStatus && (systemStatus.radarStatus === "standby" || systemStatus.radarStatus === "offline")
+                                    width: 160
+                                    height: 36
+                                    
+                                    contentItem: Text {
+                                        anchors.fill: parent
+                                        anchors.leftMargin: 12
+                                        anchors.rightMargin: 12
+                                        text: parent.text
+                                        font.family: Theme.fontFamily
+                                        font.pixelSize: 13
+                                        font.weight: Font.Medium
+                                        color: Theme.textPrimary
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignVCenter
+                                        elide: Text.ElideRight
+                                        clip: true
+                                    }
+                                    
+                                    background: Rectangle {
+                                        anchors.fill: parent
+                                        color: parent.highlighted ? Theme.accentCyan : "transparent"
+                                        opacity: parent.highlighted ? 0.2 : 1.0
+                                    }
+                                    
+                                    onTriggered: {
+                                        console.log("[UI] Radar connect requested")
+                                        if (bridge) {
+                                            var success = bridge.connect_radar()
+                                            console.log("[UI] Connect result:", success)
+                                        }
+                                    }
+                                }
+                                
+                                // Start (when idle/connected)
+                                MenuItem {
+                                    text: "Start"
+                                    visible: systemStatus && systemStatus.radarStatus === "idle"
+                                    width: 160
+                                    height: 36
+                                    
+                                    contentItem: Text {
+                                        anchors.fill: parent
+                                        anchors.leftMargin: 12
+                                        anchors.rightMargin: 12
+                                        text: parent.text
+                                        font.family: Theme.fontFamily
+                                        font.pixelSize: 13
+                                        font.weight: Font.Medium
+                                        color: Theme.textPrimary
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignVCenter
+                                        elide: Text.ElideRight
+                                        clip: true
+                                    }
+                                    
+                                    background: Rectangle {
+                                        anchors.fill: parent
+                                        color: parent.highlighted ? "#10B981" : "transparent"
+                                        opacity: parent.highlighted ? 0.2 : 1.0
+                                    }
+                                    
+                                    onTriggered: {
+                                        console.log("[UI] Radar start requested")
+                                        if (bridge) {
+                                            var success = bridge.start_radar()
+                                            console.log("[UI] Start result:", success)
+                                        }
+                                    }
+                                }
+                                
+                                // Stop (when online/streaming)
+                                MenuItem {
+                                    text: "Stop"
+                                    visible: systemStatus && systemStatus.radarStatus === "online"
+                                    width: 160
+                                    height: 36
+                                    
+                                    contentItem: Text {
+                                        anchors.fill: parent
+                                        anchors.leftMargin: 12
+                                        anchors.rightMargin: 12
+                                        text: parent.text
+                                        font.family: Theme.fontFamily
+                                        font.pixelSize: 13
+                                        font.weight: Font.Medium
+                                        color: Theme.textPrimary
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignVCenter
+                                        elide: Text.ElideRight
+                                        clip: true
+                                    }
+                                    
+                                    background: Rectangle {
+                                        anchors.fill: parent
+                                        color: parent.highlighted ? "#F59E0B" : "transparent"
+                                        opacity: parent.highlighted ? 0.2 : 1.0
+                                    }
+                                    
+                                    onTriggered: {
+                                        console.log("[UI] Radar stop requested")
+                                        if (bridge) {
+                                            var success = bridge.stop_radar()
+                                            console.log("[UI] Stop result:", success)
+                                        }
+                                    }
+                                }
+                                
+                                // Disconnect (when idle or online)
+                                MenuItem {
+                                    text: "Disconnect"
+                                    visible: systemStatus && (systemStatus.radarStatus === "idle" || systemStatus.radarStatus === "online")
+                                    width: 160
+                                    height: 36
+                                    
+                                    contentItem: Text {
+                                        anchors.fill: parent
+                                        anchors.leftMargin: 12
+                                        anchors.rightMargin: 12
+                                        text: parent.text
+                                        font.family: Theme.fontFamily
+                                        font.pixelSize: 13
+                                        font.weight: Font.Medium
+                                        color: Theme.textPrimary
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignVCenter
+                                        elide: Text.ElideRight
+                                        clip: true
+                                    }
+                                    
+                                    background: Rectangle {
+                                        anchors.fill: parent
+                                        color: parent.highlighted ? "#EF4444" : "transparent"
+                                        opacity: parent.highlighted ? 0.2 : 1.0
+                                    }
+                                    
+                                    onTriggered: {
+                                        console.log("[UI] Radar disconnect requested")
+                                        if (bridge) {
+                                            var success = bridge.disconnect_radar()
+                                            console.log("[UI] Disconnect result:", success)
+                                        }
+                                    }
+                                }
+                                
+                                MenuSeparator {
+                                    contentItem: Rectangle {
+                                        implicitHeight: 1
+                                        color: Theme.borderSubtle
+                                    }
+                                }
+                                
+                                MenuItem {
+                                    text: "Configure..."
+                                    width: 160
+                                    height: 36
+                                    
+                                    contentItem: Text {
+                                        anchors.fill: parent
+                                        anchors.leftMargin: 12
+                                        anchors.rightMargin: 12
+                                        text: parent.text
+                                        font.family: Theme.fontFamily
+                                        font.pixelSize: 13
+                                        font.weight: Font.Medium
+                                        color: Theme.textPrimary
+                                        horizontalAlignment: Text.AlignLeft
+                                        verticalAlignment: Text.AlignVCenter
+                                        elide: Text.ElideRight
+                                        clip: true
+                                    }
+                                    
+                                    background: Rectangle {
+                                        anchors.fill: parent
+                                        color: parent.highlighted ? Theme.accentCyan : "transparent"
+                                        opacity: parent.highlighted ? 0.2 : 1.0
+                                    }
+                                    
+                                    onTriggered: {
+                                        console.log("[UI] Radar configure requested")
+                                        // Load current configuration
+                                        if (bridge) {
+                                            radarConfigDialog.config = bridge.get_radar_config()
+                                        }
+                                        radarConfigDialog.radarOnline = (systemStatus && systemStatus.radarStatus === "online")
+                                        radarConfigDialog.open()
+                                    }
+                                }
                             }
                         }
                         
                         // Gunner
-                        RowLayout {
-                            spacing: 6
-                            Rectangle {
-                                width: 7
-                                height: 7
-                                radius: 3.5
-                                color: "#64748B"  // Offline: darker slate
-                            }
-                            Text {
-                                text: "GUNNER"
-                                font.family: Theme.fontFamily
-                                font.pixelSize: 10
-                                font.weight: Theme.fontWeightMedium
-                                color: "#64748B"  // Offline: darker slate
-                            }
+                        StatusIndicator {
+                            sensorName: "GUNNER"
+                            status: systemStatus ? systemStatus.gunnerStatus : "offline"
+                            interactive: false
                         }
                         
                         Item { Layout.fillWidth: true }
@@ -999,6 +1282,13 @@ Window {
                         property real maxRange: 3000      // meters - adjustable with zoom
                         property real zoomLevel: 1.0      // 1.0 = 3000m, 2.0 = 1500m, 0.5 = 6000m
                         
+                        // Trigger FOV repaint when zoom changes
+                        onMaxRangeChanged: {
+                            if (fovCanvas) {
+                                fovCanvas.requestPaint()
+                            }
+                        }
+                        
                         // Mouse wheel zoom
                         MouseArea {
                             anchors.fill: parent
@@ -1056,28 +1346,68 @@ Window {
                             }
                         }
                         
-                        // Radar Field of View (120 degrees wedge)
+                        // Radar Field of View (from configuration)
                         Canvas {
                             id: fovCanvas
                             anchors.centerIn: parent
                             width: parent.width
                             height: parent.height
                             
-                            property real radarPointingRad: (parent.radarPointing - 90) * Math.PI / 180
-                            property real fovAngle: 120 * Math.PI / 180  // 120 degrees in radians
+                            // Radar configuration properties
+                            property var radarConfig: ({
+                                search_az_min: -60,
+                                search_az_max: 60,
+                                search_el_min: -40,
+                                search_el_max: 40,
+                                range_min: 21,
+                                range_max: 500,
+                                heading: 30.0
+                            })
                             
-                            // Very subtle glow effect for the FOV outline
+                            // Update FOV when radar status changes
+                            Connections {
+                                target: systemStatus
+                                function onRadarStatusChanged() {
+                                    if (systemStatus && systemStatus.radarStatus === "online" && bridge) {
+                                        fovCanvas.radarConfig = bridge.get_radar_config()
+                                        fovCanvas.requestPaint()
+                                    }
+                                }
+                            }
+                            
+                            // Calculate FOV angles from config
+                            property real azMin: radarConfig.search_az_min !== undefined ? radarConfig.search_az_min : -60
+                            property real azMax: radarConfig.search_az_max !== undefined ? radarConfig.search_az_max : 60
+                            property real fovAngleTotal: azMax - azMin
+                            property real radarHeading: radarConfig.heading !== undefined ? radarConfig.heading : 30.0
+                            property real rangeMin: radarConfig.range_min !== undefined ? radarConfig.range_min : 21
+                            property real rangeMax: radarConfig.range_max !== undefined ? radarConfig.range_max : 500
+                            
+                            // Convert to radians for drawing
+                            // Radar heading is the CENTER of the FOV, azMin/azMax are relative to it
+                            // So left edge is at (heading + azMin) and right edge is at (heading + azMax)
+                            property real leftEdgeAngle: (radarHeading + azMin - 90) * Math.PI / 180
+                            property real rightEdgeAngle: (radarHeading + azMax - 90) * Math.PI / 180
+                            property real fovAngle: fovAngleTotal * Math.PI / 180
+                            
+                            // Subtle glow effect for the FOV outline
                             layer.enabled: true
                             layer.effect: DropShadow {
                                 horizontalOffset: 0
                                 verticalOffset: 0
-                                radius: 8
+                                radius: 12
                                 samples: 17
-                                color: Qt.rgba(Theme.accentCyan.r, Theme.accentCyan.g, Theme.accentCyan.b, 0.15)
+                                color: Qt.rgba(Theme.accentCyan.r, Theme.accentCyan.g, Theme.accentCyan.b, 0.3)
                                 transparentBorder: true
                             }
                             
-                            Component.onCompleted: requestPaint()
+                            Component.onCompleted: {
+                                // Load initial config
+                                if (bridge) {
+                                    radarConfig = bridge.get_radar_config()
+                                }
+                                requestPaint()
+                            }
                             
                             onPaint: {
                                 var ctx = getContext("2d")
@@ -1087,21 +1417,39 @@ Window {
                                 var centerY = height / 2
                                 var radius = width / 2
                                 
-                                // Draw FoV wedge
+                                // Calculate range-limited FOV
+                                var displayMaxRange = radarDisplay.maxRange
+                                var rangeMinNorm = Math.min(rangeMin / displayMaxRange, 1.0)
+                                var rangeMaxNorm = Math.min(rangeMax / displayMaxRange, 1.0)
+                                
+                                var radiusMin = radius * rangeMinNorm
+                                var radiusMax = radius * rangeMaxNorm
+                                
+                                // Draw FoV wedge with range limits
                                 ctx.beginPath()
-                                ctx.moveTo(centerX, centerY)
-                                ctx.arc(centerX, centerY, radius, 
-                                       radarPointingRad - fovAngle/2, 
-                                       radarPointingRad + fovAngle/2, false)
+                                
+                                // Outer arc (max range) - from left edge to right edge
+                                ctx.arc(centerX, centerY, radiusMax, 
+                                       leftEdgeAngle, rightEdgeAngle, false)
+                                
+                                // Line to inner arc at right edge
+                                var innerEndX = centerX + Math.cos(rightEdgeAngle) * radiusMin
+                                var innerEndY = centerY + Math.sin(rightEdgeAngle) * radiusMin
+                                ctx.lineTo(innerEndX, innerEndY)
+                                
+                                // Inner arc (min range) - reverse direction from right to left
+                                ctx.arc(centerX, centerY, radiusMin, 
+                                       rightEdgeAngle, leftEdgeAngle, true)
+                                
                                 ctx.closePath()
                                 
-                                // Fill with very light transparent cyan
-                                ctx.fillStyle = Qt.rgba(Theme.accentCyan.r, Theme.accentCyan.g, Theme.accentCyan.b, 0.03)
+                                // Fill with subtle transparent cyan (increased visibility)
+                                ctx.fillStyle = Qt.rgba(Theme.accentCyan.r, Theme.accentCyan.g, Theme.accentCyan.b, 0.08)
                                 ctx.fill()
                                 
-                                // Ultra-thin, very light border
-                                ctx.strokeStyle = Qt.rgba(Theme.accentCyan.r, Theme.accentCyan.g, Theme.accentCyan.b, 0.25)
-                                ctx.lineWidth = 0.5  // Extremely thin
+                                // Thin, visible border
+                                ctx.strokeStyle = Qt.rgba(Theme.accentCyan.r, Theme.accentCyan.g, Theme.accentCyan.b, 0.5)
+                                ctx.lineWidth = 0.5  // Keep thin
                                 ctx.stroke()
                             }
                         }
@@ -1219,6 +1567,9 @@ Window {
                                     var trackData = tracksModel.data(tracksModel.index(t, 0), 0x0101)
                                     if (!trackData || !trackData.tail) continue
                                     
+                                    // Apply visibility filter to tails
+                                    if (!root.isTrackVisible(trackData)) continue
+                                    
                                     var tailPositions = trackData.tail
                                     if (tailPositions.length < 2) continue
                                     
@@ -1246,9 +1597,7 @@ Window {
                                         ctx.moveTo(x1, y1)
                                         ctx.lineTo(x2, y2)
                                         
-                                        var baseColor = trackData.type === "UAV" ? "#EF4444" :
-                                                      trackData.type === "BIRD" ? "#475569" :
-                                                      trackData.type === "UNKNOWN" ? "#00E5FF" : "#a0a0a0"
+                                        var baseColor = root.getTrackColor(trackData)
                                         
                                         ctx.strokeStyle = Qt.rgba(
                                             parseInt(baseColor.substring(1,3), 16) / 255,
@@ -1268,6 +1617,9 @@ Window {
                             model: tracksModel
                             
                             Item {
+                                // Apply class-based visibility filtering
+                                visible: root.isTrackVisible(modelData)
+                                
                                 property real radarRadius: parent.width / 2
                                 property real normalizedRange: Math.min(modelData.range / radarDisplay.maxRange, 1.0)
                                 property real angleRad: modelData.azimuth * Math.PI / 180
@@ -1353,13 +1705,7 @@ Window {
                                     radius: 6
                                     
                                     // Color by type - Monochrome + Critical Red (Ultra-Minimal)
-                                    color: {
-                                        if (!modelData) return "#a0a0a0"
-                                        if (modelData.type === "UAV") return "#EF4444"  // Clean modern red - confirmed threat
-                                        if (modelData.type === "BIRD") return "#475569"  // Darker muted slate - subtle non-threat
-                                        if (modelData.type === "UNKNOWN") return "#00E5FF"  // Cyan - uncertain
-                                        return "#a0a0a0"  // Gray fallback
-                                    }
+                                    color: root.getTrackColor(modelData)
                                     
                                     // No border - we use rings instead
                                     border.width: 0
@@ -1440,6 +1786,154 @@ Window {
                         font.capitalization: Font.AllUppercase
                         font.letterSpacing: 0.8
                         color: Theme.textSecondary
+                    }
+                    
+                    // FOV Info Box (Collapsible)
+                    Rectangle {
+                        id: fovInfoBox
+                        anchors.left: parent.left
+                        anchors.bottom: parent.bottom
+                        anchors.leftMargin: 20
+                        anchors.bottomMargin: 80
+                        width: 180
+                        height: fovCollapsed ? 32 : 115
+                        color: Qt.rgba(Theme.base2.r, Theme.base2.g, Theme.base2.b, 0.9)
+                        border.color: Theme.borderSubtle
+                        border.width: 1
+                        radius: 4
+                        visible: systemStatus && systemStatus.radarStatus !== "offline"
+                        
+                        property bool fovCollapsed: true  // Default collapsed
+                        
+                        Behavior on height {
+                            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+                        }
+                        
+                        ColumnLayout {
+                            anchors.fill: parent
+                            anchors.margins: 8
+                            spacing: 4
+                            
+                            // Header with collapse button
+                            RowLayout {
+                                Layout.fillWidth: true
+                                spacing: 8
+                                
+                                Text {
+                                    text: "RADAR FOV"
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: 10
+                                    font.weight: Font.Bold
+                                    color: Theme.textSecondary
+                                    Layout.fillWidth: true
+                                }
+                                
+                                // Collapse/Expand button
+                                Rectangle {
+                                    width: 18
+                                    height: 18
+                                    radius: 3
+                                    color: fovCollapseMouseArea.containsMouse ? Theme.base3 : "transparent"
+                                    border.color: Theme.borderSubtle
+                                    border.width: 1
+                                    
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: fovInfoBox.fovCollapsed ? "▼" : "▲"
+                                        font.pixelSize: 8
+                                        color: Theme.textSecondary
+                                    }
+                                    
+                                    MouseArea {
+                                        id: fovCollapseMouseArea
+                                        anchors.fill: parent
+                                        hoverEnabled: true
+                                        cursorShape: Qt.PointingHandCursor
+                                        onClicked: fovInfoBox.fovCollapsed = !fovInfoBox.fovCollapsed
+                                    }
+                                }
+                            }
+                            
+                            Rectangle {
+                                Layout.fillWidth: true
+                                height: 1
+                                color: Theme.borderSubtle
+                                visible: !fovInfoBox.fovCollapsed
+                            }
+                            
+                            GridLayout {
+                                Layout.fillWidth: true
+                                columns: 2
+                                columnSpacing: 8
+                                rowSpacing: 2
+                                visible: !fovInfoBox.fovCollapsed
+                                
+                                Text {
+                                    text: "Az:"
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: 9
+                                    color: Theme.textSecondary
+                                }
+                                Text {
+                                    text: fovCanvas ? (fovCanvas.azMin + "° to " + fovCanvas.azMax + "°") : "—"
+                                    font.family: Theme.fontFamilyMono
+                                    font.pixelSize: 9
+                                    color: Theme.accentCyan
+                                    font.weight: Font.Medium
+                                }
+                                
+                                Text {
+                                    text: "Total:"
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: 9
+                                    color: Theme.textSecondary
+                                }
+                                Text {
+                                    text: fovCanvas ? (fovCanvas.fovAngleTotal + "°") : "—"
+                                    font.family: Theme.fontFamilyMono
+                                    font.pixelSize: 9
+                                    color: Theme.accentCyan
+                                    font.weight: Font.Medium
+                                }
+                                
+                                Text {
+                                    text: "Range:"
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: 9
+                                    color: Theme.textSecondary
+                                }
+                                Text {
+                                    text: fovCanvas ? (fovCanvas.rangeMin + "m - " + fovCanvas.rangeMax + "m") : "—"
+                                    font.family: Theme.fontFamilyMono
+                                    font.pixelSize: 9
+                                    color: Theme.accentCyan
+                                    font.weight: Font.Medium
+                                }
+                                
+                                Text {
+                                    text: "Heading:"
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: 9
+                                    color: Theme.textSecondary
+                                }
+                                Text {
+                                    text: fovCanvas ? (fovCanvas.radarHeading.toFixed(1) + "°") : "—"
+                                    font.family: Theme.fontFamilyMono
+                                    font.pixelSize: 9
+                                    color: Theme.accentCyan
+                                    font.weight: Font.Medium
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Track Class Legend
+                    TrackClassLegend {
+                        anchors.left: parent.left
+                        anchors.top: parent.top
+                        anchors.leftMargin: 20
+                        anchors.topMargin: 60  // Positioned below "TACTICAL DISPLAY" text
+                        z: 200
                     }
                     
                     // Zoom controls
@@ -1755,7 +2249,7 @@ Window {
                                 
                                 Text {
                                     text: {
-                                        var scaleDistance = radarDisplay.maxRange / 4
+                                        var scaleDistance = radarDisplay.maxRange / 5  // Match distance ring interval
                                         return scaleDistance >= 1000 ? 
                                                (scaleDistance / 1000).toFixed(1) + " km" : 
                                                scaleDistance.toFixed(0) + " m"
@@ -2030,6 +2524,60 @@ Window {
                         
                         Component.onCompleted: text = Qt.formatDateTime(new Date(), "hh:mm:ss UTC")
                     }
+                }
+            }
+        }
+    }
+    
+    // Radar Configuration Dialog
+    RadarConfigDialog {
+        id: radarConfigDialog
+        parent: Overlay.overlay
+        anchors.centerIn: parent
+        
+        onConfigurationChanged: (newConfig) => {
+            console.log("[UI] Applying radar configuration...")
+            if (bridge) {
+                var success = bridge.configure_radar(newConfig)
+                if (success) {
+                    console.log("[UI] ✓ Radar configuration applied successfully")
+                    // Update FOV display
+                    if (fovCanvas) {
+                        fovCanvas.radarConfig = newConfig
+                        fovCanvas.requestPaint()
+                        console.log("[UI] FOV display updated")
+                    }
+                } else {
+                    console.log("[UI] ✗ Radar configuration failed")
+                }
+            }
+        }
+        
+        onRefreshRequested: {
+            console.log("[UI] Refreshing radar configuration...")
+            if (bridge) {
+                radarConfigDialog.config = bridge.get_radar_config()
+                console.log("[UI] ✓ Configuration refreshed")
+            }
+        }
+        
+        onVerifyRequested: {
+            console.log("[UI] Verifying radar configuration...")
+            if (bridge) {
+                var result = bridge.verify_radar_config()
+                if (result.synced) {
+                    console.log("[UI] ✓ Configuration synced with radar")
+                    if (result.error) {
+                        console.log("[UI] Note:", result.error)
+                    }
+                    radarConfigDialog.syncStatus = "synced"
+                } else if (result.error) {
+                    console.log("[UI] ✗ Verification failed:", result.error)
+                    radarConfigDialog.syncStatus = "unknown"
+                } else {
+                    console.log("[UI] ⚠ Configuration out of sync")
+                    console.log("[UI] Differences:", JSON.stringify(result.differences))
+                    radarConfigDialog.syncStatus = "out_of_sync"
                 }
             }
         }

@@ -1,0 +1,35 @@
+13:53:12.215:TRACE: SysMgr: SysMgrInitReq from (Unspecified) (seq=0)
+13:53:12.215:TRACE: SysMgr: state=[testRegion2]
+13:53:12.215:TRACE: SysMgr: state=[testRegion2,configInitWait]
+13:53:12.215:TRACE: SysMgr: state=[testRegion2,configInitWait,auxState1]
+13:53:12.215:TRACE: GuiMgr: state=[reset]
+13:53:12.215:TRACE: GuiMgr: state=[reset,radarsNotAvailable]
+13:53:12.215:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed]
+13:53:12.215:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed,disconnected]
+13:53:12.215:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed,disconnected,disconnected]
+13:53:12.216:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed,disconnected,disconnected,disconnected]
+13:53:12.216:TRACE: GuiMgr: state=[reset,radarsNotAvailable,closed,disconnected,disconnected,disconnected,disconnected]
+13:53:12.216:TRACE: ConfigMgr: state=[reset]
+13:53:12.216:TRACE: ConfigMgr: ConfigMgrInitReq from SysMgr (seq=0)
+13:53:12.216:TRACE: ConfigMgr: state=[initWait]
+13:53:12.217:TRACE: Load config ../SysConfig.json successful
+13:53:12.217:TRACE: ConfigMgr: InitDone
+13:53:12.217:TRACE: ConfigMgr: state=[initialized]
+13:53:12.217:TRACE: PlatformMgr: state=[reset]
+13:53:12.218:TRACE: RadarMgr0: state=[reset]
+13:53:12.218:TRACE: RadarMgr1: state=[reset]
+13:53:12.218:TRACE: RadarMgr2: state=[reset]
+13:53:12.218:TRACE: RadarMgr3: state=[reset]
+13:53:12.218:TRACE: RadarJupMgr0: state=[reset]
+13:53:12.218:TRACE: RadarJupMgr1: state=[reset]
+13:53:12.218:TRACE: RadarJupMgr2: state=[reset]
+13:53:12.218:TRACE: RadarJupMgr3: state=[reset]
+13:53:12.218:TRACE: RadarGrp: state=[reset]
+13:53:12.218:TRACE: PlaybackMgr0: state=[reset]
+13:53:12.218:TRACE: PlaybackMgr1: state=[reset]
+13:53:12.218:TRACE: PlaybackMgr2: state=[reset]
+13:53:12.218:TRACE: PlaybackMgr3: state=[reset]
+13:53:12.218:TRACE: PlaybackGrp: state=[reset]
+13:53:12.218:TRACE: DebugMgr: state=[reset]
+13:53:12.218:TRACE: SysMgr: ConfigMgrInitRsp from ConfigMgr (seq=0) status=SUCCESS, reason=NONE origin=(Unspecified)
+13:53:12.455:ERROR: m_toughbookGetModelNumber() failed (err=6)

@@ -1,0 +1,59 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "f6b5736e-3048-4db2-8af6-d1c0b4f41e89",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T20:02:43.113Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "MAVICAIR",
+        "detectionLabel": "DJI Mavic Air",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "5a1e9618-0aab-4b4b-a650-36b665a83c3d",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T20:02:43.111Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T20:02:42.000Z",
+        "detectionId": "031e0039-3824-4f67-90e6-249aff042a86",
+        "primaryGain": true,
+        "aircraftLatitude": 39.0151481628418,
+        "aircraftLongitude": -77.47513580322266,
+        "aircraftAltitude": 85,
+        "aircraftHeight": 0,
+        "homeLatitude": 39.01513671875,
+        "homeLongitude": -77.47515106201172,
+        "aircraftVelocityNorth": 0,
+        "aircraftVelocityEast": 0,
+        "aircraftVelocityUp": 0,
+        "aircraftPitch": -63,
+        "aircraftRoll": 414,
+        "aircraftYaw": -177,
+        "pilotLatitude": 39.01532745361328,
+        "pilotLongitude": -77.4751968383789,
+        "timestamp": null,
+        "identifier": "0K1DF4A2BDTJ10",
+        "channel": 1,
+        "aircraftModel": "Mavic Air",
+        "power": 809.796142578125,
+        "frequency": 2412000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

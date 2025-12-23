@@ -43,6 +43,10 @@ class Track(QObject):
         return self._data.get('type', 'UNKNOWN')
     
     @Property(str, notify=dataChanged)
+    def classification(self):
+        return self._data.get('classification', 'UNDECLARED')
+    
+    @Property(str, notify=dataChanged)
     def source(self):
         return self._data.get('source', 'UNKNOWN')
     
@@ -217,6 +221,66 @@ class Ownship(QObject):
         return self._heading
 
 
+class SystemStatus(QObject):
+    """
+    System status for sensor health monitoring in QML
+    
+    Status values:
+    - "offline": Sensor disabled or not available
+    - "standby": Sensor enabled but not connected
+    - "online": Sensor connected and operational
+    """
+    
+    statusChanged = Signal()
+    
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self._gps_status = "offline"
+        self._radar_status = "offline"
+        self._rf_status = "offline"
+        self._gunner_status = "offline"
+    
+    @Property(str, notify=statusChanged)
+    def gpsStatus(self):
+        return self._gps_status
+    
+    @gpsStatus.setter
+    def gpsStatus(self, value):
+        if self._gps_status != value:
+            self._gps_status = value
+            self.statusChanged.emit()
+    
+    @Property(str, notify=statusChanged)
+    def radarStatus(self):
+        return self._radar_status
+    
+    @radarStatus.setter
+    def radarStatus(self, value):
+        if self._radar_status != value:
+            self._radar_status = value
+            self.statusChanged.emit()
+    
+    @Property(str, notify=statusChanged)
+    def rfStatus(self):
+        return self._rf_status
+    
+    @rfStatus.setter
+    def rfStatus(self, value):
+        if self._rf_status != value:
+            self._rf_status = value
+            self.statusChanged.emit()
+    
+    @Property(str, notify=statusChanged)
+    def gunnerStatus(self):
+        return self._gunner_status
+    
+    @gunnerStatus.setter
+    def gunnerStatus(self, value):
+        if self._gunner_status != value:
+            self._gunner_status = value
+            self.statusChanged.emit()
+
+
 class SystemMode(QObject):
     """System mode settings for QML"""
     
@@ -269,15 +333,32 @@ class OrchestrationBridge(QObject):
     - Stream tracks to gunner stations
     """
     
-    def __init__(self, engine, parent=None, enable_gunner_interface=True, gps_driver=None):
+    def __init__(self, engine, parent=None, enable_gunner_interface=True, gps_driver=None, radar_driver=None, rf_driver=None, 
+                 gps_enabled=False, radar_enabled=False, rf_enabled=False):
         super().__init__(parent)
         self.engine = engine
         self.gps_driver = gps_driver
+        self.radar_driver = radar_driver
+        self.rf_driver = rf_driver
+        
+        # Track which sensors are enabled in config
+        self.gps_enabled = gps_enabled
+        self.radar_enabled = radar_enabled
+        self.rf_enabled = rf_enabled
         
         # Create QML models
         self.tracks_model = TracksModel(self)
         self.ownship = Ownship(self)
         self.system_mode = SystemMode(self)
+        self.system_status = SystemStatus(self)
+        
+        # Initialize status based on enabled state
+        if self.radar_enabled:
+            self.system_status.radarStatus = "standby"  # Enabled but not yet connected
+        if self.gps_enabled:
+            self.system_status.gpsStatus = "standby"
+        if self.rf_enabled:
+            self.system_status.rfStatus = "standby"
         
         # Gunner interface service
         self.gunner_interface = None
@@ -309,6 +390,11 @@ class OrchestrationBridge(QObject):
         self.update_timer.timeout.connect(self._update_from_engine)
         # 30 Hz for high-performance systems with threaded rendering
         self.update_timer.start(33)  # 30 Hz (33ms interval)
+        
+        # Set up status monitoring timer
+        self.status_timer = QTimer(self)
+        self.status_timer.timeout.connect(self._update_system_status)
+        self.status_timer.start(1000)  # 1 Hz status check
     
     def _update_from_engine(self):
         """Pull updates from engine and push to QML models"""
@@ -393,6 +479,63 @@ class OrchestrationBridge(QObject):
         ownship_data = self.engine.get_ownship()
         self.ownship.update(ownship_data)
     
+    def _update_system_status(self):
+        """Update system status from drivers using three-state logic"""
+        # GPS Status: offline / standby / online
+        if not self.gps_enabled:
+            self.system_status.gpsStatus = "offline"
+        elif self.gps_driver and hasattr(self.gps_driver, 'is_online') and self.gps_driver.is_online():
+            self.system_status.gpsStatus = "online"
+        elif self.gps_enabled:
+            self.system_status.gpsStatus = "standby"
+        
+        # Radar Status: offline / idle / online
+        # offline = not enabled or not connected
+        # idle = connected but not streaming
+        # online = connected and streaming
+        if not self.radar_enabled:
+            self.system_status.radarStatus = "offline"
+        elif self.radar_driver and hasattr(self.radar_driver, 'is_online') and self.radar_driver.is_online():
+            # Check if radar is actually streaming by querying state
+            try:
+                status = self.radar_driver.get_status()
+                state = status.get('state', '')
+                # If in SWT or SEARCH state, it's streaming (online)
+                # If in STANDBY state, it's idle
+                if 'SWT' in state or 'SEARCH' in state:
+                    self.system_status.radarStatus = "online"
+                else:
+                    self.system_status.radarStatus = "idle"
+            except:
+                # If we can't get status, assume idle (connected but unknown state)
+                self.system_status.radarStatus = "idle"
+        elif self.radar_enabled:
+            self.system_status.radarStatus = "standby"
+        
+        # RF Status: offline / standby / online
+        if not self.rf_enabled:
+            self.system_status.rfStatus = "offline"
+        elif self.rf_driver and hasattr(self.rf_driver, 'is_online') and self.rf_driver.is_online():
+            self.system_status.rfStatus = "online"
+        elif self.rf_enabled:
+            self.system_status.rfStatus = "standby"
+        
+        # Gunner Status: offline / standby / online
+        if not self.gunner_interface:
+            self.system_status.gunnerStatus = "offline"
+        else:
+            import time
+            current_time = time.time()
+            # Check if any gunner station has been seen in last 5 seconds
+            active_gunners = [
+                station_id for station_id, status in self.gunner_interface.gunner_stations.items()
+                if hasattr(status, 'last_seen') and (current_time - status.last_seen) < 5.0
+            ]
+            if len(active_gunners) > 0:
+                self.system_status.gunnerStatus = "online"
+            else:
+                self.system_status.gunnerStatus = "offline"  # No gunner stations connected
+    
     @Slot(int, str, str, result=dict)
     def request_engage(self, track_id, operator_id, reason):
         """Forward engage request to engine"""
@@ -406,6 +549,399 @@ class OrchestrationBridge(QObject):
         print(f"[BRIDGE] Forwarding mode change: auto={auto_track}, rf={rf_silent}, optical={optical_lock}")
         response = self.engine.set_system_mode(auto_track, rf_silent, optical_lock)
         return response
+    
+    @Slot(result=bool)
+    def connect_radar(self):
+        """Connect to radar (does not start streaming)"""
+        print("[BRIDGE] Radar connect requested")
+        
+        if not self.radar_enabled:
+            print("[BRIDGE] ERROR: Radar not enabled in config")
+            return False
+        
+        if not self.radar_driver:
+            print("[BRIDGE] ERROR: No radar driver available")
+            return False
+        
+        try:
+            import time
+            start_time = time.time()
+            
+            # Connect to radar command port
+            if self.radar_driver.connect():
+                connect_time = time.time() - start_time
+                print(f"[BRIDGE] Connected to radar command port ({connect_time:.2f}s)")
+                
+                # Initialize radar
+                init_start = time.time()
+                if self.radar_driver.initialize_radar():
+                    init_time = time.time() - init_start
+                    print(f"[BRIDGE] Radar initialized - now in IDLE state ({init_time:.2f}s)")
+                    
+                    # Load and apply saved configuration
+                    config_start = time.time()
+                    saved_config = self._load_radar_config_from_file()
+                    print(f"[BRIDGE] Applying saved configuration: Az {saved_config.get('search_az_min')}/{saved_config.get('search_az_max')}")
+                    
+                    radar_settings = {
+                        'operation_mode': saved_config.get('operation_mode', 1),
+                        'search_az_min': saved_config.get('search_az_min', -60),
+                        'search_az_max': saved_config.get('search_az_max', 60),
+                        'search_el_min': saved_config.get('search_el_min', -40),
+                        'search_el_max': saved_config.get('search_el_max', 40),
+                        'track_az_min': saved_config.get('track_az_min', -60),
+                        'track_az_max': saved_config.get('track_az_max', 60),
+                        'track_el_min': saved_config.get('track_el_min', -40),
+                        'track_el_max': saved_config.get('track_el_max', 40),
+                        'range_min': saved_config.get('range_min', 21),
+                        'range_max': saved_config.get('range_max', 500),
+                        'platform_heading': saved_config.get('heading', 30.0),
+                        'platform_pitch': saved_config.get('pitch', 19.8),
+                        'platform_roll': saved_config.get('roll', -0.3)
+                    }
+                    self.radar_driver.configure_radar(radar_settings)
+                    config_time = time.time() - config_start
+                    total_time = time.time() - start_time
+                    print(f"[BRIDGE] [OK] Radar connected and configured (IDLE state) - Config: {config_time:.2f}s, Total: {total_time:.2f}s")
+                    self._update_system_status()
+                    return True
+                else:
+                    print("[BRIDGE] ERROR: Radar initialization failed")
+                    self.radar_driver.disconnect()
+                    return False
+            else:
+                print("[BRIDGE] ERROR: Could not connect to radar")
+                return False
+                
+        except Exception as e:
+            print(f"[BRIDGE] ERROR: Radar connection failed: {e}")
+            return False
+    
+    @Slot(result=bool)
+    def start_radar(self):
+        """Start radar streaming (must be connected first)"""
+        print("[BRIDGE] Radar start requested")
+        
+        if not self.radar_driver:
+            print("[BRIDGE] ERROR: No radar driver available")
+            return False
+        
+        if not self.radar_driver.is_online():
+            print("[BRIDGE] ERROR: Radar not connected")
+            return False
+        
+        try:
+            # Configuration must be set BEFORE starting (radar doesn't accept config changes while streaming)
+            saved_config = self._load_radar_config_from_file()
+            print(f"[BRIDGE] Re-applying configuration before start: Az {saved_config.get('search_az_min')}/{saved_config.get('search_az_max')}")
+            
+            # Re-apply saved configuration (in case it was changed while in IDLE state)
+            radar_settings = {
+                'operation_mode': saved_config.get('operation_mode', 1),
+                'search_az_min': saved_config.get('search_az_min', -60),
+                'search_az_max': saved_config.get('search_az_max', 60),
+                'search_el_min': saved_config.get('search_el_min', -40),
+                'search_el_max': saved_config.get('search_el_max', 40),
+                'track_az_min': saved_config.get('track_az_min', -60),
+                'track_az_max': saved_config.get('track_az_max', 60),
+                'track_el_min': saved_config.get('track_el_min', -40),
+                'track_el_max': saved_config.get('track_el_max', 40),
+                'range_min': saved_config.get('range_min', 21),
+                'range_max': saved_config.get('range_max', 500),
+                'platform_heading': saved_config.get('heading', 30.0),
+                'platform_pitch': saved_config.get('pitch', 19.8),
+                'platform_roll': saved_config.get('roll', -0.3)
+            }
+            self.radar_driver.configure_radar(radar_settings)
+            
+            # Now start streaming with the configured FOV
+            if self.radar_driver.start_radar():
+                print("[BRIDGE] [OK] Radar started and streaming (LIVE state)")
+                self._update_system_status()
+                return True
+            else:
+                print("[BRIDGE] ERROR: Failed to start radar")
+                return False
+                
+        except Exception as e:
+            print(f"[BRIDGE] ERROR: Radar start failed: {e}")
+            return False
+    
+    @Slot(result=bool)
+    def stop_radar(self):
+        """Stop radar streaming (remains connected)"""
+        print("[BRIDGE] Radar stop requested")
+        
+        if not self.radar_driver:
+            print("[BRIDGE] ERROR: No radar driver available")
+            return False
+        
+        try:
+            if hasattr(self.radar_driver, 'stop_radar'):
+                self.radar_driver.stop_radar()
+                print("[BRIDGE] [OK] Radar stopped (IDLE state)")
+                self._update_system_status()
+                return True
+            else:
+                print("[BRIDGE] ERROR: Radar driver does not support stop")
+                return False
+                
+        except Exception as e:
+            print(f"[BRIDGE] ERROR: Radar stop failed: {e}")
+            return False
+    
+    @Slot(result=bool)
+    def disconnect_radar(self):
+        """Disconnect from radar"""
+        print("[BRIDGE] Radar disconnect requested")
+        
+        if not self.radar_driver:
+            print("[BRIDGE] ERROR: No radar driver available")
+            return False
+        
+        try:
+            # Stop radar
+            if hasattr(self.radar_driver, 'stop_radar'):
+                self.radar_driver.stop_radar()
+            
+            # Disconnect
+            self.radar_driver.disconnect()
+            print("[BRIDGE] [OK] Radar disconnected")
+            self._update_system_status()  # Update status immediately
+            return True
+            
+        except Exception as e:
+            print(f"[BRIDGE] ERROR: Radar disconnect failed: {e}")
+            return False
+    
+    @Slot('QVariantMap', result=bool)
+    def configure_radar(self, config):
+        """
+        Configure radar parameters
+        
+        Args:
+            config: Dictionary with radar configuration parameters
+            
+        Returns:
+            True if configuration successful
+        """
+        print("[BRIDGE] Radar configuration requested")
+        
+        # Always save configuration to file first
+        self._save_radar_config_to_file(config)
+        print("[BRIDGE] Configuration saved to file")
+        
+        # If radar offline, just save and return success
+        if not self.radar_driver or not self.radar_driver.is_online():
+            print("[BRIDGE] Radar offline - configuration saved")
+            return True
+        
+        # Check if radar is streaming - cannot configure while streaming
+        try:
+            status = self.radar_driver.get_status()
+            state = status.get('state', '')
+            if 'SWT' in state or 'SEARCH' in state:
+                print("[BRIDGE] WARNING: Cannot configure while streaming - Stop radar first")
+                print("[BRIDGE] Configuration saved to file and will apply on next Start")
+                return True  # Return success since config is saved
+        except:
+            pass  # If we can't get status, try to configure anyway
+        
+        try:
+            # Convert QVariantMap to Python dict
+            config_dict = {
+                'operation_mode': 1,  # UAS mode
+                'search_az_min': int(config.get('search_az_min', -60)),
+                'search_az_max': int(config.get('search_az_max', 60)),
+                'search_el_min': int(config.get('search_el_min', -40)),
+                'search_el_max': int(config.get('search_el_max', 40)),
+                'track_az_min': int(config.get('track_az_min', -60)),
+                'track_az_max': int(config.get('track_az_max', 60)),
+                'track_el_min': int(config.get('track_el_min', -40)),
+                'track_el_max': int(config.get('track_el_max', 40)),
+            }
+            
+            # Add platform orientation if provided
+            if 'heading' in config:
+                config_dict['platform_heading'] = float(config['heading'])
+            if 'pitch' in config:
+                config_dict['platform_pitch'] = float(config['pitch'])
+            if 'roll' in config:
+                config_dict['platform_roll'] = float(config['roll'])
+            
+            print(f"[BRIDGE] Applying configuration: {config_dict}")
+            
+            # Apply configuration to radar
+            success = self.radar_driver.configure_radar(config_dict)
+            
+            if success:
+                print("[BRIDGE] [OK] Radar configuration applied to online radar")
+            else:
+                print("[BRIDGE] WARNING: Radar configuration failed")
+            
+            return success
+            
+        except Exception as e:
+            print(f"[BRIDGE] ERROR: Radar configuration failed: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+    
+    def _load_radar_config_from_file(self):
+        """Load radar configuration from file"""
+        import json
+        import os
+        
+        config_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', 'radar_config.json')
+        
+        try:
+            if os.path.exists(config_file):
+                with open(config_file, 'r') as f:
+                    config = json.load(f)
+                    print(f"[BRIDGE] Loaded configuration from {config_file}")
+                    return config
+        except Exception as e:
+            print(f"[BRIDGE] ERROR: Failed to load config file: {e}")
+        
+        # Return defaults if file doesn't exist or can't be loaded
+        return {
+            'label': 'R1',
+            'ipv4_address': '192.168.1.25',
+            'product_mode': 'EchoGuard',
+            'mission_set': 'cUAS',
+            'latitude': -25.848810,
+            'longitude': 28.997978,
+            'altitude': 1.4,
+            'heading': 30.0,
+            'pitch': 19.8,
+            'roll': -0.3,
+            'range_min': 21,
+            'range_max': 500,
+            'search_az_min': -60,
+            'search_az_max': 60,
+            'search_el_min': -40,
+            'search_el_max': 40,
+            'track_az_min': -60,
+            'track_az_max': 60,
+            'track_el_min': -40,
+            'track_el_max': 40,
+            'freq_channel': 0
+        }
+    
+    def _save_radar_config_to_file(self, config):
+        """Save radar configuration to file"""
+        import json
+        import os
+        
+        config_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config')
+        config_file = os.path.join(config_dir, 'radar_config.json')
+        
+        try:
+            # Create config directory if it doesn't exist
+            os.makedirs(config_dir, exist_ok=True)
+            
+            with open(config_file, 'w') as f:
+                json.dump(config, f, indent=4)
+            print(f"[BRIDGE] Saved configuration to {config_file}")
+            return True
+        except Exception as e:
+            print(f"[BRIDGE] ERROR: Failed to save config file: {e}")
+            return False
+    
+    @Slot(result='QVariantMap')
+    def get_radar_config(self):
+        """
+        Get current radar configuration
+        
+        Returns:
+            Dictionary with current radar configuration
+        """
+        print("[BRIDGE] Querying radar configuration...")
+        
+        # Always load from file (persisted configuration)
+        # This is the source of truth for configuration
+        config = self._load_radar_config_from_file()
+        print("[BRIDGE] Loaded configuration from file")
+        
+        # Update IP address if radar driver exists
+        if self.radar_driver:
+            config['ipv4_address'] = self.radar_driver.host
+        
+        return config
+    
+    @Slot(result='QVariantMap')
+    def verify_radar_config(self):
+        """
+        Verify that saved configuration matches actual radar settings
+        
+        Returns:
+            Dictionary with verification results
+        """
+        print("[BRIDGE] Verifying radar configuration...")
+        
+        result = {
+            'synced': False,
+            'differences': [],
+            'radar_values': {},
+            'saved_values': {}
+        }
+        
+        # Can only verify if radar is online
+        if not self.radar_driver or not self.radar_driver.is_online():
+            print("[BRIDGE] Cannot verify - radar offline")
+            result['error'] = "Radar offline"
+            return result
+        
+        try:
+            # Get saved configuration
+            saved_config = self._load_radar_config_from_file()
+            
+            # Query actual radar configuration
+            radar_config = self.radar_driver.get_configuration()
+            
+            if not radar_config:
+                print("[BRIDGE] WARNING: Cannot verify while streaming - radar doesn't allow FOV queries")
+                print("[BRIDGE] Configuration is saved and was applied before streaming started")
+                result['error'] = "Cannot verify while streaming"
+                result['synced'] = True  # Assume synced since we applied config before start
+                print(f"[BRIDGE] Returning result: synced={result['synced']}, error={result.get('error')}")
+                return result
+            
+            # Compare FOV settings
+            fov_params = ['search_az_min', 'search_az_max', 'search_el_min', 'search_el_max',
+                         'track_az_min', 'track_az_max', 'track_el_min', 'track_el_max']
+            
+            differences = []
+            for param in fov_params:
+                if param in radar_config and param in saved_config:
+                    radar_val = radar_config[param]
+                    saved_val = saved_config[param]
+                    result['radar_values'][param] = radar_val
+                    result['saved_values'][param] = saved_val
+                    
+                    if radar_val != saved_val:
+                        differences.append({
+                            'parameter': param,
+                            'saved': saved_val,
+                            'radar': radar_val
+                        })
+            
+            result['differences'] = differences
+            result['synced'] = len(differences) == 0
+            
+            if result['synced']:
+                print("[BRIDGE] [OK] Configuration synced with radar")
+            else:
+                print(f"[BRIDGE] WARNING: Configuration out of sync: {len(differences)} differences")
+                for diff in differences:
+                    print(f"  - {diff['parameter']}: saved={diff['saved']}, radar={diff['radar']}")
+            
+            return result
+            
+        except Exception as e:
+            print(f"[BRIDGE] ERROR: Verification failed: {e}")
+            result['error'] = str(e)
+            return result
     
     def _build_tracks_snapshot(self) -> TracksSnapshot:
         """Build tracks snapshot for gunner interface"""
@@ -452,8 +988,8 @@ class OrchestrationBridge(QObject):
         
         snapshot = TracksSnapshot(
             tracks=track_updates,
-            radar_online=True,  # TODO: Get from engine
-            rf_online=True,     # TODO: Get from engine
+            radar_online=(self.system_status.radarStatus == "online"),
+            rf_online=(self.system_status.rfStatus == "online"),
             total_tracks=len(track_updates),
             ownship_lat=ownship_data.get('lat', 0.0),
             ownship_lon=ownship_data.get('lon', 0.0),
@@ -513,6 +1049,7 @@ class OrchestrationBridge(QObject):
         confidence = track_data.get('confidence', 0.0)
         track_type = track_data.get('type', 'UNKNOWN')
         source = track_data.get('source', 'UNKNOWN')
+        classification = track_data.get('classification', None)  # Multiclass classifier result
         
         # Velocity components (3D)
         velocity_x = track_data.get('velocity_x_mps', 0.0)
@@ -530,9 +1067,9 @@ class OrchestrationBridge(QObject):
         is_immediate = self._is_immediate_threat(range_m, track_type, confidence)
         
         # ═══════════════════════════════════════════════════════
-        # TIER 2: FILTER NON-THREATS
+        # TIER 2: FILTER NON-THREATS (Only UAV classes and PLANE)
         # ═══════════════════════════════════════════════════════
-        if self._should_ignore_track(track_type, confidence, range_m):
+        if self._should_ignore_track(track_type, confidence, range_m, classification):
             return 0.0
         
         # ═══════════════════════════════════════════════════════
@@ -603,35 +1140,35 @@ class OrchestrationBridge(QObject):
             tau = range_m / closing_speed  # Time to collision (seconds)
             is_approaching = True
             
-            # Tau-based threat modifier (TCAS-inspired thresholds)
+            # Tau-based threat modifier (TCAS-inspired thresholds) - MORE AGGRESSIVE
             if tau < 15:
-                tau_modifier = 1.0    # Resolution Advisory level
+                tau_modifier = 1.0    # Resolution Advisory level - CRITICAL
             elif tau < 25:
-                tau_modifier = 0.90   # High urgency
+                tau_modifier = 0.95   # High urgency (was 0.90)
             elif tau < 35:
-                tau_modifier = 0.75   # Traffic Advisory level
+                tau_modifier = 0.85   # Traffic Advisory level (was 0.75)
             elif tau < 60:
-                tau_modifier = 0.50   # Medium urgency
+                tau_modifier = 0.65   # Medium urgency (was 0.50)
             elif tau < 120:
-                tau_modifier = 0.25   # Low urgency
+                tau_modifier = 0.40   # Low urgency (was 0.25)
             else:
-                tau_modifier = 0.10   # Distant future
+                tau_modifier = 0.15   # Distant future (was 0.10)
                 
         elif range_rate > 0.5:  # Receding
             tau = float('inf')
             closing_speed = 0.0
             is_approaching = False
-            tau_modifier = 0.05  # Very low threat
+            tau_modifier = 0.02  # Very low threat (was 0.05) - receding is not a threat
         else:  # Hovering/stationary
             tau = float('inf')
             closing_speed = 0.0
             is_approaching = False
-            tau_modifier = 0.30  # Medium threat if hovering close
+            tau_modifier = 0.50  # Higher threat if hovering close (was 0.30)
         
         # 4. EXPONENTIAL RANGE PROXIMITY (Continuous distance emphasis)
-        # Adds smooth gradient on top of zones - STEEPER CURVE for more emphasis
-        range_proximity = math.exp(-range_m / 500.0)  # e^(-r/500) - steeper than before
-        # At 0m: 1.0, At 250m: 0.61, At 500m: 0.37, At 1000m: 0.14, At 1500m: 0.05
+        # MUCH STEEPER CURVE - close tracks dominate
+        range_proximity = math.exp(-range_m / 300.0)  # e^(-r/300) - AGGRESSIVE proximity emphasis
+        # At 0m: 1.0, At 150m: 0.61, At 300m: 0.37, At 600m: 0.14, At 900m: 0.05
         
         # Debug: print(f"[TAU] T{track_id}: Zone={threat_zone}, R={range_m:.0f}m, Rate={range_rate:.1f}m/s, "
         #       f"Tau={tau:.1f}s, ZoneScore={zone_base_score:.2f}, TauMod={tau_modifier:.2f}, Prox={range_proximity:.2f}")
@@ -673,12 +1210,13 @@ class OrchestrationBridge(QObject):
         base_threat = zone_base_score * tau_modifier
         
         # STEP 2: Weight with proximity, confidence and other factors
+        # REBALANCED: More weight on approaching speed (tau) and proximity
         base_score = (
-            base_threat * 0.30 +            # Zone × Tau (approaching speed and zones)
-            range_proximity * 0.50 +        # Direct distance emphasis (dominant factor)
-            confidence_factor * 0.12 +      # Confidence gating
-            type_factor * 0.06 +            # Classification bonus
-            source_factor * 0.02            # Sensor quality
+            base_threat * 0.45 +            # Zone × Tau (approaching speed) - INCREASED from 0.30
+            range_proximity * 0.40 +        # Direct distance emphasis - REDUCED from 0.50
+            confidence_factor * 0.10 +      # Confidence gating - REDUCED from 0.12
+            type_factor * 0.04 +            # Classification bonus - REDUCED from 0.06
+            source_factor * 0.01            # Sensor quality - REDUCED from 0.02
         )
         
         # STEP 3: Add stability bonus
@@ -748,17 +1286,27 @@ class OrchestrationBridge(QObject):
         
         return False
     
-    def _should_ignore_track(self, track_type: str, confidence: float, range_m: float) -> bool:
+    def _should_ignore_track(self, track_type: str, confidence: float, range_m: float, classification: str = None) -> bool:
         """
         Filter out tracks that should not be prioritized.
+        Only consider: UAV, UAV_MULTI_ROTOR, UAV_FIXED_WING, PLANE
+        All other classifications are ignored.
         """
-        # Always ignore birds
-        if track_type == 'BIRD':
-            return True
-        
-        # Ignore clutter
-        if track_type == 'CLUTTER':
-            return True
+        # Use classification if available (multiclass classifier)
+        if classification:
+            allowed_classes = ['UAV', 'UAV_MULTI_ROTOR', 'UAV_FIXED_WING', 'PLANE']
+            if classification not in allowed_classes:
+                return True  # Ignore: WALKER, BIRD, VEHICLE, CLUTTER, UNDECLARED, etc.
+        else:
+            # Fallback to old type field
+            if track_type == 'BIRD':
+                return True
+            if track_type == 'CLUTTER':
+                return True
+            if track_type == 'WALKER':
+                return True
+            if track_type == 'VEHICLE':
+                return True
         
         # Ignore low confidence detections
         if confidence < 0.3:
@@ -833,7 +1381,7 @@ class OrchestrationBridge(QObject):
         self.gunner_interface.engage_track(track_id, operator_id)
         self.engaged_track_id_value = track_id
         
-        print(f"[BRIDGE] ✓ ENGAGEMENT: Track {track_id} by {operator_id}")
+        print(f"[BRIDGE] [OK] ENGAGEMENT: Track {track_id} by {operator_id}")
         print(f"[BRIDGE]   Type: {track.get('type')}, Range: {track.get('range_m', 0):.0f}m")
         print(f"[BRIDGE]   Streaming to gunner stations...")
         

@@ -1,0 +1,268 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "0dd984de-6085-402b-93b6-df27bbc85866",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T21:15:02.929Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FIMI",
+        "detectionLabel": "Fimi",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "79afdabf-6b4c-4eea-b924-fdd873870dd9",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:14:55.246Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T21:14:46.000Z",
+        "detectionId": "c28e1643-c54b-4890-86fc-c5b8a06d395f",
+        "primaryGain": true,
+        "power": 27.86697769165039,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "FIMI",
+        "detectionLabel": "Fimi",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "0989e9b6-08a6-4976-b9f0-f09a315f4574",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:15:02.453Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "FIMI",
+            "detectionLabel": "Fimi",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "3b4e1589-f483-48a4-9a79-bd1e5723e224",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:15:01.420Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:15:01.000Z",
+            "detectionId": "6fc5bc05-83a8-49e3-99ec-322eefa22345",
+            "primaryGain": true,
+            "power": 50.321781158447266,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FIMI",
+            "detectionLabel": "Fimi",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "c3519a8b-2262-451d-94c6-91576a9632a2",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:15:01.475Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:15:01.000Z",
+            "detectionId": "ffbdd6c1-5ab8-47dd-875b-922e22d68df3",
+            "primaryGain": true,
+            "power": 16.4671688079834,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FIMI",
+            "detectionLabel": "Fimi",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "e75faae6-1e5c-4617-8dbb-c31e2d5016a0",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:15:01.925Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:15:01.000Z",
+            "detectionId": "85d4c639-5a07-4dd8-b7fc-32f46458addb",
+            "primaryGain": true,
+            "power": 52.89207458496094,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FIMI",
+            "detectionLabel": "Fimi",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "1c2bb955-431d-4ab0-aea8-86f31966763b",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:15:01.938Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:15:01.000Z",
+            "detectionId": "d4888e05-e6f7-4be1-a10f-e288b7db58ae",
+            "primaryGain": true,
+            "power": 1702.76025390625,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FIMI",
+            "detectionLabel": "Fimi",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "8ba7ee91-3261-48e6-a7cc-f497725a230e",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:15:02.018Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:15:01.000Z",
+            "detectionId": "026bd399-a616-4fe7-823a-a8d5f4fff075",
+            "primaryGain": true,
+            "power": 17.7720890045166,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FIMI",
+            "detectionLabel": "Fimi",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "bedad661-f730-4dfd-a1c2-9b9ad7e56b8d",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:15:02.438Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:15:02.000Z",
+            "detectionId": "a6eb7449-ab31-495b-9975-43b6da81ad3a",
+            "primaryGain": true,
+            "power": 51.344757080078125,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FIMI",
+            "detectionLabel": "Fimi",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "0989e9b6-08a6-4976-b9f0-f09a315f4574",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:15:02.453Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:15:02.000Z",
+            "detectionId": "60d90830-35e5-4f15-a58b-55ff3388a2ea",
+            "primaryGain": true,
+            "power": 1711.298583984375,
+            "channel": 0,
+            "frequency": 2400000000
+          },
+          {
+            "detectionType": "FIMI",
+            "detectionLabel": "Fimi",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "19006bea-dbfa-4962-afaa-317095974a6b",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:15:02.526Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:15:02.000Z",
+            "detectionId": "b155b316-5466-45d0-a58a-480a54a6155e",
+            "primaryGain": true,
+            "power": 16.989219665527344,
+            "channel": 0,
+            "frequency": 2400000000
+          }
+        ],
+        "radio": "318A340|TXRX",
+        "directiveId": "a6a7f6a2-754c-42ba-b70a-baa7fb8311db",
+        "sector": 7,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T21:15:02.000Z",
+        "detectionId": "60d90830-35e5-4f15-a58b-55ff3388a2ea",
+        "primaryGain": true,
+        "power": 1711.298583984375,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,2912 @@
+[14:45:35:113] BNET API:
+BNET VERSION: 11.2.1	BUILD TIME: Mar 21 2023 17:30:26
+Connected to MESA-002881 at 169.254.1.10:29978
+	STATUS data: 29979
+	RVMAP data: 29980
+	DETECTION data: 29981
+	TRACK data: 29982
+	MEASUREMENT data: 29984
+
+[14:45:35:126] BNET:
+MODE:SWT:STOP 
+[14:45:35:127] MESA:
+Command Not Available
+NA
+
+[14:45:35:127] BNET:
+MODE:SEARCH:STOP 
+[14:45:35:128] MESA:
+Command Not Available
+NA
+
+[14:45:35:128] BNET:
+*TST? 
+[14:45:35:129] MESA:
+--------------- SYSTEM INIT STATUS---------------
+SDRAM: 0
+GLOBAL INTERRUPT INIT: 0
+CPU INTERRUPT INIT: 0
+GLOBAL TIMER: 0
+FPGA: 0
+SPI: 0
+GPIO INIT: 0
+GPIO CFG: 0
+CPU INTERRUPT ENABLE: 0
+GLOBAL INTERRUPT ENABLE: 0
+EMMC INIT: 0
+ETHERNET INIT: 0
+I2C INIT: 0
+IMU INIT: 0
+CACHE INIT: 0
+----------------- SYSTEM STATE ------------------
+CURRENT STATE: SYSTEM_STATE_STANDBY
+--------------- ETHERNET STATUS -----------------
+SPEED: 1000 Mb/s
+Filter log level: ERROR(4)
+Filter mask: FFFFFFFF
+------------------- Saved Log Begins ------------------- 
+0:373249:ERROR:ETH(10): Ethernet PHY Link is down
+-------------------  Saved Log Ends  ------------------- 
+OK
+
+[14:45:35:130] BNET:
+SYS:TIME 0,0 
+[14:45:35:130] MESA:
+OK
+
+[14:45:35:130] BNET:
+SYS:TIME? 
+[14:45:35:131] MESA:
+0, 416814
+OK
+
+[14:45:35:131] BNET:
+SYS:TIME 20328,45518317 
+[14:45:35:131] MESA:
+OK
+
+[14:45:35:132] BNET:
+RESET:PARAMETERS 
+[14:45:35:162] MESA:
+NOTE: Reset persistent configuration data to factory defaults (Configuration version: 49).
+OK
+
+[14:45:35:162] BNET:
+*IDN? 
+[14:45:35:167] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: Pedestrian
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:45:35:167] BNET:
+SYSPARAM? <superuser_password> 
+[14:45:35:217] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             1
+MODE:SWT:OPERATIONMODE                  0	(0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -60.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                60.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                0.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                12.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      100.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      2.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           8.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      10.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  -1, -1, -1, -1
+RANGE:MASK                              1  -1, -1, -1, -1
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	0.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	0.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	0.000000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		0.000000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.923337	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[14:45:35:240] BNET API:
+STATUS data collect set to true.
+[14:45:35:825] BNET:
+MODE:SWT:OPERATIONMODE 1 
+[14:45:35:844] MESA:
+OK
+
+[14:45:35:845] BNET:
+MODE:SWT:SEARCH:AZFOVMIN -44 
+[14:45:35:847] MESA:
+OK
+
+[14:45:35:847] BNET:
+MODE:SWT:SEARCH:AZFOVMAX 44 
+[14:45:35:849] MESA:
+OK
+
+[14:45:35:849] BNET:
+MODE:SWT:TRACK:AZFOVMIN -60 
+[14:45:35:851] MESA:
+OK
+
+[14:45:35:851] BNET:
+MODE:SWT:TRACK:AZFOVMAX 60 
+[14:45:35:853] MESA:
+OK
+
+[14:45:35:853] BNET:
+MODE:SWT:SEARCH:ELFOVMIN -24 
+[14:45:35:855] MESA:
+OK
+
+[14:45:35:855] BNET:
+MODE:SWT:SEARCH:ELFOVMAX 40 
+[14:45:35:856] MESA:
+OK
+
+[14:45:35:856] BNET:
+MODE:SWT:TRACK:ELFOVMIN -40 
+[14:45:35:858] MESA:
+OK
+
+[14:45:35:858] BNET:
+MODE:SWT:TRACK:ELFOVMAX 40 
+[14:45:35:860] MESA:
+OK
+
+[14:45:35:860] BNET:
+RANGE:MASK <superuser_password> 0, 128, 134, 0, 31 
+[14:45:35:864] MESA:
+OK
+
+[14:45:35:864] BNET:
+RANGE:MASK <superuser_password> 1, 742, 2047, 0, 31 
+[14:45:35:869] MESA:
+OK
+
+[14:45:35:869] BNET:
+DMS:CHANNEL 0 
+[14:45:35:872] MESA:
+OK
+
+[14:45:35:872] BNET:
+TIME:CHANNEL:ENABLE <superuser_password> FALSE 
+[14:45:35:873] MESA:
+OK
+
+[14:45:35:873] BNET:
+PRISM:CHANNEL:ENABLE <superuser_password> FALSE 
+[14:45:35:875] MESA:
+PRISM Enable:0
+OK
+
+[14:45:35:875] BNET:
+ZONE:MASK:CLEAR <superuser_password> 
+[14:45:35:876] MESA:
+OK
+
+[14:45:35:876] BNET:
+ZONE:MASK:ENABLE <superuser_password> FALSE 
+[14:45:35:876] MESA:
+OK
+
+[14:45:35:877] BNET:
+PLATFORM:STATE:ORIENTATION <superuser_password> 300.000000, 19.799999, -0.300000 
+[14:45:35:877] MESA:
+OK
+
+[14:45:35:877] BNET:
+PLATFORM:STATE:ELEVATIONAGL <superuser_password> 1.400000 
+[14:45:35:877] MESA:
+OK
+
+[14:45:35:878] BNET:
+RSP:CLUTTERMASKWIDTH <superuser_password> 3 
+[14:45:35:884] MESA:
+OK
+
+[14:45:35:884] BNET:
+RSP:RCSMASK:MINRCS -30 
+[14:45:35:890] MESA:
+OK
+
+[14:45:35:890] BNET:
+RSP:RCSMASK:MAXRCS 100 
+[14:45:35:898] MESA:
+OK
+
+[14:45:35:899] BNET:
+AGLMASK:MINAGL <superuser_password> -10000 
+[14:45:35:899] MESA:
+OK
+
+[14:45:35:900] BNET:
+AGLMASK:MAXAGL <superuser_password> 10000 
+[14:45:35:900] MESA:
+OK
+
+[14:45:35:901] BNET:
+AGLMASK:ENABLE <superuser_password> FALSE 
+[14:45:35:901] MESA:
+OK
+
+[14:45:35:901] BNET:
+OUTPUT:EXTENDEDPACKET:ENABLE TRUE 
+[14:45:35:902] MESA:
+OK
+
+[14:45:35:902] BNET API:
+Chunking set to true.
+[14:45:35:904] BNET API:
+New save folder created: C:\RUI_5.2.2_release_windows (1)\RadarData\MESA-002881\2025-08-28T144535\ 
+[14:45:35:904] BNET:
+MODE:SWT:START 
+[14:45:35:981] MESA:
+OK
+
+[14:45:35:982] BNET:
+SYSPARAM? <superuser_password> 
+[14:45:35:994] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             0
+MODE:SWT:OPERATIONMODE                  1 (with modifications) (0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -44.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                44.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                -24.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                40.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      100.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      1.250000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           5.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      30.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  128, 134, 0, 31
+RANGE:MASK                              1  742, 2047, 0, 31
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	300.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	19.799999 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	-0.300000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		1.400000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.925306	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[14:45:36:9] BNET API:
+TRACK data save set to true.
+[14:45:36:10] BNET API:
+TRACK data collect set to true.
+[14:45:36:10] BNET API:
+RVMAP data save set to false.
+[14:45:36:10] BNET API:
+RVMAP data collect set to false.
+[14:45:36:10] BNET API:
+MEASUREMENT data save set to true.
+[14:45:36:14] BNET API:
+MEASUREMENT data collect set to true.
+[14:45:36:14] BNET API:
+DETECTION data save set to true.
+[14:45:36:14] BNET API:
+DETECTION data collect set to true.
+[14:45:36:14] BNET API:
+STATUS data save set to true.
+[14:45:45:242] BNET:
+*IDN? 
+[14:45:45:246] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:45:55:227] BNET:
+*IDN? 
+[14:45:55:233] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:46:04:742] BNET:
+PLATFORM:STATE:ORIENTATION <superuser_password> 300.000000, 19.799999, -0.300000 
+[14:46:04:744] MESA:
+OK
+
+[14:46:04:745] BNET:
+PLATFORM:STATE:ELEVATIONAGL <superuser_password> 1.400000 
+[14:46:04:746] MESA:
+OK
+
+[14:46:04:746] BNET:
+RSP:RCSMASK:MAXRCS 11 
+[14:46:04:754] MESA:
+OK
+
+[14:46:05:222] BNET:
+*IDN? 
+[14:46:05:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:46:15:221] BNET:
+*IDN? 
+[14:46:15:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:46:15:861] BNET:
+PLATFORM:STATE:ORIENTATION <superuser_password> 300.000000, 19.799999, -0.300000 
+[14:46:15:861] MESA:
+OK
+
+[14:46:15:861] BNET:
+PLATFORM:STATE:ELEVATIONAGL <superuser_password> 1.400000 
+[14:46:15:865] MESA:
+OK
+
+[14:46:15:874] BNET:
+RSP:RCSMASK:MAXRCS 1 
+[14:46:15:881] MESA:
+OK
+
+[14:46:21:919] BNET:
+PLATFORM:STATE:ORIENTATION <superuser_password> 300.000000, 19.799999, -0.300000 
+[14:46:21:920] MESA:
+OK
+
+[14:46:21:921] BNET:
+PLATFORM:STATE:ELEVATIONAGL <superuser_password> 1.400000 
+[14:46:21:924] MESA:
+OK
+
+[14:46:21:939] BNET:
+RSP:RCSMASK:MAXRCS 0 
+[14:46:21:948] MESA:
+OK
+
+[14:46:25:220] BNET:
+*IDN? 
+[14:46:25:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:46:35:220] BNET:
+*IDN? 
+[14:46:35:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:46:45:220] BNET:
+*IDN? 
+[14:46:45:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:46:55:222] BNET:
+*IDN? 
+[14:46:55:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:47:05:221] BNET:
+*IDN? 
+[14:47:05:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:47:15:238] BNET:
+*IDN? 
+[14:47:15:242] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:47:25:220] BNET:
+*IDN? 
+[14:47:25:223] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:47:35:220] BNET:
+*IDN? 
+[14:47:35:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:47:45:221] BNET:
+*IDN? 
+[14:47:45:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:47:55:222] BNET:
+*IDN? 
+[14:47:55:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:48:05:220] BNET:
+*IDN? 
+[14:48:05:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:48:15:221] BNET:
+*IDN? 
+[14:48:15:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:48:25:220] BNET:
+*IDN? 
+[14:48:25:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:48:35:220] BNET:
+*IDN? 
+[14:48:35:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:48:45:220] BNET:
+*IDN? 
+[14:48:45:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:48:55:220] BNET:
+*IDN? 
+[14:48:55:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:49:05:220] BNET:
+*IDN? 
+[14:49:05:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:49:15:221] BNET:
+*IDN? 
+[14:49:15:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:49:25:220] BNET:
+*IDN? 
+[14:49:25:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:49:35:220] BNET:
+*IDN? 
+[14:49:35:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:49:45:220] BNET:
+*IDN? 
+[14:49:45:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:49:55:220] BNET:
+*IDN? 
+[14:49:55:228] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:50:05:222] BNET:
+*IDN? 
+[14:50:05:228] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:50:15:221] BNET:
+*IDN? 
+[14:50:15:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:50:25:220] BNET:
+*IDN? 
+[14:50:25:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:50:35:259] BNET:
+*IDN? 
+[14:50:35:263] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:50:45:220] BNET:
+*IDN? 
+[14:50:45:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:50:55:220] BNET:
+*IDN? 
+[14:50:55:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:51:05:221] BNET:
+*IDN? 
+[14:51:05:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:51:15:221] BNET:
+*IDN? 
+[14:51:15:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:51:25:221] BNET:
+*IDN? 
+[14:51:25:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:51:35:220] BNET:
+*IDN? 
+[14:51:35:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:51:45:220] BNET:
+*IDN? 
+[14:51:45:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:51:55:220] BNET:
+*IDN? 
+[14:51:55:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:52:05:221] BNET:
+*IDN? 
+[14:52:05:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:52:15:220] BNET:
+*IDN? 
+[14:52:15:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:52:25:220] BNET:
+*IDN? 
+[14:52:25:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:52:35:220] BNET:
+*IDN? 
+[14:52:35:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:52:45:220] BNET:
+*IDN? 
+[14:52:45:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:52:55:220] BNET:
+*IDN? 
+[14:52:55:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:53:05:220] BNET:
+*IDN? 
+[14:53:05:223] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:53:15:221] BNET:
+*IDN? 
+[14:53:15:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:53:25:220] BNET:
+*IDN? 
+[14:53:25:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:53:35:222] BNET:
+*IDN? 
+[14:53:35:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:53:45:221] BNET:
+*IDN? 
+[14:53:45:227] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:53:55:220] BNET:
+*IDN? 
+[14:53:55:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:54:05:220] BNET:
+*IDN? 
+[14:54:05:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:54:15:219] BNET:
+*IDN? 
+[14:54:15:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:54:25:221] BNET:
+*IDN? 
+[14:54:25:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:54:35:220] BNET:
+*IDN? 
+[14:54:35:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:54:45:220] BNET:
+*IDN? 
+[14:54:45:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:54:55:219] BNET:
+*IDN? 
+[14:54:55:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:55:05:221] BNET:
+*IDN? 
+[14:55:05:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:55:15:221] BNET:
+*IDN? 
+[14:55:15:231] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:55:25:221] BNET:
+*IDN? 
+[14:55:25:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:55:34:656] BNET API:
+MEASUREMENT data collect set to false.
+[14:55:34:657] BNET API:
+MEASUREMENT data save set to false.
+[14:55:34:660] BNET API:
+TRACK data collect set to false.
+[14:55:34:660] BNET API:
+TRACK data save set to false.
+[14:55:34:660] BNET API:
+RVMAP data collect set to false.
+[14:55:34:660] BNET API:
+RVMAP data save set to false.
+[14:55:34:665] BNET API:
+DETECTION data collect set to false.
+[14:55:34:665] BNET API:
+DETECTION data save set to false.
+[14:55:34:665] BNET API:
+DETECTION data collect set to false.
+[14:55:34:665] BNET API:
+DETECTION data save set to false.
+[14:55:34:665] BNET API:
+STATUS data save set to false.
+[14:55:34:668] BNET:
+SYSPARAM? <superuser_password> 
+[14:55:34:688] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             0
+MODE:SWT:OPERATIONMODE                  1 (with modifications) (0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -44.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                44.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                -24.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                40.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      0.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      1.250000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           5.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      30.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  128, 134, 0, 31
+RANGE:MASK                              1  742, 2047, 0, 31
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	300.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	19.799999 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	-0.300000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		1.400000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.925306	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[14:55:34:688] BNET API:
+Save to folder requested
+[14:55:34:688] BNET:
+MODE:SWT:STOP 
+[14:55:34:798] MESA:
+OK
+
+[14:55:35:220] BNET:
+*IDN? 
+[14:55:35:221] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:55:42:76] BNET:
+PLATFORM:STATE:ORIENTATION <superuser_password> 300.000000, 19.799999, -0.300000 
+[14:55:42:77] MESA:
+OK
+
+[14:55:42:161] BNET:
+PLATFORM:STATE:ELEVATIONAGL <superuser_password> 1.400000 
+[14:55:42:162] MESA:
+OK
+
+[14:55:42:177] BNET:
+MODE:SWT:OPERATIONMODE 1 
+[14:55:42:199] MESA:
+OK
+
+[14:55:42:199] BNET:
+MODE:SWT:SEARCH:AZFOVMIN -44 
+[14:55:42:200] MESA:
+OK
+
+[14:55:42:200] BNET:
+MODE:SWT:SEARCH:AZFOVMAX 44 
+[14:55:42:202] MESA:
+OK
+
+[14:55:42:202] BNET:
+MODE:SWT:TRACK:AZFOVMIN -60 
+[14:55:42:204] MESA:
+OK
+
+[14:55:42:204] BNET:
+MODE:SWT:TRACK:AZFOVMAX 60 
+[14:55:42:206] MESA:
+OK
+
+[14:55:42:206] BNET:
+MODE:SWT:SEARCH:ELFOVMIN -24 
+[14:55:42:208] MESA:
+OK
+
+[14:55:42:208] BNET:
+MODE:SWT:SEARCH:ELFOVMAX 40 
+[14:55:42:210] MESA:
+OK
+
+[14:55:42:210] BNET:
+MODE:SWT:TRACK:ELFOVMIN -40 
+[14:55:42:214] MESA:
+OK
+
+[14:55:42:214] BNET:
+MODE:SWT:TRACK:ELFOVMAX 40 
+[14:55:42:216] MESA:
+OK
+
+[14:55:42:216] BNET:
+RANGE:MASK <superuser_password> 0, 128, 134, 0, 31 
+[14:55:42:220] MESA:
+OK
+
+[14:55:42:220] BNET:
+RANGE:MASK <superuser_password> 1, 435, 2047, 0, 31 
+[14:55:42:224] MESA:
+OK
+
+[14:55:44:806] BNET:
+MODE:SWT:OPERATIONMODE 1 
+[14:55:44:828] MESA:
+OK
+
+[14:55:44:829] BNET:
+MODE:SWT:SEARCH:AZFOVMIN -44 
+[14:55:44:831] MESA:
+OK
+
+[14:55:44:832] BNET:
+MODE:SWT:SEARCH:AZFOVMAX 44 
+[14:55:44:834] MESA:
+OK
+
+[14:55:44:834] BNET:
+MODE:SWT:TRACK:AZFOVMIN -60 
+[14:55:44:836] MESA:
+OK
+
+[14:55:44:836] BNET:
+MODE:SWT:TRACK:AZFOVMAX 60 
+[14:55:44:838] MESA:
+OK
+
+[14:55:44:838] BNET:
+MODE:SWT:SEARCH:ELFOVMIN -24 
+[14:55:44:841] MESA:
+OK
+
+[14:55:44:841] BNET:
+MODE:SWT:SEARCH:ELFOVMAX 40 
+[14:55:44:843] MESA:
+OK
+
+[14:55:44:843] BNET:
+MODE:SWT:TRACK:ELFOVMIN -40 
+[14:55:44:845] MESA:
+OK
+
+[14:55:44:845] BNET:
+MODE:SWT:TRACK:ELFOVMAX 40 
+[14:55:44:847] MESA:
+OK
+
+[14:55:44:847] BNET:
+RANGE:MASK <superuser_password> 0, 128, 134, 0, 31 
+[14:55:44:851] MESA:
+OK
+
+[14:55:44:851] BNET:
+RANGE:MASK <superuser_password> 1, 435, 2047, 0, 31 
+[14:55:44:856] MESA:
+OK
+
+[14:55:44:856] BNET:
+DMS:CHANNEL 0 
+[14:55:44:859] MESA:
+OK
+
+[14:55:44:859] BNET:
+TIME:CHANNEL:ENABLE <superuser_password> FALSE 
+[14:55:44:860] MESA:
+OK
+
+[14:55:44:860] BNET:
+PRISM:CHANNEL:ENABLE <superuser_password> FALSE 
+[14:55:44:862] MESA:
+PRISM Enable:0
+OK
+
+[14:55:44:862] BNET:
+ZONE:MASK:CLEAR <superuser_password> 
+[14:55:44:863] MESA:
+OK
+
+[14:55:44:863] BNET:
+ZONE:MASK:ENABLE <superuser_password> FALSE 
+[14:55:44:863] MESA:
+OK
+
+[14:55:44:863] BNET:
+PLATFORM:STATE:ORIENTATION <superuser_password> 300.000000, 19.799999, -0.300000 
+[14:55:44:864] MESA:
+OK
+
+[14:55:44:864] BNET:
+PLATFORM:STATE:ELEVATIONAGL <superuser_password> 1.400000 
+[14:55:44:864] MESA:
+OK
+
+[14:55:44:865] BNET:
+RSP:CLUTTERMASKWIDTH <superuser_password> 3 
+[14:55:44:871] MESA:
+OK
+
+[14:55:44:871] BNET:
+RSP:RCSMASK:MINRCS -30 
+[14:55:44:884] MESA:
+OK
+
+[14:55:44:884] BNET:
+RSP:RCSMASK:MAXRCS 0 
+[14:55:44:891] MESA:
+OK
+
+[14:55:44:892] BNET:
+AGLMASK:MINAGL <superuser_password> -10000 
+[14:55:44:892] MESA:
+OK
+
+[14:55:44:893] BNET:
+AGLMASK:MAXAGL <superuser_password> 10000 
+[14:55:44:893] MESA:
+OK
+
+[14:55:44:894] BNET:
+AGLMASK:ENABLE <superuser_password> FALSE 
+[14:55:44:894] MESA:
+OK
+
+[14:55:44:895] BNET:
+OUTPUT:EXTENDEDPACKET:ENABLE TRUE 
+[14:55:44:895] MESA:
+OK
+
+[14:55:44:895] BNET API:
+Chunking set to true.
+[14:55:44:896] BNET API:
+New save folder created: C:\RUI_5.2.2_release_windows (1)\RadarData\MESA-002881\2025-08-28T145544\ 
+[14:55:44:897] BNET:
+MODE:SWT:START 
+[14:55:44:974] MESA:
+OK
+
+[14:55:44:975] BNET:
+SYSPARAM? <superuser_password> 
+[14:55:44:986] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             0
+MODE:SWT:OPERATIONMODE                  1 (with modifications) (0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -44.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                44.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                -24.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                40.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      0.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      1.250000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           5.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      30.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  128, 134, 0, 31
+RANGE:MASK                              1  435, 2047, 0, 31
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	300.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	19.799999 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	-0.300000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		1.400000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.925306	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[14:55:44:993] BNET API:
+TRACK data save set to true.
+[14:55:44:994] BNET API:
+TRACK data collect set to true.
+[14:55:44:994] BNET API:
+RVMAP data save set to false.
+[14:55:44:994] BNET API:
+RVMAP data collect set to false.
+[14:55:44:994] BNET API:
+MEASUREMENT data save set to true.
+[14:55:44:994] BNET API:
+MEASUREMENT data collect set to true.
+[14:55:44:994] BNET API:
+DETECTION data save set to true.
+[14:55:44:994] BNET API:
+DETECTION data collect set to true.
+[14:55:44:994] BNET API:
+STATUS data save set to true.
+[14:55:45:227] BNET:
+*IDN? 
+[14:55:45:228] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:55:55:226] BNET:
+*IDN? 
+[14:55:55:231] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:56:05:227] BNET:
+*IDN? 
+[14:56:05:230] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:56:15:220] BNET:
+*IDN? 
+[14:56:15:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:56:25:226] BNET:
+*IDN? 
+[14:56:25:233] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:56:35:224] BNET:
+*IDN? 
+[14:56:35:228] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:56:45:223] BNET:
+*IDN? 
+[14:56:45:228] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:56:55:221] BNET:
+*IDN? 
+[14:56:55:228] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:57:05:220] BNET:
+*IDN? 
+[14:57:05:223] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:57:15:220] BNET:
+*IDN? 
+[14:57:15:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:57:25:219] BNET:
+*IDN? 
+[14:57:25:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:57:35:222] BNET:
+*IDN? 
+[14:57:35:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:57:45:220] BNET:
+*IDN? 
+[14:57:45:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:57:55:266] BNET:
+*IDN? 
+[14:57:55:271] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:58:05:220] BNET:
+*IDN? 
+[14:58:05:224] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:58:15:220] BNET:
+*IDN? 
+[14:58:15:232] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:58:25:220] BNET:
+*IDN? 
+[14:58:25:225] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:58:35:220] BNET:
+*IDN? 
+[14:58:35:226] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:58:45:221] BNET:
+*IDN? 
+[14:58:45:228] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:58:49:622] BNET API:
+MEASUREMENT data collect set to false.
+[14:58:49:622] BNET API:
+MEASUREMENT data save set to false.
+[14:58:49:625] BNET API:
+TRACK data collect set to false.
+[14:58:49:625] BNET API:
+TRACK data save set to false.
+[14:58:49:625] BNET API:
+RVMAP data collect set to false.
+[14:58:49:625] BNET API:
+RVMAP data save set to false.
+[14:58:49:628] BNET API:
+DETECTION data collect set to false.
+[14:58:49:628] BNET API:
+DETECTION data save set to false.
+[14:58:49:628] BNET API:
+DETECTION data collect set to false.
+[14:58:49:628] BNET API:
+DETECTION data save set to false.
+[14:58:49:628] BNET API:
+STATUS data save set to false.
+[14:58:49:630] BNET:
+SYSPARAM? <superuser_password> 
+[14:58:49:640] MESA:
+GETSERIAL                               002881
+
+Configurable parameters:
+
+MODE:PRODUCT                            0	(0 = EchoGuard; 1 = EchoFlight; 2 = EchoGuard-CR)
+MODE:COUNTRY                            1	(0 = USA; 1 = INTL)
+MODE:RADOME                             1	(0 = GEN1; 1 = GEN2)
+ETH:IP                                  169.254.1.10
+   MAC                                  34.4C.C8.00.0B.41
+NETMASK                                 255.255.0.0
+GATEWAY                                 0.0.0.0
+
+DMS:CHANNEL                             0
+MODE:SWT:OPERATIONMODE                  1 (with modifications) (0 = Pedestrian; 1 = UAS; 2 = Plane)
+MODE:SEARCH:AZFOVMIN                    -60.000000	(deg)
+MODE:SEARCH:AZFOVMAX                    60.000000	(deg)
+MODE:SEARCH:AZSTEP                      2.000000	(deg)
+MODE:SEARCH:ELFOVMIN                    -40.000000	(deg)
+MODE:SEARCH:ELFOVMAX                    40.000000	(deg)
+MODE:SEARCH:ELSTEP                      2.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMIN                -44.000000	(deg)
+MODE:SWT:SEARCH:AZFOVMAX                44.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMIN                -24.000000	(deg)
+MODE:SWT:SEARCH:ELFOVMAX                40.000000	(deg)
+MODE:SWT:TRACK:AZFOVMIN                 -60.000000	(deg)
+MODE:SWT:TRACK:AZFOVMAX                 60.000000	(deg)
+MODE:SWT:TRACK:ELFOVMIN                 -40.000000	(deg)
+MODE:SWT:TRACK:ELFOVMAX                 40.000000	(deg)
+RSP:RCSMASK:MINRCS                      -30.000000	(dB)
+RSP:RCSMASK:MAXRCS                      0.000000	(dB)
+
+Configurable super-user parameters:
+
+NET:KEEPALIVECNT                        3
+NET:PORT23ENABLE                        1
+RSP:CLUTTERMASKWIDTH                    3		(units)
+RSP:CFAR:ENABLE                         1		(units)
+MODE:SWT:TRACKER:TRACKNUM               20		(units)
+MODE:SWT:TRACKER:MINREPORTINGCONFIDENCE 20.000000	(units)
+MODE:SWT:TRACKER:MAXCONFIDENCETIME      1.250000	(time in seconds)
+MODE:SWT:TRACKER:MAXCOASTTIME           5.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXOOBCOASTTIME        1.000000	(time in seconds)
+MODE:SWT:TRACKER:MAXTARGETVELOCITY      30.000000	(units)
+MODE:SWT:TRACKER:RCSESTSAMPLESIZE              25
+AGLMASK:MINAGL				-10000.000000 (m)
+AGLMASK:MAXAGL				10000.000000 (m)
+AGLMASK:ENABLE				FALSE
+RANGE:MASK                              0  128, 134, 0, 31
+RANGE:MASK                              1  435, 2047, 0, 31
+RANGE:MASK                              2  -1, -1, -1, -1
+RANGE:MASK                              3  -1, -1, -1, -1
+RANGE:MASK                              4  -1, -1, -1, -1
+RANGE:MASK                              5  131, 134, 0, 31
+TIME:CHANNEL:ENABLE			FALSE
+TIME:CHANNEL:NUM			0
+TIME:CHANNEL:RANGEMAXINTEREST		5000 (m)
+TIME:CHANNEL:CONTROLRANGE		5500 (m)
+CLF:ENABLE				TRUE
+OUTPUT:THROTTLETRACKRATE:ENABLE		FALSE
+OUTPUT:MAXTRACKRATE			10 (Hz)
+OUTPUT:STATUSRATE			20 (Hz)
+OUTPUT:REPORTUNCONFIRMEDTRACKS:ENABLE	FALSE
+PLATFORM:STATE:ORIENTATION[HEADING]	300.000000 (degrees)
+PLATFORM:STATE:ORIENTATION[PITCH]	19.799999 (degrees)
+PLATFORM:STATE:ORIENTATION[ROLL]	-0.300000 (degrees)
+PLATFORM:STATE:ELEVATIONAGL		1.400000 (m)
+Zone Mask:
+Enable: 0
+		MinAz	MaxAz	MinEl	MaxEl	MinRng	MaxRng	MinVel		MaxVel		MinRCS	MaxRCS	UsedBit	HardMask
+Mask 0: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 1: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 2: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 3: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 4: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 5: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 6: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 7: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 8: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 9: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 10: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 11: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 12: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 13: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 14: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 15: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 16: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 17: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 18: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 19: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 20: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 21: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 22: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 23: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 24: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 25: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 26: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 27: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 28: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 29: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 30: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+Mask 31: 	0	0	0	0	0	0	0.000000	0.000000	0	0	0	0
+
+PRISM:CHANNEL:ENABLE		0
+
+PRISM:CHANNEL:NUM		0
+
+PRISM:CHANNEL:MAX		4
+TIME:CHANNEL:DELAY		5000 (ms)
+TIME:CHANNEL:COAST		30000 (ms)
+
+RSP:DYNAMIC:CLUTTERMASK:ENABLE		0
+RSP:DYNAMIC:CLUTTERMASK:LEVEL		1
+RSP:DYNAMIC:CLUTTERMASK:STARTRANGE		6
+RSP:DYNAMIC:CLUTTERMASK:RANGELENGTH		0
+RSP:DYNAMIC:CLUTTERMASK:MOUNTINGAZANGLEOFFSET		0
+
+
+Derivative parameters:
+dR                                      3.252474	(meter)
+nRanges                                 2048		(units)
+dV                                      0.925306	(units)
+nVelocities                             32		(units)
+zero range bin number, n0               128		(units)
+zero velocity bin number, m0            16		(units)
+OK
+
+[14:58:49:649] BNET API:
+Save to folder requested
+[14:58:49:649] BNET:
+MODE:SWT:STOP 
+[14:58:49:752] MESA:
+OK
+
+[14:58:53:56] BNET:
+*IDN? 
+[14:58:53:60] MESA:
+ECHODYNE Corp. EchoGuard Radar
+COUNTRY MODE: INTL
+OPERATION MODE: UAS (with modifications)
+Serial Number: "002881"
+
+SW Suite: 18.1.5
+
+MCU Firmware version: 23.7.D.9.5 (35.9.5)
+MCU Firmware build date: Jul 22 2025 16:17:36
+FPGA Firmware version: 9D26
+FPGA ID: A6
+FPGA Time Stamp: Tue Jan 23 19:48:21 2024
+HW CONFIG: BLOCK2
+
+Please report issues to help@echodyne.com
+OK
+
+[14:58:53:66] BNET:
+*TST? 
+[14:58:53:67] MESA:
+--------------- SYSTEM INIT STATUS---------------
+SDRAM: 0
+GLOBAL INTERRUPT INIT: 0
+CPU INTERRUPT INIT: 0
+GLOBAL TIMER: 0
+FPGA: 0
+SPI: 0
+GPIO INIT: 0
+GPIO CFG: 0
+CPU INTERRUPT ENABLE: 0
+GLOBAL INTERRUPT ENABLE: 0
+EMMC INIT: 0
+ETHERNET INIT: 0
+I2C INIT: 0
+IMU INIT: 0
+CACHE INIT: 0
+----------------- SYSTEM STATE ------------------
+CURRENT STATE: SYSTEM_STATE_STANDBY
+--------------- ETHERNET STATUS -----------------
+SPEED: 1000 Mb/s
+Filter log level: ERROR(4)
+Filter mask: FFFFFFFF
+------------------- Saved Log Begins ------------------- 
+0:373249:ERROR:ETH(10): Ethernet PHY Link is down
+-------------------  Saved Log Ends  ------------------- 
+OK
+
+[14:58:53:67] BNET:
+LIST 
+[14:58:53:68] MESA:
+The following commands are available:
+
+0 RESET:PARAMETERS
+1 SYSPARAM?
+2 SYSPARAM:JSON?
+3 GETSERIAL
+4 ETH:IP?
+5 ETH:IP
+6 ETH:MAC?
+7 DMS:CHANNEL?
+8 DMS:CHANNEL
+9 MODE:SEARCH:AZFOVMIN
+10 MODE:SEARCH:AZFOVMIN?
+11 MODE:SEARCH:AZSTEP?
+12 MODE:SEARCH:AZSTEP
+13 MODE:SEARCH:ELSTEP?
+14 MODE:SEARCH:ELSTEP
+15 MODE:SEARCH:ELFOVMIN
+16 MODE:SEARCH:ELFOVMIN?
+17 MODE:SEARCH:AZFOVMAX
+18 MODE:SEARCH:AZFOVMAX?
+19 MODE:SEARCH:ELFOVMAX
+20 MODE:SEARCH:ELFOVMAX?
+21 MODE:SWT:SEARCH:AZFOVMIN
+22 MODE:SWT:SEARCH:AZFOVMIN?
+23 MODE:SWT:SEARCH:AZFOVMAX
+24 MODE:SWT:SEARCH:AZFOVMAX?
+25 MODE:SWT:SEARCH:ELFOVMIN
+26 MODE:SWT:SEARCH:ELFOVMIN?
+27 MODE:SWT:SEARCH:ELFOVMAX
+28 MODE:SWT:SEARCH:ELFOVMAX?
+29 MODE:SWT:TRACK:AZFOVMIN
+30 MODE:SWT:TRACK:AZFOVMIN?
+31 MODE:SWT:TRACK:AZFOVMAX
+32 MODE:SWT:TRACK:AZFOVMAX?
+33 MODE:SWT:TRACK:ELFOVMIN
+34 MODE:SWT:TRACK:ELFOVMIN?
+35 MODE:SWT:TRACK:ELFOVMAX
+36 MODE:SWT:TRACK:ELFOVMAX?
+37 MODE:SWT:OPERATIONMODE
+38 MODE:SWT:OPERATIONMODE?
+39 RSP:RCSMASK:MINRCS
+40 RSP:RCSMASK:MAXRCS
+41 RSP:RCSMASK:MINRCS?
+42 RSP:RCSMASK:MAXRCS?
+43 *IDN?
+44 FPGA?
+45 LIST
+46 *TST?
+47 RESET:SYSTEM
+48 MODE:SEARCH:START
+49 MODE:SWT:START
+50 SYS:TIME?
+51 SYS:TIME
+52 OUTPUT:EXTENDEDPACKET:ENABLE
+53 OUTPUT:EXTENDEDPACKET:ENABLE?
+54 DATAFORMAT:TRACK?
+55 DATAFORMAT:DETECTION?
+56 DATAFORMAT:RVMAP?
+57 DATAFORMAT:MEASUREMENT?
+58 DATAFORMAT:STATUS?
+OK
+
+[14:58:53:80] BNET API:
+Disconnected

@@ -1,0 +1,105 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "39495439-3da0-4124-bfd4-6743cf56fbb7",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T21:20:35.383Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "TARANIS_X8R",
+        "detectionLabel": "Taranis 2.4 RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "25b37f9f-6b97-4dc7-a0cf-9112435a0641",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:20:20.875Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T21:20:18.000Z",
+        "detectionId": "c840dbc2-158e-4a25-add8-928e22ac73e0",
+        "primaryGain": true,
+        "aircraftLatitude": 39.083946228027344,
+        "aircraftLongitude": -77.55989074707031,
+        "aircraftAltitude": 0,
+        "frequency": 2400000000,
+        "id": "22358",
+        "power": 16043.7607421875,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "TARANIS_X8R",
+        "detectionLabel": "Taranis 2.4 RC",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "34fa2421-0a66-48ed-b9a8-fe39994b7a0d",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T21:20:33.268Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "TARANIS_X8R",
+            "detectionLabel": "Taranis 2.4 RC",
+            "signalType": "UAS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "14319e2a-f6b4-4a92-9aa1-f48e0a2846da",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-28T21:20:34.979Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|TXRX",
+            "directiveId": "8dcb2f91-6d6b-44a5-9163-59d73d8ba270",
+            "sector": 8,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-28T21:20:33.000Z",
+            "detectionId": "e9f83a95-1fe6-41c3-b2f3-193411f9fe88",
+            "primaryGain": true,
+            "aircraftLatitude": 39.083946228027344,
+            "aircraftLongitude": -77.55989074707031,
+            "aircraftAltitude": 0,
+            "frequency": 2400000000,
+            "id": "22358",
+            "power": 287216.75,
+            "altitudeMode": "Unknown"
+          }
+        ],
+        "radio": "318A394|TXRX",
+        "directiveId": "8dcb2f91-6d6b-44a5-9163-59d73d8ba270",
+        "sector": 8,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T21:20:31.000Z",
+        "detectionId": "b9b94c7f-cedc-4407-86be-b6ffd81b979b",
+        "primaryGain": true,
+        "aircraftLatitude": 39.083946228027344,
+        "aircraftLongitude": -77.55989074707031,
+        "aircraftAltitude": 0,
+        "frequency": 2400000000,
+        "id": "22358",
+        "power": 287512.25,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}

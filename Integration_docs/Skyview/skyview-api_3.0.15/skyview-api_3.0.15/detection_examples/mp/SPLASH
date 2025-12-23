@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "09374bdf-7f8e-4e14-bc52-7088a05945d3",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T13:25:50.894Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "SPLASH",
+        "detectionLabel": "Swellpro Splash",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "a40c7b42-0168-4a1f-8ff4-2abc803641ae",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T13:25:50.893Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T13:25:50.000Z",
+        "detectionId": "eb3f550e-413b-4d07-86ea-aa45402292be",
+        "primaryGain": true,
+        "power": 235046.90625,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

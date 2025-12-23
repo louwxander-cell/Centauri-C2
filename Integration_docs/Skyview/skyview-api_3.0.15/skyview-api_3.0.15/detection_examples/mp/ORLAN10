@@ -1,0 +1,40 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "96e597d9-eeb4-4da5-89d5-0a2019470a3a",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T13:07:00.794Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "ORLAN10",
+        "detectionLabel": "Orlan-10 UAS",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "26c60cb9-1417-4f87-8445-a6cbc9261c51",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T13:07:00.788Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T13:06:58.000Z",
+        "detectionId": "97dee054-9f0a-4bda-bdfb-87e382625054",
+        "primaryGain": true,
+        "power": 1591034.75,
+        "frequency": 915000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

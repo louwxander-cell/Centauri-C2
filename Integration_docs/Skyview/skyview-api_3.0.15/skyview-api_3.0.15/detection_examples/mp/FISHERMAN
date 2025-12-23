@@ -1,0 +1,44 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "6c6fd49e-c6a3-4b5b-8bbd-771b23dd2f23",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T13:28:10.347Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FISHERMAN",
+        "detectionLabel": "Swellpro Fisherman",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "097d4dcc-3b0b-40bc-81c9-fb03c441d333",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T13:28:10.346Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T13:28:10.000Z",
+        "detectionId": "df1cdb57-63ef-44f0-8cfe-c6ad2be3f652",
+        "primaryGain": true,
+        "aircraftLatitude": 39.08012008666992,
+        "aircraftLongitude": -77.55139923095703,
+        "aircraftAltitude": 0,
+        "power": 151310.171875,
+        "frequency": 2400000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

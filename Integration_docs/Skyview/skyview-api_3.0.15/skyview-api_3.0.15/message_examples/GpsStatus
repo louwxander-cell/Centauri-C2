@@ -1,0 +1,19 @@
+{
+  "GpsStatus": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "7a116deb-1e8f-4bef-bd23-e73f1939bdc3",
+      "messageType": "gpsNotification",
+      "timestamp": "2024-10-29T20:19:47.000Z",
+      "signature": null,
+      "originator": "passive_sdr"
+    },
+    "systemLatitude": "27.5384889",
+    "systemLongitude": "-82.3943567",
+    "systemAltitude": "13.552",
+    "lastLocationUpdateTimestamp": "2024-10-29T20:19:47.000Z",
+    "isFixedLocation": false,
+    "systemHeading": "128.8051"
+  }
+}

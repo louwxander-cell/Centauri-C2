@@ -1,0 +1,40 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "bdc45244-10c0-46b4-98b9-6616c55fb626",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:54:30.370Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "LANCET",
+        "detectionLabel": "ZALA Lancet UAS",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "f6c50287-1bd6-4a02-a907-d6ebca60620f",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:54:30.369Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:54:30.000Z",
+        "detectionId": "872b1838-e18d-4865-81f3-de01a49a73df",
+        "primaryGain": false,
+        "power": 711737.3125,
+        "frequency": 868000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "a69d2313-513d-4b6d-9bb3-a36ff6b5c28f",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T13:15:52.549Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FSK_RMILEC",
+        "detectionLabel": "RMILEC",
+        "signalType": "GCS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "8465b517-19d6-499c-b5bd-27db3b783745",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T13:15:52.546Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T13:15:49.000Z",
+        "detectionId": "0ae05a4b-c5f2-452e-b8cc-6297d466648c",
+        "primaryGain": false,
+        "power": 19145982,
+        "rfFrequency": 435000000,
+        "carriers": [
+          449680000,
+          450360000,
+          451080000
+        ],
+        "syncWord": "-1819782693",
+        "transmitterId": "155",
+        "frequency": 435000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

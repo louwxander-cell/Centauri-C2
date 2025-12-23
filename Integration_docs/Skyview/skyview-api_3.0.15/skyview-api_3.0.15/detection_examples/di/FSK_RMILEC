@@ -1,0 +1,572 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "ee90aa00-05d3-4c33-b0ba-7ea15145aa79",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:06:04.336Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FSK_RMILEC",
+        "detectionLabel": "RMILEC",
+        "signalType": "GCS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "858639a2-1499-435d-9070-2cd9e355eb79",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:05:57.852Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:05:55.000Z",
+        "detectionId": "2092afc5-6fc3-41c0-9672-98c8719164de",
+        "primaryGain": false,
+        "power": 2789890.75,
+        "rfFrequency": 435000000,
+        "carriers": [
+          433680000,
+          435080000
+        ],
+        "syncWord": "-1819782693",
+        "transmitterId": "155",
+        "frequency": 435000000
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "FSK_RMILEC",
+        "detectionLabel": "RMILEC",
+        "signalType": "GCS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "24dcde02-86ff-46cf-89d0-fbf24264d381",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:06:00.971Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "16240e1e-5acf-47bc-9c51-54519cc29ff3",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:05:58.124Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 2,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:56.000Z",
+            "detectionId": "c3577af8-16db-4e5a-a7b7-b943314426c1",
+            "primaryGain": true,
+            "power": 36462.05078125,
+            "rfFrequency": 435000000,
+            "carriers": [
+              434360000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "78c85030-5177-452e-994e-ee2d8ea6c4a4",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:05:58.204Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A344|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 1,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:56.000Z",
+            "detectionId": "ebdc2b82-d842-481f-8e6f-cd7c7743085d",
+            "primaryGain": true,
+            "power": 116348.8125,
+            "rfFrequency": 435000000,
+            "carriers": [
+              435080000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "92c7c621-be8e-47f6-93ff-4f5a15c46218",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:05:58.270Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:56.000Z",
+            "detectionId": "036769d0-afee-41ca-b95e-d52c48f45264",
+            "primaryGain": true,
+            "power": 17834.48046875,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "90084d08-496d-44cc-8c09-f595ece80244",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:05:58.379Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 3,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:56.000Z",
+            "detectionId": "5db9891a-090f-445d-bb2d-5724059142b6",
+            "primaryGain": true,
+            "power": 68882.8125,
+            "rfFrequency": 435000000,
+            "carriers": [
+              449680000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "560d7962-ff83-4aea-af44-1ca3341c7731",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:05:58.432Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 4,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:56.000Z",
+            "detectionId": "8823e8f3-1b0c-4517-8685-582a60988ea7",
+            "primaryGain": true,
+            "power": 17343.818359375,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "593e230f-b678-4ec4-91c4-5398e1c88ad4",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:05:58.586Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 2,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:58.000Z",
+            "detectionId": "c7233dc6-4227-4c8e-a957-c8b8b098c1e6",
+            "primaryGain": true,
+            "power": 36650.43359375,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "24dcde02-86ff-46cf-89d0-fbf24264d381",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:00.971Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:58.000Z",
+            "detectionId": "e936e782-7bab-4f35-88b0-fe8fcb2c4333",
+            "primaryGain": true,
+            "power": 21277614,
+            "rfFrequency": 435000000,
+            "carriers": [
+              435120000,
+              449680000,
+              450360000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "1d429724-69e4-463c-b1dd-e96530692a71",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:01.070Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A344|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 1,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:58.000Z",
+            "detectionId": "a853c760-8a62-4a0c-bc3e-6df7dd5dbb96",
+            "primaryGain": true,
+            "power": 116835.3359375,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000,
+              435080000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "681d6a51-8053-48bb-9b54-6f600d8c718a",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:01.232Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 2,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:58.000Z",
+            "detectionId": "3654b4d8-b6d9-4d49-b38b-31cd6062549f",
+            "primaryGain": true,
+            "power": 36673.25390625,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000,
+              434360000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "2ae795c9-400b-4b5d-a3bb-c3f4ff1b8725",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:01.241Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A394|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 4,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:58.000Z",
+            "detectionId": "4eb62845-88a8-4f34-8d46-a1c3e00b25ae",
+            "primaryGain": true,
+            "power": 17442.568359375,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "7f5babb4-be67-4d83-beee-e7855b854c6e",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:01.390Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 3,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:05:58.000Z",
+            "detectionId": "8aa1f6a3-6f3c-40b8-8b7e-14f51f0f6274",
+            "primaryGain": true,
+            "power": 85041.2578125,
+            "rfFrequency": 435000000,
+            "carriers": [
+              449680000,
+              450360000,
+              451080000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "9ea323c4-ac1d-470d-bc52-1c8a3845232e",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:01.483Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A36D|TXRX",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 6,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:06:01.000Z",
+            "detectionId": "8b514e66-9e4a-4b77-929f-2f9a85bed404",
+            "primaryGain": true,
+            "power": 17678.17578125,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "3101f061-facc-41a6-aa03-2a473fd77f96",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:01.599Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A344|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 1,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:06:01.000Z",
+            "detectionId": "9c4515e0-dab9-4b9c-ac9d-43f7af6a158b",
+            "primaryGain": true,
+            "power": 117025.671875,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000,
+              435080000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "ad58a038-234f-4215-ae6a-bfad8d47ebae",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:03.704Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|TXRX",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 7,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:06:01.000Z",
+            "detectionId": "400c46ac-520f-44d3-b6a9-c66f69e46fec",
+            "primaryGain": true,
+            "power": 20670416,
+            "rfFrequency": 435000000,
+            "carriers": [
+              435120000,
+              450360000,
+              451080000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "7e461d33-8859-4272-beac-bd8f3f2672f1",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:03.724Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A344|TXRX",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 5,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:06:01.000Z",
+            "detectionId": "e379236c-0570-415a-abfa-f6c1b8418f92",
+            "primaryGain": true,
+            "power": 33291.33203125,
+            "rfFrequency": 435000000,
+            "carriers": [
+              433680000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          },
+          {
+            "detectionType": "FSK_RMILEC",
+            "detectionLabel": "RMILEC",
+            "signalType": "GCS",
+            "expired": false,
+            "expirationSeconds": 60,
+            "header": {
+              "messageId": "1b45bf27-91c4-433e-86ab-114442488930",
+              "messageType": "sdrDetectionNotification",
+              "timestamp": "2024-10-29T14:06:03.909Z",
+              "signature": null,
+              "originator": "passive_sdr"
+            },
+            "relatedDetections": [],
+            "radio": "318A340|RX2",
+            "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+            "sector": 3,
+            "processorGroup": "sector",
+            "createdTimestamp": "2024-10-29T14:06:01.000Z",
+            "detectionId": "54e6d8f0-ab9a-47de-930d-c5bbea75a9d1",
+            "primaryGain": true,
+            "power": 69017.390625,
+            "rfFrequency": 435000000,
+            "carriers": [
+              449680000,
+              450360000,
+              451080000
+            ],
+            "syncWord": "-1819782693",
+            "transmitterId": "155",
+            "frequency": 435000000
+          }
+        ],
+        "radio": "318A340|TXRX",
+        "directiveId": "17c49c45-8b78-4465-8f1c-20b51e1d61d3",
+        "sector": 7,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-29T14:05:58.000Z",
+        "detectionId": "e936e782-7bab-4f35-88b0-fe8fcb2c4333",
+        "primaryGain": true,
+        "power": 21277614,
+        "rfFrequency": 435000000,
+        "carriers": [
+          435120000,
+          449680000,
+          450360000
+        ],
+        "syncWord": "-1819782693",
+        "transmitterId": "155",
+        "frequency": 435000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+
+--- Page 1 ---
+August 18, 2023
+Dear Friends,
+Thank you for being an Echodyne customer. While this letter signals the release of our newest firmware for
+EchoGuard and EchoFlight, v16.4, we are also taking this opportunity to announce a new program that will deliver
+greater value from your investment in Echodyne radars through ongoing improvements in software – both on the
+radar and off.
+Since originally releasing EchoGuard and EchoFlight several years ago, we have continued to invest in improving
+radar functionality through firmware releases. Our software-defined radars are designed for continuous
+advancement and Echodyne strives to be the industry leader in software-defined capabilities.
+In addition to software on the radar (firmware), there are also many opportunities for off-radar software to add
+features and capabilities that enhance the overall radar solution. One example is Radar Track Fusion where off-
+radar software fuses data from multiple radars to produce a single track for an object that moves across multiple
+radars’ field of view. When leveraged correctly, combining on- and off-radar software creates the most robust
+overall radar solution.
+To support ongoing improvements in our total radar solution, Echodyne is combining on-radar firmware, off-radar
+software, and expert technical support into a single package called Software Updates & Technical Support, or just
+S&S. The S&S bundle is the key to ongoing and continuous improvement of the radar hardware you already own.
+We have several exciting new products and performance enhancements in the queue across our radar solutions,
+including:
+• EchoShield. Many of our customers have expanding needs and EchoShield delivers unrivaled range and
+accuracy for mission sets from CUAS and Border Surveillance to Ground-based Support Systems for
+Advanced Air Mobility, as well as On-the-Move (OTM) and a range of software-defined features that make
+this a market leading radar.
+• EchoGuard (on-radar s/w) – Improved track-level classification, easier and more extensive radar
+networking, new clutter masking tools, and more.
+• EchoFlight (on-radar s/w) – Improved clutter masking for low altitude flight, improved tracking
+performance, and more.
+• RadarNet (off-radar s/w) – Aggregates and fuses tracks from networked radars to present a single radar
+interface to the UI and to C2 environments. Improved track fusion performance, new packet output
+formats such as TAK and FAADC2, and UI improvements are all planned.
+• RadarUI (off-radar s/w) – New alarm zoning and alerting capability, additional track filtering options
+including filtering by target type, simplified tools for configuring your radar, and more.
+• Support for the latest Linux and Windows operating systems including Ubuntu 22+ and Windows 11.
+As we looked across the competitive landscape while designing this program, the standard practice is to monetize
+each software component individually. Instead, we’ve chosen a different path. One annual fee opens the radar
+engineering closet of radar software and expertise you need to move your projects forward.
+The FAQ below explains the S&S package. To add the S&S package or if there are additional questions, please reply
+to this email or contact your representative.
+We look forward to improving your Echodyne experience with each new software release and support interaction.
+We are excited to continue the journey of reinventing radar for the modern world and are grateful that you have
+placed your trust with Echodyne.
+Sincerely,
+Eben Frankenberg
+Chief Executive Officer
+12112 115th Ave NE, Ste. A, Kirkland, WA, 98034 USA +1-425-454-3246 | info@echodyne.com
+--- Page 2 ---
+Frequently Asked Questions
+Q: What is the name of the new package?
+A: The new package is named Software Updates & Technical Support, which we refer to as S&S. It is already
+a part of all new radar sales and will be available to existing customers as of July 1, 2023.
+Q: When does this package come into force?
+A: Effective July 1, 2023, all customers will need to have the S&S package to access covered software
+resources, including firmware releases beyond v16.4, and receive priority technical response
+(support@echodyne.com). Customers without the S&S package will continue to maintain access to v16.4 firmware.
+Q: What are the costs?
+A: The following table describes the cost for S&S
+per radar Annual plan 3-year plan 5-year plan
+EchoGuard $2,796.50 $8,389.50 $13,982.50
+EchoFlight $2,096.50 $6,289.50 $10,482.50
+Q: What happens if we elect to not choose the S&S package?
+A: All Echodyne customers will have ungated and uninterrupted access to the latest firmware release as of
+July 1, 2023, version 16.4. Inquiries to support@echodyne.com will receive a response as soon as possible. All
+inquiries to support@echodyne.com will be handled in the order received, with S&S customers receiving support
+ahead of customers without the package.
+Q: What is included in the package?
+A: The S&S package consists of:
+• On-radar (firmware) releases.
+• Off-radar software
+• Priority response from technical support (support@echodyne.com)
+Q: Can I add the package later?
+A: Yes, of course you can add the package whenever you like. Until then v16.4 will be available to you
+and support inquiries will be handled on a best effort basis.
+Q: If I opt to not add the S&S package, will my software eventually be obsolete?
+A: No. The company has no plans to cease support of v16.4.
+Q: If I have the S&S package, do the software updates happen automatically?
+A: All customers will receive notices of software releases, whether on- or off-radar software, that includes
+Release Notes on enhancements. The releases will be available via the Echodyne customer portal for those
+customers with an active S&S package. Echodyne does not “push” software to the radar.
+12112 115th Ave NE, Ste. A, Kirkland, WA, 98034 USA +1-425-454-3246 | info@echodyne.com

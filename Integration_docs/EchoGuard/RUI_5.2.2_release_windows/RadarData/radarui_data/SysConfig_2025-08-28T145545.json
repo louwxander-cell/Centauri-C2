@@ -1,0 +1,14 @@
+{
+    "application": {
+        "appMode": "product",
+        "geoTiffEnable": false,
+        "logLevel": 3,
+        "logMask": "ffffffff",
+        "radarConfigPath": "../RadarData/radarui_data/RadarConfig_2025-08-28T145545.json",
+        "radarConfigPathBackup": "../RadarConfig/RadarConfig.json",
+        "radarMon": false,
+        "radarSim": false,
+        "title": "RadarUI"
+    },
+    "sysConfigVersion": "1.3.0"
+}

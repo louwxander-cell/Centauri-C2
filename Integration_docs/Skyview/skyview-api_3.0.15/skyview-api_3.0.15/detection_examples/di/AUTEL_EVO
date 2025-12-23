@@ -1,0 +1,85 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "afdfec0d-6e20-4245-9aef-a015022aac58",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-28T17:52:33.183Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "AUTEL_EVO",
+        "detectionLabel": "Autel Evo",
+        "signalType": "UAS",
+        "expirationSeconds": 60,
+        "expired": false,
+        "header": {
+          "messageId": "2b38e133-9eb5-4a8a-88df-1689050e6fae",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T17:52:33.139Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "7a41e4ca-02b9-4482-a59c-37ee15f64f2d",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-28T17:52:32.000Z",
+        "detectionId": "efa08ecf-b977-4aca-8a21-91176012f30c",
+        "primaryGain": true,
+        "homeLatitude": 39.233497619628906,
+        "homeLongitude": -77.54844665527344,
+        "aircraftLatitude": 39.2335090637207,
+        "aircraftLongitude": -77.54842376708984,
+        "aircraftAltitude": 1.399999976158142,
+        "aircraftVelocityNorth": 1.159999966621399,
+        "aircraftVelocityEast": 2.2699999809265137,
+        "aircraftVelocityUp": -0.20000000298023224,
+        "serial": "156901794",
+        "power": 119.2722396850586,
+        "frequency": 2400000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": [
+      {
+        "detectionType": "AUTEL_EVO",
+        "detectionLabel": "Autel Evo",
+        "signalType": "UAS",
+        "expirationSeconds": 60,
+        "expired": false,
+        "header": {
+          "messageId": "3d021980-146b-4baa-86ec-3612313c08c9",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-28T17:52:32.779Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318A344|RX2",
+        "directiveId": "b12b595e-c8b6-4f3e-aa76-6d90daff921b",
+        "sector": 1,
+        "processorGroup": "sector",
+        "createdTimestamp": "2024-10-28T17:52:32.000Z",
+        "detectionId": "7f2918cb-bbb4-45ad-9a74-26f245aaae07",
+        "primaryGain": true,
+        "homeLatitude": 39.233497619628906,
+        "homeLongitude": -77.54844665527344,
+        "aircraftLatitude": 39.2335090637207,
+        "aircraftLongitude": -77.54842376708984,
+        "aircraftAltitude": 1.399999976158142,
+        "aircraftVelocityNorth": 1.159999966621399,
+        "aircraftVelocityEast": 2.2699999809265137,
+        "aircraftVelocityUp": -0.20000000298023224,
+        "serial": "156901794",
+        "power": 809.4085693359375,
+        "frequency": 2400000000,
+        "altitudeMode": "Unknown"
+      }
+    ]
+  }
+}

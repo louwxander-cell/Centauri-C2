@@ -1,0 +1,41 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "bab6eb79-ef9b-40f4-9123-b15dc4ab3482",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:24:25.174Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "FREEWAVE_FGR3",
+        "detectionLabel": "Freewave FGR3",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "0d1bb77a-159f-40a7-8ad2-d5c9bee3dec3",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:24:25.173Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:24:25.000Z",
+        "detectionId": "cb43df90-f107-4875-9047-ff6452001cbf",
+        "primaryGain": true,
+        "power": 1060379.75,
+        "channel": 0,
+        "frequency": 915000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}

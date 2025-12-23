@@ -1,0 +1,48 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "efb37271-884c-49f2-86bd-b62728cbbc83",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-30T14:52:15.348Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "EXPRESS_LRS",
+        "detectionLabel": "ELRS",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "97a92510-1492-449c-a71d-5644dbfd613f",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-30T14:52:15.144Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "31898B4|",
+        "directiveId": "ba04be6f-efc3-4c60-ac13-3872e1621fd9",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-30T14:52:09.000Z",
+        "detectionId": "f009b0ff-883f-43a0-94ea-44b64a0daf50",
+        "primaryGain": true,
+        "aircraftLatitude": 27.543468475341797,
+        "aircraftLongitude": -85.89934539794922,
+        "aircraftAltitude": 9.0,
+        "aircraftHeading": -131.0800018310547,
+        "aircraftSpeed": -364.1111246744792,
+        "crcSeed": 11777,
+        "syncword": 524303,
+        "power": 8014007296,
+        "frequency": 915000000,
+        "altitudeMode": "Unknown"
+      }
+    ],
+    "sectorDetections": []
+  }
+}

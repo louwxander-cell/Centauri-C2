@@ -1,0 +1,47 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVDIV2-0000",
+    "systemSerial": "SVDIV2-0000",
+    "header": {
+      "messageId": "b964656d-a424-43df-a52c-5942173b7333",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-29T14:47:47.572Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "NTSC_HIGH",
+        "detectionLabel": "NTSC 5.8GHz Video",
+        "signalType": "UAS",
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "82664fe5-2b10-435f-b52e-b9b9443ad6a9",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-29T14:47:14.878Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C68E|",
+        "directiveId": "cf2f4389-d187-4112-8aad-ade449108caa",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-29T14:47:12.000Z",
+        "detectionId": "352d92e4-597b-450d-9095-732bc8cab948",
+        "primaryGain": false,
+        "frameNumBytes": 24645,
+        "power": 22858390,
+        "energy": 22858390,
+        "transmitterBand": "high",
+        "channel": 10,
+        "centerFrequency": 5803000000,
+        "frequency": 5803000000,
+        "frameHeight": 240,
+        "frameWidth": 305
+      }
+    ],
+    "sectorDetections": []
+  }
+}

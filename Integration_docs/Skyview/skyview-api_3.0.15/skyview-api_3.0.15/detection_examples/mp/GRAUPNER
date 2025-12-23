@@ -1,0 +1,50 @@
+{
+  "DetectionPublication": {
+    "systemName": "SVMPV3-9999",
+    "systemSerial": "SVMPV3-9999",
+    "header": {
+      "messageId": "ffea176f-e6a4-4930-bd14-8db8bc782570",
+      "messageType": "DetectionPublication",
+      "timestamp": "2024-10-25T19:45:51.020Z",
+      "signature": null,
+      "originator": "sv-controller"
+    },
+    "omniDetections": [
+      {
+        "detectionType": "GRAUPNER",
+        "detectionLabel": "Graupner",
+        "signalType": "UAS",
+        "aircraftAltitudeMode": null,
+        "expired": false,
+        "expirationSeconds": 60,
+        "header": {
+          "messageId": "155c7833-dc4c-4ce0-a93b-7b46a1716857",
+          "messageType": "sdrDetectionNotification",
+          "timestamp": "2024-10-25T19:45:50.390Z",
+          "signature": null,
+          "originator": "passive_sdr"
+        },
+        "relatedDetections": [],
+        "radio": "318C66C|",
+        "directiveId": "1db1e959-00b0-4474-91c9-9cff908faecb",
+        "sector": 1,
+        "processorGroup": "omni",
+        "createdTimestamp": "2024-10-25T19:45:50.000Z",
+        "detectionId": "24d101e0-72e4-4777-995a-48c79161f60b",
+        "primaryGain": true,
+        "aircraftLatitude": 39.080135345458984,
+        "aircraftLongitude": -77.5513916015625,
+        "aircraftAltitude": -1,
+        "homeLatitude": 39.08013153076172,
+        "homeLongitude": -77.5513916015625,
+        "speed": 0,
+        "verticalSpeed": 0,
+        "direction": 198,
+        "power": 521337.125,
+        "channel": 0,
+        "frequency": 2400000000
+      }
+    ],
+    "sectorDetections": []
+  }
+}
