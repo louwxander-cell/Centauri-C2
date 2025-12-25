@@ -17,10 +17,10 @@
     }
   },
   "gps": {
-    "enabled": false,
+    "enabled": true,
     "driver": "production",
     "model": "septentrio_mosaic_h",
-    "port": "COM3",
+    "port": "COM8",
     "port_linux": "/dev/ttyACM0",
     "baudrate": 115200,
     "update_rate_hz": 5

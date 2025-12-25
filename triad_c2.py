@@ -69,17 +69,21 @@ def main():
         if config.get('gps', {}).get('enabled', False):
             print("[INIT] Initializing GPS...")
             
-            # Determine port (try to find actual device)
-            port_pattern = config['gps'].get('port', '/dev/tty.usbmodem*')
+            # Determine port based on platform
+            import platform
             baudrate = config['gps'].get('baudrate', 115200)
             
-            # Try to find matching port
-            matching_ports = glob.glob(port_pattern)
-            if matching_ports:
-                port = matching_ports[0]
+            if platform.system() == 'Windows':
+                # Windows: Use COM port directly from config
+                port = config['gps'].get('port', 'COM8')
             else:
-                # Fallback to Linux port if on Linux
-                port = config['gps'].get('port_linux', '/dev/ttyACM0')
+                # Linux/Mac: Try glob pattern matching
+                port_pattern = config['gps'].get('port_linux', '/dev/ttyACM0')
+                matching_ports = glob.glob(port_pattern)
+                if matching_ports:
+                    port = matching_ports[0]
+                else:
+                    port = port_pattern
             
             print(f"[INIT]   Model: Septentrio Mosaic-H")
             print(f"[INIT]   Port: {port}")
